@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Palabras from './containers/Palabras';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Palabras />,
+  document.getElementById('root')
+);
 registerServiceWorker();
