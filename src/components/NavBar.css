@@ -62,3 +62,22 @@ a:active {
 #palabras-dropdown2:hover #palabras-content2 {
   visibility: visible;
 }
+
+@media (max-width: 800px) {
+  .navbar {
+    display: flex;
+    margin-right: 0.3em;
+    background-color: blue;
+  }
+
+  .content {
+    display: flex;
+  }
+
+}
+
+@media (max-width: 570) {
+  .content {
+    margin: 0px;
+  }
+}

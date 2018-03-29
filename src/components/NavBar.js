@@ -17,7 +17,9 @@ const NavBar = (props) => {
           >
             Words
           </Link>
-          <div id='palabras-content1'>
+          <div
+            id='palabras-content1'
+            className='content'>
             <Link
               to={ '/words/find-palabra' }
               className='btn btn-default'
@@ -35,6 +37,16 @@ const NavBar = (props) => {
             >
               Cows & Bulls
             </Link>
+            <Link
+              to={{
+                pathname: '/blog',
+                hash: '#blog',
+                state: { p: 'blog/' }
+              }}
+              className='btn btn-default'
+            >
+              Blog
+            </Link>
           </div>
         </div>
         <div
@@ -46,7 +58,9 @@ const NavBar = (props) => {
           >
             Word Lists
           </Link>
-          <div id='palabras-content2'>
+          <div
+            id='palabras-content2'
+            className='content'>
           <Link
             to={{
               pathname: '/words/four-letter-word',
