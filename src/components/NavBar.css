@@ -20,7 +20,13 @@ a:active {
 
 .dropdown {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .btn {
@@ -77,7 +83,7 @@ a:active {
 
 }
 
-@media (max-width: 570) {
+@media (max-width: 570px) {
   .content {
     display: flex;
     flex-shrink: 1;
@@ -86,8 +92,20 @@ a:active {
 
 }
 
+@media (max-width: 530px) {
+  .dropdown {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .auth {
+
+  }
+}
+
 /* .btn media query isn't working as expected */
-@media (max-width: 465) {
+@media (max-width: 465px) {
   .dropdown1 {
     display: flex;
     direction: column;

@@ -99,17 +99,47 @@ const NavBar = (props) => {
           </Link>
           </div>
         </div>
-        <div className=''>
+        <div className='auth'>
           { user.token ?
             <ul
               className=''>
-              <li><button className=''>{ user.username }</button></li>
-              <li><button className=''><img src={ user.profileImageUrl } alt='user' /></button></li>
-              <li onClick={ onLogout }><button className=''>Log out</button></li>
+              <li>
+                <button className=''>
+                  { user.username }
+                </button>
+              </li>
+              <li>
+                <button
+                  className=''>
+                  <img
+                    src={ user.profileImageUrl }
+                    alt='user' />
+                </button>
+              </li>
+              <li
+                onClick={ onLogout }>
+                <button
+                  className='btn btn-default'>
+                  Log out
+                </button>
+              </li>
             </ul> :
-            <ul className=''>
-              <li><button onClick={ onShowSignUpForm } className=''>Sign up</button></li>
-              <li><button onClick={ onShowLoginForm }>Sign in</button></li>
+            <ul
+              className=''>
+              <li>
+                <button
+                  onClick={ onShowSignUpForm }
+                  className='btn btn-default'>
+                  Sign up
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={ onShowLoginForm }
+                  className='btn btn-default'>
+                  Sign in
+                </button>
+              </li>
             </ul>
           }
         </div>
