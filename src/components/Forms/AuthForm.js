@@ -21,13 +21,6 @@ class AuthForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
-    let signUp = this.props.showSignUpForm;
-    this.setState({
-      signUp
-    })
-  }
-
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }

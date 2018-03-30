@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
-import * as authCalls from './../actions.authApi';
+import * as authCalls from './../actions/authApi';
 import avocado from './../images/costa_rica/IMG_8076_avocado.png';
 import AuthForm from '../components/Forms/AuthForm';
 import NavBar from './../components/NavBar';
@@ -62,7 +62,18 @@ class App extends Component {
     const { showLoginForm, showSignUpForm, user } = this.state;
     return (
       <div className="App">
-        <NavBar />
+        <NavBar
+          user={ user }
+          onLogout={ this.handleLogOut }
+          onShowLoginForm={ () => this.setState({
+            showLoginForm: true,
+            showSignUpForm: false
+          }) }
+          onShowSignUpForm={ () => this.setState({
+            showLoginForm: false,
+            showSignUpForm: true
+          }) }
+          />
         { showLoginForm || showSignUpForm ?
           <AuthForm
             onAuth={ this.handleAuth }
@@ -75,8 +86,8 @@ class App extends Component {
               showSignUpForm: false
             })}
             onShowSignUpForm={ () => this.setState({
-              showLoginForm: true,
-              showSignUpForm: false
+              showLoginForm: false,
+              showSignUpForm: true
             })}
             showLoginForm={ showLoginForm }
             showSignUpForm={ showSignUpForm }

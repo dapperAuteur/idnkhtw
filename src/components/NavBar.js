@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
+  const {
+    user,
+    onLogout,
+    onShowLoginForm,
+    onShowSignUpForm
+  } = props;
 
   return (
     <nav className='navbar'>
@@ -92,6 +98,20 @@ const NavBar = (props) => {
             Verbo
           </Link>
           </div>
+        </div>
+        <div className=''>
+          { user.token ?
+            <ul
+              className=''>
+              <li><button className=''>{ user.username }</button></li>
+              <li><button className=''><img src={ user.profileImageUrl } alt='user' /></button></li>
+              <li onClick={ onLogout }><button className=''>Log out</button></li>
+            </ul> :
+            <ul className=''>
+              <li><button onClick={ onShowSignUpForm } className=''>Sign up</button></li>
+              <li><button onClick={ onShowLoginForm }>Sign in</button></li>
+            </ul>
+          }
         </div>
       </div>
     </nav>
