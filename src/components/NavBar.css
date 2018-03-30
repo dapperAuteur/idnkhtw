@@ -27,7 +27,7 @@ a:active {
   background-color: blue;
   border: none;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   text-align: center;
   border-radius: 4px;
 }
@@ -67,7 +67,8 @@ a:active {
   .navbar {
     display: flex;
     margin-right: 0.3em;
-    background-color: blue;
+    /* resize image */
+    /* background-image: url('./../images/nicaraugua/img_9251_dog_on_the_steps.jpg'); */
   }
 
   .content {
@@ -78,6 +79,20 @@ a:active {
 
 @media (max-width: 570) {
   .content {
+    display: flex;
+    flex-shrink: 1;
+    justify-content: center;
+  }
+
+}
+
+/* .btn media query isn't working as expected */
+@media (max-width: 465) {
+  .dropdown1 {
+    display: flex;
+    direction: column;
+  }
+  .btn {
     margin: 0px;
   }
 }
