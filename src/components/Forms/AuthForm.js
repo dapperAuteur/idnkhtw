@@ -30,7 +30,7 @@ class AuthForm extends Component {
 
     let { signUp, ...user } = { ...this.state };
     let { showSignUpForm } = this.props;
-    console.log(user, showSignUpForm);
+    console.log(user.email, showSignUpForm);
 
     this.props.onAuth({ ...user });
 

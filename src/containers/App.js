@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
+import * as apiCalls from '../actions/api';
 import * as authCalls from './../actions/authApi';
 import avocado from './../images/costa_rica/IMG_8076_avocado.png';
 import AuthForm from '../components/Forms/AuthForm';
