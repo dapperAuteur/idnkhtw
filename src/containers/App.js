@@ -27,8 +27,25 @@ class App extends Component {
       verbos: []
     }
     this.handleAuth = this.handleAuth.bind(this);
+    this.handleCreateGame = this.handleCreateGame.bind(this);
+    this.handleCheckFourLetterWord = this.handleCheckFourLetterWord.bind(this);
+    this.handleDeletePalabra = this.handleDeletePalabra.bind(this);
+    this.handleLoadPalabra = this.handleLoadPalabra.bind(this);
+    this.handleLoadPalabras = this.handleLoadPalabras.bind(this);
+    this.handleLoadRandomPalabra = this.handleLoadRandomPalabra.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
+
+  componentDidMount() {
+    this.loadRandomPalabras();
+  }
+
+  async loadRandomPalabras() {
+    this.handleLoadPalabras();
+  }
+
+// authentication functions
 
   async handleAuth(user) {
     let currentUser;
@@ -59,6 +76,88 @@ class App extends Component {
     });
     this.props.history.push('/');
   }
+
+  // CRUD functions
+  async handleAddPalabra(p, pObj) {
+    let newPalabra = await apiCalls.createPalabra(p, pObj);
+    let params = p.slice(0, -1);
+    switch (params) {
+      case "fourLetterWords":
+        this.setState({ fourLetterWord: newPalabra });
+        break;
+      case "prefixSuffixRoots":
+        this.setState({ prefixSuffixRoot: newPalabra });
+        break;
+      case "verbos":
+        this.setState({ verbo: newPalabra });
+        break;
+      default:
+
+    }
+  }
+
+  async handleLoadPalabra(p, pObj) {
+    let palabra;
+    let params = p.slice(0, -1);
+    console.log(p, pObj);
+    if (pObj.hasOwnProperty('_id')) {
+      console.log(pObj);
+      palabra = await apiCalls.getPalabra(p, pObj);
+      console.log(palabra);
+    } else if (pObj.hasOwnProperty('word')) {
+      let word = pObj.word;
+      console.log(word);
+      let findPalabra = this.state[params].filter(param => param.word === word);
+      findPalabra = findPalabra[0];
+      console.log(findPalabra);
+      if (findPalabra === undefined) {
+        let err = { errorMessage: 'Word NOT Found!' };
+        return err;
+      } else if (findPalabra.hasOwnProperty('_id')) {
+        palabra = await apiCalls.getPalabra(p, findPalabra);
+      }
+      console.log(palabra);
+    }
+    console.log(palabra);
+
+    switch (params) {
+      case "fourLetterWords":
+        this.setState({ fourLetterWord: palabra });
+        this.props.history.push('/words/four-letter-word');
+        break;
+      case "prefixSuffixRoots":
+        this.setState({ prefixSuffixRoots: palabra });
+        this.props.history.push('/words/prefix-suffix-root');
+        break;
+      case "user":
+        this.setState({ user0: palabra });
+        break;
+      case "verbos":
+        this.setState({ verbo: palabra });
+        this.props.history.push('/words/verbo');
+        break;
+      default:
+
+    }
+  }
+
+  async handleLoadPalabras() {
+    let fourLetterWords = await apiCalls.getPalabras('fourLetterWords');
+    let prefixSuffixRoots = await apiCalls.getPalabras('prefixSuffixRoots');
+    let verbos = await apiCalls.getPalabras('verbos');
+
+    this.setState({
+      fourLetterWords,
+      prefixSuffixRoots,
+      verbos
+    });
+
+    localStorage.setItem('fourLetterWords', JSON.stringify(fourLetterWords));
+    localStorage.setItem('prefixSuffixRoots', JSON.stringify(prefixSuffixRoots));
+    localStorage.setItem('verbos', JSON.stringify(verbos));
+  }
+
+
   render() {
     const { showLoginForm, showSignUpForm, user } = this.state;
     return (
