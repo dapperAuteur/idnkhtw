@@ -9,7 +9,7 @@ export async function onAuth(params) {
 
 export async function getPalabras(param) {
   return fetch(`${APIURL}${param}`)
-    then(resp => {
+    .then(resp => {
       if (!resp.ok) {
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
@@ -104,7 +104,7 @@ export async function updatePalabra(p, pObj) {
   console.log(token);
   return fetch(`${APIURL}${p}${pObj._id}`, {
     method: 'put',
-    headers:: new Headers({
+    headers: new Headers({
       'Content-Type': 'application/json',
       'Authorization': token
     }),
