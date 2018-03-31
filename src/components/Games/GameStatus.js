@@ -12,17 +12,6 @@ const GameStatus = (props) => {
   if (won) {
     return (
       <div className="gameStatus">
-        <Link
-          to={{
-            pathname: '/games/four-letter-word',
-            hash: '#fourLetterWords',
-            state: { p: 'fourLetterWords/' }
-          }}
-          onClick={ onCreateGame }
-          className='btn btn-default'
-        >
-          Cows & Bulls
-        </Link>
         <span className="gameStat">Message: { message }</span>
         <span className="gameStat">Points { score }</span>
         <span className="gameStat">Guesses { attempts }</span>

@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import shuffle from 'shuffle-array';
 import * as apiCalls from '../actions/api';
 import * as authCalls from './../actions/authApi';
-import avocado from './../images/costa_rica/IMG_8076_avocado.png';
 import AuthForm from './../components/Forms/AuthForm';
 import GameStatus from './../components/Games/GameStatus';
 import Main from './Main';
@@ -510,7 +509,6 @@ class App extends Component {
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onSave={ this.handleSave }
           />
-        <img src={avocado} className="App-logo" alt="logo" />
         <h1 className="App-title">I Do Not Know How this Works</h1>
       </div>
     );
