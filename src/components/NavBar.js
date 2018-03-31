@@ -5,6 +5,8 @@ import './NavBar.css';
 const NavBar = (props) => {
   const {
     user,
+    onCreateGame,
+    onLoadRandomPalabra,
     onLogout,
     onShowLoginForm,
     onShowSignUpForm
@@ -38,7 +40,7 @@ const NavBar = (props) => {
                 hash: '#fourLetterWords',
                 state: { p: 'fourLetterWords/' }
               }}
-              onClick={ null }
+              onClick={ onCreateGame }
               className='btn btn-default'
             >
               Cows & Bulls
@@ -73,6 +75,7 @@ const NavBar = (props) => {
               hash: '#fourLetterWords',
               state: { p: 'fourLetterWords/' }
             }}
+            onClick={ onLoadRandomPalabra }
             className='btn btn-default'
           >
             Four Letter Word
@@ -83,6 +86,7 @@ const NavBar = (props) => {
               hash: '#prefixSuffixRoots',
               state: { p: 'prefixSuffixRoots/' }
             }}
+            onClick={ onLoadRandomPalabra }
             className='btn btn-default'
           >
             Prefix Suffix Root
@@ -93,6 +97,7 @@ const NavBar = (props) => {
               hash: '#verbos',
               state: { p: 'verbos/' }
             }}
+            onClick={ onLoadRandomPalabra }
             className='btn btn-default'
           >
             Verbo

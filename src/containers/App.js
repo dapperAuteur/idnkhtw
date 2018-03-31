@@ -104,6 +104,8 @@ class App extends Component {
     bulls = 0;
     cows = 0;
     console.log(guess);
+    console.log(game);
+    console.log(guesses);
     guess = guesses.slice(-1);
     guess = guess[0].toLowerCase();
     console.log(guess);
@@ -146,7 +148,7 @@ class App extends Component {
           }
         }
       }
-      message = `You didn't win yet. You have ${cows} cows and ${bulls} bulls.`
+      message = `You didn't win yet.`
       won = false;
       console.log(`cows: ${cows}, bulls: ${bulls}, message: ${message}, score: ${score}, won: ${won}`);
     }
@@ -464,8 +466,10 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar
-          user={ user }
+          onCreateGame={ this.handleCreateGame }
+          onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onLogout={ this.handleLogOut }
+          user={ user }
           onShowLoginForm={ () => this.setState({
             showLoginForm: true,
             showSignUpForm: false
@@ -494,7 +498,10 @@ class App extends Component {
             showSignUpForm={ showSignUpForm }
             /> : null
         }
-        { p === '/games/four-letter-word' && <GameStatus game={ game } /> }
+        {
+          p === '/games/four-letter-word' &&
+          <GameStatus game={ game } onCreateGame={ this.handleCreateGame } />
+        }
         <Main
           props={ this.state }
           onCheckFourLetterWord = { this.handleCheckFourLetterWord }

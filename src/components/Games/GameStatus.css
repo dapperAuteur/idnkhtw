@@ -1,14 +1,15 @@
 .gameStatus {
   display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 20px 30px 10px;
-  background-color: green;
   flex: 0 0 100%;
   justify-content: space-around;
   font-family: Rubik Mono One, sans-serif;
   font-size: 2em;
   color: white;
   align-self: flex-end;
-  text-shadow: 4px 4px #000000;
+  text-shadow: 2px 2px #000000;
 }
 
 .gameStat {
