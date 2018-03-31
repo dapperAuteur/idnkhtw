@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import shuffle from 'shuffle-array';
 import * as apiCalls from '../actions/api';
 import * as authCalls from './../actions/authApi';
 import avocado from './../images/costa_rica/IMG_8076_avocado.png';
-import AuthForm from '../components/Forms/AuthForm';
+import AuthForm from './../components/Forms/AuthForm';
+import GameStatus from './../components/Games/GameStatus';
+import Main from './Main';
 import NavBar from './../components/NavBar';
 import './App.css';
 
@@ -126,8 +128,8 @@ class App extends Component {
       message = `${guess} is NOT the Word`;
       for (var i = 0; i < arr_guess.length; i++) {
         for (var j = 0; j < arr_word.length; j++) {
-          if (arr_guess[i] == arr_word[j]) {
-            if (i == j) {
+          if (arr_guess[i] === arr_word[j]) {
+            if (i === j) {
               bulls++;
               score += 100;
               won = false;
@@ -135,7 +137,7 @@ class App extends Component {
               arr_word[j] = "1";
             }
           }
-          if (arr_guess[i] == arr_word[j]) {
+          if (arr_guess[i] === arr_word[j]) {
             cows++;
             score += 50;
             won = false;
@@ -508,4 +510,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

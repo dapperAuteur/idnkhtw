@@ -1,0 +1,28 @@
+.GameVerbo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 5px solid blue;
+  border-radius: 15px;
+  padding: 15px;
+  align-self: center;
+  margin: auto;
+}
+
+.spanish {
+
+}
+
+.english {
+
+}
+
+.hint {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#hintTitle {
+  align-self: center;
+}
