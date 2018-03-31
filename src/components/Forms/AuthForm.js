@@ -56,23 +56,23 @@ class AuthForm extends Component {
     if (!this.props.showSignUpForm) {
       return (
         <div
-          className=''>
+          className='btn'>
           <button
             type='button'
-            className=''
+            className='close-button'
             onClick={ onClose }>
             Close
           </button>
           <button
             type='button'
-            className=''
+            className='btn'
             onClick={ onShowSignUpForm }>
             Sign Up
           </button>
           <form onSubmit={ this.handleSubmit }>
             <h2>{ heading }</h2>
             { errorMessage ?
-              <div className=''>
+              <div className='btn'>
                 { errorMessage}
               </div> :
               undefined
@@ -105,7 +105,7 @@ class AuthForm extends Component {
               onChange={ this.handleChange } />
             <button
               type='submit'
-              className=''>
+              className='btn'>
               { buttonText }
             </button>
           </form>
@@ -114,7 +114,7 @@ class AuthForm extends Component {
     } else {
       return (
         <div
-          className=''>
+          className='btn'>
           <button
             type='button'
             className='close-button'
@@ -123,7 +123,7 @@ class AuthForm extends Component {
           </button>
           <button
             type='button'
-            className=''
+            className='btn'
             onClick={ onShowLoginForm }>
             Sign In
           </button>
@@ -187,7 +187,7 @@ class AuthForm extends Component {
               onChange={ this.handleChange } />
             <button
               type='submit'
-              className=''
+              className='btn'
               >
               Sign Me Up!
             </button>
