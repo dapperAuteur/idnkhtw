@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const DetailsPrefixSuffixRoot = (props) => {
   console.log(props);
-  let prefixSuffixRoot = props.props.data.prefixSuffixRoot;
+  let prefixSuffixRoot = props.props.data.props.prefixSuffixRoot;
   const onDelete = props.props.data.onDelete;
   const onLoadRandomPalabra = props.props.data.onLoadRandomPalabra;
   console.log(prefixSuffixRoot, props);
