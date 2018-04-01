@@ -1,4 +1,5 @@
 import React from 'react';
+import './../CSS/Palabra.css';
 
 const Verbo = (props) => {
   let id = props.id;
@@ -6,9 +7,9 @@ const Verbo = (props) => {
   let translation = props.translation;
 
   return (
-    <h1>
+    <div className='palabra'>
       { spanish } : { translation }
-    </h1>
+    </div>
   )
 }
 

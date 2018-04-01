@@ -1,4 +1,5 @@
 import React from 'react';
+import './../CSS/Palabra.css';
 
 const FourLetterWord = (props) => {
   let definition = props.definition;
@@ -8,9 +9,9 @@ const FourLetterWord = (props) => {
   // console.log(fourLetterWord);
 
   return (
-    <h1>
+    <div className='palabra'>
       { word } : { definition }
-    </h1>
+    </div>
   )
 }
 

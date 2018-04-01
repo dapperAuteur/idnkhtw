@@ -4,9 +4,9 @@ import FourLetterWord from './../FourLetterWords/FourLetterWord';
 import PrefixSuffixRoot from './../PrefixSuffixRoots/PrefixSuffixRoot';
 import User from './../Users/User';
 import Verbo from './../Verbos/Verbo';
+import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
-  console.log(props);
   let myPalabras;
   let myProps = props.props.data.props;
   let p = props.p;
@@ -14,10 +14,8 @@ const Palabras = (props) => {
   let prefixSuffixRoots = [...myProps.prefixSuffixRoots];
   let users = [...myProps.users];
   let verbos = [...myProps.verbos];
-  console.log(p, fourLetterWords, prefixSuffixRoots, verbos);
   switch (p) {
     case "fourLetterWords/":
-      console.log(p);
       myPalabras = fourLetterWords.map(wordObj => (
         <FourLetterWord
           definition={ wordObj.definition }
@@ -28,7 +26,6 @@ const Palabras = (props) => {
       ))
       break;
     case "prefixSuffixRoots/":
-      console.log(p);
       myPalabras = prefixSuffixRoots.map(wordObj => (
         <PrefixSuffixRoot
           id={ wordObj._id }
@@ -38,7 +35,6 @@ const Palabras = (props) => {
       ))
       break;
     case "users/":
-      console.log(p);
       myPalabras = users.map(wordObj => (
         <User
           id={ wordObj._id }
@@ -48,7 +44,6 @@ const Palabras = (props) => {
       ))
       break;
     case "verbos/":
-      console.log(p);
       myPalabras = verbos.map(wordObj => (
         <Verbo
           id={ wordObj._id }
@@ -62,8 +57,7 @@ const Palabras = (props) => {
   }
 
   return (
-    <div>
-      { p }
+    <div className='palabras'>
       { myPalabras }
     </div>
   )
