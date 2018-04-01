@@ -24,9 +24,6 @@ class UpdateVerbo extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentWillMount(){
-    console.log(this.props);
-  }
 
   handleChange(e){
     this.setState({ [e.target.name]: e.target.value });
@@ -34,11 +31,8 @@ class UpdateVerbo extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    // let { p, ...pObj } = { p, ...this.state };
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
-    console.log(p, pObj);
-    console.log(pObj);
     this.props.data.onSave(p, pObj);
     this.props.history.push('/words/verbo');
   }

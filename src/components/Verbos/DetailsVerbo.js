@@ -3,7 +3,6 @@ import React from 'react';
 const DetailsVerbo = (props) => {
 
   let verbo = props.verbo;
-  console.log(props, verbo);
   
   if (verbo === null || verbo === undefined) {
     verbo = JSON.parse(localStorage.getItem("verbo"));

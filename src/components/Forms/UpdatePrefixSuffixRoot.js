@@ -21,18 +21,15 @@ class UpdatePrefixSuffixRoot extends Component {
   }
 
   handleChange(e){
-    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e){
     e.preventDefault();
-    // let { p, ...pObj } = { p, ...this.state };
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
     this.props.data.onSave(p, pObj);
     this.props.history.push('/words/prefix-suffix-root');
-    console.log(p, pObj);
   }
 
   render(){

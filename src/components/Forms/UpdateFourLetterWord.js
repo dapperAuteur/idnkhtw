@@ -22,20 +22,14 @@ class UpdateFourLetterWord extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount(){
-    console.log(this.props);
-  }
-
   handleChange(e){
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e){
     e.preventDefault();
-    // let { p, ...pObj } = { p, ...this.state };
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
-    console.log(p, pObj);
     this.props.data.onSave(p, pObj);
     this.props.history.push('/words/four-letter-word');
   }

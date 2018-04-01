@@ -17,24 +17,18 @@ class FindPalabra extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let p = this.state.p;
-    console.log(this.state);
     if (p === '') {
-      console.log(p);
       return;
     }
     let pObj = {};
-    console.log(pObj);
     if (this.state._id !== '') {
       pObj._id = this.state._id;
       if (this.state.word !== '') {
         pObj.word = this.state.word;
       }
     } else if (this.state.word !== '') {
-      console.log(pObj);
       pObj.word = this.state.word;
-      console.log(pObj);
     }
-    console.log(p, pObj);
     this.props.data.onLoadPalabra(p, pObj);
   }
 

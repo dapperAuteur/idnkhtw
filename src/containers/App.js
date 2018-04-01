@@ -61,9 +61,7 @@ class App extends Component {
       currentUser = await authCalls.signIn(user);
     }
     if (!currentUser.hasOwnProperty('_id')) {
-      console.log(currentUser);
       errorMessage = currentUser;
-      console.log(errorMessage);
       this.setState({
         errorMessage
       });
@@ -78,7 +76,7 @@ class App extends Component {
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('user', JSON.stringify(currentUser));
     } else {
-      console.log('no localStorage');
+      return null;
     }
   }
 
@@ -208,33 +206,25 @@ class App extends Component {
 
   async handleDeletePalabra() {
     let userRole = this.state.user.userRole;
-    console.log(this.state);
     let token = this.state.user.token;
     let pathname = this.props.history.location.pathname;
     let params = pathname.slice(7) + 's';
-    console.log(pathname);
     if (params === 'four-letter-words') {
       params = 'fourLetterWords';
-      console.log(params);
     } else if (params === 'prefix-suffix-roots') {
       params = 'prefixSuffixRoots';
-      console.log(params);
     }
     let p = params + '/';
     let palabra;
-    console.log(params);
     switch (params) {
       case 'fourLetterWords':
         palabra = this.state.fourLetterWord;
-        console.log(palabra);
         break;
       case 'prefixSuffixRoots':
         palabra = this.state.prefixSuffixRoot;
-        console.log(palabra);
         break;
       case 'verbos':
         palabra = this.state.verbo;
-        console.log(palabra);
         break;
       default:
 
@@ -246,35 +236,27 @@ class App extends Component {
       token,
       userRole
     }
-    console.log(pObj);
     if (pObj.hasOwnProperty('_id')) {
-      console.log(pObj);
       let deletedPalabra = await apiCalls.removePalabra(p, pObj);
-      console.log(deletedPalabra);
-      console.log(pObj.palabra._id);
       const palabras = this.state[params].filter(param => param._id === pObj._id);
-      console.log(palabras);
       switch (params) {
         case 'fourLetterWords':
           this.setState({
             fourLetterWord: {},
             fourLetterWords: palabras
           });
-          console.log('deleted ', params, pObj.palabra);
           break;
         case 'prefixSuffixRoots':
           this.setState({
             prefixSuffixRoot: {},
             prefixSuffixRoots: palabras
           });
-          console.log('deleted ', params, pObj.palabra);
           break;
         case 'verbos':
           this.setState({
             verbo: {},
             verbos: palabras
           });
-          console.log('deleted ', params, pObj.palabra);
           break;
         default:
 
@@ -285,26 +267,19 @@ class App extends Component {
   async handleLoadPalabra(p, pObj) {
     let palabra;
     let params = p.slice(0, -1);
-    console.log(p, pObj);
     if (pObj.hasOwnProperty('_id')) {
-      console.log(pObj);
       palabra = await apiCalls.getPalabra(p, pObj);
-      console.log(palabra);
     } else if (pObj.hasOwnProperty('word')) {
       let word = pObj.word;
-      console.log(word);
       let findPalabra = this.state[params].filter(param => param.word === word);
       findPalabra = findPalabra[0];
-      console.log(findPalabra);
       if (findPalabra === undefined) {
         let err = { errorMessage: 'Word NOT Found!' };
         return err;
       } else if (findPalabra.hasOwnProperty('_id')) {
         palabra = await apiCalls.getPalabra(p, findPalabra);
       }
-      console.log(palabra);
     }
-    console.log(palabra);
 
     switch (params) {
       case "fourLetterWords":
@@ -350,16 +325,12 @@ class App extends Component {
     let prefixSuffixRoots;
     let verbo;
     let verbos;
-    console.log(this.props);
     let palabraHash = this.props.location.hash;
-    console.log(palabraHash);
     let palabra = palabraHash.slice(1);
-    console.log(palabra);
     switch (palabra) {
       case 'fourLetterWords':
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
-          console.log(fourLetterWords);
         } else {
           this.handleLoadPalabras();
           this.handleLoadRandomPalabra();
@@ -371,12 +342,10 @@ class App extends Component {
         if (fourLetterWord !== undefined) {
           localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
         }
-        console.log(fourLetterWord);
         break;
       case 'prefixSuffixRoots':
         if (this.state.prefixSuffixRoots.length !== 0) {
           prefixSuffixRoots = [...this.state.prefixSuffixRoots];
-          console.log(prefixSuffixRoots);
         } else {
           this.handleLoadPalabras();
           this.handleLoadRandomPalabra();
@@ -388,12 +357,10 @@ class App extends Component {
         if (prefixSuffixRoot !== undefined) {
           localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
         }
-        console.log(prefixSuffixRoot);
         break;
       case 'verbos':
         if (this.state.verbos.length !== 0) {
           verbos = [...this.state.verbos];
-          console.log(verbos);
         } else {
           this.handleLoadPalabras();
           this.handleLoadRandomPalabra();
@@ -410,7 +377,6 @@ class App extends Component {
       default:
       if (this.state.fourLetterWords) {
         fourLetterWords = [...this.state.fourLetterWords];
-        console.log(fourLetterWords);
       } else {
         this.handleLoadPalabras();
         this.handleLoadRandomPalabra();
@@ -422,7 +388,6 @@ class App extends Component {
       if (fourLetterWord !== undefined) {
         localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
       }
-      console.log(fourLetterWord);
       break
     }
   }
@@ -438,13 +403,9 @@ class App extends Component {
   async handleUpdatePalabra(p, pObj) {
     let userRole = this.state.user.userRole;
     let token = this.state.user.token;
-    console.log(this.state.user);
-    console.log(userRole);
     pObj.userRole = userRole;
     pObj.token = token;
-    console.log(pObj);
     let updatedPalabra = await apiCalls.updatePalabra(p, pObj);
-    console.log(updatedPalabra);
     let params = p.slice(0, -1);
     const palabras = this.state[params].map(param => (param._id === updatedPalabra._id) ? { ...param, ...updatedPalabra } : param)
 
@@ -470,14 +431,10 @@ class App extends Component {
       default:
 
     }
-    console.log(params, updatedPalabra);
   }
 
   render() {
     const { errorMessage, game, showLoginForm, showSignUpForm, user } = this.state;
-    console.log(errorMessage.errorMessage);
-    console.log(this.props);
-    console.log(this.state);
     let p = this.props.location.pathname;
     return (
       <div className="App">

@@ -24,7 +24,6 @@ class CreatePrefixSuffixRoot extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    // let { p, ...pObj } = { p, ...this.state };
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
     this.props.onSave(p, pObj);

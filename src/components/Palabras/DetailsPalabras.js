@@ -11,11 +11,8 @@ const DetailsPalabras = (props) => {
   console.log(pathname);
 
   let { fourLetterWord, prefixSuffixRoot, verbo } = props.data.props;
-  // load next random word
   let p = props.location.hash.slice(1);
-  console.log(props);
-  console.log(p);
-  console.log(fourLetterWord, prefixSuffixRoot, verbo);
+
   switch (p) {
     case "fourLetterWords":
       fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));

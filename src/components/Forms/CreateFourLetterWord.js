@@ -16,10 +16,8 @@ class CreateFourLetterWords extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // let { p, ...pObj } = { p, ...this.state };
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
-    console.log(p, pObj);
     this.props.data.onSave(p, pObj);
     this.setState({
       word: '',

@@ -2,24 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PalabrasButtons = (props) => {
-  console.log(props);
   let myProps = props.props;
   let myData = myProps.data;
-  console.log(myProps);
-  console.log(myData);
   let fourLetterWord = myData.props.fourLetterWord;
   let prefixSuffixRoot = myData.props.prefixSuffixRoot;
   let verbo = myData.props.verbo;
-  console.log(fourLetterWord, prefixSuffixRoot, verbo);
   let loggedIn = myData.props.loggedIn;
   const onDelete = myData.onDelete;
   const onLoadRandomPalabra = myData.onLoadRandomPalabra;
-  console.log(onDelete, onLoadRandomPalabra);
   let p = myProps.location.pathname;
   let update;
-  console.log(p);
   if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {
-    console.log("null");
     fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
     prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
     verbo = JSON.parse(localStorage.getItem("verbo"));
@@ -37,7 +30,6 @@ const PalabrasButtons = (props) => {
     default:
 
   }
-  console.log(p, update);
   if (loggedIn) {
     return (
       <div>
