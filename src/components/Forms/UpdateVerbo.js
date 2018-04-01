@@ -149,8 +149,11 @@ class UpdateVerbo extends Component {
             UPDATE
           </button>
           <Link
-            to={ '/words/verbo' }
-            id="Verbos"
+            to={{
+              pathname: '/words/verbo',
+              hash: '#verbos',
+              state: { p: 'verbos/' }
+            }}
             className="btn btn-default">
             CANCEL
           </Link>

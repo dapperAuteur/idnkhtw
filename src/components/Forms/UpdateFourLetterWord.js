@@ -133,9 +133,12 @@ class UpdateFourLetterWord extends Component {
             UPDATE
           </button>
           <Link
-            to={ '/words/four-letter-word' }
-            id="FourLetterWord"
-            className="btn btn-default">
+            to={{
+              pathname: '/words/four-letter-word',
+              hash: '#fourLetterWords',
+              state: { p: 'fourLetterWords/' }
+            }}
+            className='btn btn-default'>
             CANCEL
           </Link>
         </form>

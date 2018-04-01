@@ -13,10 +13,12 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      errorMessage: {},
       fourLetterWord: {},
       fourLetterWords: [],
       game: {},
       games: [],
+      loggedIn: false,
       p: '',
       prefixSuffixRoot: {},
       prefixSuffixRoots: [],
@@ -57,6 +59,7 @@ class App extends Component {
       currentUser = await authCalls.signIn(user);
     }
     this.setState({
+      loggedIn: true,
       showLoginForm: false,
       showSignUpForm: false,
       user: currentUser
@@ -74,6 +77,7 @@ class App extends Component {
       localStorage.setItem('user', JSON.stringify(user));
     }
     this.setState({
+      loggedIn: false,
       user
     });
     this.props.history.push('/');
@@ -342,7 +346,7 @@ class App extends Component {
     console.log(palabra);
     switch (palabra) {
       case 'fourLetterWords':
-        if (this.state.fourLetterWords) {
+        if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
           console.log(fourLetterWords);
         } else {
@@ -359,7 +363,7 @@ class App extends Component {
         console.log(fourLetterWord);
         break;
       case 'prefixSuffixRoots':
-        if (this.state.prefixSuffixRoots) {
+        if (this.state.prefixSuffixRoots.length !== 0) {
           prefixSuffixRoots = [...this.state.prefixSuffixRoots];
           console.log(prefixSuffixRoots);
         } else {
@@ -376,7 +380,7 @@ class App extends Component {
         console.log(prefixSuffixRoot);
         break;
       case 'verbos':
-        if (this.state.verbos) {
+        if (this.state.verbos.length !== 0) {
           verbos = [...this.state.verbos];
           console.log(verbos);
         } else {

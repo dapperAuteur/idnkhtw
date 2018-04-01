@@ -109,8 +109,11 @@ class UpdatePrefixSuffixRoot extends Component {
             SAVE
           </button>
           <Link
-            to={ '/words/prefix-suffix-root' }
-            id="PrefixSuffixRoot"
+            to={{
+              pathname: '/words/prefix-suffix-root',
+              hash: '#prefixSuffixRoots',
+              state: { p: 'prefixSuffixRoots/' }
+            }}
             className="btn btn-default">
             CANCEL
           </Link>
