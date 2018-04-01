@@ -23,6 +23,10 @@ export async function getPalabras(param) {
       }
       return resp.json();
     })
+      .catch(function (err) {
+        console.log(err);
+        return err;
+      })
 }
 
 export async function getPalabra(p, pObj) {
@@ -42,6 +46,10 @@ export async function getPalabra(p, pObj) {
       }
       return resp.json();
     })
+      .catch(function (err) {
+        console.log(err);
+        return err;
+      })
 }
 
 export async function createPalabra(p, pObj) {
@@ -69,6 +77,10 @@ export async function createPalabra(p, pObj) {
       }
       return resp.json();
     })
+      .catch(function (err) {
+        console.log(err);
+        return err;
+      })
 }
 
 export async function removePalabra(p, pObj) {
@@ -96,6 +108,10 @@ export async function removePalabra(p, pObj) {
       }
       return resp.json();
     })
+      .catch(function (err) {
+        console.log(err);
+        return err;
+      })
 }
 
 export async function updatePalabra(p, pObj) {
@@ -124,4 +140,8 @@ export async function updatePalabra(p, pObj) {
       }
       return resp.json();
     })
+      .catch(function (err) {
+        console.log(err);
+        return err;
+      })
 }

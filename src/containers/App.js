@@ -4,6 +4,7 @@ import shuffle from 'shuffle-array';
 import * as apiCalls from '../actions/api';
 import * as authCalls from './../actions/authApi';
 import AuthForm from './../components/Forms/AuthForm';
+import ErrorMessages from './../components/Errors/ErrorMessages'
 import GameStatus from './../components/Games/GameStatus';
 import Main from './Main';
 import NavBar from './../components/NavBar';
@@ -53,17 +54,27 @@ class App extends Component {
 
   async handleAuth(user) {
     let currentUser;
+    let errorMessage;
     if (user.username !== '') {
       currentUser = await authCalls.signUp(user);
     } else {
       currentUser = await authCalls.signIn(user);
     }
-    this.setState({
-      loggedIn: true,
-      showLoginForm: false,
-      showSignUpForm: false,
-      user: currentUser
-    });
+    if (!currentUser.hasOwnProperty('_id')) {
+      console.log(currentUser);
+      errorMessage = currentUser;
+      console.log(errorMessage);
+      this.setState({
+        errorMessage
+      });
+    } else {
+      this.setState({
+        loggedIn: true,
+        showLoginForm: false,
+        showSignUpForm: false,
+        user: currentUser
+      });
+    }
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('user', JSON.stringify(currentUser));
     } else {
@@ -463,8 +474,10 @@ class App extends Component {
   }
 
   render() {
-    const { game, showLoginForm, showSignUpForm, user } = this.state;
+    const { errorMessage, game, showLoginForm, showSignUpForm, user } = this.state;
+    console.log(errorMessage.errorMessage);
     console.log(this.props);
+    console.log(this.state);
     let p = this.props.location.pathname;
     return (
       <div className="App">
@@ -482,6 +495,9 @@ class App extends Component {
             showSignUpForm: true
           }) }
           />
+        <ErrorMessages
+          errorMessage={ errorMessage }
+          props={ this.state } />
         { showLoginForm || showSignUpForm ?
           <AuthForm
             onAuth={ this.handleAuth }
