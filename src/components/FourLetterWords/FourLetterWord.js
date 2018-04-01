@@ -1,10 +1,16 @@
 import React from 'react';
 
 const FourLetterWord = (props) => {
-  let { fourLetterWord } = { ...props };
+  let definition = props.definition;
+  let id = props.id;
+  let word = props.word;
+
+  // console.log(fourLetterWord);
 
   return (
-    <h1>Random Four Letter Word: { fourLetterWord.word }</h1>
+    <h1>
+      { word } : { definition }
+    </h1>
   )
 }
 

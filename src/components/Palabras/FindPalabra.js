@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Palabras from './Palabras';
 import '../CSS/Form.css';
 
 class FindPalabra extends Component {
@@ -37,6 +38,7 @@ class FindPalabra extends Component {
   }
   render() {
     const { _id, lists, p, word } = this.state;
+    let myProps = this.props;
     return (
       <div className='word-form-container'>
         <form className='word-form' onSubmit={ this.handleSubmit }>
@@ -50,8 +52,13 @@ class FindPalabra extends Component {
               value={ p }
               onChange={ this.handleChange }>
               { lists.map((( list, i ) => (
-                <option key={ i } value={ list }>{ list }</option>
-              )))}
+                <option
+                  key={ i }
+                  value={ list }>
+                    { list }
+                </option>
+                )))
+              }
             </select>
           </span>
           <div className='word-form-line'>
@@ -83,6 +90,10 @@ class FindPalabra extends Component {
             SUBMIT
           </button>
         </form>
+        <Palabras
+          p={ p }
+          findPalabra={ this.state }
+          props={ myProps } />
       </div>
     )
   }

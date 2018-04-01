@@ -1,10 +1,14 @@
 import React from 'react';
 
 const Verbo = (props) => {
-  let { verbo } = { ...props };
+  let id = props.id;
+  let spanish = props.spanish;
+  let translation = props.translation;
 
   return (
-    <h1>Random Spanish Verb: { verbo.spanish }</h1>
+    <h1>
+      { spanish } : { translation }
+    </h1>
   )
 }
 

@@ -1,10 +1,13 @@
 import React from 'react';
 
 const PrefixSuffixRoot = (props) => {
-  let { prefixSuffixRoot } = { ...props };
+  let id = props.id;
+  let word = props.word;
 
   return (
-    <h1>Random Prefix Root or Suffix: { prefixSuffixRoot.word }</h1>
+    <h1>
+      Random Prefix Root or Suffix: { word }
+    </h1>
   )
 }
 
