@@ -60,7 +60,8 @@ class App extends Component {
     } else {
       currentUser = await authCalls.signIn(user);
     }
-    if (!currentUser.hasOwnProperty('_id')) {
+    console.log(currentUser);
+    if (currentUser.hasOwnProperty('errorMessage')) {
       errorMessage = currentUser;
       this.setState({
         errorMessage
