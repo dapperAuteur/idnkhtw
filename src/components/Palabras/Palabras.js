@@ -22,7 +22,11 @@ const Palabras = (props) => {
   let verbos = [...myProps.verbos];
   switch (p) {
     case "fourLetterWords/":
-      myPalabras = fourLetterWords.map(obj => (
+      myPalabras = fourLetterWords.filter(obj => {
+        // console.log(obj.word);
+        let newObj = obj.word.search(liveSearch);
+        return fourLetterWords[newObj];
+      }).map(obj => (
         <FourLetterWord
           fourLetterWord={ obj }
           definition={ obj.definition }
@@ -33,7 +37,10 @@ const Palabras = (props) => {
       ))
       break;
     case "prefixSuffixRoots/":
-      myPalabras = prefixSuffixRoots.map(obj => (
+      myPalabras = prefixSuffixRoots.filter(obj => {
+        let newObj = obj.word.search(liveSearch);
+        return prefixSuffixRoots[newObj];
+      }).map(obj => (
         <PrefixSuffixRoot
           prefixSuffixRoot={ obj }
           id={ obj._id }
@@ -54,8 +61,8 @@ const Palabras = (props) => {
       break;
     case "verbos/":
       myPalabras = verbos.filter((obj) => {
-        let newVerbo = obj.spanish.search(liveSearch);
-        return verbos[newVerbo];
+        let newObj = obj.spanish.search(liveSearch);
+        return verbos[newObj];
       }).map(filteredVerbo => (
         <Verbo
           verbo={ filteredVerbo }
