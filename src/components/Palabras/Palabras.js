@@ -10,46 +10,54 @@ const Palabras = (props) => {
   let myPalabras;
   let myProps = props.props.data.props;
   let p = props.p;
+  let fourLetterWord;
   let fourLetterWords = [...myProps.fourLetterWords];
+  let prefixSuffixRoot;
   let prefixSuffixRoots = [...myProps.prefixSuffixRoots];
+  let user;
   let users = [...myProps.users];
+  let verbo;
   let verbos = [...myProps.verbos];
   switch (p) {
     case "fourLetterWords/":
-      myPalabras = fourLetterWords.map(wordObj => (
+      myPalabras = fourLetterWords.map(obj => (
         <FourLetterWord
-          definition={ wordObj.definition }
-          id={ wordObj._id }
-          word={ wordObj.word }
-          key={ wordObj._id }
+          fourLetterWord={ obj }
+          definition={ obj.definition }
+          id={ obj._id }
+          word={ obj.word }
+          key={ obj._id }
           props={ myProps } />
       ))
       break;
     case "prefixSuffixRoots/":
-      myPalabras = prefixSuffixRoots.map(wordObj => (
+      myPalabras = prefixSuffixRoots.map(obj => (
         <PrefixSuffixRoot
-          id={ wordObj._id }
-          word={ wordObj.word }
-          key={ wordObj._id }
+          prefixSuffixRoot={ obj }
+          id={ obj._id }
+          word={ obj.word }
+          key={ obj._id }
           props={ myProps } />
       ))
       break;
     case "users/":
-      myPalabras = users.map(wordObj => (
+      myPalabras = users.map(obj => (
         <User
-          id={ wordObj._id }
-          username={ wordObj.username }
-          key={ wordObj._id }
+          user={ obj }
+          id={ obj._id }
+          username={ obj.username }
+          key={ obj._id }
           props={ myProps } />
       ))
       break;
     case "verbos/":
-      myPalabras = verbos.map(wordObj => (
+      myPalabras = verbos.map(obj => (
         <Verbo
-          id={ wordObj._id }
-          spanish={ wordObj.spanish }
-          translation={ wordObj.english }
-          key={ wordObj._id }
+          verbo={ obj }
+          id={ obj._id }
+          spanish={ obj.spanish }
+          translation={ obj.english }
+          key={ obj._id }
           props={ myProps } />
       ))
       break;
