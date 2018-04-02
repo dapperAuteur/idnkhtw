@@ -2,11 +2,11 @@ import React from 'react';
 
 const User = (props) => {
   console.log(props);
-  let { id, username } = props;
+  let { id, user, username } = props;
 
   return (
     <h1>
-      User: { username }
+      User: { username } : { user.email }
     </h1>
   )
 }
