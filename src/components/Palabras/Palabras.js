@@ -23,8 +23,14 @@ const Palabras = (props) => {
   switch (p) {
     case "fourLetterWords/":
       myPalabras = fourLetterWords.filter(obj => {
-        // console.log(obj.word);
-        let newObj = obj.word.search(liveSearch);
+        let newObj;
+        if (obj.word.search(liveSearch) > 0) {
+          newObj = obj.word.search(liveSearch);
+        } else if (obj.definition.search(liveSearch) > 0) {
+          newObj = obj.definition.search(liveSearch);
+        } else {
+          newObj = obj.word.search(liveSearch);
+        }
         return fourLetterWords[newObj];
       }).map(obj => (
         <FourLetterWord
@@ -38,7 +44,14 @@ const Palabras = (props) => {
       break;
     case "prefixSuffixRoots/":
       myPalabras = prefixSuffixRoots.filter(obj => {
-        let newObj = obj.word.search(liveSearch);
+        let newObj;
+        if (obj.word.search(liveSearch) > 0) {
+          newObj = obj.word.search(liveSearch);
+        } else if (obj.meaning.search(liveSearch) > 0) {
+          newObj = obj.meaning.search(liveSearch);
+        } else {
+          newObj = obj.word.search(liveSearch);
+        }
         return prefixSuffixRoots[newObj];
       }).map(obj => (
         <PrefixSuffixRoot
@@ -61,7 +74,14 @@ const Palabras = (props) => {
       break;
     case "verbos/":
       myPalabras = verbos.filter((obj) => {
-        let newObj = obj.spanish.search(liveSearch);
+        let newObj;
+        if (obj.spanish.search(liveSearch) > 0) {
+          newObj = obj.spanish.search(liveSearch);
+        } else if (obj.english.search(liveSearch) > 0) {
+          newObj = obj.english.search(liveSearch);
+        }else {
+          newObj = obj.english.search(liveSearch);
+        }
         return verbos[newObj];
       }).map(filteredVerbo => (
         <Verbo
@@ -75,55 +95,6 @@ const Palabras = (props) => {
       break;
     default:
   }
-  // switch (p) {
-  //   case "fourLetterWords/":
-  //     myPalabras = fourLetterWords.map(({obj, liveSearch}) => (
-  //       obj.word === liveSearch
-  //       return(
-  //       <FourLetterWord
-  //         fourLetterWord={ obj }
-  //         definition={ obj.definition }
-  //         id={ obj._id }
-  //         word={ obj.word }
-  //         key={ obj._id }
-  //         props={ myProps } />
-  //       )
-  //     ))
-  //     break;
-  //   case "prefixSuffixRoots/":
-  //     myPalabras = prefixSuffixRoots.map(obj => (
-  //       <PrefixSuffixRoot
-  //         prefixSuffixRoot={ obj }
-  //         id={ obj._id }
-  //         word={ obj.word }
-  //         key={ obj._id }
-  //         props={ myProps } />
-  //     ))
-  //     break;
-  //   case "users/":
-  //     myPalabras = users.map(obj => (
-  //       <User
-  //         user={ obj }
-  //         id={ obj._id }
-  //         username={ obj.username }
-  //         key={ obj._id }
-  //         props={ myProps } />
-  //     ))
-  //     break;
-  //   case "verbos/":
-  //     myPalabras = verbos.map(obj => (
-  //       <Verbo
-  //         verbo={ obj }
-  //         id={ obj._id }
-  //         spanish={ obj.spanish }
-  //         english={ obj.english }
-  //         key={ obj._id }
-  //         props={ myProps } />
-  //     ))
-  //     break;
-  //   default:
-  // }
-
   return (
     <div className='palabras'>
       { myPalabras }

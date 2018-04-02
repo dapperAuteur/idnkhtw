@@ -18,7 +18,7 @@ const PrefixSuffixRoot = (props) => {
           }
         }}
         >
-        { word }
+        { word } : { wordObj.meaning }
       </Link>
     </div>
   )
