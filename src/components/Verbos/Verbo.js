@@ -6,7 +6,7 @@ import './../CSS/Palabra.css';
 const Verbo = (props) => {
   let id = props.id;
   let spanish = props.spanish;
-  let translation = props.english;
+  let english = props.english;
   let wordObj = props.verbo;
 
   return (
@@ -21,7 +21,7 @@ const Verbo = (props) => {
           }
         }}
         >
-        { spanish } : { translation }
+        { spanish } : { english }
       </Link>
     </div>
   )

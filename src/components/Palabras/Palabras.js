@@ -56,7 +56,7 @@ const Palabras = (props) => {
           verbo={ obj }
           id={ obj._id }
           spanish={ obj.spanish }
-          translation={ obj.english }
+          english={ obj.english }
           key={ obj._id }
           props={ myProps } />
       ))
