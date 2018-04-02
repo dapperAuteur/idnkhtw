@@ -7,6 +7,8 @@ import Verbo from './../Verbos/Verbo';
 import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
+  console.log(props.findPalabra.word);
+  let liveSearch = props.findPalabra.word;
   let myPalabras;
   let myProps = props.props.data.props;
   let p = props.p;
@@ -51,18 +53,69 @@ const Palabras = (props) => {
       ))
       break;
     case "verbos/":
-      myPalabras = verbos.map(obj => (
+      myPalabras = verbos.filter((obj) => {
+        let newVerbo = obj.spanish.search(liveSearch);
+        return verbos[newVerbo];
+      }).map(filteredVerbo => (
         <Verbo
-          verbo={ obj }
-          id={ obj._id }
-          spanish={ obj.spanish }
-          english={ obj.english }
-          key={ obj._id }
-          props={ myProps } />
+          verbo={ filteredVerbo }
+          id={ filteredVerbo._id }
+          spanish={ filteredVerbo.spanish }
+          english={ filteredVerbo.english }
+          key={ filteredVerbo._id }
+          props={ myProps }/>
       ))
       break;
     default:
   }
+  // switch (p) {
+  //   case "fourLetterWords/":
+  //     myPalabras = fourLetterWords.map(({obj, liveSearch}) => (
+  //       obj.word === liveSearch
+  //       return(
+  //       <FourLetterWord
+  //         fourLetterWord={ obj }
+  //         definition={ obj.definition }
+  //         id={ obj._id }
+  //         word={ obj.word }
+  //         key={ obj._id }
+  //         props={ myProps } />
+  //       )
+  //     ))
+  //     break;
+  //   case "prefixSuffixRoots/":
+  //     myPalabras = prefixSuffixRoots.map(obj => (
+  //       <PrefixSuffixRoot
+  //         prefixSuffixRoot={ obj }
+  //         id={ obj._id }
+  //         word={ obj.word }
+  //         key={ obj._id }
+  //         props={ myProps } />
+  //     ))
+  //     break;
+  //   case "users/":
+  //     myPalabras = users.map(obj => (
+  //       <User
+  //         user={ obj }
+  //         id={ obj._id }
+  //         username={ obj.username }
+  //         key={ obj._id }
+  //         props={ myProps } />
+  //     ))
+  //     break;
+  //   case "verbos/":
+  //     myPalabras = verbos.map(obj => (
+  //       <Verbo
+  //         verbo={ obj }
+  //         id={ obj._id }
+  //         spanish={ obj.spanish }
+  //         english={ obj.english }
+  //         key={ obj._id }
+  //         props={ myProps } />
+  //     ))
+  //     break;
+  //   default:
+  // }
 
   return (
     <div className='palabras'>
