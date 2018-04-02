@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import './../CSS/Palabra.css';
 
 const Verbo = (props) => {
-  let id = props.id;
-  let spanish = props.spanish;
-  let english = props.english;
+  let { english, id, spanish } = props;
   let wordObj = props.verbo;
 
   return (

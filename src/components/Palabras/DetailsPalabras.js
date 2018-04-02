@@ -9,11 +9,11 @@ const DetailsPalabras = (props) => {
   console.log(props);
   let location = props.location;
   let locationState = location.state;
-  let hash = location.hash;
-  let pathname = location.pathname;
+  let { hash, pathname } = location;
   console.log(pathname);
 
   let { fourLetterWord, prefixSuffixRoot, verbo } = props.data.props;
+  console.log(fourLetterWord);
   let p = props.location.hash.slice(1);
 
   switch (p) {

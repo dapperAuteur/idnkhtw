@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import './../CSS/Palabra.css';
 
 const PrefixSuffixRoot = (props) => {
-  let id = props.id;
-  let word = props.word;
+  let { id, word } = props;
   let wordObj = props.prefixSuffixRoot;
 
   return (

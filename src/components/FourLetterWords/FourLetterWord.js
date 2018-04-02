@@ -4,12 +4,8 @@ import './../CSS/Palabra.css';
 
 
 const FourLetterWord = (props) => {
-  let definition = props.definition;
-  let id = props.id;
-  let word = props.word;
+  let { definition, id, word } = props;
   let wordObj = props.fourLetterWord;
-
-  // console.log(fourLetterWord);
 
   return (
     <div className='palabra'>

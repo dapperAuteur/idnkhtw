@@ -2,8 +2,7 @@ import React from 'react';
 
 const User = (props) => {
   console.log(props);
-  let id = props.id;
-  let username = props.username;
+  let { id, username } = props;
 
   return (
     <h1>

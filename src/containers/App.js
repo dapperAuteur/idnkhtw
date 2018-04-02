@@ -329,6 +329,21 @@ class App extends Component {
     let palabraHash = this.props.location.hash;
     let palabra = palabraHash.slice(1);
     switch (palabra) {
+      case 'fourLetterWord':
+        if (this.state.fourLetterWords.length !== 0) {
+          fourLetterWords = [...this.state.fourLetterWords];
+        } else {
+          this.handleLoadPalabras();
+          this.handleLoadRandomPalabra();
+        }
+        fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
+        this.setState({
+          fourLetterWord
+        });
+        if (fourLetterWord !== undefined) {
+          localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
+        }
+        break;
       case 'fourLetterWords':
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
@@ -342,6 +357,21 @@ class App extends Component {
         });
         if (fourLetterWord !== undefined) {
           localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
+        }
+        break;
+      case 'prefixSuffixRoot':
+        if (this.state.prefixSuffixRoots.length !== 0) {
+          prefixSuffixRoots = [...this.state.prefixSuffixRoots];
+        } else {
+          this.handleLoadPalabras();
+          this.handleLoadRandomPalabra();
+        }
+        prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
+        this.setState({
+          prefixSuffixRoot
+        });
+        if (prefixSuffixRoot !== undefined) {
+          localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
         }
         break;
       case 'prefixSuffixRoots':
@@ -358,6 +388,22 @@ class App extends Component {
         if (prefixSuffixRoot !== undefined) {
           localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
         }
+        break;
+      case 'verbo':
+        if (this.state.verbos.length !== 0) {
+          verbos = [...this.state.verbos];
+        } else {
+          this.handleLoadPalabras();
+          this.handleLoadRandomPalabra();
+        }
+        verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
+        this.setState({
+          verbo
+        });
+        if (verbo !== undefined) {
+          localStorage.setItem('verbo', JSON.stringify(verbo));
+        }
+        console.log(verbo);
         break;
       case 'verbos':
         if (this.state.verbos.length !== 0) {
