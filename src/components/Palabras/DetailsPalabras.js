@@ -84,34 +84,7 @@ const DetailsPalabras = (props) => {
       )
       break;
     default:
-
   }
-
-
-  // return(
-  //   <div>
-  //     <h1>Random Palabra</h1>
-  //     {
-  //       p === "fourLetterWords" &&
-  //       <DetailsFourLetterWord
-  //         props={ props }
-  //         fourLetterWord={ fourLetterWord } />
-  //     }
-  //     {
-  //       p === "prefixSuffixRoots" &&
-  //       <DetailsPrefixSuffixRoot
-  //         props={ props }
-  //         prefixSuffixRoot={ prefixSuffixRoot } />
-  //     }
-  //     {
-  //       p === "verbos" &&
-  //       <DetailsVerbo
-  //         props={ props }
-  //         verbo={ verbo } />
-  //     }
-  //     <PalabrasButtons props={ props }/>
-  //   </div>
-  // )
 }
 
 DetailsPalabras.propTypes = {
