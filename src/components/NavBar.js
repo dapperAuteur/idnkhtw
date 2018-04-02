@@ -4,7 +4,10 @@ import './NavBar.css';
 
 const NavBar = (props) => {
   const {
+    fourLetterWord,
+    prefixSuffixRoot,
     user,
+    verbo,
     onCreateGame,
     onLoadRandomPalabra,
     onLogout,
@@ -73,7 +76,10 @@ const NavBar = (props) => {
             to={{
               pathname: '/words/four-letter-word',
               hash: '#fourLetterWords',
-              state: { p: 'fourLetterWords/' }
+              state: {
+                p: 'fourLetterWords/',
+                fourLetterWord
+              }
             }}
             onClick={ onLoadRandomPalabra }
             className='btn btn-default'
@@ -84,7 +90,10 @@ const NavBar = (props) => {
             to={{
               pathname: '/words/prefix-suffix-root',
               hash: '#prefixSuffixRoots',
-              state: { p: 'prefixSuffixRoots/' }
+              state: {
+                p: 'prefixSuffixRoots/',
+                prefixSuffixRoot
+              }
             }}
             onClick={ onLoadRandomPalabra }
             className='btn btn-default'
@@ -95,7 +104,10 @@ const NavBar = (props) => {
             to={{
               pathname: '/words/verbo',
               hash: '#verbos',
-              state: { p: 'verbos/' }
+              state: {
+                p: 'verbos/',
+                verbo
+              }
             }}
             onClick={ onLoadRandomPalabra }
             className='btn btn-default'

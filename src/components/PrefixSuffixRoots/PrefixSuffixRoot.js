@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import './../CSS/Palabra.css';
 
 const PrefixSuffixRoot = (props) => {
-  let prefixSuffixRoot = props.prefixSuffixRoot;
   let id = props.id;
   let word = props.word;
+  let wordObj = props.prefixSuffixRoot;
 
   return (
     <div className='palabra'>
       <Link
         to={{
-          pathname: '/words/prefix-suffix-root',
+          pathname: '/words/palabra/',
           hash: '#prefixSuffixRoots',
           state: {
             p: 'prefixSuffixRoots/',
-            prefixSuffixRoot
+            wordObj
           }
         }}
         >

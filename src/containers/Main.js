@@ -5,6 +5,7 @@ import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
 import CreateVerbo from './../components/Forms/CreateVerbo';
 import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPalabras from '../components/Palabras/DetailsPalabras';
+import ShowPalabra from './../components/Palabras/ShowPalabra';
 import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
 import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
 import UpdateVerbo from './../components/Forms/UpdateVerbo';
@@ -46,6 +47,10 @@ const routes = [
   {
     path: '/games/four-letter-word',
     component: FourLetterWordGame
+  },
+  {
+    path: '/words/palabra/',
+    component: ShowPalabra
   },
   {
     path: '/words/update/four-letter-word',

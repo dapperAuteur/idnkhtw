@@ -435,14 +435,17 @@ class App extends Component {
   }
 
   render() {
-    const { errorMessage, game, showLoginForm, showSignUpForm, user } = this.state;
+    const { errorMessage, fourLetterWord, game, prefixSuffixRoot, showLoginForm, showSignUpForm, user, verbo } = this.state;
     let p = this.props.location.pathname;
     return (
       <div className="App">
         <NavBar
+          fourLetterWord={ fourLetterWord }
+          prefixSuffixRoot={ prefixSuffixRoot }
           onCreateGame={ this.handleCreateGame }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onLogout={ this.handleLogOut }
+          verbo={ verbo }
           user={ user }
           onShowLoginForm={ () => this.setState({
             showLoginForm: true,
