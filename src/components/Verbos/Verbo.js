@@ -13,8 +13,8 @@ const Verbo = (props) => {
     <div className='palabra'>
       <Link
         to={{
-          pathname: '/words/palabra/',
-          hash: '#verbos',
+          pathname: '/words/verbo',
+          hash: '#verbo',
           state: {
             p: 'verbos/',
             wordObj

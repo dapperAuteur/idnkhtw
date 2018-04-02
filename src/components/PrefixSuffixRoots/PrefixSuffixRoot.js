@@ -11,8 +11,8 @@ const PrefixSuffixRoot = (props) => {
     <div className='palabra'>
       <Link
         to={{
-          pathname: '/words/palabra/',
-          hash: '#prefixSuffixRoots',
+          pathname: '/words/prefix-suffix-root',
+          hash: '#prefixSuffixRoot',
           state: {
             p: 'prefixSuffixRoots/',
             wordObj

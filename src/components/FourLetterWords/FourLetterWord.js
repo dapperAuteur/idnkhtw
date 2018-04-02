@@ -15,8 +15,8 @@ const FourLetterWord = (props) => {
     <div className='palabra'>
       <Link
         to={{
-          pathname: '/words/palabra/',
-          hash: '#fourLetterWords',
+          pathname: '/words/four-letter-word',
+          hash: '#fourLetterWord',
           state: {
             p: 'fourLetterWords/',
             wordObj
