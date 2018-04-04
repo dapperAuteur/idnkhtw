@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
+  console.log(props);
   const {
     fourLetterWord,
     prefixSuffixRoot,

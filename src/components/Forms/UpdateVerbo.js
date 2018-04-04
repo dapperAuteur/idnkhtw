@@ -6,6 +6,8 @@ import '../CSS/Form.css';
 class UpdateVerbo extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    let verbo = props.location.state.verbo;
     const { _id, spanish, english, reflexive, irregular, categoría_de_irregular, cambiar_de_irregular, terminación, grupo } = this.props.data.props.verbo;
     const user = this.props.data.props.user;
     this.state = {

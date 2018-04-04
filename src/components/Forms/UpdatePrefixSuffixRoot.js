@@ -6,6 +6,8 @@ import '../CSS/Form.css';
 class UpdatePrefixSuffixRoot extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    let prefixSuffixRoot = props.location.state.prefixSuffixRoot;
     const { _id, examples, meaning, tongue, type, word } = this.props.data.props.prefixSuffixRoot;
     this.state = {
       _id,

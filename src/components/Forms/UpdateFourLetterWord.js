@@ -6,7 +6,10 @@ import '../CSS/Form.css';
 class UpdateFourLetterWord extends Component {
   constructor(props) {
     super(props);
-    const { _id, word, definition, f_points, in_game, s_points, tier, tongue } = this.props.data.props.fourLetterWord;
+    console.log(props);
+    let fourLetterWord = props.location.state.fourLetterWord;
+    console.log(fourLetterWord);
+    const { _id, word, definition, f_points, in_game, s_points, tier, tongue } = fourLetterWord;
     this.state = {
       _id,
       p: 'fourLetterWords/',

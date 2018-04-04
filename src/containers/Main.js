@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import AuthForm from './../components/AuthForm';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
 import CreateVerbo from './../components/Forms/CreateVerbo';
 import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPalabras from '../components/Palabras/DetailsPalabras';
+import Homepage from './../components/Homepage';
 import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
 import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
 import UpdateVerbo from './../components/Forms/UpdateVerbo';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
 
 const routes = [
+  {
+    path: '/signin',
+    component: AuthForm
+  },
+  {
+    path: '/signup',
+    component: AuthForm
+  },
   {
     path: '/words/new/four-letter-word',
     component: CreateFourLetterWord
@@ -48,6 +59,10 @@ const routes = [
     component: FourLetterWordGame
   },
   {
+    path: '/',
+    component: Homepage
+  },
+  {
     path: '/words/update/four-letter-word',
     component: UpdateFourLetterWord
   },
@@ -81,4 +96,10 @@ class Main extends Component {
   }
 }
 
-export default withRouter(Main);
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  };
+}
+
+export default withRouter(connect(mapStateToProps, null)(Main));

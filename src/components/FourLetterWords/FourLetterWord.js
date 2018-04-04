@@ -4,8 +4,10 @@ import './../CSS/Palabra.css';
 
 
 const FourLetterWord = (props) => {
-  let { definition, id, word } = props;
+  let { id, definition, onSetObjInState, word } = props;
+  let p = 'fourLetterWords/';
   let wordObj = props.fourLetterWord;
+  // console.log(wordObj);
 
   return (
     <div className='palabra'>
@@ -14,7 +16,8 @@ const FourLetterWord = (props) => {
           pathname: '/words/four-letter-word',
           hash: '#fourLetterWord',
           state: {
-            p: 'fourLetterWords/',
+            p,
+            id,
             wordObj
           }
         }}

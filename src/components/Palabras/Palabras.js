@@ -7,10 +7,13 @@ import Verbo from './../Verbos/Verbo';
 import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
+  console.log(props);
   console.log(props.findPalabra.word);
   let liveSearch = props.findPalabra.word;
   let myPalabras;
   let myProps = props.props.data.props;
+  let onSetObjInState = props.props.data.onSetObjInState;
+  console.log(onSetObjInState);
   let p = props.p;
   let fourLetterWord;
   let fourLetterWords = [...myProps.fourLetterWords];
@@ -34,11 +37,12 @@ const Palabras = (props) => {
         return fourLetterWords[newObj];
       }).map(obj => (
         <FourLetterWord
+          key={ obj._id }
+          id={ obj._id }
           fourLetterWord={ obj }
           definition={ obj.definition }
-          id={ obj._id }
           word={ obj.word }
-          key={ obj._id }
+          onSetObjInState={ onSetObjInState }
           props={ myProps } />
       ))
       break;
@@ -55,20 +59,22 @@ const Palabras = (props) => {
         return prefixSuffixRoots[newObj];
       }).map(obj => (
         <PrefixSuffixRoot
-          prefixSuffixRoot={ obj }
-          id={ obj._id }
-          word={ obj.word }
           key={ obj._id }
+          id={ obj._id }
+          prefixSuffixRoot={ obj }
+          word={ obj.word }
+          onSetObjInState={ onSetObjInState }
           props={ myProps } />
       ))
       break;
     case "users/":
       myPalabras = users.map(obj => (
         <User
-          user={ obj }
-          id={ obj._id }
-          username={ obj.username }
           key={ obj._id }
+          id={ obj._id }
+          user={ obj }
+          username={ obj.username }
+          onSetObjInState={ onSetObjInState }
           props={ myProps } />
       ))
       break;
@@ -85,11 +91,12 @@ const Palabras = (props) => {
         return verbos[newObj];
       }).map(filteredVerbo => (
         <Verbo
-          verbo={ filteredVerbo }
+          key={ filteredVerbo._id }
           id={ filteredVerbo._id }
+          verbo={ filteredVerbo }
           spanish={ filteredVerbo.spanish }
           english={ filteredVerbo.english }
-          key={ filteredVerbo._id }
+          onSetObjInState={ onSetObjInState }
           props={ myProps }/>
       ))
       break;
