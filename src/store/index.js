@@ -10,3 +10,5 @@ export function configureStore() {
 
   return store;
 }
+
+// store.dispatch(getAllWords());

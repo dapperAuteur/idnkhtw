@@ -240,7 +240,7 @@
         this.props.history.push('/words/prefix-suffix-root');
         break;
       case "user":
-        this.setState({ user0: palabra });
+        this.setState({ currentUser: palabra });
         break;
       case "verbos":
         this.setState({ verbo: palabra });
@@ -409,7 +409,7 @@
   //       this.props.history.push('/words/prefix-suffix-root');
   //       break;
   //     case "user":
-  //       this.setState({ user0: pObj });
+  //       this.setState({ currentUser: pObj });
   //       break;
   //     case "verbos":
   //       this.setState({ verbo: pObj });

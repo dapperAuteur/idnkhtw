@@ -32,7 +32,7 @@ const App = () => (
 //   showLoginForm: false,
 //   showSignUpForm: false,
 //   user: {},
-//   user0: {},
+//   currentUser: {},
 //   users: [],
 //   verbo: {},
 //   verbos: []
