@@ -8,7 +8,7 @@ import {
   UPDATE_GAME
 } from './../../constants/ActionTypes';
 
-const game = (state, action) => {
+const game = (state = {}, action) => {
   switch (action.type) {
     case CREATE_GAME:
       return [...state.games, game];
@@ -20,7 +20,7 @@ const game = (state, action) => {
       return game;
   }
 }
-const games = (state, action) => {
+const games = (state = {}, action) => {
   switch (action.type) {
     case DELETE_GAME:
       return state.games.filter(v => v._id !== game._id);
@@ -36,10 +36,7 @@ const games = (state, action) => {
       return games;
       break;
     default:
-    return {
-      game: game(state.game, action),
-      games: games(state.games, action)
-    };
+    return state;
   }
 }
 

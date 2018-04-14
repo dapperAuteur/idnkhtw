@@ -9,7 +9,7 @@ import {
   UPDATE_FOUR_LETTER_WORD
 } from './../../constants/ActionTypes';
 
-const fourLetterWord = (state, action) => {
+const fourLetterWord = (state = {}, action) => {
   switch (action.type) {
     case CREATE_FOUR_LETTER_WORD:
       return [...state.fourLetterWords, fourLetterWord];
@@ -25,7 +25,7 @@ const fourLetterWord = (state, action) => {
       return fourLetterWord;
   }
 }
-const fourLetterWords = (state, action) => {
+const fourLetterWords = (state = {}, action) => {
   switch (action.type) {
     case DELETE_FOUR_LETTER_WORD:
       return state.fourLetterWords.filter(v => v._id !== fourLetterWord._id);
@@ -41,10 +41,7 @@ const fourLetterWords = (state, action) => {
       return fourLetterWords;
       break;
     default:
-    return {
-      getFourLetterWord: fourLetterWord(state.fourLetterWord, action),
-      getFourLetterWords: fourLetterWords(state.fourLetterWords, action)
-    };
+    return state;
   }
 }
 

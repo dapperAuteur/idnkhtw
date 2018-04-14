@@ -9,7 +9,7 @@ import {
   UPDATE_VERBO
 } from './../../constants/ActionTypes';
 
-const verbo = (state, action) => {
+const verbo = (state = {}, action) => {
   switch (action.type) {
     case CREATE_VERBO:
       return [...state.verbos, verbo];
@@ -26,7 +26,7 @@ const verbo = (state, action) => {
   }
 }
 
-const verbos = (state, action) => {
+const verbos = (state = {}, action) => {
   switch (action.type) {
     case DELETE_VERBO:
       return state.verbos.filter(v => v._id !== verbo._id);
@@ -42,10 +42,7 @@ const verbos = (state, action) => {
       return verbos;
       break;
     default:
-      return {
-        verbo: verbo(state.verbo, action),
-        verbos: verbos(state.verbos, action)
-      };
+      return state;
   }
 }
 

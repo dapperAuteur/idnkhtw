@@ -9,7 +9,7 @@ import {
   UPDATE_PREFIX_SUFFIX_ROOT
 } from './../../constants/ActionTypes';
 
-const prefixSuffixRoot = (state, action) => {
+const prefixSuffixRoot = (state = {}, action) => {
   switch (action.type) {
     case CREATE_PREFIX_SUFFIX_ROOT:
       return [...state.prefixSuffixRoots, prefixSuffixRoot];
@@ -25,7 +25,7 @@ const prefixSuffixRoot = (state, action) => {
       return prefixSuffixRoot;
   }
 }
-const prefixSuffixRoots = (state, action) => {
+const prefixSuffixRoots = (state = {}, action) => {
   switch (action.type) {
     case DELETE_PREFIX_SUFFIX_ROOT:
       return state.prefixSuffixRoots.filter(v => v._id !== prefixSuffixRoot._id);
@@ -41,10 +41,7 @@ const prefixSuffixRoots = (state, action) => {
       return prefixSuffixRoots;
       break;
     default:
-    return {
-      prefixSuffixRoot: prefixSuffixRoot(state.prefixSuffixRoot, action),
-      prefixSuffixRoots: prefixSuffixRoots(state.prefixSuffixRoots, action)
-    };
+    return state;
   }
 }
 

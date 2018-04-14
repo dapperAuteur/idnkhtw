@@ -60,10 +60,7 @@ const users = (state = initialState.users, action) => {
       return users;
       break;
     default:
-      return {
-        getUser: user(state.user, action),
-        getUsers: users(state.users, action)
-      };
+      return state;
   }
 }
 
