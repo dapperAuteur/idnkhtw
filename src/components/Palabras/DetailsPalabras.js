@@ -27,7 +27,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons props={ props }/>
         </div>
       )
-      break;
+      // break;
     case "fourLetterWords":
       fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
       return (
@@ -38,7 +38,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons props={ props }/>
         </div>
       )
-      break;
+      // break;
     case "prefixSuffixRoot":
       prefixSuffixRoot = locationState.wordObj;
       return (
@@ -49,7 +49,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons props={ props }/>
         </div>
       )
-      break;
+      // break;
     case "prefixSuffixRoots":
       prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
       return (
@@ -60,7 +60,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons props={ props }/>
         </div>
       )
-      break;
+      // break;
     case "verbo":
       verbo = locationState.wordObj;
       return (
@@ -71,7 +71,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons props={ props }/>
         </div>
       )
-      break;
+      // break;
     case "verbos":
       verbo = JSON.parse(localStorage.getItem("verbo"));
       return (
@@ -82,7 +82,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons props={ props }/>
         </div>
       )
-      break;
+      // break;
     default:
   }
 }

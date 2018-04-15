@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import firebase from 'firebase';
 import shuffle from 'shuffle-array';
 import * as apiCalls from '../actions/api';
 import * as authCalls from './../actions/authApi';
@@ -45,6 +46,19 @@ class App extends Component {
   componentDidMount() {
     this.loadRandomPalabras();
   }
+
+  // const firebase = require("firebase");
+  // Required for side-effects
+  // require("firebase/firestore");
+
+  // firebase.initializeApp({
+  //   apiKey: apiKey,
+  //   authDomain: authDomain,
+  //   projectId: projectId
+  //   });
+
+  // Initialize Cloud Firestore through Firebase
+  let db = firebase.firestore();
 
   async loadRandomPalabras() {
     this.handleLoadPalabras();
@@ -239,6 +253,8 @@ class App extends Component {
     }
     if (pObj.hasOwnProperty('_id')) {
       let deletedPalabra = await apiCalls.removePalabra(p, pObj);
+      console.log(deletedPalabra);
+      // send message to UI alerting user which palabra was deleted
       const palabras = this.state[params].filter(param => param._id === pObj._id);
       switch (params) {
         case 'fourLetterWords':
