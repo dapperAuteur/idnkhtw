@@ -6,14 +6,14 @@ import PalabrasButtons from './PalabrasButtons';
 import PropTypes from 'prop-types';
 
 const DetailsPalabras = (props) => {
-  console.log(props);
+  // console.log(props);
   let location = props.location;
   let locationState = location.state;
   let { hash, pathname } = location;
-  console.log(pathname);
+  // console.log(pathname);
 
   let { fourLetterWord, prefixSuffixRoot, verbo } = props.data.props;
-  console.log(fourLetterWord);
+  // console.log(fourLetterWord);
   let p = props.location.hash.slice(1);
 
   switch (p) {

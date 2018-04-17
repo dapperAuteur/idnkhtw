@@ -41,7 +41,9 @@ const NavBar = (props) => {
               to={{
                 pathname: '/games/four-letter-word',
                 hash: '#fourLetterWords',
-                state: { p: 'fourLetterWords/' }
+                state: { p: 'fourLetterWords/',
+                fourLetterWord
+                }
               }}
               onClick={ onCreateGame }
               className='btn btn-default'

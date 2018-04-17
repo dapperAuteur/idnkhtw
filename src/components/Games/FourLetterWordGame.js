@@ -34,6 +34,10 @@ class FourLetterWordGame extends Component {
     this.handleUpdateGame = this.handleUpdateGame.bind(this);
   }
 
+  componentDidMount(){
+    console.log("mounted");
+  }
+
   async handleUpdateGame(){
     let { attempts, bulls, cows, guess, guesses, message, score, winning_word, won, word_to_consider_for_library } = this.state.game;
     const { letter0, letter1, letter2, letter3 } = this.state;

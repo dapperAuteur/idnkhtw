@@ -320,6 +320,7 @@ class App extends Component {
   }
 
   async handleLoadRandomPalabra() {
+    console.log(this.state);
     let fourLetterWord;
     let fourLetterWords;
     let prefixSuffixRoot;
@@ -330,6 +331,7 @@ class App extends Component {
     let palabra = palabraHash.slice(1);
     switch (palabra) {
       case 'fourLetterWord':
+        console.log(palabra);
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
         } else {
@@ -419,10 +421,10 @@ class App extends Component {
         if (verbo !== undefined) {
           localStorage.setItem('verbo', JSON.stringify(verbo));
         }
-        console.log(verbo);
+        // console.log(verbo);
         break;
       default:
-      if (this.state.fourLetterWords) {
+      if (this.state.fourLetterWords !== 0) {
         fourLetterWords = [...this.state.fourLetterWords];
       } else {
         this.handleLoadPalabras();
@@ -431,7 +433,8 @@ class App extends Component {
       fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
       this.setState({
         fourLetterWord
-      })
+      });
+      console.log(this.state.fourLetterWord);
       if (fourLetterWord !== undefined) {
         localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
       }
