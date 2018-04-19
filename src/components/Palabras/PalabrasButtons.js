@@ -2,39 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PalabrasButtons = (props) => {
-  // console.log(props);
+  console.log(props);
   let hash;
-  let myProps = props.props;
-  let myData = myProps.data;
-  let pathname;
-  // console.log(myData);
-  let fourLetterWord = myData.props.fourLetterWord;
-  let prefixSuffixRoot = myData.props.prefixSuffixRoot;
-  let verbo = myData.props.verbo;
-  let loggedIn = myData.props.loggedIn;
-  const onDelete = myData.onDelete;
-  const onLoadRandomPalabra = myData.onLoadRandomPalabra;
+  let {
+    fourLetterWord,
+    onClick,
+    prefixSuffixRoot,
+    verbo
+  } = props;
+  let pathname = props.location.pathname;
+  let loggedIn = false;
+  // const onDelete = myData.onDelete;
+  // const onLoadRandomPalabra = myData.onLoadRandomPalabra;
   // console.log(onLoadRandomPalabra);
-  let p = myProps.location.pathname;
+  let p = pathname;
   let update;
-  if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {
-    fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
-    prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
-    verbo = JSON.parse(localStorage.getItem("verbo"));
-  }
+
   switch (p) {
     case '/words/four-letter-word':
-      hash = '#fourLetterWords'
+      hash = '#fourLetterWords';
+      // nextWord = ;
       pathname = '/words/four-letter-word';
       update = '/words/update/four-letter-word';
       break;
     case '/words/prefix-suffix-root':
-      hash = '#prefixSuffixRoots'
+      hash = '#prefixSuffixRoots';
+      // nextWord = ;
       pathname = '/words/prefix-suffix-root';
       update = '/words/update/prefix-suffix-root';
       break;
     case "/words/verbo":
-      hash = '#verbos'
+      hash = '#verbos';
+      // nextWord = ;
       pathname = '/words/verbo';
       update = '/words/update/verbo';
       break;
@@ -50,13 +49,13 @@ const PalabrasButtons = (props) => {
               pathname,
               hash
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ onClick }
             className="btn btn-default">
             Next Word
           </Link>
         </div>
         <button
-          onClick={ onDelete }
+          onClick={ update }
           className="btn btn-danger">
           Delete Word
         </button>
@@ -76,7 +75,7 @@ const PalabrasButtons = (props) => {
             pathname,
             hash
           }}
-          onClick={ onLoadRandomPalabra }
+          onClick={ onClick }
           className="btn btn-default">
           Next Word
         </Link>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DetailsVerbo = (props) => {
+  console.log(props);
 
   let verbo = props.verbo;
 
@@ -10,7 +11,7 @@ const DetailsVerbo = (props) => {
   } else {
     return (
       <div>
-        <h1>{ verbo.spanish }</h1>
+        <h1>{ verbo.word }</h1>
         <h3>Group: { verbo.group }</h3>
         <h3>English: { verbo.english }</h3>
         <h3>Reflexive: { verbo.reflexive }</h3>

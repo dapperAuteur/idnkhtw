@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import * as actions from './../actions';
+import { connect } from 'react-redux';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
 import CreateVerbo from './../components/Forms/CreateVerbo';
@@ -62,6 +64,14 @@ const routes = [
 ]
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+
+  componentDidMount() {
+    console.log(this.props);
+  }
 
   render() {
 
@@ -72,7 +82,19 @@ class Main extends Component {
             <Route
               key= { C }
               path={ path }
-              render={ (props) => <C { ...props} data={ this.props } /> }
+              render={ (props) => <C
+                { ...props}
+                data={ this.props }
+                fourLetterWord={ this.props.fourLetterWord }
+                fourLetterWords={ this.props.fourLetterWords }
+                onRandomFourLetterWord={ this.props.onRandomFourLetterWord }
+                onRandomPrefixSuffixRoot={ this.props.onRandomPrefixSuffixRoot }
+                onRandomVerbo={ this.props.onRandomVerbo }
+                prefixSuffixRoot={ this.props.prefixSuffixRoot }
+                prefixSuffixRoots={ this.props.prefixSuffixRoots }
+                verbo={ this.props.verbo }
+                verbos={ this.props.verbos }
+                 /> }
               />
           ))}
         </Switch>
@@ -81,4 +103,16 @@ class Main extends Component {
   }
 }
 
-export default withRouter(Main);
+const mapStateToProps = state => ({
+  fourLetterWords: (state.fourLetterWords),
+  prefixSuffixRoots: (state.prefixSuffixRoots),
+  verbos: (state.verbos)
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  // loadFourLetterWords() { return dispatch(actions.getFourLetterWords()); },
+  // loadPrefixSuffixRoots() { return dispatch(actions.getPrefixSuffixRoots()); },
+  // loadVerbos() { return dispatch(actions.getVerbos()); },
+})
+
+export default withRouter(connect(mapStateToProps)(Main));

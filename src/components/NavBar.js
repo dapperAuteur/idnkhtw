@@ -1,8 +1,12 @@
 import React from 'react';
+// import * as actions from './../actions';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
+  console.log(props);
+  // console.log(actions);
+  // console.log(actions.getRandomVerbo);
   const {
     fourLetterWord,
     prefixSuffixRoot,
@@ -11,6 +15,9 @@ const NavBar = (props) => {
     onCreateGame,
     onLoadRandomPalabra,
     onLogout,
+    onRandomFourLetterWord,
+    onRandomPrefixSuffixRoot,
+    onRandomVerbo,
     onShowLoginForm,
     onShowSignUpForm
   } = props;
@@ -83,7 +90,7 @@ const NavBar = (props) => {
                 fourLetterWord
               }
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ onRandomFourLetterWord }
             className='btn btn-default'
           >
             Four Letter Word
@@ -97,7 +104,7 @@ const NavBar = (props) => {
                 prefixSuffixRoot
               }
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ onRandomPrefixSuffixRoot }
             className='btn btn-default'
           >
             Prefix Suffix Root
@@ -111,56 +118,12 @@ const NavBar = (props) => {
                 verbo
               }
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ onRandomVerbo }
             className='btn btn-default'
           >
             Verbo
           </Link>
           </div>
-        </div>
-        <div className='auth'>
-          { user.token ?
-            <ul
-              className=''>
-              <li>
-                <button className=''>
-                  { user.username }
-                </button>
-              </li>
-              <li>
-                <button
-                  className=''>
-                  <img
-                    src={ user.profileImageUrl }
-                    alt='user' />
-                </button>
-              </li>
-              <li
-                onClick={ onLogout }>
-                <button
-                  className='btn btn-default'>
-                  Log out
-                </button>
-              </li>
-            </ul> :
-            <ul
-              className=''>
-              <li>
-                <button
-                  onClick={ onShowSignUpForm }
-                  className='btn btn-default'>
-                  Sign up
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={ onShowLoginForm }
-                  className='btn btn-default'>
-                  Sign in
-                </button>
-              </li>
-            </ul>
-          }
         </div>
       </div>
     </nav>
