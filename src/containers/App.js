@@ -38,12 +38,15 @@ class App extends Component {
     this.handleLoadPalabra = this.handleLoadPalabra.bind(this);
     this.handleLoadPalabras = this.handleLoadPalabras.bind(this);
     this.handleLoadRandomPalabra = this.handleLoadRandomPalabra.bind(this);
+    this.handleLoadUser = this.handleLoadUser.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
     this.loadRandomPalabras();
+    this.handleLoadUser();
+
   }
 
   async loadRandomPalabras() {
@@ -79,6 +82,21 @@ class App extends Component {
     } else {
       return null;
     }
+  }
+
+  handleLoadUser() {
+    let user = {};
+    if (typeof(Storage) !== 'undefined') {
+      if (localStorage.hasOwnProperty('user')) {
+        user = JSON.parse(localStorage.getItem('user'));
+        console.log(user);
+        this.setState({
+          loggedIn: true,
+          user
+        });
+      }
+    }
+    console.log(user);
   }
 
   handleLogOut() {
