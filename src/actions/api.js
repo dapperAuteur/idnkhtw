@@ -55,11 +55,13 @@ export async function getPalabra(p, pObj) {
 export async function createPalabra(p, pObj) {
   console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
+  let role = `Role ${pObj.userRole}`;
   return fetch(`${APIURL}${p}`, {
     method: 'post',
     headers: new Headers({
       'Content-Type': 'application/json',
-      'Authorization': token
+      'Authorization': token,
+      'Role': role
     }),
     body: JSON.stringify({ ...pObj })
   })
@@ -86,12 +88,14 @@ export async function createPalabra(p, pObj) {
 export async function removePalabra(p, pObj) {
   console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
+  let role = `Role ${pObj.userRole}`;
   console.log(token);
   return fetch(`${APIURL}${p}${pObj._id}`, {
     method: 'delete',
     headers: new Headers({
       'Content-Type': 'application/json',
-      'Authorization': token
+      'Authorization': token,
+      'Role': role
     }),
   })
     .then(resp => {
@@ -117,12 +121,14 @@ export async function removePalabra(p, pObj) {
 export async function updatePalabra(p, pObj) {
   console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
+  let role = `Role ${pObj.userRole}`;
   console.log(token);
   return fetch(`${APIURL}${p}${pObj._id}`, {
     method: 'put',
     headers: new Headers({
       'Content-Type': 'application/json',
-      'Authorization': token
+      'Authorization': token,
+      'Role': role
     }),
     body: JSON.stringify({ ...pObj })
   })
