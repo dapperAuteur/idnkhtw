@@ -8,6 +8,11 @@ const PalabrasButtons = (props) => {
   let myData = myProps.data;
   let pathname;
   console.log(myData);
+  console.log(myData.props);
+  let user = myData.props.user;
+  console.log(user);
+  let userRole = user.userRole;
+  console.log(typeof userRole);
   let fourLetterWord = myData.props.fourLetterWord;
   let prefixSuffixRoot = myData.props.prefixSuffixRoot;
   let verbo = myData.props.verbo;
@@ -41,7 +46,7 @@ const PalabrasButtons = (props) => {
     default:
 
   }
-  if (loggedIn) {
+  if (loggedIn && userRole === 0) {
     return (
       <div>
         <div>

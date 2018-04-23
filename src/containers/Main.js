@@ -65,6 +65,8 @@ class Main extends Component {
 
   render() {
 
+    // console.log(props);
+
     return (
       <div className="Main">
         <Switch>
@@ -72,7 +74,10 @@ class Main extends Component {
             <Route
               key= { C }
               path={ path }
-              render={ (props) => <C { ...props} data={ this.props } /> }
+              render={ (props) => <C
+                { ...props }
+                onLoadRandomPalabra={ this.props.onLoadRandomPalabra }
+                data={ this.props } /> }
               />
           ))}
         </Switch>

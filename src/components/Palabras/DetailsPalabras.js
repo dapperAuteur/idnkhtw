@@ -7,18 +7,37 @@ import PropTypes from 'prop-types';
 
 const DetailsPalabras = (props) => {
   console.log(props);
+  let fourLetterWord, prefixSuffixRoot, verbo;
+  let { onLoadRandomPalabra } = props;
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.hasOwnProperty('fourLetterWord') && localStorage.fourLetterWord !== "undefined") {
+      fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
+    } else {
+      onLoadRandomPalabra();
+    }
+    if (localStorage.hasOwnProperty('prefixSuffixRoot') && localStorage.prefixSuffixRoot !== "undefined") {
+      prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
+    } else {
+      onLoadRandomPalabra();
+    }
+    if (localStorage.hasOwnProperty('verbo') && localStorage.verbo !== "undefined") {
+      verbo = JSON.parse(localStorage.getItem('verbo'));
+    } else {
+      onLoadRandomPalabra();
+    }
+  } else {
+    return null;
+  }
   let location = props.location;
   let locationState = location.state;
   let { hash, pathname } = location;
   console.log(pathname);
 
-  let { fourLetterWord, prefixSuffixRoot, verbo } = props.data.props;
-  console.log(fourLetterWord);
-  let p = props.location.hash.slice(1);
+  let p = props.location.hash.slice(1) || pathname.slice(7);
 
   switch (p) {
     case "fourLetterWord":
-      fourLetterWord = locationState.wordObj;
+      fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
       return (
         <div>
           <DetailsFourLetterWord
@@ -40,7 +59,7 @@ const DetailsPalabras = (props) => {
       )
       break;
     case "prefixSuffixRoot":
-      prefixSuffixRoot = locationState.wordObj;
+      prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
       return (
         <div>
           <DetailsPrefixSuffixRoot
@@ -62,7 +81,7 @@ const DetailsPalabras = (props) => {
       )
       break;
     case "verbo":
-      verbo = locationState.wordObj;
+      verbo = JSON.parse(localStorage.getItem("verbo"));
       return (
         <div>
           <DetailsVerbo

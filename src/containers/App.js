@@ -46,6 +46,8 @@ class App extends Component {
   componentDidMount() {
     this.loadRandomPalabras();
     this.handleLoadUser();
+    console.log(this.state);
+    console.log(localStorage.verbo);
 
   }
 
@@ -89,14 +91,12 @@ class App extends Component {
     if (typeof(Storage) !== 'undefined') {
       if (localStorage.hasOwnProperty('user')) {
         user = JSON.parse(localStorage.getItem('user'));
-        console.log(user);
         this.setState({
           loggedIn: true,
           user
         });
       }
     }
-    console.log(user);
   }
 
   handleLogOut() {
@@ -117,12 +117,27 @@ class App extends Component {
     let params = p.slice(0, -1);
     switch (params) {
       case "fourLetterWords":
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('fourLetterWord', JSON.stringify(newPalabra));
+        } else {
+          return null;
+        }
         this.setState({ fourLetterWord: newPalabra });
         break;
       case "prefixSuffixRoots":
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('prefixSuffixRoot', JSON.stringify(newPalabra));
+        } else {
+          return null;
+        }
         this.setState({ prefixSuffixRoot: newPalabra });
         break;
       case "verbos":
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('verbo', JSON.stringify(newPalabra));
+        } else {
+          return null;
+        }
         this.setState({ verbo: newPalabra });
         break;
       default:
@@ -260,18 +275,33 @@ class App extends Component {
       const palabras = this.state[params].filter(param => param._id === pObj._id);
       switch (params) {
         case 'fourLetterWords':
+          if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('fourLetterWord', JSON.stringify({}));
+          } else {
+            return null;
+          }
           this.setState({
             fourLetterWord: {},
             fourLetterWords: palabras
           });
           break;
         case 'prefixSuffixRoots':
+          if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('prefixSuffixRoot', JSON.stringify({}));
+          } else {
+            return null;
+          }
           this.setState({
             prefixSuffixRoot: {},
             prefixSuffixRoots: palabras
           });
           break;
         case 'verbos':
+          if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('verbo', JSON.stringify({}));
+          } else {
+            return null;
+          }
           this.setState({
             verbo: {},
             verbos: palabras
@@ -302,17 +332,37 @@ class App extends Component {
 
     switch (params) {
       case "fourLetterWords":
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('fourLetterWord', JSON.stringify(palabra));
+        } else {
+          return null;
+        }
         this.setState({ fourLetterWord: palabra });
         this.props.history.push('/words/four-letter-word');
         break;
       case "prefixSuffixRoots":
-        this.setState({ prefixSuffixRoots: palabra });
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('prefixSuffixRoot', JSON.stringify(palabra));
+        } else {
+          return null;
+        }
+        this.setState({ prefixSuffixRoot: palabra });
         this.props.history.push('/words/prefix-suffix-root');
         break;
       case "user":
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('user0', JSON.stringify(palabra));
+        } else {
+          return null;
+        }
         this.setState({ user0: palabra });
         break;
       case "verbos":
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('verbo', JSON.stringify(palabra));
+        } else {
+          return null;
+        }
         this.setState({ verbo: palabra });
         this.props.history.push('/words/verbo');
         break;
@@ -358,8 +408,10 @@ class App extends Component {
         this.setState({
           fourLetterWord
         });
-        if (fourLetterWord !== undefined) {
+        if (typeof(Storage) !== "undefined") {
           localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
+        } else {
+          return null;
         }
         break;
       case 'fourLetterWords':
@@ -373,8 +425,10 @@ class App extends Component {
         this.setState({
           fourLetterWord
         });
-        if (fourLetterWord !== undefined) {
+        if (typeof(Storage) !== "undefined") {
           localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
+        } else {
+          return null;
         }
         break;
       case 'prefixSuffixRoot':
@@ -388,8 +442,10 @@ class App extends Component {
         this.setState({
           prefixSuffixRoot
         });
-        if (prefixSuffixRoot !== undefined) {
+        if (typeof(Storage) !== "undefined") {
           localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
+        } else {
+          return null;
         }
         break;
       case 'prefixSuffixRoots':
@@ -403,8 +459,10 @@ class App extends Component {
         this.setState({
           prefixSuffixRoot
         });
-        if (prefixSuffixRoot !== undefined) {
+        if (typeof(Storage) !== "undefined") {
           localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
+        } else {
+          return null;
         }
         break;
       case 'verbo':
@@ -418,10 +476,11 @@ class App extends Component {
         this.setState({
           verbo
         });
-        if (verbo !== undefined) {
+        if (typeof(Storage) !== "undefined") {
           localStorage.setItem('verbo', JSON.stringify(verbo));
+        } else {
+          return null;
         }
-        console.log(verbo);
         break;
       case 'verbos':
         if (this.state.verbos.length !== 0) {
@@ -434,10 +493,11 @@ class App extends Component {
         this.setState({
           verbo
         });
-        if (verbo !== undefined) {
+        if (typeof(Storage) !== "undefined") {
           localStorage.setItem('verbo', JSON.stringify(verbo));
+        } else {
+          return null;
         }
-        console.log(verbo);
         break;
       default:
       if (this.state.fourLetterWords) {
@@ -450,8 +510,10 @@ class App extends Component {
       this.setState({
         fourLetterWord
       })
-      if (fourLetterWord !== undefined) {
+      if (typeof(Storage) !== "undefined") {
         localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
+      } else {
+        return null;
       }
       break
     }
@@ -476,18 +538,36 @@ class App extends Component {
 
     switch (params) {
       case 'fourLetterWords':
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('fourLetterWord', JSON.stringify(updatedPalabra));
+          localStorage.setItem('fourLetterWords', JSON.stringify(palabras));
+        } else {
+          return null;
+        }
         this.setState({
           fourLetterWord: updatedPalabra,
           fourLetterWords: palabras
         });
         break;
       case 'prefixSuffixRoots':
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('prefixSuffixRoot', JSON.stringify(updatedPalabra));
+          localStorage.setItem('prefixSuffixRoots', JSON.stringify(palabras));
+        } else {
+          return null;
+        }
         this.setState({
           prefixSuffixRoot: updatedPalabra,
           prefixSuffixRoots: palabras
         });
         break;
       case 'verbos':
+        if (typeof(Storage) !== "undefined") {
+          localStorage.setItem('verbo', JSON.stringify(updatedPalabra));
+          localStorage.setItem('verbos', JSON.stringify(palabras));
+        } else {
+          return null;
+        }
         this.setState({
           verbo: updatedPalabra,
           verbos: palabras

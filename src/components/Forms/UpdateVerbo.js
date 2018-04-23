@@ -33,6 +33,35 @@ class UpdateVerbo extends Component {
     e.preventDefault();
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
+    console.log(this.state);
+    // let {
+    //   _id,
+    //   cambiar_de_irregular,
+    //   categoría_de_irregular,
+    //   english,
+    //   grupo,
+    //   irregular,
+    //   reflexive,
+    //   spanish,
+    //   terminación
+    // } = this.state;
+    // let verbo = {
+    //   _id,
+    //   cambiar_de_irregular,
+    //   categoría_de_irregular,
+    //   english,
+    //   grupo,
+    //   irregular,
+    //   reflexive,
+    //   spanish,
+    //   terminación
+    // };
+    // console.log("verbo: ",verbo, "pObj: ", pObj);
+    // if (typeof(Storage) !== "undefined") {
+    //   localStorage.setItem('verbo', JSON.stringify(verbo));
+    // } else {
+    //   return null;
+    // }
     this.props.data.onSave(p, pObj);
     this.props.history.push('/words/verbo');
   }
