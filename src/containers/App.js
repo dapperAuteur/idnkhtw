@@ -45,7 +45,6 @@ class App extends Component {
 
   componentDidMount() {
     this.handleLoadPalabras();
-    // this.loadRandomPalabras();
     this.handleLoadUser();
   }
 
@@ -408,10 +407,13 @@ class App extends Component {
     let prefixSuffixRoots;
     let verbo;
     let verbos;
-    let p = this.props.location.state.p;
+    console.log(this.props.location);
+    let p = this.props.location.pathname;
+    // let p = "four-letter-words/";
     console.log(p);
     switch (p) {
-      case 'four-letter-words/':
+      case '/words/four-letter-word':
+        console.log(1);
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
         } else {
@@ -428,41 +430,8 @@ class App extends Component {
           return null;
         }
         break;
-      // case 'fourLetterWords':
-      //   if (this.state.fourLetterWords.length !== 0) {
-      //     fourLetterWords = [...this.state.fourLetterWords];
-      //   } else {
-      //     this.handleLoadPalabras();
-      //     this.handleLoadRandomPalabra();
-      //   }
-      //   fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
-      //   this.setState({
-      //     fourLetterWord
-      //   });
-      //   if (typeof(Storage) !== "undefined") {
-      //     localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
-      //   } else {
-      //     return null;
-      //   }
-      //   break;
-      // case 'prefixSuffixRoot':
-      //   if (this.state.prefixSuffixRoots.length !== 0) {
-      //     prefixSuffixRoots = [...this.state.prefixSuffixRoots];
-      //   } else {
-      //     this.handleLoadPalabras();
-      //     this.handleLoadRandomPalabra();
-      //   }
-      //   prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
-      //   this.setState({
-      //     prefixSuffixRoot
-      //   });
-      //   if (typeof(Storage) !== "undefined") {
-      //     localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
-      //   } else {
-      //     return null;
-      //   }
-      //   break;
-      case 'prefix-suffix-roots/':
+      case '/words/prefix-suffix-root':
+        console.log(2);
         if (this.state.prefixSuffixRoots.length !== 0) {
           prefixSuffixRoots = [...this.state.prefixSuffixRoots];
         } else {
@@ -479,24 +448,8 @@ class App extends Component {
           return null;
         }
         break;
-      // case 'verbo':
-      //   if (this.state.verbos.length !== 0) {
-      //     verbos = [...this.state.verbos];
-      //   } else {
-      //     this.handleLoadPalabras();
-      //     this.handleLoadRandomPalabra();
-      //   }
-      //   verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
-      //   this.setState({
-      //     verbo
-      //   });
-      //   if (typeof(Storage) !== "undefined") {
-      //     localStorage.setItem('verbo', JSON.stringify(verbo));
-      //   } else {
-      //     return null;
-      //   }
-      //   break;
-      case 'verbos/':
+      case '/words/verbo':
+        console.log(3);
         if (this.state.verbos.length !== 0) {
           verbos = [...this.state.verbos];
         } else {
@@ -514,6 +467,7 @@ class App extends Component {
         }
         break;
       default:
+        console.log(4);
       if (this.state.fourLetterWords) {
         fourLetterWords = [...this.state.fourLetterWords];
       } else {

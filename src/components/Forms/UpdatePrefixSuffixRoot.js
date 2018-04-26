@@ -9,7 +9,7 @@ class UpdatePrefixSuffixRoot extends Component {
     const { _id, examples, meaning, tongue, type, word } = this.props.data.props.prefixSuffixRoot;
     this.state = {
       _id,
-      p: 'prefixSuffixRoots/',
+      p: 'prefix-suffix-roots/',
       word,
       meaning,
       examples,
@@ -109,7 +109,7 @@ class UpdatePrefixSuffixRoot extends Component {
             to={{
               pathname: '/words/prefix-suffix-root',
               hash: '#prefixSuffixRoots',
-              state: { p: 'prefixSuffixRoots/' }
+              state: { p: 'prefix-suffix-roots/' }
             }}
             className="btn btn-default">
             CANCEL
@@ -133,7 +133,7 @@ UpdatePrefixSuffixRoot.proTypes = {
 UpdatePrefixSuffixRoot.defaultProps = {
   onSave() {},
   _id: '',
-  p: 'prefixSuffixRoots/',
+  p: 'prefix-suffix-roots/',
   tongue: "English"
 }
 

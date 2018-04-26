@@ -6,7 +6,7 @@ class CreateFourLetterWords extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      p: 'fourLetterWords/',
+      p: 'four-letter-words/',
       word: '',
       tongue: ''
     }
@@ -79,7 +79,7 @@ CreateFourLetterWords.propTypes = {
 
 CreateFourLetterWords.defaultProps = {
   onSave() {},
-  p: 'fourLetterWords/',
+  p: 'four-letter-words/',
   tongue: "English"
 }
 

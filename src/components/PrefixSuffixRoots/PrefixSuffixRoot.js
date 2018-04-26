@@ -13,7 +13,7 @@ const PrefixSuffixRoot = (props) => {
           pathname: '/words/prefix-suffix-root',
           hash: '#prefixSuffixRoot',
           state: {
-            p: 'prefixSuffixRoots/',
+            p: 'prefix-suffix-roots/',
             wordObj
           }
         }}

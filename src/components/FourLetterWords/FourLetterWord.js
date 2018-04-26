@@ -14,7 +14,7 @@ const FourLetterWord = (props) => {
           pathname: '/words/four-letter-word',
           hash: '#fourLetterWord',
           state: {
-            p: 'fourLetterWords/',
+            p: 'four-letter-words/',
             wordObj
           }
         }}

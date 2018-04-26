@@ -6,7 +6,7 @@ class CreatePrefixSuffixRoot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      p: 'prefixSuffixRoots/',
+      p: 'prefix-suffix-roots/',
       word: '',
       meaning: '',
       examples: '',
@@ -127,7 +127,7 @@ CreatePrefixSuffixRoot.proTypes = {
 
 CreatePrefixSuffixRoot.defaultProps = {
   onSave() {},
-  p: 'prefixSuffixRoots/',
+  p: 'prefix-suffix-roots/',
   tongue: "English"
 }
 

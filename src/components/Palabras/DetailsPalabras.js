@@ -32,11 +32,8 @@ const DetailsPalabras = (props) => {
   let { pathname } = location;
   console.log(pathname);
 
-  let p = pathname.slice(7);
-  console.log(p);
-
-  switch (p) {
-    case "four-letter-word":
+  switch (pathname) {
+    case "/words/four-letter-word":
       fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
       return (
         <div>
@@ -47,18 +44,18 @@ const DetailsPalabras = (props) => {
         </div>
       )
       break;
-    case "fourLetterWords":
-      fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
-      return (
-        <div>
-          <DetailsFourLetterWord
-            props={ props }
-            fourLetterWord={ fourLetterWord } />
-          <PalabrasButtons props={ props }/>
-        </div>
-      )
-      break;
-    case "prefixSuffixRoot":
+    // case "fourLetterWords":
+    //   fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
+    //   return (
+    //     <div>
+    //       <DetailsFourLetterWord
+    //         props={ props }
+    //         fourLetterWord={ fourLetterWord } />
+    //       <PalabrasButtons props={ props }/>
+    //     </div>
+    //   )
+    //   break;
+    case "/words/prefix-suffix-root":
       prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
       return (
         <div>
@@ -69,18 +66,18 @@ const DetailsPalabras = (props) => {
         </div>
       )
       break;
-    case "prefixSuffixRoots":
-      prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
-      return (
-        <div>
-          <DetailsPrefixSuffixRoot
-            props={ props }
-            prefixSuffixRoot={ prefixSuffixRoot } />
-          <PalabrasButtons props={ props }/>
-        </div>
-      )
-      break;
-    case "verbo":
+    // case "prefixSuffixRoots":
+    //   prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
+    //   return (
+    //     <div>
+    //       <DetailsPrefixSuffixRoot
+    //         props={ props }
+    //         prefixSuffixRoot={ prefixSuffixRoot } />
+    //       <PalabrasButtons props={ props }/>
+    //     </div>
+    //   )
+    //   break;
+    case "/words/verbo":
       verbo = JSON.parse(localStorage.getItem("verbo"));
       return (
         <div>
@@ -91,23 +88,22 @@ const DetailsPalabras = (props) => {
         </div>
       )
       break;
-    case "verbos":
-      verbo = JSON.parse(localStorage.getItem("verbo"));
-      return (
-        <div>
-          <DetailsVerbo
-            props={ props }
-            verbo={ verbo } />
-          <PalabrasButtons props={ props }/>
-        </div>
-      )
-      break;
+    // case "verbos":
+    //   verbo = JSON.parse(localStorage.getItem("verbo"));
+    //   return (
+    //     <div>
+    //       <DetailsVerbo
+    //         props={ props }
+    //         verbo={ verbo } />
+    //       <PalabrasButtons props={ props }/>
+    //     </div>
+    //   )
+    //   break;
     default:
   }
 }
 
 DetailsPalabras.propTypes = {
-  p: PropTypes.string
 }
 
 export default DetailsPalabras;

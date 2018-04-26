@@ -9,7 +9,7 @@ class UpdateFourLetterWord extends Component {
     const { _id, word, definition, f_points, in_game, s_points, tier, tongue } = this.props.data.props.fourLetterWord;
     this.state = {
       _id,
-      p: 'fourLetterWords/',
+      p: 'four-letter-words/',
       word,
       definition,
       f_points,
@@ -130,7 +130,7 @@ class UpdateFourLetterWord extends Component {
             to={{
               pathname: '/words/four-letter-word',
               hash: '#fourLetterWords',
-              state: { p: 'fourLetterWords/' }
+              state: { p: 'four-letter-words/' }
             }}
             className='btn btn-default'>
             CANCEL
@@ -155,7 +155,7 @@ UpdateFourLetterWord.propTypes = {
 UpdateFourLetterWord.defaultProps = {
   onSave() {},
   _id: '',
-  p: 'fourLetterWords/',
+  p: 'four-letter-words/',
   definition: '',
   f_points: 3,
   in_game: false,

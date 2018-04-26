@@ -4,11 +4,11 @@ import App from './App';
 
 const supportsHistory = 'pushState' in window.history;
 
-const Palabras = () => (
+const PalabrasContainer = () => (
   <Router
     forceRefresh={ !supportsHistory }>
     <App />
   </Router>
 );
 
-export default Palabras;
+export default PalabrasContainer;
