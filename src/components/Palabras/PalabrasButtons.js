@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const PalabrasButtons = (props) => {
   console.log(props);
-  let hash;
   let myProps = props.props;
   let myData = myProps.data;
   let pathname;
@@ -29,17 +28,14 @@ const PalabrasButtons = (props) => {
   // }
   switch (p) {
     case '/words/four-letter-word':
-      hash = '#fourLetterWords'
       pathname = '/words/four-letter-word';
       update = '/words/update/four-letter-word';
       break;
     case '/words/prefix-suffix-root':
-      hash = '#prefixSuffixRoots'
       pathname = '/words/prefix-suffix-root';
       update = '/words/update/prefix-suffix-root';
       break;
     case "/words/verbo":
-      hash = '#verbos'
       pathname = '/words/verbo';
       update = '/words/update/verbo';
       break;
@@ -52,8 +48,7 @@ const PalabrasButtons = (props) => {
         <div>
           <Link
             to={{
-              pathname,
-              hash
+              pathname
             }}
             onClick={ onLoadRandomPalabra }
             className="btn btn-default">
@@ -78,8 +73,7 @@ const PalabrasButtons = (props) => {
       <div>
         <Link
           to={{
-            pathname,
-            hash
+            pathname
           }}
           onClick={ onLoadRandomPalabra }
           className="btn btn-default">
