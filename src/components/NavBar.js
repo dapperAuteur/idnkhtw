@@ -40,8 +40,7 @@ const NavBar = (props) => {
             <Link
               to={{
                 pathname: '/games/four-letter-word',
-                hash: '#fourLetterWords',
-                state: { p: 'fourLetterWords/' }
+                state: { p: 'four-letter-words/' }
               }}
               onClick={ onCreateGame }
               className='btn btn-default'
@@ -51,7 +50,6 @@ const NavBar = (props) => {
             <Link
               to={{
                 pathname: '/blog',
-                hash: '#blog',
                 state: { p: 'blog/' }
               }}
               className='btn btn-default'
@@ -75,9 +73,8 @@ const NavBar = (props) => {
           <Link
             to={{
               pathname: '/words/four-letter-word',
-              hash: '#fourLetterWords',
               state: {
-                p: 'fourLetterWords/',
+                p: 'four-letter-words/',
                 fourLetterWord
               }
             }}
@@ -89,9 +86,8 @@ const NavBar = (props) => {
           <Link
             to={{
               pathname: '/words/prefix-suffix-root',
-              hash: '#prefixSuffixRoots',
               state: {
-                p: 'prefixSuffixRoots/',
+                p: 'prefix-suffix-roots/',
                 prefixSuffixRoot
               }
             }}
@@ -103,7 +99,6 @@ const NavBar = (props) => {
           <Link
             to={{
               pathname: '/words/verbo',
-              hash: '#verbos',
               state: {
                 p: 'verbos/',
                 verbo

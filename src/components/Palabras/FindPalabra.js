@@ -8,7 +8,7 @@ class FindPalabra extends Component {
     super(props);
     this.state = {
       _id: '',
-      lists: ['Choose A List', 'fourLetterWords/', 'prefixSuffixRoots/', 'users/', 'verbos/'],
+      lists: ['Choose A List', 'four-letter-words/', 'prefix-suffix-roots/', 'users/', 'verbos/'],
       p: '',
       word: ''
     }
@@ -17,6 +17,7 @@ class FindPalabra extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state);
     let p = this.state.p;
     if (p === '') {
       return;
@@ -34,6 +35,7 @@ class FindPalabra extends Component {
   }
 
   handleChange(e) {
+    console.log(this.state);
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {

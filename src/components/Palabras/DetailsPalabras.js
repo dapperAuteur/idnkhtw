@@ -29,14 +29,14 @@ const DetailsPalabras = (props) => {
     return null;
   }
   let location = props.location;
-  let locationState = location.state;
-  let { hash, pathname } = location;
+  let { pathname } = location;
   console.log(pathname);
 
-  let p = props.location.hash.slice(1) || pathname.slice(7);
+  let p = pathname.slice(7);
+  console.log(p);
 
   switch (p) {
-    case "fourLetterWord":
+    case "four-letter-word":
       fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
       return (
         <div>

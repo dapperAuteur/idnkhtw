@@ -22,11 +22,11 @@ const PalabrasButtons = (props) => {
   console.log(onLoadRandomPalabra);
   let p = myProps.location.pathname;
   let update;
-  if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {
-    fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
-    prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
-    verbo = JSON.parse(localStorage.getItem("verbo"));
-  }
+  // if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {
+  //   fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
+  //   prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
+  //   verbo = JSON.parse(localStorage.getItem("verbo"));
+  // }
   switch (p) {
     case '/words/four-letter-word':
       hash = '#fourLetterWords'

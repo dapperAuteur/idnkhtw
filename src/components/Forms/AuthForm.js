@@ -50,9 +50,9 @@ class AuthForm extends Component {
 
   render() {
     const { email, password, profileImageUrl, username } = this.state;
-    const { buttonText, errorMessage, heading, onClose, onShowLoginForm, onShowSignUpForm } = this.props;
+    const { buttonText, errorMessage, heading, onClose, onShowLoginForm, onShowSignUpForm, showSignUpForm } = this.props;
 
-    if (!this.props.showSignUpForm) {
+    if (!showSignUpForm) {
       return (
         <div
           className='btn'>

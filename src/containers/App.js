@@ -44,11 +44,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.loadRandomPalabras();
+    this.handleLoadPalabras();
+    // this.loadRandomPalabras();
     this.handleLoadUser();
-    console.log(this.state);
-    console.log(localStorage.verbo);
-
   }
 
   async loadRandomPalabras() {
@@ -65,7 +63,7 @@ class App extends Component {
     } else {
       currentUser = await authCalls.signIn(user);
     }
-    console.log(currentUser);
+    // console.log(currentUser);
     if (currentUser.hasOwnProperty('errorMessage')) {
       errorMessage = currentUser;
       this.setState({
@@ -310,12 +308,28 @@ class App extends Component {
         default:
 
       }
+      console.log(deletedPalabra);
     }
   }
 
   async handleLoadPalabra(p, pObj) {
+    console.log(p, pObj);
     let palabra;
-    let params = p.slice(0, -1);
+    let params;
+    switch (p) {
+      case "four-letter-words/":
+        params = "fourLetterWord"
+        break;
+      case "prefix-suffix-roots/":
+        params = "prefixSuffixRoot"
+        break;
+      case "verbos/":
+        params = "verbo"
+        break;
+      default:
+
+    }
+    console.log(params);
     if (pObj.hasOwnProperty('_id')) {
       palabra = await apiCalls.getPalabra(p, pObj);
     } else if (pObj.hasOwnProperty('word')) {
@@ -330,8 +344,8 @@ class App extends Component {
       }
     }
 
-    switch (params) {
-      case "fourLetterWords":
+    switch (p) {
+      case "four-letter-words/":
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('fourLetterWord', JSON.stringify(palabra));
         } else {
@@ -340,7 +354,7 @@ class App extends Component {
         this.setState({ fourLetterWord: palabra });
         this.props.history.push('/words/four-letter-word');
         break;
-      case "prefixSuffixRoots":
+      case "prefix-suffix-roots/":
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('prefixSuffixRoot', JSON.stringify(palabra));
         } else {
@@ -357,7 +371,7 @@ class App extends Component {
         }
         this.setState({ user0: palabra });
         break;
-      case "verbos":
+      case "verbos/":
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('verbo', JSON.stringify(palabra));
         } else {
@@ -372,8 +386,8 @@ class App extends Component {
   }
 
   async handleLoadPalabras() {
-    let fourLetterWords = await apiCalls.getPalabras('fourLetterWords');
-    let prefixSuffixRoots = await apiCalls.getPalabras('prefixSuffixRoots');
+    let fourLetterWords = await apiCalls.getPalabras('four-letter-words');
+    let prefixSuffixRoots = await apiCalls.getPalabras('prefix-suffix-roots');
     let verbos = await apiCalls.getPalabras('verbos');
 
     this.setState({
@@ -394,15 +408,15 @@ class App extends Component {
     let prefixSuffixRoots;
     let verbo;
     let verbos;
-    let palabraHash = this.props.location.hash;
-    let palabra = palabraHash.slice(1);
-    switch (palabra) {
-      case 'fourLetterWord':
+    let p = this.props.location.state.p;
+    console.log(p);
+    switch (p) {
+      case 'four-letter-words/':
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
         } else {
-          this.handleLoadPalabras();
-          this.handleLoadRandomPalabra();
+          // this.handleLoadPalabras();
+          // this.handleLoadRandomPalabra();
         }
         fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
         this.setState({
@@ -414,29 +428,46 @@ class App extends Component {
           return null;
         }
         break;
-      case 'fourLetterWords':
-        if (this.state.fourLetterWords.length !== 0) {
-          fourLetterWords = [...this.state.fourLetterWords];
-        } else {
-          this.handleLoadPalabras();
-          this.handleLoadRandomPalabra();
-        }
-        fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
-        this.setState({
-          fourLetterWord
-        });
-        if (typeof(Storage) !== "undefined") {
-          localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
-        } else {
-          return null;
-        }
-        break;
-      case 'prefixSuffixRoot':
+      // case 'fourLetterWords':
+      //   if (this.state.fourLetterWords.length !== 0) {
+      //     fourLetterWords = [...this.state.fourLetterWords];
+      //   } else {
+      //     this.handleLoadPalabras();
+      //     this.handleLoadRandomPalabra();
+      //   }
+      //   fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
+      //   this.setState({
+      //     fourLetterWord
+      //   });
+      //   if (typeof(Storage) !== "undefined") {
+      //     localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
+      //   } else {
+      //     return null;
+      //   }
+      //   break;
+      // case 'prefixSuffixRoot':
+      //   if (this.state.prefixSuffixRoots.length !== 0) {
+      //     prefixSuffixRoots = [...this.state.prefixSuffixRoots];
+      //   } else {
+      //     this.handleLoadPalabras();
+      //     this.handleLoadRandomPalabra();
+      //   }
+      //   prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
+      //   this.setState({
+      //     prefixSuffixRoot
+      //   });
+      //   if (typeof(Storage) !== "undefined") {
+      //     localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
+      //   } else {
+      //     return null;
+      //   }
+      //   break;
+      case 'prefix-suffix-roots/':
         if (this.state.prefixSuffixRoots.length !== 0) {
           prefixSuffixRoots = [...this.state.prefixSuffixRoots];
         } else {
-          this.handleLoadPalabras();
-          this.handleLoadRandomPalabra();
+          // this.handleLoadPalabras();
+          // this.handleLoadRandomPalabra();
         }
         prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
         this.setState({
@@ -448,46 +479,29 @@ class App extends Component {
           return null;
         }
         break;
-      case 'prefixSuffixRoots':
-        if (this.state.prefixSuffixRoots.length !== 0) {
-          prefixSuffixRoots = [...this.state.prefixSuffixRoots];
-        } else {
-          this.handleLoadPalabras();
-          this.handleLoadRandomPalabra();
-        }
-        prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
-        this.setState({
-          prefixSuffixRoot
-        });
-        if (typeof(Storage) !== "undefined") {
-          localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
-        } else {
-          return null;
-        }
-        break;
-      case 'verbo':
+      // case 'verbo':
+      //   if (this.state.verbos.length !== 0) {
+      //     verbos = [...this.state.verbos];
+      //   } else {
+      //     this.handleLoadPalabras();
+      //     this.handleLoadRandomPalabra();
+      //   }
+      //   verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
+      //   this.setState({
+      //     verbo
+      //   });
+      //   if (typeof(Storage) !== "undefined") {
+      //     localStorage.setItem('verbo', JSON.stringify(verbo));
+      //   } else {
+      //     return null;
+      //   }
+      //   break;
+      case 'verbos/':
         if (this.state.verbos.length !== 0) {
           verbos = [...this.state.verbos];
         } else {
-          this.handleLoadPalabras();
-          this.handleLoadRandomPalabra();
-        }
-        verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
-        this.setState({
-          verbo
-        });
-        if (typeof(Storage) !== "undefined") {
-          localStorage.setItem('verbo', JSON.stringify(verbo));
-        } else {
-          return null;
-        }
-        break;
-      case 'verbos':
-        if (this.state.verbos.length !== 0) {
-          verbos = [...this.state.verbos];
-        } else {
-          this.handleLoadPalabras();
-          this.handleLoadRandomPalabra();
+          // this.handleLoadPalabras();
+          // this.handleLoadRandomPalabra();
         }
         verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
         this.setState({
@@ -503,8 +517,8 @@ class App extends Component {
       if (this.state.fourLetterWords) {
         fourLetterWords = [...this.state.fourLetterWords];
       } else {
-        this.handleLoadPalabras();
-        this.handleLoadRandomPalabra();
+        // this.handleLoadPalabras();
+        // this.handleLoadRandomPalabra();
       }
       fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
       this.setState({

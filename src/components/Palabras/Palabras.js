@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FourLetterWord from './../FourLetterWords/FourLetterWord';
 import PrefixSuffixRoot from './../PrefixSuffixRoots/PrefixSuffixRoot';
 import User from './../Users/User';
@@ -7,23 +6,18 @@ import Verbo from './../Verbos/Verbo';
 import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
-  console.log(props.findPalabra.word);
+  console.log(props);
   let liveSearch = props.findPalabra.word;
-  let myPalabras;
+  let fourLetterWord, myPalabras, newObj, prefixSuffixRoot, user, verbo;
   let myProps = props.props.data.props;
   let p = props.p;
-  let fourLetterWord;
   let fourLetterWords = [...myProps.fourLetterWords];
-  let prefixSuffixRoot;
   let prefixSuffixRoots = [...myProps.prefixSuffixRoots];
-  let user;
   let users = [...myProps.users];
-  let verbo;
   let verbos = [...myProps.verbos];
   switch (p) {
-    case "fourLetterWords/":
+    case "four-letter-words/":
       myPalabras = fourLetterWords.filter(obj => {
-        let newObj;
         if (obj.word.search(liveSearch) > 0) {
           newObj = obj.word.search(liveSearch);
         } else if (obj.definition.search(liveSearch) > 0) {
@@ -42,9 +36,8 @@ const Palabras = (props) => {
           props={ myProps } />
       ))
       break;
-    case "prefixSuffixRoots/":
+    case "prefix-suffix-roots/":
       myPalabras = prefixSuffixRoots.filter(obj => {
-        let newObj;
         if (obj.word.search(liveSearch) > 0) {
           newObj = obj.word.search(liveSearch);
         } else if (obj.meaning.search(liveSearch) > 0) {
@@ -74,7 +67,6 @@ const Palabras = (props) => {
       break;
     case "verbos/":
       myPalabras = verbos.filter((obj) => {
-        let newObj;
         if (obj.spanish.search(liveSearch) > 0) {
           newObj = obj.spanish.search(liveSearch);
         } else if (obj.english.search(liveSearch) > 0) {
