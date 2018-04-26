@@ -411,6 +411,8 @@ class App extends Component {
     let p = this.props.location.pathname;
     // let p = "four-letter-words/";
     console.log(p);
+    console.log(this.state);
+    console.log(localStorage);
     switch (p) {
       case '/words/four-letter-word':
         console.log(1);

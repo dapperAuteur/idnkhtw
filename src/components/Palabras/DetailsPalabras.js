@@ -9,25 +9,25 @@ const DetailsPalabras = (props) => {
   console.log(props);
   let fourLetterWord, prefixSuffixRoot, verbo;
   let { onLoadRandomPalabra } = props;
-  if (typeof(Storage) !== "undefined") {
-    if (localStorage.hasOwnProperty('fourLetterWord') && localStorage.fourLetterWord !== "undefined") {
-      fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
-    } else {
-      onLoadRandomPalabra();
-    }
-    if (localStorage.hasOwnProperty('prefixSuffixRoot') && localStorage.prefixSuffixRoot !== "undefined") {
-      prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
-    } else {
-      onLoadRandomPalabra();
-    }
-    if (localStorage.hasOwnProperty('verbo') && localStorage.verbo !== "undefined") {
-      verbo = JSON.parse(localStorage.getItem('verbo'));
-    } else {
-      onLoadRandomPalabra();
-    }
-  } else {
-    return null;
-  }
+  // if (typeof(Storage) !== "undefined") {
+  //   if (localStorage.hasOwnProperty('fourLetterWord') && localStorage.fourLetterWord !== "undefined") {
+  //     fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
+  //   } else {
+  //     onLoadRandomPalabra();
+  //   }
+  //   if (localStorage.hasOwnProperty('prefixSuffixRoot') && localStorage.prefixSuffixRoot !== "undefined") {
+  //     prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
+  //   } else {
+  //     onLoadRandomPalabra();
+  //   }
+  //   if (localStorage.hasOwnProperty('verbo') && localStorage.verbo !== "undefined") {
+  //     verbo = JSON.parse(localStorage.getItem('verbo'));
+  //   } else {
+  //     onLoadRandomPalabra();
+  //   }
+  // } else {
+  //   return null;
+  // }
   let location = props.location;
   let { pathname } = location;
   console.log(pathname);
