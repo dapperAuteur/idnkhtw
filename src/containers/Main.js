@@ -76,6 +76,7 @@ class Main extends Component {
               path={ path }
               render={ (props) => <C
                 { ...props }
+                onLoadPalabra={ this.props.onLoadPalabra }
                 onLoadRandomPalabra={ this.props.onLoadRandomPalabra }
                 data={ this.props } /> }
               />

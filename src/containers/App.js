@@ -311,9 +311,9 @@ class App extends Component {
     }
   }
 
-  async handleLoadPalabra(p, pObj) {
-    console.log(p, pObj);
-    let palabra;
+  async handleLoadPalabra(p, wordObj) {
+    console.log(p, wordObj);
+    let palabra = wordObj;
     let params;
     switch (p) {
       case "four-letter-words/":
@@ -329,19 +329,19 @@ class App extends Component {
 
     }
     console.log(params);
-    if (pObj.hasOwnProperty('_id')) {
-      palabra = await apiCalls.getPalabra(p, pObj);
-    } else if (pObj.hasOwnProperty('word')) {
-      let word = pObj.word;
-      let findPalabra = this.state[params].filter(param => param.word === word);
-      findPalabra = findPalabra[0];
-      if (findPalabra === undefined) {
-        let err = { errorMessage: 'Word NOT Found!' };
-        return err;
-      } else if (findPalabra.hasOwnProperty('_id')) {
-        palabra = await apiCalls.getPalabra(p, findPalabra);
-      }
-    }
+    // if (pObj.hasOwnProperty('_id')) {
+    //   palabra = await apiCalls.getPalabra(p, pObj);
+    // } else if (pObj.hasOwnProperty('word')) {
+    //   let word = pObj.word;
+    //   let findPalabra = this.state[params].filter(param => param.word === word);
+    //   findPalabra = findPalabra[0];
+    //   if (findPalabra === undefined) {
+    //     let err = { errorMessage: 'Word NOT Found!' };
+    //     return err;
+    //   } else if (findPalabra.hasOwnProperty('_id')) {
+    //     palabra = await apiCalls.getPalabra(p, findPalabra);
+    //   }
+    // }
 
     switch (p) {
       case "four-letter-words/":
@@ -407,15 +407,15 @@ class App extends Component {
     let prefixSuffixRoots;
     let verbo;
     let verbos;
-    console.log(this.props.location);
+    // console.log(this.props.location);
     let p = this.props.location.pathname;
     // let p = "four-letter-words/";
-    console.log(p);
-    console.log(this.state);
-    console.log(localStorage);
+    // console.log(p);
+    // console.log(this.state);
+    // console.log(localStorage);
     switch (p) {
       case '/words/four-letter-word':
-        console.log(1);
+        // console.log(1);
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
         } else {
@@ -433,7 +433,7 @@ class App extends Component {
         }
         break;
       case '/words/prefix-suffix-root':
-        console.log(2);
+        // console.log(2);
         if (this.state.prefixSuffixRoots.length !== 0) {
           prefixSuffixRoots = [...this.state.prefixSuffixRoots];
         } else {
@@ -451,7 +451,7 @@ class App extends Component {
         }
         break;
       case '/words/verbo':
-        console.log(3);
+        // console.log(3);
         if (this.state.verbos.length !== 0) {
           verbos = [...this.state.verbos];
         } else {
@@ -469,7 +469,7 @@ class App extends Component {
         }
         break;
       default:
-        console.log(4);
+        // console.log(4);
       if (this.state.fourLetterWords) {
         fourLetterWords = [...this.state.fourLetterWords];
       } else {

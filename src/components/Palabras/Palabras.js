@@ -6,7 +6,7 @@ import Verbo from './../Verbos/Verbo';
 import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
-  console.log(props);
+  // console.log(props);
   let liveSearch = props.findPalabra.word;
   let fourLetterWord, myPalabras, newObj, prefixSuffixRoot, user, verbo;
   let p = props.p;
@@ -14,6 +14,7 @@ const Palabras = (props) => {
   let prefixSuffixRoots = [...props.prefixSuffixRoots];
   // let users = [...props.users];
   let verbos = [...props.verbos];
+  let onLoadPalabra = props.onLoadPalabra;
   // console.log(verbos);
   switch (p) {
     case "four-letter-words/":
@@ -33,6 +34,7 @@ const Palabras = (props) => {
           id={ obj._id }
           word={ obj.word }
           key={ obj._id }
+          onLoadPalabra={ onLoadPalabra }
           props={ props } />
       ))
       break;
@@ -52,6 +54,7 @@ const Palabras = (props) => {
           id={ obj._id }
           word={ obj.word }
           key={ obj._id }
+          onLoadPalabra={ onLoadPalabra }
           props={ props } />
       ))
       break;
@@ -83,6 +86,7 @@ const Palabras = (props) => {
           spanish={ filteredVerbo.spanish }
           english={ filteredVerbo.english }
           key={ filteredVerbo._id }
+          onLoadPalabra={ onLoadPalabra }
           props={ props }/>
       ))
       break;
