@@ -8,6 +8,7 @@ export async function onAuth(params) {
 }
 
 export async function getPalabras(param) {
+  console.log(param);
   return fetch(`${APIURL}${param}`)
     .then(resp => {
       if (!resp.ok) {
