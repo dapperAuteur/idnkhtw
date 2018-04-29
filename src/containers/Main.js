@@ -41,7 +41,7 @@ const routes = [
   },
   {
     path: '/words/find-palabra',
-    component: FindPalabra
+    component: DetailsPalabras
   },
   {
     path: '/games/four-letter-word',

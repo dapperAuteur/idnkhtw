@@ -48,7 +48,10 @@ const PalabrasButtons = (props) => {
         <div>
           <Link
             to={{
-              pathname
+              pathname,
+              state: {
+                randomWord: true
+              }
             }}
             onClick={ onLoadRandomPalabra }
             className="btn btn-default">
@@ -73,7 +76,10 @@ const PalabrasButtons = (props) => {
       <div>
         <Link
           to={{
-            pathname
+            pathname,
+            state: {
+              randomWord: true
+            }
           }}
           onClick={ onLoadRandomPalabra }
           className="btn btn-default">

@@ -9,12 +9,12 @@ const Palabras = (props) => {
   console.log(props);
   let liveSearch = props.findPalabra.word;
   let fourLetterWord, myPalabras, newObj, prefixSuffixRoot, user, verbo;
-  let myProps = props.props.data.props;
   let p = props.p;
-  let fourLetterWords = [...myProps.fourLetterWords];
-  let prefixSuffixRoots = [...myProps.prefixSuffixRoots];
-  let users = [...myProps.users];
-  let verbos = [...myProps.verbos];
+  let fourLetterWords = [...props.fourLetterWords];
+  let prefixSuffixRoots = [...props.prefixSuffixRoots];
+  // let users = [...props.users];
+  let verbos = [...props.verbos];
+  // console.log(verbos);
   switch (p) {
     case "four-letter-words/":
       myPalabras = fourLetterWords.filter(obj => {
@@ -33,7 +33,7 @@ const Palabras = (props) => {
           id={ obj._id }
           word={ obj.word }
           key={ obj._id }
-          props={ myProps } />
+          props={ props } />
       ))
       break;
     case "prefix-suffix-roots/":
@@ -52,21 +52,22 @@ const Palabras = (props) => {
           id={ obj._id }
           word={ obj.word }
           key={ obj._id }
-          props={ myProps } />
+          props={ props } />
       ))
       break;
-    case "users/":
-      myPalabras = users.map(obj => (
-        <User
-          user={ obj }
-          id={ obj._id }
-          username={ obj.username }
-          key={ obj._id }
-          props={ myProps } />
-      ))
-      break;
+    // case "users/":
+    //   myPalabras = users.map(obj => (
+    //     <User
+    //       user={ obj }
+    //       id={ obj._id }
+    //       username={ obj.username }
+    //       key={ obj._id }
+    //       props={ props } />
+    //   ))
+    //   break;
     case "verbos/":
       myPalabras = verbos.filter((obj) => {
+        // console.log(obj);
         if (obj.spanish.search(liveSearch) > 0) {
           newObj = obj.spanish.search(liveSearch);
         } else if (obj.english.search(liveSearch) > 0) {
@@ -82,7 +83,7 @@ const Palabras = (props) => {
           spanish={ filteredVerbo.spanish }
           english={ filteredVerbo.english }
           key={ filteredVerbo._id }
-          props={ myProps }/>
+          props={ props }/>
       ))
       break;
     default:

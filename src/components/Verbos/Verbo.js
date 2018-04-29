@@ -15,6 +15,7 @@ const Verbo = (props) => {
           hash: '#verbo',
           state: {
             p: 'verbos/',
+            randomWord: false,
             wordObj
           }
         }}

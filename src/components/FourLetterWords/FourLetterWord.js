@@ -15,6 +15,7 @@ const FourLetterWord = (props) => {
           hash: '#fourLetterWord',
           state: {
             p: 'four-letter-words/',
+            randomWord: false,
             wordObj
           }
         }}

@@ -14,6 +14,7 @@ const PrefixSuffixRoot = (props) => {
           hash: '#prefixSuffixRoot',
           state: {
             p: 'prefix-suffix-roots/',
+            randomWord: false,
             wordObj
           }
         }}

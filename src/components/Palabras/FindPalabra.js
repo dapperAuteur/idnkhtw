@@ -6,6 +6,7 @@ import '../CSS/FindPalabras.css';
 class FindPalabra extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       _id: '',
       lists: ['Choose A List', 'four-letter-words/', 'prefix-suffix-roots/', 'users/', 'verbos/'],
@@ -40,7 +41,9 @@ class FindPalabra extends Component {
   }
   render() {
     const { _id, lists, p, word } = this.state;
-    let myProps = this.props;
+    let { fourLetterWords, prefixSuffixRoots, users, verbos } = this.props;
+    let props = this.props;
+    // console.log(fourLetterWords, prefixSuffixRoots, verbos);
     return (
       <div className='word-form-container find-palabras'>
         <div>
@@ -97,7 +100,11 @@ class FindPalabra extends Component {
         <Palabras
           p={ p }
           findPalabra={ this.state }
-          props={ myProps } />
+          props={ props }
+          fourLetterWords={ fourLetterWords }
+          prefixSuffixRoots={ prefixSuffixRoots }
+          users={ users }
+          verbos={ verbos } />
       </div>
     )
   }

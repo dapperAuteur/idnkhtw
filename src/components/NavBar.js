@@ -32,7 +32,12 @@ const NavBar = (props) => {
             id='palabras-content1'
             className='content'>
             <Link
-              to={ '/words/find-palabra' }
+              to={{
+                pathname: '/words/find-palabra',
+                state: {
+                  random: false
+                }
+              }}
               className='btn btn-default'
             >
               Find Word
