@@ -1,4 +1,5 @@
 import React from 'react';
+import IrregularCategoria from './IrregularCategoria';
 import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
@@ -25,11 +26,8 @@ const DetailsVerbo = (props) => {
         }
         {
           verbo.irregular &&
-          <div className="irregular">
-            <h3>Irregular</h3>
-            <h3>Categoría de Irregular: { verbo.categoría_de_irregular }<br />
-              Cambiar de Irregular: { verbo.cambiar_de_irregular }</h3>
-          </div>
+          <IrregularCategoria
+            verbo={ verbo } />
         }
       </div>
     )
