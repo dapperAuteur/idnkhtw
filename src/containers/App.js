@@ -549,7 +549,7 @@ class App extends Component {
   }
 
   render() {
-    const { errorMessage, fourLetterWord, game, prefixSuffixRoot, showLoginForm, showSignUpForm, user, verbo } = this.state;
+    const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showLoginForm, showSignUpForm, user, verbo, verbos } = this.state;
     let p = this.props.location.pathname;
     return (
       <div className="App">
@@ -598,6 +598,12 @@ class App extends Component {
         }
         <Main
           props={ this.state }
+          fourLetterWord={ fourLetterWord }
+          fourLetterWords={ fourLetterWords }
+          prefixSuffixRoot={ prefixSuffixRoot }
+          prefixSuffixRoots={ prefixSuffixRoots }
+          verbo={ verbo }
+          verbos={ verbos }
           onCheckFourLetterWord = { this.handleCheckFourLetterWord }
           onDelete={ this.handleDeletePalabra }
           onLoadPalabra={ this.handleLoadPalabra }

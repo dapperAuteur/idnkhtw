@@ -4,10 +4,11 @@ import './DetailsVerbo.css';
 const DetailsVerbo = (props) => {
 
   let verbo = props.verbo;
-  let reflexive = verbo.reflexive;
-  let irregular = verbo.irregular;
-  // let group = verbo.group.toString();
-  // console.log(group);
+  let grupo
+  if (typeof verbo.grupo === "number") {
+    grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
+    console.log(grupo);
+  }
 
   if (verbo === null || verbo === undefined) {
     verbo = JSON.parse(localStorage.getItem("verbo"));
@@ -16,15 +17,15 @@ const DetailsVerbo = (props) => {
     return (
       <div>
         <h1>{ verbo.spanish }</h1>
-        <h3>Group: { verbo.group }</h3>
+        { grupo }
         <h3>English: { verbo.english }</h3>
         {
-          reflexive &&
-        <h3 className="hightLight">Reflexive</h3>
+          verbo.reflexive &&
+        <h3 className="reflexive">Reflexive</h3>
         }
         {
-          irregular &&
-          <div className="hightLight">
+          verbo.irregular &&
+          <div className="irregular">
             <h3>Irregular</h3>
             <h3>Categoría de Irregular: { verbo.categoría_de_irregular }<br />
               Cambiar de Irregular: { verbo.cambiar_de_irregular }</h3>

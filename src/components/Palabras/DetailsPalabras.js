@@ -10,9 +10,19 @@ const DetailsPalabras = (props) => {
   // console.log(props);
   let location = props.location;
   let fourLetterWord, prefixSuffixRoot, verbo;
-  fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
-  prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
-  verbo = JSON.parse(localStorage.getItem('verbo'));
+  // if (typeof(Storage) !== "undefined") {
+  //   fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
+  //   prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
+  //   verbo = JSON.parse(localStorage.getItem('verbo'));
+  // } else {
+  //   fourLetterWord = props.data.fourLetterWord;
+  //   prefixSuffixRoot = props.data.prefixSuffixRoot;
+  //   verbo = props.data.verbo;
+  // }
+  fourLetterWord = props.data.fourLetterWord;
+  prefixSuffixRoot = props.data.prefixSuffixRoot;
+  verbo = props.data.verbo;
+  // console.log(fourLetterWord, prefixSuffixRoot, verbo);
   let { fourLetterWords, prefixSuffixRoots, users, verbos } = props.data.props;
   // let randomWord = location.state.randomWord;
   // if (randomWord) {

@@ -3,7 +3,7 @@ import React from 'react';
 const DetailsPrefixSuffixRoot = (props) => {
   let prefixSuffixRoot = props.prefixSuffixRoot;
 
-  console.log(props, prefixSuffixRoot);
+  // console.log(props, prefixSuffixRoot);
   if (prefixSuffixRoot === null || prefixSuffixRoot === undefined) {
     prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
     return null;
