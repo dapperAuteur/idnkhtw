@@ -6,8 +6,8 @@ const DetailsVerbo = (props) => {
   let verbo = props.verbo;
   let reflexive = verbo.reflexive;
   let irregular = verbo.irregular;
-  let group = verbo.group.toString();
-  console.log(group);
+  // let group = verbo.group.toString();
+  // console.log(group);
 
   if (verbo === null || verbo === undefined) {
     verbo = JSON.parse(localStorage.getItem("verbo"));
