@@ -20,11 +20,11 @@ const DetailsVerbo = (props) => {
         <h3>English: { verbo.english }</h3>
         {
           reflexive &&
-        <h3>Reflexive</h3>
+        <h3 className="hightLight">Reflexive</h3>
         }
         {
           irregular &&
-          <div>
+          <div className="hightLight">
             <h3>Irregular</h3>
             <h3>Categoría de Irregular: { verbo.categoría_de_irregular }<br />
               Cambiar de Irregular: { verbo.cambiar_de_irregular }</h3>
