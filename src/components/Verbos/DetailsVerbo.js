@@ -16,7 +16,7 @@ const DetailsVerbo = (props) => {
     return (
       <div>
         <h1>{ verbo.spanish }</h1>
-        <h3>Group: { group }</h3>
+        <h3>Group: { verbo.group }</h3>
         <h3>English: { verbo.english }</h3>
         {
           reflexive &&
