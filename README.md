@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## I prefer to use yarn, but you may use npm to start the server.
 ## The build branch is the live branch. You may visit the deployed version at www.idnkhtw.space. You may need localStorage for some features to work properly.
-#### This is the client for the api located at https://github.com/dapperAuteur/palabras-express-api
+#### This is the client for the api located at https://github.com/dapperAuteur/palabras-express-api and deployed to Heroku at https://peaceful-waters-22726.herokuapp.com/ .
 #### I built this as a tool to help me grow as a person, not just as a developer.
 * It has tools that will allow you to learn new words in English and Spanish.
 * I'm in the process of adding a blog, expense and income tracker, and more word games.
