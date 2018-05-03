@@ -1,5 +1,31 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## I prefer to use yarn, but you may use npm to start the server.
+## The build branch is the live branch. You may visit the deployed version at www.idnkhtw.space. You may need localStorage for some features to work properly.
+#### This is the client for the api located at https://github.com/dapperAuteur/palabras-express-api
+#### I built this as a tool to help me grow as a person, not just as a developer.
+* It has tools that will allow you to learn new words in English and Spanish.
+* I'm in the process of adding a blog, expense and income tracker, and more word games.
+* It contains the word version of [Cows & Bulls](https://en.wikipedia.org/wiki/Bulls_and_Cows).
+
+## To Be Added:
+* 2 player version of Cows and Bulls
+* Blog
+* Expense/Income Tracking
+* Spanish verb game
+* Word creation game utilizing prefix/suffix list
+
+## To use this app
+* clone the repo
+* cd idnkhtw
+* yarn start (Pleas see below for more information on using Create React App).
+
+## Tools used:
+* react-dom
+* shuffle-array
+* react-router-dom
+* react-ga
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
