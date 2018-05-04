@@ -3,15 +3,15 @@ import IrregularCategoria from './IrregularCategoria';
 import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
-
+  console.log(props);
+  let grupo;
+  let showEnglish = props.showEnglish;
   let verbo = props.verbo;
-  let grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
-  // if (typeof verbo.grupo === "number") {
-  //   grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
-  //   console.log(grupo);
-  // } else {
-  //   grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
-  // }
+
+  if (typeof verbo.grupo === "number") {
+    grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
+    console.log(grupo);
+  }
 
   if (verbo === null || verbo === undefined) {
     verbo = JSON.parse(localStorage.getItem("verbo"));
@@ -22,7 +22,10 @@ const DetailsVerbo = (props) => {
         <h1>{ verbo.spanish }</h1>
         <h3>{ verbo.terminación }</h3>
         { grupo }
-        <h3>English: { verbo.english }</h3>
+        {
+          showEnglish &&
+          <h3>English: { verbo.english }</h3>
+        }
         {
           verbo.reflexive &&
         <h3 className="reflexive">Reflexive</h3>
