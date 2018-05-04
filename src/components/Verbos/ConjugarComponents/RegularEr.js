@@ -1,8 +1,21 @@
 import React from 'react';
+import RegularErConditional from './RegularErConditional';
+import RegularErFuture from './RegularErFuture';
+import RegularErImperfect from './RegularErImperfect';
+import RegularErParticiple from './RegularErParticiple';
+import RegularErPresent from './RegularErPresent';
+import RegularErPreterite from './RegularErPreterite';
 
-const TermEr = (props) => {
-  let verbo = props.verbo;
-  console.log(props, verbo);
+const RegularEr = (props) => {
+  let { verbo, verboRoot } = props;
+  console.log(props, verbo, verboRoot);
+  let verboString;
+  if (verbo.reflexive) {
+    verboString = verbo.spanish.slice(0, -4);
+  } else {
+    verboString = verbo.spanish.slice(0, -2);
+  }
+  console.log(verboString);
   let present = [
     { "yo": "o" },
     { "tú": "es" },
@@ -49,4 +62,4 @@ const TermEr = (props) => {
 
 }
 
-export default TermEr;
+export default RegularEr;

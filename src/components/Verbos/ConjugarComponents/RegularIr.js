@@ -1,8 +1,14 @@
 import React from 'react';
+import RegularIrConditional from './RegularIrConditional';
+import RegularIrFuture from './RegularIrFuture';
+import RegularIrImperfect from './RegularIrImperfect';
+import RegularIrParticiple from './RegularIrParticiple';
+import RegularIrPresent from './RegularIrPresent';
+import RegularIrPreterite from './RegularIrPreterite';
 
-const TermIr = (props) => {
-  let verbo = props.verbo;
-  console.log(props, verbo);
+const RegularIr = (props) => {
+  let { verbo, verboRoot } = props;
+  console.log(props, verbo, verboRoot);
   let present = [
     { "yo": "o" },
     { "tú": "es" },
@@ -49,4 +55,4 @@ const TermIr = (props) => {
 
 }
 
-export default TermIr;
+export default RegularIr;

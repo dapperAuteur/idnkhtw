@@ -1,5 +1,5 @@
 import React from 'react';
-// import Conjugar from './Conjugar';
+// import Conjugar from './ConjugarComponents/Conjugar';
 import IrregularCategoria from './IrregularCategoria';
 import EnglishTranslation from './EnglishTranslation';
 import './DetailsVerbo.css';
