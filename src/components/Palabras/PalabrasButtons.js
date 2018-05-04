@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PalabrasButtons = (props) => {
-  // console.log(props);
+  console.log(props);
   let myProps = props.props;
   let myData = myProps.data;
   let pathname;
@@ -18,7 +18,8 @@ const PalabrasButtons = (props) => {
   let loggedIn = myData.props.loggedIn;
   const onDelete = myData.onDelete;
   const onLoadRandomPalabra = myData.onLoadRandomPalabra;
-  // console.log(onLoadRandomPalabra);
+  const onShowEnglish = myData.onShowEnglish;
+  console.log(onShowEnglish);
   let p = myProps.location.pathname;
   let update;
   // if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {
@@ -38,6 +39,7 @@ const PalabrasButtons = (props) => {
     case "/words/verbo":
       pathname = '/words/verbo';
       update = '/words/update/verbo';
+      // onShowEnglish = onShowEnglish;
       break;
     default:
 
@@ -57,6 +59,11 @@ const PalabrasButtons = (props) => {
             className="btn btn-default">
             Next Word
           </Link>
+          <button
+            onClick={ onShowEnglish }
+            className="btn btn-default">
+            Show Translation
+          </button>
         </div>
         <button
           onClick={ onDelete }
@@ -74,6 +81,11 @@ const PalabrasButtons = (props) => {
   } else {
     return (
       <div>
+        <button
+          onClick={ onShowEnglish }
+          className="btn btn-default">
+          Show Translation
+        </button>
         <Link
           to={{
             pathname,

@@ -78,6 +78,7 @@ class Main extends Component {
                 { ...props }
                 onLoadPalabra={ this.props.onLoadPalabra }
                 onLoadRandomPalabra={ this.props.onLoadRandomPalabra }
+                onShowEnglish={ this.props.onShowEnglish }
                 data={ this.props } /> }
               />
           ))}

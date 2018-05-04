@@ -6,10 +6,10 @@ import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
   console.log(props);
-
-  let verbo = props.verbo;
-  let english = false;
   let grupo;
+  let showEnglish = props.showEnglish;
+  let verbo = props.verbo;
+
   if (typeof verbo.grupo === "number") {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
     console.log(grupo);
@@ -22,10 +22,11 @@ const DetailsVerbo = (props) => {
     return (
       <div>
         <h1>{ verbo.spanish }</h1>
+        <h3>{ verbo.terminación }</h3>
         { grupo }
         {
-          { english } &&
-          <EnglishTranslation verbo={ verbo } />
+          showEnglish &&
+          <h3>English: { verbo.english }</h3>
         }
         {
           verbo.reflexive &&

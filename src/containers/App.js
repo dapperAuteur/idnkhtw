@@ -23,6 +23,7 @@ class App extends Component {
       p: '',
       prefixSuffixRoot: {},
       prefixSuffixRoots: [],
+      showEnglish: false,
       showLoginForm: false,
       showSignUpForm: false,
       user: {},
@@ -549,7 +550,7 @@ class App extends Component {
   }
 
   render() {
-    const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showLoginForm, showSignUpForm, user, verbo, verbos } = this.state;
+    const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showEnglish, showLoginForm, showSignUpForm, user, verbo, verbos } = this.state;
     let p = this.props.location.pathname;
     return (
       <div className="App">
@@ -608,6 +609,10 @@ class App extends Component {
           onDelete={ this.handleDeletePalabra }
           onLoadPalabra={ this.handleLoadPalabra }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
+          showEnglish={ showEnglish }
+          onShowEnglish={ () => this.setState({
+            showEnglish: !showEnglish
+          })}
           onSave={ this.handleSave }
           />
         <h1 className="App-title">I Do Not Know How this Works</h1>

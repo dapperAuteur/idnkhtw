@@ -7,9 +7,9 @@ import PalabrasButtons from './PalabrasButtons';
 import PropTypes from 'prop-types';
 
 const DetailsPalabras = (props) => {
-  // console.log(props);
+  console.log(props);
   let location = props.location;
-  let fourLetterWord, prefixSuffixRoot, verbo;
+  let fourLetterWord, prefixSuffixRoot, showEnglish, verbo;
   // if (typeof(Storage) !== "undefined") {
   //   fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
   //   prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
@@ -21,6 +21,7 @@ const DetailsPalabras = (props) => {
   // }
   fourLetterWord = props.data.fourLetterWord;
   prefixSuffixRoot = props.data.prefixSuffixRoot;
+  showEnglish = props.data.showEnglish;
   verbo = props.data.verbo;
   // console.log(fourLetterWord, prefixSuffixRoot, verbo);
   let { fourLetterWords, prefixSuffixRoots, users, verbos } = props.data.props;
@@ -36,7 +37,7 @@ const DetailsPalabras = (props) => {
   //   prefixSuffixRoot = location.state.wordObj;
   //   verbo = location.state.wordObj;
   // }
-  let { onLoadPalabra, onLoadRandomPalabra } = props;
+  let { onLoadPalabra, onLoadRandomPalabra, onShowEnglish } = props;
   let { pathname } = location;
   // console.log(pathname);
 
@@ -61,7 +62,8 @@ const DetailsPalabras = (props) => {
           <DetailsFourLetterWord
             props={ props }
             fourLetterWord={ fourLetterWord } />
-          <PalabrasButtons props={ props }/>
+          <PalabrasButtons
+            props={ props }/>
         </div>
       )
       break;
@@ -72,7 +74,8 @@ const DetailsPalabras = (props) => {
           <DetailsPrefixSuffixRoot
             props={ props }
             prefixSuffixRoot={ prefixSuffixRoot } />
-          <PalabrasButtons props={ props }/>
+          <PalabrasButtons
+            props={ props }/>
         </div>
       )
       break;
@@ -82,8 +85,11 @@ const DetailsPalabras = (props) => {
         <div>
           <DetailsVerbo
             props={ props }
+            showEnglish={ showEnglish }
             verbo={ verbo } />
-          <PalabrasButtons props={ props }/>
+          <PalabrasButtons
+            onShowEnglish={ onShowEnglish }
+            props={ props }/>
         </div>
       )
       break;
