@@ -20,6 +20,7 @@ const DetailsVerbo = (props) => {
     return (
       <div>
         <h1>{ verbo.spanish }</h1>
+        <h3>{ verbo.terminación }</h3>
         { grupo }
         <h3>English: { verbo.english }</h3>
         {
