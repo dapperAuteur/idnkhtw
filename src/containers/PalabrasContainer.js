@@ -5,11 +5,23 @@ import App from './App';
 
 ReactGA.initialize('UA-10207332-25', {
   debug: true
-})
-ReactGA.pageview(window.location.ppathname + window.location.search);
+});
+
+// function logPageView() {
+//   ReactGA.set({ page: window.location.pathname + window.location.search });
+//   ReactGA.pageview(window.location.pathname + window.location.search);
+// }
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const supportsHistory = 'pushState' in window.history;
 
+// const PalabrasContainer = () => (
+//   <Router
+//     forceRefresh={ !supportsHistory }
+//     onUpdate={ logPageView }>
+//     <App />
+//   </Router>
+// );
 const PalabrasContainer = () => (
   <Router
     forceRefresh={ !supportsHistory }>
