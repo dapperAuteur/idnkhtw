@@ -5,11 +5,13 @@ import './DetailsVerbo.css';
 const DetailsVerbo = (props) => {
 
   let verbo = props.verbo;
-  let grupo
-  if (typeof verbo.grupo === "number") {
-    grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
-    console.log(grupo);
-  }
+  let grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
+  // if (typeof verbo.grupo === "number") {
+  //   grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
+  //   console.log(grupo);
+  // } else {
+  //   grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
+  // }
 
   if (verbo === null || verbo === undefined) {
     verbo = JSON.parse(localStorage.getItem("verbo"));
