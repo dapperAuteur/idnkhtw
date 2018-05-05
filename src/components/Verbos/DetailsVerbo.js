@@ -3,6 +3,7 @@ import Conjugar from './ConjugarComponents/Conjugar';
 import IrregularCategoria from './IrregularCategoria';
 import EnglishTranslation from './EnglishTranslation';
 import './DetailsVerbo.css';
+// import VerboRoot from './ConjugarComponents/VerboRoot';
 
 const DetailsVerbo = (props) => {
   console.log(props);
@@ -21,6 +22,7 @@ const DetailsVerbo = (props) => {
     verbo = JSON.parse(localStorage.getItem("verbo"));
     return null;
   } else {
+    let verboRoot = verbo.spanish;
     return (
       <div>
         <h1>{ verbo.spanish }</h1>

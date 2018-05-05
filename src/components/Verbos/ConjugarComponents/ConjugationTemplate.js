@@ -10,6 +10,7 @@ const RegularAr = (props) => {
   let { verbo, verboRoot } = props;
 
   console.log(props, verbo, verboRoot);
+  // if
   let present = [
     { "yo": "o" },
     { "tú": "as" },
@@ -18,6 +19,7 @@ const RegularAr = (props) => {
     { "vosotros": "áis" },
     { "3rd plural": "an" },
   ];
+  // if
   let preterite = [
     { "yo": "é" },
     { "tú": "aste" },
@@ -26,6 +28,7 @@ const RegularAr = (props) => {
     { "vosotros": "asteis" },
     { "3rd plural": "aron" },
   ];
+  // if
   let conditional = [
     { "yo": "aría" },
     { "tú": "arías" },
@@ -34,6 +37,7 @@ const RegularAr = (props) => {
     { "vosotros": "aríais" },
     { "3rd plural": "arían" },
   ];
+  // if
   let imperfect = [
     { "yo": "aba" },
     { "tú": "abas" },
@@ -42,6 +46,7 @@ const RegularAr = (props) => {
     { "vosotros": "abais" },
     { "3rd plural": "aban" },
   ];
+  // if
   let future = [
     { "yo": "aré" },
     { "tú": "arás" },
@@ -50,7 +55,9 @@ const RegularAr = (props) => {
     { "vosotros": "aréis" },
     { "3rd plural": "arán" },
   ];
+  // if
   let presentParticiple = "ando";
+  // if
   let pastParticiple = "ado";
 
 
