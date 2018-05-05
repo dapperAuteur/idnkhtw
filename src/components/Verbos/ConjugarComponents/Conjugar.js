@@ -11,20 +11,23 @@ const Conjugar = (props) => {
   console.log(props);
 
   let verbo = props.props.verbo;
-    let termination, verboRoot, verboString, verboTermination;
-    let { showArVerbo, showErVerbo, showIrVerbo } = props;
-    if (verbo === null || verbo === undefined) {
-      verbo = JSON.parse(localStorage.getItem("verbo"));
-      return null;
-    } else {
-      console.log(showArVerbo, verboRoot);
-      verboRoot = verbo.spanish;
-      return (
-        <VerboRoot
-          verboRoot={ verboRoot }
-          props={ props } />
-      )
-    }
+  console.log(verbo);
+  let termination, verboRoot, verboString, verboTermination;
+  let { showArVerbo, showErVerbo, showIrVerbo } = props;
+  if (verbo === null || verbo === undefined) {
+    verbo = JSON.parse(localStorage.getItem("verbo"));
+    return null;
+  } else {
+    console.log(verbo.spanish);
+    verboRoot = verbo.spanish;
+    console.log(showArVerbo, verboRoot);
+    verboRoot = verboRoot.slice(0, -2);
+    return (
+      <VerboRoot
+        verboRoot={ verboRoot }
+        props={ props } />
+    )
+  }
 }
 // const Conjugar = (props) => {
 //   console.log(props);
