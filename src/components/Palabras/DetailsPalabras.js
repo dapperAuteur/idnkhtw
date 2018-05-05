@@ -98,6 +98,7 @@ const DetailsPalabras = (props) => {
           <PalabrasButtons
             onShowConjugar={ onShowConjugar }
             onShowEnglish={ onShowEnglish }
+            showEnglish={ showEnglish }
             props={ props }/>
         </div>
       )

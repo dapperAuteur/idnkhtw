@@ -5,7 +5,7 @@ const PalabrasButtons = (props) => {
   console.log(props);
   let myProps = props.props;
   let myData = myProps.data;
-  let pathname;
+  let pathname, showTranslationButton, update;
   // console.log(myData);
   // console.log(myData.props);
   let user = myData.props.user;
@@ -20,8 +20,8 @@ const PalabrasButtons = (props) => {
   const onLoadRandomPalabra = myData.onLoadRandomPalabra;
   const onShowEnglish = myData.onShowEnglish;
   console.log(onShowEnglish);
+  let showEnglish = myData.showEnglish;
   let p = myProps.location.pathname;
-  let update;
   // if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {
   //   fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
   //   prefixSuffixRoot = JSON.parse(localStorage.getItem("prefixSuffixRoot"));
@@ -31,15 +31,20 @@ const PalabrasButtons = (props) => {
     case '/words/four-letter-word':
       pathname = '/words/four-letter-word';
       update = '/words/update/four-letter-word';
+      showTranslationButton = false;
+      console.log(showTranslationButton);
       break;
     case '/words/prefix-suffix-root':
       pathname = '/words/prefix-suffix-root';
       update = '/words/update/prefix-suffix-root';
+      showTranslationButton = false;
+      console.log(showTranslationButton);
       break;
     case "/words/verbo":
       pathname = '/words/verbo';
       update = '/words/update/verbo';
-      // onShowEnglish = onShowEnglish;
+      showTranslationButton = true;
+      console.log(showTranslationButton);
       break;
     default:
 
@@ -59,11 +64,15 @@ const PalabrasButtons = (props) => {
             className="btn btn-default">
             Next Word
           </Link>
-          <button
-            onClick={ onShowEnglish }
-            className="btn btn-default">
-            Show Translation
-          </button>
+          { showTranslationButton &&
+            <div>
+              <button
+                onClick={ onShowEnglish }
+                className="btn btn-default">
+                Show Translation
+              </button>
+            </div>
+          }
         </div>
         <button
           onClick={ onDelete }

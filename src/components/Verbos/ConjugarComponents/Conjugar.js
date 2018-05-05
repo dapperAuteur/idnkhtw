@@ -1,4 +1,7 @@
 import React from 'react';
+import IrregularAr from './IrregularAr';
+import IrregularEr from './IrregularEr';
+import IrregularIr from './IrregularIr';
 import RegularAr from './RegularAr';
 import RegularEr from './RegularEr';
 import RegularIr from './RegularIr';
@@ -7,8 +10,9 @@ const Conjugar = (props) => {
   console.log(props);
   let verbo = props.verbo;
   let termination, verboRoot, verboString, verboTermination;
-  console.log(verbo);
-  if (verbo.reflexive == true && verbo.irregular == false) {
+  if (verbo === undefined) {
+    return null;
+  } else if (verbo.reflexive == true && verbo.irregular == false) {
     // remove last 2 letters
     verboString = verbo.spanish.slice(0, -2);
     console.log(verboString);
@@ -90,7 +94,7 @@ const Conjugar = (props) => {
     switch (termination) {
       case "-ar":
       return (
-        <RegularAr
+        <IrregularAr
           verbo={ verbo }
           verboRoot={ verboRoot }
           props={ props } />
@@ -99,7 +103,7 @@ const Conjugar = (props) => {
         break;
       case "-er":
         return (
-          <RegularEr
+          <IrregularEr
             verbo={ verbo }
             verboRoot={ verboRoot }
             props={ props } />
@@ -108,7 +112,7 @@ const Conjugar = (props) => {
         break;
       case "-ir":
         return (
-          <RegularIr
+          <IrregularIr
             verbo={ verbo }
             verboRoot={ verboRoot }
             props={ props } />
@@ -121,37 +125,37 @@ const Conjugar = (props) => {
   } else if (verbo.reflexive == false && verbo.irregular == true) {
     verboRoot = verbo.spanish.slice(0, -2);
     console.log(verboRoot);
-    switch (termination) {
-      case "-ar":
-      return (
-        <RegularAr
-          verbo={ verbo }
-          verboRoot={ verboRoot }
-          props={ props } />
-      )
-
-        break;
-      case "-er":
-        return (
-          <RegularEr
-            verbo={ verbo }
-            verboRoot={ verboRoot }
-            props={ props } />
-        )
-
-        break;
-      case "-ir":
-        return (
-          <RegularIr
-            verbo={ verbo }
-            verboRoot={ verboRoot }
-            props={ props } />
-        )
-
-        break;
-      default:
-        return null;
-    }
+    // switch (termination) {
+    //   case "-ar":
+    //   return (
+    //     <IrregularAr
+    //       verbo={ verbo }
+    //       verboRoot={ verboRoot }
+    //       props={ props } />
+    //   )
+    //
+    //     break;
+    //   case "-er":
+    //     return (
+    //       <IrregularEr
+    //         verbo={ verbo }
+    //         verboRoot={ verboRoot }
+    //         props={ props } />
+    //     )
+    //
+    //     break;
+    //   case "-ir":
+    //     return (
+    //       <IrregularIr
+    //         verbo={ verbo }
+    //         verboRoot={ verboRoot }
+    //         props={ props } />
+    //     )
+    //
+    //     break;
+    //   default:
+    //     return null;
+    // }
   }
 }
 

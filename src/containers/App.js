@@ -451,10 +451,18 @@ class App extends Component {
           // this.handleLoadPalabras();
           // this.handleLoadRandomPalabra();
         }
-        fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
-        this.setState({
-          fourLetterWord
-        });
+        if (typeof fourLetterWords === undefined) {
+          console.log("not array");
+          console.log(typeof fourLetterWords);
+          return null;
+        } else {
+          console.log("array");
+          console.log(typeof fourLetterWords);
+          fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
+          this.setState({
+            fourLetterWord
+          });
+        }
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
         } else {
@@ -469,10 +477,14 @@ class App extends Component {
           // this.handleLoadPalabras();
           // this.handleLoadRandomPalabra();
         }
-        prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
-        this.setState({
-          prefixSuffixRoot
-        });
+        if (typeof prefixSuffixRoots === undefined) {
+          return null;
+        } else {
+          prefixSuffixRoot = shuffle.pick(prefixSuffixRoots, [{ 'copy': true }, { 'picks': 1 }]);
+          this.setState({
+            prefixSuffixRoot
+          });
+        }
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('prefixSuffixRoot', JSON.stringify(prefixSuffixRoot));
         } else {
@@ -487,10 +499,14 @@ class App extends Component {
           // this.handleLoadPalabras();
           // this.handleLoadRandomPalabra();
         }
-        verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
-        this.setState({
-          verbo
-        });
+        if (typeof verbos === undefined) {
+          return null;
+        } else {
+          verbo = shuffle.pick(verbos, [{ 'copy': true }, { 'picks': 1 }]);
+          this.setState({
+            verbo
+          });
+        }
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('verbo', JSON.stringify(verbo));
         } else {
