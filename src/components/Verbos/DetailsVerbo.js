@@ -1,5 +1,5 @@
 import React from 'react';
-// import Conjugar from './ConjugarComponents/Conjugar';
+import Conjugar from './ConjugarComponents/Conjugar';
 import IrregularCategoria from './IrregularCategoria';
 import EnglishTranslation from './EnglishTranslation';
 import './DetailsVerbo.css';
@@ -7,6 +7,9 @@ import './DetailsVerbo.css';
 const DetailsVerbo = (props) => {
   console.log(props);
   let grupo;
+  let showArVerbo = props.showArVerbo;
+  let showErVerbo = props.showErVerbo;
+  let showIrVerbo = props.showIrVerbo;
   let showEnglish = props.showEnglish;
   let verbo = props.verbo;
 
@@ -14,7 +17,6 @@ const DetailsVerbo = (props) => {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
     console.log(grupo);
   }
-  console.log(english);
   if (verbo === null || verbo === undefined) {
     verbo = JSON.parse(localStorage.getItem("verbo"));
     return null;
@@ -37,6 +39,11 @@ const DetailsVerbo = (props) => {
           <IrregularCategoria
             verbo={ verbo } />
         }
+        <Conjugar
+          showArVerbo={ showArVerbo }
+          showErVerbo={ showErVerbo }
+          showIrVerbo={ showIrVerbo }
+          props={ props } />
       </div>
     )
   }

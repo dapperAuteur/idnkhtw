@@ -4,8 +4,10 @@ import RegularEr from './RegularEr';
 import RegularIr from './RegularIr';
 
 const Conjugar = (props) => {
+  console.log(props);
   let verbo = props.verbo;
   let termination, verboRoot, verboString, verboTermination;
+  console.log(verbo);
   if (verbo.reflexive == true && verbo.irregular == false) {
     // remove last 2 letters
     verboString = verbo.spanish.slice(0, -2);

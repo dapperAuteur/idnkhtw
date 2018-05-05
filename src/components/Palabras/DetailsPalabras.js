@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const DetailsPalabras = (props) => {
   console.log(props);
   let location = props.location;
-  let fourLetterWord, prefixSuffixRoot, showEnglish, verbo;
+  let fourLetterWord, prefixSuffixRoot, showArVerbo, showErVerbo, showIrVerbo, showConjugar, showEnglish, verbo;
   // if (typeof(Storage) !== "undefined") {
   //   fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
   //   prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
@@ -21,6 +21,10 @@ const DetailsPalabras = (props) => {
   // }
   fourLetterWord = props.data.fourLetterWord;
   prefixSuffixRoot = props.data.prefixSuffixRoot;
+  showArVerbo = props.data.showArVerbo;
+  showErVerbo = props.data.showErVerbo;
+  showIrVerbo = props.data.showIrVerbo;
+  showConjugar = props.data.showConjugar;
   showEnglish = props.data.showEnglish;
   verbo = props.data.verbo;
   // console.log(fourLetterWord, prefixSuffixRoot, verbo);
@@ -37,7 +41,7 @@ const DetailsPalabras = (props) => {
   //   prefixSuffixRoot = location.state.wordObj;
   //   verbo = location.state.wordObj;
   // }
-  let { onLoadPalabra, onLoadRandomPalabra, onShowEnglish } = props;
+  let { onLoadPalabra, onLoadRandomPalabra, onShowConjugar, onShowEnglish } = props;
   let { pathname } = location;
   // console.log(pathname);
 
@@ -85,9 +89,14 @@ const DetailsPalabras = (props) => {
         <div>
           <DetailsVerbo
             props={ props }
+            showArVerbo={ showArVerbo }
+            showErVerbo={ showErVerbo }
+            showIrVerbo={ showIrVerbo }
+            showConjugar={ showConjugar }
             showEnglish={ showEnglish }
             verbo={ verbo } />
           <PalabrasButtons
+            onShowConjugar={ onShowConjugar }
             onShowEnglish={ onShowEnglish }
             props={ props }/>
         </div>

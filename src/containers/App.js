@@ -23,7 +23,35 @@ class App extends Component {
       p: '',
       prefixSuffixRoot: {},
       prefixSuffixRoots: [],
+      showArVerbo: {
+        showArConditional: false,
+        showArFuture: false,
+        showArImperfect: false,
+        showArParticiple: false,
+        showArPresent: false,
+        showArPreterite: false,
+        showArRegular: false
+      },
+      showErVerbo: {
+        showErConditional: false,
+        showErFuture: false,
+        showErImperfect: false,
+        showErParticiple: false,
+        showErPresent: false,
+        showErPreterite: false,
+        showErRegular: false
+      },
+      showIrVerbo: {
+        showIrConditional: false,
+        showIrFuture: false,
+        showIrImperfect: false,
+        showIrParticiple: false,
+        showIrPresent: false,
+        showIrPreterite: false,
+        showIrRegular: false
+      },
       showEnglish: false,
+      showConjugar: false,
       showLoginForm: false,
       showSignUpForm: false,
       user: {},
@@ -550,7 +578,7 @@ class App extends Component {
   }
 
   render() {
-    const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showEnglish, showLoginForm, showSignUpForm, user, verbo, verbos } = this.state;
+    const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showArVerbo, showErVerbo, showIrVerbo, showConjugar, showEnglish, showLoginForm, showSignUpForm, user, verbo, verbos } = this.state;
     let p = this.props.location.pathname;
     return (
       <div className="App">
@@ -609,7 +637,13 @@ class App extends Component {
           onDelete={ this.handleDeletePalabra }
           onLoadPalabra={ this.handleLoadPalabra }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
+          showArVerbo={ showArVerbo }
+          showErVerbo={ showErVerbo }
+          showIrVerbo={ showIrVerbo }
           showEnglish={ showEnglish }
+          onShowConjugar={ () => this.setState({
+            showConjugar: !showConjugar
+          })}
           onShowEnglish={ () => this.setState({
             showEnglish: !showEnglish
           })}
