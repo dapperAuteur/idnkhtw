@@ -20,7 +20,7 @@ const Conjugar = (props) => {
   } else {
     console.log(verbo.spanish);
     verboRoot = verbo.spanish;
-    console.log(showArVerbo, verboRoot);
+    console.log(verboRoot);
     verboRoot = verboRoot.slice(0, -2);
     return (
       <VerboRoot
