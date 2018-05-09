@@ -9,24 +9,16 @@ import PropTypes from 'prop-types';
 const DetailsPalabras = (props) => {
   console.log(props);
   let location = props.location;
-  let fourLetterWord, prefixSuffixRoot, showArVerbo, showErVerbo, showIrVerbo, showConjugar, showEnglish, verbo;
-  // if (typeof(Storage) !== "undefined") {
-  //   fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
-  //   prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
-  //   verbo = JSON.parse(localStorage.getItem('verbo'));
-  // } else {
-  //   fourLetterWord = props.data.fourLetterWord;
-  //   prefixSuffixRoot = props.data.prefixSuffixRoot;
-  //   verbo = props.data.verbo;
-  // }
-  fourLetterWord = props.data.fourLetterWord;
-  prefixSuffixRoot = props.data.prefixSuffixRoot;
-  showArVerbo = props.data.showArVerbo;
-  showErVerbo = props.data.showErVerbo;
-  showIrVerbo = props.data.showIrVerbo;
-  showConjugar = props.data.showConjugar;
-  showEnglish = props.data.showEnglish;
-  verbo = props.data.verbo;
+  let {
+    fourLetterWord,
+    prefixSuffixRoot,
+    showArVerbo,
+    showErVerbo,
+    showIrVerbo,
+    showConjugar,
+    showEnglish,
+    verbo
+  } = props.data;
   // console.log(fourLetterWord, prefixSuffixRoot, verbo);
   let { fourLetterWords, prefixSuffixRoots, users, verbos } = props.data.props;
   // let randomWord = location.state.randomWord;
@@ -41,7 +33,12 @@ const DetailsPalabras = (props) => {
   //   prefixSuffixRoot = location.state.wordObj;
   //   verbo = location.state.wordObj;
   // }
-  let { onLoadPalabra, onLoadRandomPalabra, onShowConjugar, onShowEnglish } = props;
+  let {
+    onLoadPalabra,
+    onLoadRandomPalabra,
+    onShowConjugar,
+    onShowEnglish
+  } = props;
   let { pathname } = location;
   // console.log(pathname);
 

@@ -8,11 +8,19 @@ import './DetailsVerbo.css';
 const DetailsVerbo = (props) => {
   console.log(props);
   let grupo;
-  let showArVerbo = props.showArVerbo;
-  let showErVerbo = props.showErVerbo;
-  let showIrVerbo = props.showIrVerbo;
-  let showEnglish = props.showEnglish;
-  let verbo = props.verbo;
+  let {
+    showConjugar,
+    showArVerbo,
+    showErVerbo,
+    showIrVerbo,
+    showEnglish,
+    verbo
+  } = props;
+  // let showArVerbo = props.showArVerbo;
+  // let showErVerbo = props.showErVerbo;
+  // let showIrVerbo = props.showIrVerbo;
+  // let showEnglish = props.showEnglish;
+  // let verbo = props.verbo;
 
   if (typeof verbo.grupo === "number") {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
@@ -41,11 +49,14 @@ const DetailsVerbo = (props) => {
           <IrregularCategoria
             verbo={ verbo } />
         }
-        <Conjugar
+        {
+          showConjugar &&
+          <Conjugar
           showArVerbo={ showArVerbo }
           showErVerbo={ showErVerbo }
           showIrVerbo={ showIrVerbo }
           props={ props } />
+      }
       </div>
     )
   }

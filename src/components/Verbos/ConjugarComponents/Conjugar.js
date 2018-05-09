@@ -14,9 +14,15 @@ const Conjugar = (props) => {
   console.log(verbo);
   let termination, verboRoot, verboString, verboTermination;
   let { showArVerbo, showErVerbo, showIrVerbo } = props;
-  if (verbo === null || verbo === undefined) {
+  if (verbo !== undefined || verbo !== "undefined") {
     verbo = JSON.parse(localStorage.getItem("verbo"));
-    return null;
+    console.log(verbo);
+    // return null;
+    return (
+      <VerboRoot
+        verboRoot={ verboRoot }
+        props={ props } />
+    )
   } else {
     console.log(verbo.spanish);
     verboRoot = verbo.spanish;

@@ -653,6 +653,7 @@ class App extends Component {
           onDelete={ this.handleDeletePalabra }
           onLoadPalabra={ this.handleLoadPalabra }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
+          showConjugar={ showConjugar }
           showArVerbo={ showArVerbo }
           showErVerbo={ showErVerbo }
           showIrVerbo={ showIrVerbo }

@@ -12,13 +12,18 @@ const PalabrasButtons = (props) => {
   // console.log(user);
   let userRole = user.userRole;
   // console.log(typeof userRole);
-  let fourLetterWord = myData.props.fourLetterWord;
-  let prefixSuffixRoot = myData.props.prefixSuffixRoot;
-  let verbo = myData.props.verbo;
-  let loggedIn = myData.props.loggedIn;
-  const onDelete = myData.onDelete;
-  const onLoadRandomPalabra = myData.onLoadRandomPalabra;
-  const onShowEnglish = myData.onShowEnglish;
+  let {
+    fourLetterWord,
+    prefixSuffixRoot,
+    verbo,
+    loggedIn
+  } = myData.props;
+  let {
+    onDelete,
+    onLoadRandomPalabra,
+    onShowConjugar,
+    onShowEnglish
+  } = myData;
   console.log(onShowEnglish);
   let showEnglish = myData.showEnglish;
   let p = myProps.location.pathname;
@@ -32,19 +37,19 @@ const PalabrasButtons = (props) => {
       pathname = '/words/four-letter-word';
       update = '/words/update/four-letter-word';
       showTranslationButton = false;
-      console.log(showTranslationButton);
+      // console.log(showTranslationButton);
       break;
     case '/words/prefix-suffix-root':
       pathname = '/words/prefix-suffix-root';
       update = '/words/update/prefix-suffix-root';
       showTranslationButton = false;
-      console.log(showTranslationButton);
+      // console.log(showTranslationButton);
       break;
     case "/words/verbo":
       pathname = '/words/verbo';
       update = '/words/update/verbo';
       showTranslationButton = true;
-      console.log(showTranslationButton);
+      // console.log(showTranslationButton);
       break;
     default:
 
@@ -66,6 +71,11 @@ const PalabrasButtons = (props) => {
           </Link>
           { showTranslationButton &&
             <div>
+              <button
+                onClick={ onShowConjugar }
+                className="btn btn-default">
+                Show Conjugar
+              </button>
               <button
                 onClick={ onShowEnglish }
                 className="btn btn-default">
