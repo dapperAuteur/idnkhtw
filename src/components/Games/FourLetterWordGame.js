@@ -6,18 +6,11 @@ class FourLetterWordGame extends Component {
   constructor(props) {
     super(props);
     // pull game from state and add here;
-    console.log(props);
-    console.log(this.props);
-    console.log(props.data.props);
     let fourLetterWord = props.data.props.fourLetterWord;
     let game = props.data.props.game;
-    console.log(game);
     game.winning_word = fourLetterWord;
-    console.log(props.data.props.game);
-    console.log(game);
     const onLoadRandomPalabra = props.data.onLoadRandomPalabra;
     // const onCheckFourLetterWord = props.data.onCheckFourLetterWord;
-    console.log(onLoadRandomPalabra);
     this.state = {
       p: 'games/',
       game,
@@ -37,10 +30,7 @@ class FourLetterWordGame extends Component {
   async handleUpdateGame(){
     let { attempts, bulls, cows, guess, guesses, message, score, winning_word, won, word_to_consider_for_library } = this.state.game;
     const { letter0, letter1, letter2, letter3 } = this.state;
-    console.log(this.state.game);
-    console.log(letter0, letter1, letter2, letter3);
     guess = letter0 + letter1 + letter2 + letter3;
-    console.log(guess, winning_word);
     // if game has userId, send data to server, else keep in localStorage
     attempts++;
     // check & set cows & bulls, won, word_to_consider_for_library
@@ -58,7 +48,6 @@ class FourLetterWordGame extends Component {
       won,
       word_to_consider_for_library
     }
-    console.log(game);
 
     this.setState({
       game
@@ -68,32 +57,25 @@ class FourLetterWordGame extends Component {
   handleChange(e){
 
     let game = [...this.state.game];
-    console.log(game);
 
 
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   }
   handleSubmit(e){
     e.preventDefault();
     this.handleUpdateGame();
     let p = this.state.p;
-    console.log(this.state.game);
 
     let { ...game } = { ...this.state.game };
-    console.log(p, game);
     if (this.state.game.winning_word === undefined) {
-      console.log("NO winning_word");
     }
-    console.log(this.props);
     this.props.data.onCheckFourLetterWord(game);
   }
 
   render() {
     const { game, letter0, letter1,letter2, letter3, letters } = this.state;
-    console.log(game);
 
 
     return (

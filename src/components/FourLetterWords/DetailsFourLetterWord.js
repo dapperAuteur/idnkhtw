@@ -1,9 +1,7 @@
 import React from 'react';
 
 const DetailsFourLetterWord = (props) => {
-  console.log(props);
   let fourLetterWord = props.fourLetterWord;
-  console.log(fourLetterWord);
   if (fourLetterWord === null || fourLetterWord === undefined) {
     fourLetterWord = JSON.parse(localStorage.getItem("fourLetterWord"));
     return null;

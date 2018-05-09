@@ -5,8 +5,6 @@ import './Letter.css';
 class Letters extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
-    // console.log(this.props.props.data.props.fourLetterWord);
     // const winning_word = [...this.props.props.data.props.fourLetterWord];
     const { _id, attempts, bulls, cows, guesses, userId, score, winning_word, won, word_to_consider_for_library } = this.props.data.props.game;
     this.state = {
@@ -33,13 +31,11 @@ class Letters extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e){
-    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
   handleSubmit(e){
     e.preventDefault();
     let { p, ...pObj } = { p, ...this.state };
-    console.log(p, pObj);
   }
 
   render() {

@@ -26,7 +26,6 @@ export async function signIn(authInfo) {
       return resp.json();
     })
     .catch(function (err) {
-      console.log(err);
       return err;
     })
 }
@@ -54,7 +53,6 @@ export async function signUp(authInfo) {
       return resp.json();
     })
     .catch(function (err) {
-      console.log(err);
       return err;
     })
 }

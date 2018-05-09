@@ -6,7 +6,6 @@ import Verbo from './../Verbos/Verbo';
 import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
-  // console.log(props);
   let liveSearch = props.findPalabra.word;
   let fourLetterWord, myPalabras, newObj, prefixSuffixRoot, user, verbo;
   let p = props.p;
@@ -15,7 +14,6 @@ const Palabras = (props) => {
   // let users = [...props.users];
   let verbos = [...props.verbos];
   let onLoadPalabra = props.onLoadPalabra;
-  // console.log(verbos);
   switch (p) {
     case "four-letter-words/":
       myPalabras = fourLetterWords.filter(obj => {
@@ -70,7 +68,6 @@ const Palabras = (props) => {
     //   break;
     case "verbos/":
       myPalabras = verbos.filter((obj) => {
-        // console.log(obj);
         if (obj.spanish.search(liveSearch) > 0) {
           newObj = obj.spanish.search(liveSearch);
         } else if (obj.english.search(liveSearch) > 0) {

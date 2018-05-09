@@ -7,7 +7,6 @@ import PalabrasButtons from './PalabrasButtons';
 import PropTypes from 'prop-types';
 
 const DetailsPalabras = (props) => {
-  console.log(props);
   let location = props.location;
   let fourLetterWord, prefixSuffixRoot, showEnglish, verbo;
   // if (typeof(Storage) !== "undefined") {
@@ -23,23 +22,19 @@ const DetailsPalabras = (props) => {
   prefixSuffixRoot = props.data.prefixSuffixRoot;
   showEnglish = props.data.showEnglish;
   verbo = props.data.verbo;
-  // console.log(fourLetterWord, prefixSuffixRoot, verbo);
   let { fourLetterWords, prefixSuffixRoots, users, verbos } = props.data.props;
   // let randomWord = location.state.randomWord;
   // if (randomWord) {
-  //   // console.log(randomWord, 0);
   //   fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
   //   prefixSuffixRoot = JSON.parse(localStorage.getItem('prefixSuffixRoot'));
   //   verbo = JSON.parse(localStorage.getItem('verbo'));
   // } else {
-  //   // console.log(randomWord, 1);
   //   fourLetterWord = location.state.wordObj;
   //   prefixSuffixRoot = location.state.wordObj;
   //   verbo = location.state.wordObj;
   // }
   let { onLoadPalabra, onLoadRandomPalabra, onShowEnglish } = props;
   let { pathname } = location;
-  // console.log(pathname);
 
   switch (pathname) {
     case "/words/find-palabra":
@@ -55,7 +50,6 @@ const DetailsPalabras = (props) => {
       )
       break;
     case "/words/four-letter-word":
-    // console.log(fourLetterWord);
 
       return (
         <div>
@@ -68,7 +62,6 @@ const DetailsPalabras = (props) => {
       )
       break;
     case "/words/prefix-suffix-root":
-    // console.log(prefixSuffixRoot);
       return (
         <div>
           <DetailsPrefixSuffixRoot
@@ -80,7 +73,6 @@ const DetailsPalabras = (props) => {
       )
       break;
     case "/words/verbo":
-    // console.log(verbo);
       return (
         <div>
           <DetailsVerbo

@@ -3,14 +3,12 @@ import IrregularCategoria from './IrregularCategoria';
 import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
-  console.log(props);
   let grupo;
   let showEnglish = props.showEnglish;
   let verbo = props.verbo;
 
   if (typeof verbo.grupo === "number") {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
-    console.log(grupo);
   }
 
   if (verbo === null || verbo === undefined) {

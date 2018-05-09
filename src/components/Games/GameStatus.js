@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import './GameStatus.css';
 
 const GameStatus = (props) => {
-  console.log(props);
   const { game, onCreateGame } = { ...props };
   let { attempts, bulls, cows, guess, message, name, score, winning_word, won } = { ...game };
-  console.log(game);
 
   if (won) {
     return (

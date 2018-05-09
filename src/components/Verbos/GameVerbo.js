@@ -6,12 +6,9 @@ const GameVerbo = props => {
   // const { verbo } = props;
   const verbo = props.data.props.verbo;
   let showHint = false;
-  console.log(0, props.data.props.verbo);
   const hint = () => {
     showHint = !showHint;
-    console.log(showHint);
     if (showHint) {
-      console.log("obj");
       return (
         <div>
           <h3>Reflexive: { verbo.reflexive }</h3>

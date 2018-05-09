@@ -1,13 +1,9 @@
 import React from 'react';
 
 const ShowPalabra =(props) => {
-  console.log(props);
   let myHash = props.location.hash;
-  console.log(myHash);
   let locationState = props.location.state;
-  console.log(locationState);
   let wordObj = locationState.wordObj;
-  console.log(wordObj);
 
   switch (myHash) {
     case "#fourLetterWords":

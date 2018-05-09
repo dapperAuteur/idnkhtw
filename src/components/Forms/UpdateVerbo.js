@@ -33,7 +33,6 @@ class UpdateVerbo extends Component {
     e.preventDefault();
     let p = this.state.p;
     let { ...pObj } = { ...this.state };
-    console.log(this.state);
     // let {
     //   _id,
     //   cambiar_de_irregular,
@@ -56,7 +55,6 @@ class UpdateVerbo extends Component {
     //   spanish,
     //   terminación
     // };
-    // console.log("verbo: ",verbo, "pObj: ", pObj);
     // if (typeof(Storage) !== "undefined") {
     //   localStorage.setItem('verbo', JSON.stringify(verbo));
     // } else {

@@ -4,11 +4,10 @@
 const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/';
 
 export async function onAuth(params) {
-  // console.log(params);
+
 }
 
 export async function getPalabras(param) {
-  // console.log(param);
   return fetch(`${APIURL}${param}`)
     .then(resp => {
       if (!resp.ok) {
@@ -25,13 +24,11 @@ export async function getPalabras(param) {
       return resp.json();
     })
       .catch(function (err) {
-        console.log(err);
         return err;
       })
 }
 
 export async function getPalabra(p, pObj) {
-  console.log(p, pObj);
   return fetch(`${APIURL}${p}${pObj._id}`)
     .then(resp => {
       if (!resp.ok) {
@@ -48,13 +45,11 @@ export async function getPalabra(p, pObj) {
       return resp.json();
     })
       .catch(function (err) {
-        console.log(err);
         return err;
       })
 }
 
 export async function createPalabra(p, pObj) {
-  console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
   let role = `Role ${pObj.userRole}`;
   return fetch(`${APIURL}${p}`, {
@@ -81,16 +76,13 @@ export async function createPalabra(p, pObj) {
       return resp.json();
     })
       .catch(function (err) {
-        console.log(err);
         return err;
       })
 }
 
 export async function removePalabra(p, pObj) {
-  console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
   let role = `Role ${pObj.userRole}`;
-  console.log(token);
   return fetch(`${APIURL}${p}${pObj._id}`, {
     method: 'delete',
     headers: new Headers({
@@ -114,16 +106,13 @@ export async function removePalabra(p, pObj) {
       return resp.json();
     })
       .catch(function (err) {
-        console.log(err);
         return err;
       })
 }
 
 export async function updatePalabra(p, pObj) {
-  console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
   let role = `Role ${pObj.userRole}`;
-  console.log(token);
   return fetch(`${APIURL}${p}${pObj._id}`, {
     method: 'put',
     headers: new Headers({
@@ -148,7 +137,6 @@ export async function updatePalabra(p, pObj) {
       return resp.json();
     })
       .catch(function (err) {
-        console.log(err);
         return err;
       })
 }

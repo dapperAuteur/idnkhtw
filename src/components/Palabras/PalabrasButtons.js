@@ -2,16 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PalabrasButtons = (props) => {
-  console.log(props);
   let myProps = props.props;
   let myData = myProps.data;
   let pathname;
-  // console.log(myData);
-  // console.log(myData.props);
   let user = myData.props.user;
-  // console.log(user);
   let userRole = user.userRole;
-  // console.log(typeof userRole);
   let fourLetterWord = myData.props.fourLetterWord;
   let prefixSuffixRoot = myData.props.prefixSuffixRoot;
   let verbo = myData.props.verbo;
@@ -19,7 +14,6 @@ const PalabrasButtons = (props) => {
   const onDelete = myData.onDelete;
   const onLoadRandomPalabra = myData.onLoadRandomPalabra;
   const onShowEnglish = myData.onShowEnglish;
-  console.log(onShowEnglish);
   let p = myProps.location.pathname;
   let update;
   // if ((fourLetterWord === undefined || prefixSuffixRoot === undefined || verbo === undefined) || (!fourLetterWord.hasOwnProperty('_id') || !prefixSuffixRoot.hasOwnProperty('_id') || !verbo.hasOwnProperty('_id'))) {

@@ -63,7 +63,6 @@ class App extends Component {
     } else {
       currentUser = await authCalls.signIn(user);
     }
-    // console.log(currentUser);
     if (currentUser.hasOwnProperty('errorMessage')) {
       errorMessage = currentUser;
       this.setState({
@@ -147,27 +146,19 @@ class App extends Component {
     let { attempts, bulls, cows, guess, guesses, message, score, winning_word, won, word_to_consider_for_library } = { ...game };
     bulls = 0;
     cows = 0;
-    console.log(guess);
-    console.log(game);
-    console.log(guesses);
     guess = guesses.slice(-1);
     guess = guess[0].toLowerCase();
-    console.log(guess);
     let word = winning_word.word;
-    console.log(word);
     let currentGuess = this.state.fourLetterWords.filter(word => word.word === guess);
-    console.log(currentGuess);
     if (currentGuess.length === 0) {
       word_to_consider_for_library.push(guess);
       message = `${guess} is NOT word in our library. We'll consider adding it to the library. You lose 200 points`;
       score -= 200;
-      console.log(`message: ${message}, score: ${score}`);
     } else if (guess === word) {
       bulls = 4;
       message = 'You Won!!!';
       score += 500;
       won = true;
-      console.log(`bulls: ${bulls}, message: ${message}, score: ${score}, won: ${won}`);
     } else {
       let arr_guess = guess.split("");
       let arr_word = word.split("");
@@ -194,7 +185,6 @@ class App extends Component {
       }
       message = `You didn't win yet.`
       won = false;
-      console.log(`cows: ${cows}, bulls: ${bulls}, message: ${message}, score: ${score}, won: ${won}`);
     }
     game = {
       attempts,
@@ -208,7 +198,6 @@ class App extends Component {
       won,
       word_to_consider_for_library
     }
-    console.log(game);
     this.setState({ game });
     localStorage.setItem("game", JSON.stringify(game));
   }
@@ -217,7 +206,6 @@ class App extends Component {
     let winning_word;
     this.handleLoadRandomPalabra();
 
-    console.log(winning_word);
     let user;
 
     let game = {
@@ -233,7 +221,6 @@ class App extends Component {
       word_to_consider_for_library: []
     }
     this.setState({ game });
-    console.log(game, user, winning_word);
   }
 
   async handleDeletePalabra() {
@@ -308,12 +295,10 @@ class App extends Component {
         default:
 
       }
-      console.log(deletedPalabra);
     }
   }
 
   async handleLoadPalabra(p, wordObj) {
-    console.log(p, wordObj);
     let palabra = wordObj;
     let params;
     switch (p) {
@@ -329,20 +314,6 @@ class App extends Component {
       default:
 
     }
-    console.log(params);
-    // if (pObj.hasOwnProperty('_id')) {
-    //   palabra = await apiCalls.getPalabra(p, pObj);
-    // } else if (pObj.hasOwnProperty('word')) {
-    //   let word = pObj.word;
-    //   let findPalabra = this.state[params].filter(param => param.word === word);
-    //   findPalabra = findPalabra[0];
-    //   if (findPalabra === undefined) {
-    //     let err = { errorMessage: 'Word NOT Found!' };
-    //     return err;
-    //   } else if (findPalabra.hasOwnProperty('_id')) {
-    //     palabra = await apiCalls.getPalabra(p, findPalabra);
-    //   }
-    // }
 
     switch (p) {
       case "four-letter-words/":
@@ -408,15 +379,11 @@ class App extends Component {
     let prefixSuffixRoots;
     let verbo;
     let verbos;
-    // console.log(this.props.location);
     let p = this.props.location.pathname;
     // let p = "four-letter-words/";
-    // console.log(p);
-    // console.log(this.state);
-    // console.log(localStorage);
+
     switch (p) {
       case '/words/four-letter-word':
-        // console.log(1);
         if (this.state.fourLetterWords.length !== 0) {
           fourLetterWords = [...this.state.fourLetterWords];
         } else {
@@ -434,7 +401,6 @@ class App extends Component {
         }
         break;
       case '/words/prefix-suffix-root':
-        // console.log(2);
         if (this.state.prefixSuffixRoots.length !== 0) {
           prefixSuffixRoots = [...this.state.prefixSuffixRoots];
         } else {
@@ -452,7 +418,6 @@ class App extends Component {
         }
         break;
       case '/words/verbo':
-        // console.log(3);
         if (this.state.verbos.length !== 0) {
           verbos = [...this.state.verbos];
         } else {
@@ -470,7 +435,6 @@ class App extends Component {
         }
         break;
       default:
-        // console.log(4);
       if (this.state.fourLetterWords) {
         fourLetterWords = [...this.state.fourLetterWords];
       } else {

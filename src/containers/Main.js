@@ -65,7 +65,6 @@ class Main extends Component {
 
   render() {
 
-    // console.log(props);
 
     return (
       <div className="Main">
