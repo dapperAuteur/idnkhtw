@@ -6,10 +6,10 @@ import * as espVerbosIr from './../../../actions/conjugateEspVerbosIrregular';
 const VerboRoot = (props) => {
   console.log(props);
   let verboRoot = props.verboRoot;
-  let verboConjugate = verboRoot + espVerbos.ArPresentParticiple;
+  let verboConjugate = verboRoot + espVerbos.AR_PRESENT_PARTICIPLE;
 
-  // console.log(verboRoot + espVerbos.ArPresentParticiple);
-  // console.log(espVerbos.ArImperfect);
+  // console.log(verboRoot + espVerbos.AR_PRESENT_PARTICIPLE);
+  // console.log(espVerbos.AR_IMPERFECT);
   return (
     <h4>
       { verboConjugate }

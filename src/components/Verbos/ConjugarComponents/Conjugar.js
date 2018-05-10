@@ -1,4 +1,6 @@
 import React from 'react';
+import * as conjVerb from './../../../actions/conjugateEspVerbos';
+import * as conjVerbIr from './../../../actions/conjugateEspVerbosIrregular';
 import IrregularAr from './IrregularAr';
 import IrregularEr from './IrregularEr';
 import IrregularIr from './IrregularIr';
@@ -9,30 +11,32 @@ import VerboRoot from './VerboRoot';
 
 const Conjugar = (props) => {
   console.log(props);
+  console.log(conjVerb);
 
   let verbo = props.props.verbo;
   console.log(verbo);
-  let termination, verboRoot, verboString, verboTermination;
-  let { showArVerbo, showErVerbo, showIrVerbo } = props;
+  let conjugatedVerbo, conjugatedVerbos, termination, verboRoot, verboString, verboTermination;
+  let {
+    showArVerbo,
+    showErVerbo,
+    showIrVerbo
+  } = props;
   if (verbo !== undefined || verbo !== "undefined") {
-    verbo = JSON.parse(localStorage.getItem("verbo"));
     console.log(verbo);
-    // return null;
-    return (
+    conjugatedVerbos = conjVerb.arPresentVerbos(verbo.spanish, conjVerb.AR_PRESENT);
+    conjugatedVerbos = conjVerb.AR_PRESENT.map(verbo => (
       <VerboRoot
         verboRoot={ verboRoot }
         props={ props } />
-    )
-  } else {
-    console.log(verbo.spanish);
-    verboRoot = verbo.spanish;
-    console.log(verboRoot);
-    verboRoot = verboRoot.slice(0, -2);
+    ));
     return (
-      <VerboRoot
-        verboRoot={ verboRoot }
-        props={ props } />
-    )
+      { conjugatedVerbos }
+    );
+    // return (
+    //   <VerboRoot
+    //     verboRoot={ verboRoot }
+    //     props={ props } />
+    // )
   }
 }
 // const Conjugar = (props) => {

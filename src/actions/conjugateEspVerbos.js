@@ -1,78 +1,103 @@
-export const ArPresent = [
-  { "yo": "o" },
-  { "tú": "as" },
-  { "3rd": "a" },
-  { "nosotros": "amos" },
-  { "vosotros": "áis" },
-  { "3rd plural": "an" },
+export const AR_PRESENT = [
+  "o",
+  "as",
+  "a",
+  "amos",
+  "áis",
+  "an",
 ];
-export const ArPreterite = [
-  { "yo": "é" },
-  { "tú": "aste" },
-  { "3rd": "ó" },
-  { "nosotros": "amos" },
-  { "vosotros": "asteis" },
-  { "3rd plural": "aron" },
+export const AR_PRETERITE = [
+  "é",
+  "aste",
+  "ó",
+  "amos",
+  "asteis",
+  "aron",
 ];
-export const ArConditional = [
-  { "yo": "aría" },
-  { "tú": "arías" },
-  { "3rd": "aría" },
-  { "nosotros": "aríamos" },
-  { "vosotros": "aríais" },
-  { "3rd plural": "arían" },
+export const AR_CONDITIONAL = [
+  "aría",
+  "arías",
+  "aría",
+  "aríamos",
+  "aríais",
+  "arían",
 ];
-export const ArImperfect = [
-  { "yo": "aba" },
-  { "tú": "abas" },
-  { "3rd": "aba" },
-  { "nosotros": "ábamos" },
-  { "vosotros": "abais" },
-  { "3rd plural": "aban" },
+export const AR_IMPERFECT = [
+  "aba",
+  "abas",
+  "aba",
+  "ábamos",
+  "abais",
+  "aban",
 ];
-export const ArFuture = [
-  { "yo": "aré" },
-  { "tú": "arás" },
-  { "3rd": "ará" },
-  { "nosotros": "aremos" },
-  { "vosotros": "aréis" },
-  { "3rd plural": "arán" },
+export const AR_FUTURE = [
+  "aré",
+  "arás",
+  "ará",
+  "aremos",
+  "aréis",
+  "arán",
 ];
-export const ArPresentParticiple = "ando";
-export const ArPastParticiple = "ado";
+export const AR_PRESENT_PARTICIPLE = "ando";
+export const AR_PAST_PARTICIPLE = "ado";
 
-export function arPresentVerbos(rootVerb = "") {
+export function arPresentVerbos(rootVerb = "", AR_PRESENT) {
   let arPresentVerbo = [];
   // loop over keys
   // concatenate value to end of root verb;
+  for (var i = 0; i < AR_PRESENT.length; i++) {
+    let root = rootVerb + AR_PRESENT[i];
+    arPresentVerbo.push(root);
+  }
+  console.log(arPresentVerbo);
   return arPresentVerbo;
 }
 
-export function arPreteriteVerbos(rootVerb = "") {
+export function arPreteriteVerbos(rootVerb = "", AR_PRETERITE) {
   let arPreteriteVerbo = [];
   // loop over keys
   // concatenate value to end of root verb;
+  for (var i = 0; i < AR_PRETERITE.length; i++) {
+    let root = rootVerb + AR_PRETERITE[i];
+    arPreteriteVerbo.push(root);
+  }
+  console.log(arPreteriteVerbo);
   return arPreteriteVerbo;
 }
 
-export function arConditionalVerbos(rootVerb = "") {
+export function arConditionalVerbos(rootVerb = "", AR_CONDITIONAL) {
   let arConditionalVerbo = [];
   // loop over keys
   // concatenate value to end of root verb;
+  for (var i = 0; i < AR_CONDITIONAL.length; i++) {
+    let root = rootVerb + AR_CONDITIONAL[i];
+    arConditionalVerbo.push(root);
+  }
+  console.log(arConditionalVerbo);
   return arConditionalVerbo;
 }
 
-export function arImperfectVerbos(rootVerb = "") {
+export function arImperfectVerbos(rootVerb = "", AR_IMPERFECT) {
   let arImperfectVerbo = [];
   // loop over keys
   // concatenate value to end of root verb;
+  for (var i = 0; i < AR_IMPERFECT.length; i++) {
+    let root = rootVerb + AR_IMPERFECT[i];
+    arImperfectVerbo.push(root);
+  }
+  console.log(arImperfectVerbo);
   return arImperfectVerbo;
 }
 
-export function arFutureVerbos(rootVerb = "") {
+export function arFutureVerbos(rootVerb = "", AR_FUTURE) {
   let arFutureVerbo = [];
   // loop over keys
   // concatenate value to end of root verb;
+  for (var i = 0; i < AR_FUTURE.length; i++) {
+    let root = rootVerb + AR_FUTURE[i];
+    arFutureVerbo.push(root);
+  }
+  console.log(arFutureVerbo);
   return arFutureVerbo;
 }
 
