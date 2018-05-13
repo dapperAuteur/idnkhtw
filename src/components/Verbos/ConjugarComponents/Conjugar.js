@@ -25,13 +25,10 @@ const Conjugar = (props) => {
     console.log(verbo);
     conjugatedVerbos = conjVerb.arPresentVerbos(verbo.spanish, conjVerb.AR_PRESENT);
     conjugatedVerbos = conjVerb.AR_PRESENT.map(verbo => (
-      <VerboRoot
-        verboRoot={ verboRoot }
-        props={ props } />
+
+      return
     ));
-    return (
-      { conjugatedVerbos }
-    );
+
     // return (
     //   <VerboRoot
     //     verboRoot={ verboRoot }
