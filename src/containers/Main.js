@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Comics from './../components/Comics/Comics';
 import AhSchucks from './../components/Commerce/AhSchucks';
 import ThankYou from './../components/Commerce/ThankYou';
+import Blog from './../components/Blog/Blog';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
 import CreateVerbo from './../components/Forms/CreateVerbo';
@@ -30,6 +31,10 @@ const routes = [
   {
     path: '/comics',
     component: Comics
+  },
+  {
+    path: '/blog',
+    component: Blog
   },
   {
     path: '/words/new/four-letter-word',
