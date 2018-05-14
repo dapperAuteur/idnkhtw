@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import './../CSS/Form.css';
 
 class CreateBlogPost extends Component {
+  static defaultProps = {
+    onSavePost() {}
+  }
   constructor(props) {
     super(props);
     console.log(props.props.onSavePost);
     this.state = {
-      post: '',
+      text: '',
       title: ''
     }
     this.handleChange = this.handleChange.bind(this);
@@ -25,13 +28,13 @@ class CreateBlogPost extends Component {
     let p = "posts";
     this.props.props.onSavePost({ p, pObj });
     this.setState({
-      post: '',
+      text: '',
       title: ''
     });
   }
 
   render() {
-    const { post, title } = this.state;
+    const { text, title } = this.state;
     return (
       <div>
         <h1>Create Blog Post</h1>
@@ -53,16 +56,16 @@ class CreateBlogPost extends Component {
           </input>
           <label
             htmlFor='blog-post'>
-            Post
+            Text
           </label>
           <input
-            id='post'
-            key='post'
+            id='text'
+            key='text'
             type='text'
-            name='post'
+            name='text'
             className='form-control'
             autoComplete='off'
-            value={ post }
+            value={ text }
             onChange={ this.handleChange }>
           </input>
           <button

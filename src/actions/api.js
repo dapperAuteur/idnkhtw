@@ -1,7 +1,7 @@
 // dev server
-// const APIURL = '//localhost:8081/api/ver0001/';
+const APIURL = '//localhost:8081/api/ver0001/';
 // deployed server on heroku
-const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/';
+// const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/';
 
 export async function onAuth(params) {
 
@@ -50,8 +50,10 @@ export async function getPalabra(p, pObj) {
 }
 
 export async function createPalabra(p, pObj) {
+  console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
   let role = `Role ${pObj.userRole}`;
+  let userId = `UserId ${pObj.userId}`;
   return fetch(`${APIURL}${p}`, {
     method: 'post',
     headers: new Headers({

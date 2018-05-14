@@ -118,6 +118,14 @@ class App extends Component {
 
   // Blog Functions
   async handleAddPost(p, pObj) {
+    console.log(p, pObj);
+    let { token, userId, userRole } = this.state.user;
+    // let userId = this.state.user.userId;
+    // let userRole = this.state.user.userRole;
+    // let token = this.state.user.token;
+    pObj.userId = userId;
+    pObj.userRole = userRole;
+    pObj.token = token;
     console.log(pObj);
     let newPost = await apiCalls.createPalabra(p, pObj);
     // let params = p.slice(0, -1);
@@ -134,9 +142,9 @@ class App extends Component {
   }
 
   async handleLoadBlogPost(p = 'posts', pObj) {
-    let post = await apiCalls.getPalabra(p, pObj);
-    console.log(post);
-    this.setState({ post });
+    let text = await apiCalls.getPalabra(p, pObj);
+    console.log(text);
+    this.setState({ text });
   }
 
   async handleLoadBlogPosts() {
@@ -144,7 +152,9 @@ class App extends Component {
     console.log(posts);
     this.setState({ posts });
   }
-  handleSavePost=(p, pObj) => {
+  handleSavePost=(params) => {
+    let { p, pObj } = params;
+    console.log(p);
     console.log(pObj);
     if (pObj.hasOwnProperty('_id')) {
       this.handleUpdatePost(p, pObj);
@@ -156,9 +166,10 @@ class App extends Component {
   async handleUpdatePost(p, pObj) {
     console.log(pObj);
     let posts;
-    let { token, userRole } = this.state.user;
+    let { token, userId, userRole } = this.state.user;
     // let userRole = this.state.user.userRole;
     // let token = this.state.user.token;
+    pObj.userId = userId;
     pObj.userRole = userRole;
     pObj.token = token;
     let updatedPost = await apiCalls.updatePalabra(p, pObj);
@@ -179,6 +190,13 @@ class App extends Component {
 
   // CRUD functions
   async handleAddPalabra(p, pObj) {
+    let { token, userId, userRole } = this.state.user;
+    // let userId = this.state.user.userId;
+    // let userRole = this.state.user.userRole;
+    // let token = this.state.user.token;
+    pObj.userId = userId;
+    pObj.userRole = userRole;
+    pObj.token = token;
     let newPalabra = await apiCalls.createPalabra(p, pObj);
     let params = p.slice(0, -1);
     switch (params) {
@@ -293,8 +311,9 @@ class App extends Component {
   }
 
   async handleDeletePalabra() {
-    let userRole = this.state.user.userRole;
-    let token = this.state.user.token;
+    let { token, userId, userRole } = this.state.user;
+    // let userRole = this.state.user.userRole;
+    // let token = this.state.user.token;
     let pathname = this.props.history.location.pathname;
     let params = pathname.slice(7) + 's';
     if (params === 'words/four-letter-word') {
@@ -532,8 +551,11 @@ class App extends Component {
   }
 
   async handleUpdatePalabra(p, pObj) {
-    let userRole = this.state.user.userRole;
-    let token = this.state.user.token;
+    let { token, userId, userRole } = this.state.user;
+    // let userId = this.state.user.userId;
+    // let userRole = this.state.user.userRole;
+    // let token = this.state.user.token;
+    pObj.userId = userId;
     pObj.userRole = userRole;
     pObj.token = token;
     let updatedPalabra = await apiCalls.updatePalabra(p, pObj);
