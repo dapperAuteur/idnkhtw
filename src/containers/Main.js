@@ -104,6 +104,10 @@ class Main extends Component {
               path={ path }
               render={ (props) => <C
                 { ...props }
+                onDeleteBlog={ this.props.onDeleteBlog }
+                onLoadBlogPost={ this.props.onLoadBlogPost }
+                onLoadBlogPosts={ this.props.onLoadBlogPosts }
+                onSavePost={ this.props.onSavePost }
                 onLoadPalabra={ this.props.onLoadPalabra }
                 onLoadRandomPalabra={ this.props.onLoadRandomPalabra }
                 onShowEnglish={ this.props.onShowEnglish }
