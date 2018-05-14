@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import shuffle from 'shuffle-array';
-import * as apiCalls from '../actions/api';
+import * as apiCalls from './../actions/api';
 import * as authCalls from './../actions/authApi';
 import AuthForm from './../components/Forms/AuthForm';
 import ErrorMessages from './../components/Errors/ErrorMessages'
@@ -21,6 +21,8 @@ class App extends Component {
       games: [],
       loggedIn: false,
       p: '',
+      post: {},
+      posts: [],
       prefixSuffixRoot: {},
       prefixSuffixRoots: [],
       showEnglish: false,
@@ -35,18 +37,23 @@ class App extends Component {
     this.handleAuth = this.handleAuth.bind(this);
     this.handleCreateGame = this.handleCreateGame.bind(this);
     this.handleCheckFourLetterWord = this.handleCheckFourLetterWord.bind(this);
+    this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
     this.handleDeletePalabra = this.handleDeletePalabra.bind(this);
+    this.handleLoadBlogPost = this.handleLoadBlogPost.bind(this);
+    this.handleLoadBlogPosts = this.handleLoadBlogPosts.bind(this);
     this.handleLoadPalabra = this.handleLoadPalabra.bind(this);
     this.handleLoadPalabras = this.handleLoadPalabras.bind(this);
     this.handleLoadRandomPalabra = this.handleLoadRandomPalabra.bind(this);
     this.handleLoadUser = this.handleLoadUser.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleSavePost = this.handleSavePost.bind(this);
   }
 
   componentDidMount() {
     this.handleLoadPalabras();
     this.handleLoadUser();
+    this.handleLoadBlogPosts();
   }
 
   async loadRandomPalabras() {
@@ -106,6 +113,67 @@ class App extends Component {
       user
     });
     this.props.history.push('/');
+  }
+
+  // Blog Functions
+  async handleAddPost(p, pObj) {
+    console.log(pObj);
+    let newPost = await apiCalls.createPalabra(p, pObj);
+    // let params = p.slice(0, -1);
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem('post', JSON.stringify(newPost));
+    } else {
+      return null;
+    }
+    this.setState({ post: newPost });
+  }
+
+  async handleDeleteBlog(p = 'posts', pObj) {
+    console.log("delete blog post");
+  }
+
+  async handleLoadBlogPost(p = 'posts', pObj) {
+    let post = await apiCalls.getPalabra(p, pObj);
+    console.log(post);
+    this.setState({ post });
+  }
+
+  async handleLoadBlogPosts() {
+    let posts = await apiCalls.getPalabras('posts');
+    console.log(posts);
+    this.setState({ posts });
+  }
+  handleSavePost=(p, pObj) => {
+    console.log(pObj);
+    if (pObj.hasOwnProperty('_id')) {
+      this.handleUpdatePost(p, pObj);
+    } else {
+      this.handleAddPost(p, pObj);
+    }
+  }
+
+  async handleUpdatePost(p, pObj) {
+    console.log(pObj);
+    let posts;
+    let { token, userRole } = this.state.user;
+    // let userRole = this.state.user.userRole;
+    // let token = this.state.user.token;
+    pObj.userRole = userRole;
+    pObj.token = token;
+    let updatedPost = await apiCalls.updatePalabra(p, pObj);
+    // let params = p.slice(0, -1);
+    const palabras = this.state.posts.map(post => (post._id === updatedPost._id) ? { ...post, ...updatedPost } : post)
+
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem('post', JSON.stringify(updatedPost));
+      localStorage.setItem('posts', JSON.stringify(posts));
+    } else {
+      return null;
+    }
+    this.setState({
+      post: updatedPost,
+      posts: posts
+    });
   }
 
   // CRUD functions
@@ -228,21 +296,21 @@ class App extends Component {
     let token = this.state.user.token;
     let pathname = this.props.history.location.pathname;
     let params = pathname.slice(7) + 's';
-    if (params === 'four-letter-words') {
+    if (params === 'words/four-letter-word') {
       params = 'fourLetterWords';
     } else if (params === 'prefix-suffix-roots') {
       params = 'prefixSuffixRoots';
     }
     let p = params + '/';
     let palabra;
-    switch (params) {
-      case 'fourLetterWords':
+    switch (pathname) {
+      case '/words/four-letter-word':
         palabra = this.state.fourLetterWord;
         break;
-      case 'prefixSuffixRoots':
+      case '/words/prefix-suffix-root':
         palabra = this.state.prefixSuffixRoot;
         break;
-      case 'verbos':
+      case '/words/verbo':
         palabra = this.state.verbo;
         break;
       default:
@@ -522,6 +590,7 @@ class App extends Component {
           fourLetterWord={ fourLetterWord }
           prefixSuffixRoot={ prefixSuffixRoot }
           onCreateGame={ this.handleCreateGame }
+          onLoadBlogPosts={ this.handleLoadBlogPosts }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onLogout={ this.handleLogOut }
           verbo={ verbo }
@@ -563,6 +632,10 @@ class App extends Component {
         }
         <Main
           props={ this.state }
+          onDeleteBlog={ this.handleDeleteBlog }
+          onLoadBlogPost={ this.handleLoadBlogPost }
+          onLoadBlogPosts={ this.handleLoadBlogPosts }
+          onSavePost={ this.handleSavePost }
           fourLetterWord={ fourLetterWord }
           fourLetterWords={ fourLetterWords }
           prefixSuffixRoot={ prefixSuffixRoot }

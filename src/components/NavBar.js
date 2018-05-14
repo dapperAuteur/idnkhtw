@@ -9,6 +9,7 @@ const NavBar = (props) => {
     user,
     verbo,
     onCreateGame,
+    onLoadBlogPosts,
     onLoadRandomPalabra,
     onLogout,
     onShowLoginForm,
@@ -57,6 +58,7 @@ const NavBar = (props) => {
                 pathname: '/blog',
                 state: { p: 'blog/' }
               }}
+              onClick={ onLoadBlogPosts }
               className='btn btn-default'
             >
               Blog
