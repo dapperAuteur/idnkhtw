@@ -79,7 +79,7 @@ class VerboForm extends Component {
       spanish: '',
       terminación: ''
     });
-    // this.props.history.push('/words/verbo');
+    this.props.history.push('/words/verbo');
   }
 
   render(){
@@ -107,7 +107,7 @@ class VerboForm extends Component {
               value={ spanish }
               size={ 15 }
               autoComplete="off"
-              onChange={ this.handleChange } />| { verbo.spanish }
+              onChange={ this.handleChange } /> | { verbo.spanish }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-english-input'>English Translation</label>
@@ -119,7 +119,7 @@ class VerboForm extends Component {
               value={ english }
               size={ 15 }
               autoComplete="off"
-              onChange={ this.handleChange } />| { verbo.english }
+              onChange={ this.handleChange } /> | { verbo.english }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-reflexive-input'>Reflexive</label>
@@ -130,7 +130,7 @@ class VerboForm extends Component {
               type='boolean'
               value={ reflexive }
               size={ 10 }
-              onChange={ this.handleChange } />| { verbo.reflexive }
+              onChange={ this.handleChange } /> | { verbo.reflexive }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-irregular-input'>Irregular</label>
@@ -141,7 +141,7 @@ class VerboForm extends Component {
               type='boolean'
               value={ irregular }
               size={ 10 }
-              onChange={ this.handleChange } />| { verbo.irregular }
+              onChange={ this.handleChange } /> | { verbo.irregular }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-categoría-de-irregular-input'>Categoría de Irregular</label>
@@ -153,7 +153,7 @@ class VerboForm extends Component {
               value={ categoría_de_irregular }
               size={ 10 }
               autoComplete="off"
-              onChange={ this.handleChange } />| { verbo.categoría_de_irregular }
+              onChange={ this.handleChange } /> | { verbo.categoría_de_irregular }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-cambiar-de-irregular-input'>Cambiar de Irregular</label>
@@ -165,7 +165,7 @@ class VerboForm extends Component {
               value={ cambiar_de_irregular }
               size={ 10 }
               autoComplete="off"
-              onChange={ this.handleChange } />| { verbo.cambiar_de_irregular }
+              onChange={ this.handleChange } /> | { verbo.cambiar_de_irregular }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-terminación-input'>Terminación</label>
@@ -177,7 +177,7 @@ class VerboForm extends Component {
               value={ terminación }
               size={ 10 }
               autoComplete="off"
-              onChange={ this.handleChange } />| { verbo.terminación }
+              onChange={ this.handleChange } /> | { verbo.terminación }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-grupo'>Grupo</label>
@@ -188,7 +188,7 @@ class VerboForm extends Component {
               type='decimal'
               value={ grupo }
               autoComplete="off"
-              onChange={ this.handleChange } />| { verbo.grupo }
+              onChange={ this.handleChange } /> | { verbo.grupo }
           </div>
           <Link
             to={{

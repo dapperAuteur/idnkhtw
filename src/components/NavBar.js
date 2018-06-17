@@ -10,20 +10,25 @@ const NavBar = (props) => {
   const {
     currentUser,
     fourLetterWord,
-    prefixSuffixRoot,
     onClickShowLoginForm,
     onClickShowSignUpForm,
     onClickSignOut,
     onLoadForms,
     onLoadLanguages,
+    prefixSuffixRoots,
     verbos,
     onCreateGame,
     onLoadBlogPosts,
     onLoadRandomPalabra,
+    onLoadPrefixSuffixRoots,
+    onRandomPrefixSuffixRoot,
     onLoadVerbos
   } = props;
   if (verbos.length === 0) {
     onLoadVerbos();
+  }
+  if (prefixSuffixRoots.length === 0) {
+    onLoadPrefixSuffixRoots();
   }
 
   return (
@@ -102,13 +107,9 @@ const NavBar = (props) => {
           </Link>
           <Link
             to={{
-              pathname: '/words/prefix-suffix-root',
-              state: {
-                p: 'prefix-suffix-roots/',
-                prefixSuffixRoot
-              }
+              pathname: '/words/prefix-suffix-root'
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ onRandomPrefixSuffixRoot }
             className='btn btn-default'
           >
             Prefix Suffix Root
@@ -177,7 +178,7 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
-    verbo: state.verboReducer.verbo,
+    prefixSuffixRoots: state.prefixSuffixRootReducer.prefixSuffixRoots,
     verbos: state.verboReducer.verbos
   }
 }
@@ -188,6 +189,8 @@ const mapDispatchToProps = dispatch => {
     onClickSignOut: () => dispatch(actions.userLogout()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
     onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),
+    onLoadPrefixSuffixRoots: () => dispatch(actions.loadPrefixSuffixRoots()),
+    onRandomPrefixSuffixRoot: () => dispatch(actions.randomPrefixSuffixRoot()),
     onLoadVerbos: () => dispatch(actions.loadVerbos()),
     onRandomVerbo: () => dispatch(actions.randomVerbo())
   }
