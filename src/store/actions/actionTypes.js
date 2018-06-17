@@ -9,3 +9,13 @@ export const SHOW_LOGIN_FORM = "SHOW_LOGIN_FORM";
 export const SHOW_SIGN_UP_FORM = "SHOW_SIGN_UP_FORM";
 // error
 export const SET_ERROR = "SET_ERROR";
+// verbo
+export const ADD_VERBO = "ADD_VERBO";
+export const DELETE_VERBO = "DELETE_VERBO";
+export const LOAD_VERBO = "LOAD_VERBO";
+export const LOAD_VERBOS = "LOAD_VERBOS";
+export const UPDATE_VERBO = "UPDATE_VERBO";
+export const REQUEST_VERBO = "REQUEST_VERBO";
+export const REQUEST_VERBOS = "REQUEST_VERBOS";
+export const SET_VERBO = "SET_VERBO";
+export const SET_VERBOS = "SET_VERBOS";
