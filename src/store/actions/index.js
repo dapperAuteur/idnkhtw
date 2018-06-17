@@ -13,4 +13,4 @@ export {
   loadVerbo,
   loadVerbos,
   updateVerbo
-} from './formActions';
+} from './verboActions';
