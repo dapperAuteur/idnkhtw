@@ -14,10 +14,11 @@ class CreateFourLetterWords extends Component {
       fourLetterWord
     } = props;
     this.state = {
-      p: 'four-letter-words/',
+      currentUser,
       word: '',
+      definition: '',
       tongue: '',
-      onAddFourLetterWord: props.onClickFourLetterWordForm,
+      onAddFourLetterWord: props.onClickCreateFourLetterWord,
       onUpdateFourLetterWord: props.onClickUpdateFourLetterWord,
       pathname,
       fourLetterWord
@@ -35,19 +36,19 @@ class CreateFourLetterWords extends Component {
       pathname,
       ...form
     } = this.state;
+    console.log(this.state);
+    console.log(currentUser);
     form.token = currentUser.token;
     form.currentUserRole = currentUser.userRole;
     form.currentUserId = currentUser.userId;
     if (pathname === '/words/prefix-suffix-roots/edit') {
       for (var p in form) {
         if (form.hasOwnProperty(p)) {
-          console.log(form[p]);
           if (form[p] === "") {
             delete form[p];
           }
         }
       }
-      console.log(form);
       form._id = this.props.fourLetterWord._id;
       form.fourLetterWordId = this.props.fourLetterWord._id;
       onUpdateFourLetterWord({ ...form });
@@ -56,6 +57,7 @@ class CreateFourLetterWords extends Component {
     }
     this.setState({
       word: '',
+      definition: '',
       tongue: ''
     });
     this.props.history.push('/words/four-letter-word');
@@ -66,8 +68,10 @@ class CreateFourLetterWords extends Component {
   }
   render() {
     const {
+      currentUser,
       fourLetterWord,
       word,
+      definition,
       tongue
     } = this.state;
     return (
@@ -84,6 +88,18 @@ class CreateFourLetterWords extends Component {
               size={ 4 }
               autoComplete="off"
               onChange={ this.handleChange } /> | { fourLetterWord.word }
+          </div>
+          <div className='word-form-line'>
+            <label htmlFor='four-letter-word-input'>Definition</label>
+            <input
+              id='four-letter-word-definition-input'
+              key='definition'
+              name='definition'
+              type='text'
+              value={ definition }
+              size={ 30 }
+              autoComplete="off"
+              onChange={ this.handleChange } /> | { fourLetterWord.definition }
           </div>
           <div className='word-form-line'>
             <label htmlFor='four-letter-word-tongue-input'>Tongue</label>
@@ -119,14 +135,13 @@ class CreateFourLetterWords extends Component {
 }
 
 CreateFourLetterWords.propTypes = {
-  p: PropTypes.string.isRequired,
   word: PropTypes.string,
+  definition: PropTypes.string,
   tongue: PropTypes.string
 }
 
 CreateFourLetterWords.defaultProps = {
   onSave() {},
-  p: 'four-letter-words/',
   tongue: "English"
 }
 
