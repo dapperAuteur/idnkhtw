@@ -68,7 +68,7 @@ class PrefixSuffixRootForm extends Component {
       type: '',
       tongue: ''
     });
-    this.props.history.push('/words/prefix-suffix-root');
+    this.props.history.push('/words/prefix-suffix-roots');
   }
 
   render(){
@@ -148,7 +148,7 @@ class PrefixSuffixRootForm extends Component {
           </div>
           <Link
             to={{
-              pathname: '/words/prefix-suffix-root'
+              pathname: '/words/prefix-suffix-roots'
             }}
             className='btn btn-warning'
           >

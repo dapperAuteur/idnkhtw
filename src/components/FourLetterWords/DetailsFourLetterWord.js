@@ -37,7 +37,7 @@ const DetailsFourLetterWord = (props) => {
         }
         <Link
           to={{
-            pathname: '/words/four-letter-word'
+            pathname: '/words/four-letter-words'
           }}
           onClick={ onRandomFourLetterWord }
           className="btn btn-default">

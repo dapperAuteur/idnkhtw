@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Blog from './../components/Blog/Blog';
-import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import DetailsFourLetterWord from '../components/FourLetterWords/DetailsFourLetterWord';
 import FourLetterWordForm from '../components/Forms/FourLetterWordForm';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
@@ -10,50 +9,12 @@ import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPalabras from '../components/Palabras/DetailsPalabras';
 import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
-import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
-import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
 
 const routes = [
   {
     path: '/blog',
     component: Blog
-  },
-  {
-    path: '/words/four-letter-word/new',
-    component: FourLetterWordForm
-  },
-  {
-    path: '/words/prefix-suffix-roots/new',
-    component: PrefixSuffixRootForm
-  },
-  {
-    path: '/words/verbos/new',
-    component: VerboForm
-  },
-  {
-    path: '/words/four-letter-word',
-    component: DetailsFourLetterWord
-  },
-  {
-    path: '/words/verbo',
-    component: DetailsVerbo
-  },
-  {
-    path: '/words/random-palabras',
-    component: DetailsPalabras
-  },
-  {
-    path: '/words/prefix-suffix-root',
-    component: DetailsPrefixSuffixRoot
-  },
-  {
-    path: '/words/find-palabra',
-    component: DetailsPalabras
-  },
-  {
-    path: '/games/four-letter-word',
-    component: FourLetterWordGame
   },
   {
     path: '/words/four-letter-words/edit',
@@ -66,6 +27,38 @@ const routes = [
   {
     path: '/words/verbos/edit',
     component: VerboForm
+  },
+  {
+    path: '/words/four-letter-words/new',
+    component: FourLetterWordForm
+  },
+  {
+    path: '/words/prefix-suffix-roots/new',
+    component: PrefixSuffixRootForm
+  },
+  {
+    path: '/words/verbos/new',
+    component: VerboForm
+  },
+  {
+    path: '/words/find-palabra',
+    component: DetailsPalabras
+  },
+  {
+    path: '/games/four-letter-word',
+    component: FourLetterWordGame
+  },
+  {
+    path: '/words/four-letter-words',
+    component: DetailsFourLetterWord
+  },
+  {
+    path: '/words/prefix-suffix-roots',
+    component: DetailsPrefixSuffixRoot
+  },
+  {
+    path: '/words/verbos',
+    component: DetailsVerbo
   }
 ]
 

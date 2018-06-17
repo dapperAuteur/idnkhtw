@@ -39,7 +39,7 @@ const DetailsPrefixSuffixRoot = (props) => {
         }
         <Link
           to={{
-            pathname: '/words/prefix-suffix-root'
+            pathname: '/words/prefix-suffix-roots'
           }}
           onClick={ onRandomPrefixSuffixRoot }
           className="btn btn-default">

@@ -79,7 +79,7 @@ class VerboForm extends Component {
       spanish: '',
       terminación: ''
     });
-    this.props.history.push('/words/verbo');
+    this.props.history.push('/words/verbos');
   }
 
   render(){
@@ -192,7 +192,7 @@ class VerboForm extends Component {
           </div>
           <Link
             to={{
-              pathname: '/words/verbo'
+              pathname: '/words/verbos'
             }}
             className='btn btn-warning'
           >

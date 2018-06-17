@@ -36,12 +36,10 @@ class CreateFourLetterWords extends Component {
       pathname,
       ...form
     } = this.state;
-    console.log(this.state);
-    console.log(currentUser);
     form.token = currentUser.token;
     form.currentUserRole = currentUser.userRole;
     form.currentUserId = currentUser.userId;
-    if (pathname === '/words/prefix-suffix-roots/edit') {
+    if (pathname === '/words/four-letter-words/edit') {
       for (var p in form) {
         if (form.hasOwnProperty(p)) {
           if (form[p] === "") {
@@ -60,7 +58,7 @@ class CreateFourLetterWords extends Component {
       definition: '',
       tongue: ''
     });
-    this.props.history.push('/words/four-letter-word');
+    this.props.history.push('/words/four-letter-words');
   }
 
   handleChange(e) {
@@ -115,7 +113,7 @@ class CreateFourLetterWords extends Component {
           </div>
           <Link
             to={{
-              pathname: '/words/four-letter-word'
+              pathname: '/words/four-letter-words'
             }}
             className='btn btn-warning'
           >
