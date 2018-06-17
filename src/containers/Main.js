@@ -4,7 +4,6 @@ import Comics from './../components/Comics/Comics';
 import AhSchucks from './../components/Commerce/AhSchucks';
 import ThankYou from './../components/Commerce/ThankYou';
 import Blog from './../components/Blog/Blog';
-import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import DetailsFourLetterWord from '../components/FourLetterWords/DetailsFourLetterWord';
 import FourLetterWordForm from '../components/Forms/FourLetterWordForm';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
@@ -13,8 +12,6 @@ import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPalabras from '../components/Palabras/DetailsPalabras';
 import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
-import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
-import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
 import Vision from './../components/Vision/Vision';
 
@@ -40,7 +37,19 @@ const routes = [
     component: Blog
   },
   {
-    path: '/words/four-letter-word/new',
+    path: '/words/four-letter-words/edit',
+    component: FourLetterWordForm
+  },
+  {
+    path: '/words/prefix-suffix-roots/edit',
+    component: PrefixSuffixRootForm
+  },
+  {
+    path: '/words/verbos/edit',
+    component: VerboForm
+  },
+  {
+    path: '/words/four-letter-words/new',
     component: FourLetterWordForm
   },
   {
@@ -52,22 +61,6 @@ const routes = [
     component: VerboForm
   },
   {
-    path: '/words/four-letter-word',
-    component: DetailsFourLetterWord
-  },
-  {
-    path: '/words/verbo',
-    component: DetailsVerbo
-  },
-  {
-    path: '/words/random-palabras',
-    component: DetailsPalabras
-  },
-  {
-    path: '/words/prefix-suffix-root',
-    component: DetailsPrefixSuffixRoot
-  },
-  {
     path: '/words/find-palabra',
     component: DetailsPalabras
   },
@@ -76,16 +69,16 @@ const routes = [
     component: FourLetterWordGame
   },
   {
-    path: '/words/four-letter-words/edit',
-    component: FourLetterWordForm
+    path: '/words/four-letter-words',
+    component: DetailsFourLetterWord
   },
   {
-    path: '/words/prefix-suffix-roots/edit',
-    component: PrefixSuffixRootForm
+    path: '/words/prefix-suffix-roots',
+    component: DetailsPrefixSuffixRoot
   },
   {
-    path: '/words/verbos/edit',
-    component: VerboForm
+    path: '/words/verbos',
+    component: DetailsVerbo
   },
   {
     path: '/vision',

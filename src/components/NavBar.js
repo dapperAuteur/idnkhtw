@@ -98,7 +98,7 @@ const NavBar = (props) => {
             className='content'>
           <Link
             to={{
-              pathname: '/words/four-letter-word'
+              pathname: '/words/four-letter-words'
             }}
             onClick={ onRandomFourLetterWord }
             className='btn btn-default'
@@ -107,7 +107,7 @@ const NavBar = (props) => {
           </Link>
           <Link
             to={{
-              pathname: '/words/prefix-suffix-root'
+              pathname: '/words/prefix-suffix-roots'
             }}
             onClick={ onRandomPrefixSuffixRoot }
             className='btn btn-default'
@@ -116,7 +116,7 @@ const NavBar = (props) => {
           </Link>
           <Link
             to={{
-              pathname: '/words/verbo'
+              pathname: '/words/verbos'
             }}
             onClick={ props.onRandomVerbo }
             className='btn btn-default'
