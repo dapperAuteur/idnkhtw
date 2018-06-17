@@ -7,3 +7,5 @@ export const REQUEST_AUTHENTICATION = "REQUEST_AUTHENTICATION";
 export const REQUEST_SIGN_OUT = "REQUEST_SIGN_OUT";
 export const SHOW_LOGIN_FORM = "SHOW_LOGIN_FORM";
 export const SHOW_SIGN_UP_FORM = "SHOW_SIGN_UP_FORM";
+// error
+export const SET_ERROR = "SET_ERROR";
