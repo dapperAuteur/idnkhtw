@@ -4,13 +4,21 @@ const APIURL = '//localhost:8082/api/ver0001/verbos/';
 // deployed server on heroku
 // const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/verbos/';
 
+export const randomVerbo = () => {
+  console.log("randomVerbo");
+  return {
+    type: actionTypes.RANDOM_VERBO
+  }
+}
 export const requestVerbo = () => {
+  console.log("requestVerbo");
   return {
     type: actionTypes.REQUEST_VERBO
   }
 }
 
 export const requestVerbos = () => {
+  console.log("requestVerbos");
   return {
     type: actionTypes.REQUEST_VERBOS
   }
@@ -20,6 +28,13 @@ export const setError = (err) => {
   return {
     type: actionTypes.SET_ERROR,
     errorMessage: err
+  }
+}
+
+export const showEnglish = () => {
+  console.log("showEnglish");
+  return {
+    type: actionTypes.SHOW_ENGLISH
   }
 }
 
@@ -56,6 +71,7 @@ export const setVerbos = (verbos) => {
   };
 };
 
+// CRUD
 export const createVerbo = (obj) => (
   dispatch => (
     fetch(`${APIURL}`, {

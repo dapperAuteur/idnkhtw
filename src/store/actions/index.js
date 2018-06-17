@@ -12,5 +12,7 @@ export {
   deleteVerbo,
   loadVerbo,
   loadVerbos,
+  randomVerbo,
+  showEnglish,
   updateVerbo
 } from './verboActions';
