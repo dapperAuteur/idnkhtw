@@ -38,7 +38,7 @@ export const showEnglish = () => {
   }
 }
 
-export const addPrefixSuffixRoot = (refixSuffixRoot) => {
+export const addPrefixSuffixRoot = (prefixSuffixRoot) => {
   console.log("addPrefixSuffixRoot");
   return {
     type: actionTypes.ADD_PREFIX_SUFFIX_ROOT,

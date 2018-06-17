@@ -11,7 +11,7 @@ export {
   createPrefixSuffixRoot,
   deletePrefixSuffixRoot,
   loadPrefixSuffixRoot,
-  loadPrefixSuffixRoot,
+  loadPrefixSuffixRoots,
   randomPrefixSuffixRoot,
   updatePrefixSuffixRoot
 } from './prefixSuffixRootActions';
