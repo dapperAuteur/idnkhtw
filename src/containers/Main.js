@@ -5,10 +5,11 @@ import AhSchucks from './../components/Commerce/AhSchucks';
 import ThankYou from './../components/Commerce/ThankYou';
 import Blog from './../components/Blog/Blog';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
-import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
+import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
 import VerboForm from './../components/Forms/VerboForm';
 import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPalabras from '../components/Palabras/DetailsPalabras';
+import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
 import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
 import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
@@ -41,8 +42,8 @@ const routes = [
     component: CreateFourLetterWord
   },
   {
-    path: '/words/new/prefix-suffix-root',
-    component: CreatePrefixSuffixRoot
+    path: '/words/prefix-suffix-roots/new',
+    component: PrefixSuffixRootForm
   },
   {
     path: '/words/verbos/new',
@@ -62,7 +63,7 @@ const routes = [
   },
   {
     path: '/words/prefix-suffix-root',
-    component: DetailsPalabras
+    component: DetailsPrefixSuffixRoot
   },
   {
     path: '/words/find-palabra',
@@ -77,8 +78,8 @@ const routes = [
     component: UpdateFourLetterWord
   },
   {
-    path: '/words/update/prefix-suffix-root',
-    component: UpdatePrefixSuffixRoot
+    path: '/words/prefix-suffix-roots/edit',
+    component: PrefixSuffixRootForm
   },
   {
     path: '/words/verbos/edit',
