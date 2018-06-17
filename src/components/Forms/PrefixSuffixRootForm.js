@@ -80,6 +80,7 @@ class PrefixSuffixRootForm extends Component {
       tongue,
       prefixSuffixRoot
     } = this.state;
+    console.log(this.state);
     return (
       <div className='word-form-container'>
         <form className='word-form' onSubmit={ this.handleSubmit }>
@@ -182,14 +183,14 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
-    verbo: state.verboReducer.verbo
+    prefixSuffixRoot: state.prefixSuffixRootReducer.prefixSuffixRoot
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClickCreateVerbo: (obj) => dispatch(actions.createVerbo(obj)),
-    onClickUpdateVerbo: (obj) => dispatch(actions.updateVerbo(obj))
+    onClickCreatePrefixSuffixRoot: (obj) => dispatch(actions.createPrefixSuffixRoot(obj)),
+    onClickUpdatePrefixSuffixRoot: (obj) => dispatch(actions.updatePrefixSuffixRoot(obj))
   }
 }
 
