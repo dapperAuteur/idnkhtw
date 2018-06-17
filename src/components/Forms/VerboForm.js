@@ -9,25 +9,24 @@ class VerboForm extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    let pathname = props.location.pathname;
     let {
       currentUser,
-      path,
       verbo
-    } = { props };
+    } = props;
     this.state = {
       currentUser,
       cambiar_de_irregular: '',
       categoría_de_irregular: '',
       english: '',
-      grupo: 0,
-      irregular: false,
-      p: 'verbos/',
-      reflexive: false,
+      grupo: '',
+      irregular: '',
+      reflexive: '',
       spanish: '',
       terminación: '',
       onAddVerbo: props.onClickCreateVerbo,
       onUpdateVerbo: props.onClickUpdateVerbo,
-      path,
+      pathname,
       verbo
     }
     this.handleChange = this.handleChange.bind(this);
@@ -42,42 +41,45 @@ class VerboForm extends Component {
     e.preventDefault();
     let {
       currentUser,
-      editing,
       onAddVerbo,
       onUpdateVerbo,
-      path,
+      pathname,
       ...form
-    } = { ...this.state };
-    console.log(editing);
+    } = this.state;
+    console.log(this.state);
     console.log(form);
-    console.log(path);
+    console.log(pathname);
     form.token = currentUser.token;
     form.currentUserRole = currentUser.userRole;
     form.currentUserId = currentUser.userId;
-
-    if (editing || path === '/words/verbos/update') {
-      console.log(this.props);
+    console.log(form);
+    if (pathname === '/words/verbos/edit') {
+      for (var p in form) {
+        if (form.hasOwnProperty(p)) {
+          console.log(form[p]);
+          if (form[p] === "") {
+            delete form[p];
+          }
+        }
+      }
+      console.log(form);
       form._id = this.props.verbo._id;
       form.verboId = this.props.verbo._id;
-      console.log(form);
       onUpdateVerbo({ ...form });
-      console.log(form);
     } else {
       onAddVerbo({ ...form });
-      console.log(form);
     }
     this.setState({
       cambiar_de_irregular: '',
       categoría_de_irregular: '',
       english: '',
-      grupo: 0,
-      irregular: false,
-      p: 'verbos/',
-      reflexive: false,
+      grupo: '',
+      irregular: '',
+      reflexive: '',
       spanish: '',
       terminación: ''
     });
-    this.props.history.push('/words/verbo');
+    // this.props.history.push('/words/verbo');
   }
 
   render(){
@@ -89,7 +91,8 @@ class VerboForm extends Component {
       categoría_de_irregular,
       cambiar_de_irregular,
       terminación,
-      grupo
+      grupo,
+      verbo
     } = this.state;
     return (
       <div className='word-form-conatiner'>
@@ -104,7 +107,7 @@ class VerboForm extends Component {
               value={ spanish }
               size={ 15 }
               autoComplete="off"
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.spanish }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-english-input'>English Translation</label>
@@ -116,7 +119,7 @@ class VerboForm extends Component {
               value={ english }
               size={ 15 }
               autoComplete="off"
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.english }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-reflexive-input'>Reflexive</label>
@@ -127,7 +130,7 @@ class VerboForm extends Component {
               type='boolean'
               value={ reflexive }
               size={ 10 }
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.reflexive }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-irregular-input'>Irregular</label>
@@ -138,7 +141,7 @@ class VerboForm extends Component {
               type='boolean'
               value={ irregular }
               size={ 10 }
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.irregular }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-categoría-de-irregular-input'>Categoría de Irregular</label>
@@ -150,7 +153,7 @@ class VerboForm extends Component {
               value={ categoría_de_irregular }
               size={ 10 }
               autoComplete="off"
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.categoría_de_irregular }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-cambiar-de-irregular-input'>Cambiar de Irregular</label>
@@ -162,7 +165,7 @@ class VerboForm extends Component {
               value={ cambiar_de_irregular }
               size={ 10 }
               autoComplete="off"
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.cambiar_de_irregular }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-terminación-input'>Terminación</label>
@@ -174,7 +177,7 @@ class VerboForm extends Component {
               value={ terminación }
               size={ 10 }
               autoComplete="off"
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.terminación }
           </div>
           <div className='word-form-line'>
             <label htmlFor='verbo-grupo'>Grupo</label>
@@ -185,7 +188,7 @@ class VerboForm extends Component {
               type='decimal'
               value={ grupo }
               autoComplete="off"
-              onChange={ this.handleChange } />
+              onChange={ this.handleChange } />| { verbo.grupo }
           </div>
           <Link
             to={{
@@ -209,7 +212,6 @@ class VerboForm extends Component {
 }
 
 VerboForm.propTypes = {
-  p: PropTypes.string.isRequired,
   spanish: PropTypes.string,
   english: PropTypes.string,
   reflexive: PropTypes.bool,
@@ -222,7 +224,6 @@ VerboForm.propTypes = {
 
 VerboForm.defaultProps = {
   onSave() {},
-  p: 'verbos/',
   reflexive: false,
   irregular: false
 }
