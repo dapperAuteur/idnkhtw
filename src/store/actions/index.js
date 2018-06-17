@@ -8,6 +8,14 @@ export {
   signUp
 } from './authActions';
 export {
+  createPrefixSuffixRoot,
+  deletePrefixSuffixRoot,
+  loadPrefixSuffixRoot,
+  loadPrefixSuffixRoot,
+  randomPrefixSuffixRoot,
+  updatePrefixSuffixRoot
+} from './prefixSuffixRootActions';
+export {
   createVerbo,
   deleteVerbo,
   loadVerbo,
