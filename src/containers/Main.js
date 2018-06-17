@@ -81,7 +81,7 @@ const routes = [
     component: UpdatePrefixSuffixRoot
   },
   {
-    path: '/words/verbos/update',
+    path: '/words/verbos/edit',
     component: VerboForm
   },
   {

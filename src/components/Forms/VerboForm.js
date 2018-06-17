@@ -11,7 +11,8 @@ class VerboForm extends Component {
     console.log(props);
     let {
       currentUser,
-      path
+      path,
+      verbo
     } = { props };
     this.state = {
       currentUser,
@@ -26,7 +27,8 @@ class VerboForm extends Component {
       terminación: '',
       onAddVerbo: props.onClickCreateVerbo,
       onUpdateVerbo: props.onClickUpdateVerbo,
-      path
+      path,
+      verbo
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -185,6 +187,14 @@ class VerboForm extends Component {
               autoComplete="off"
               onChange={ this.handleChange } />
           </div>
+          <Link
+            to={{
+              pathname: '/words/verbo'
+            }}
+            className='btn btn-warning'
+          >
+            Cancel
+          </Link>
           <button
             type="submit"
             className="buttons"
