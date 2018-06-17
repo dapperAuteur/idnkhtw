@@ -122,7 +122,7 @@ const verboReducer = (state = initialState, action) => {
         verbos: action.verbos
       });
     case actionTypes.SHOW_ENGLISH:
-      let { showEnglish } = { state };
+      let { showEnglish } = state;
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem('showEnglish', JSON.stringify(showEnglish));
       } else {
