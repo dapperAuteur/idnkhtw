@@ -63,8 +63,8 @@ export const createVerbo = (obj) => (
     headers: new Headers({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${obj.token}`,
-      'Role': `Role ${obj.userRole}`,
-      'UserId': `UserId ${obj.userId}`
+      'Role': `Role ${obj.currentUserRole}`,
+      'UserId': `UserId ${obj.currentUserId}`
     }),
     body: JSON.stringify({ ...obj })
   })
@@ -173,8 +173,8 @@ export const updateVerbo = (obj) => (
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${obj.token}`,
-        'Role': `Role ${obj.userRole}`,
-        'UserId': `UserId ${obj.userId}`
+        'Role': `Role ${obj.currentUserRole}`,
+        'UserId': `UserId ${obj.currentUserId}`
       }),
       body: JSON.stringify({ ...obj })
     })

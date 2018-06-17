@@ -6,12 +6,11 @@ import ThankYou from './../components/Commerce/ThankYou';
 import Blog from './../components/Blog/Blog';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
-import CreateVerbo from './../components/Forms/CreateVerbo';
+import VerboForm from './../components/Forms/VerboForm';
 import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPalabras from '../components/Palabras/DetailsPalabras';
 import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
 import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
-import UpdateVerbo from './../components/Forms/UpdateVerbo';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
 import Vision from './../components/Vision/Vision';
 
@@ -45,8 +44,8 @@ const routes = [
     component: CreatePrefixSuffixRoot
   },
   {
-    path: '/words/new/verbo',
-    component: CreateVerbo
+    path: '/words/verbos/new',
+    component: VerboForm
   },
   {
     path: '/words/four-letter-word',
@@ -81,8 +80,8 @@ const routes = [
     component: UpdatePrefixSuffixRoot
   },
   {
-    path: '/words/update/verbo',
-    component: UpdateVerbo
+    path: '/words/verbos/update',
+    component: VerboForm
   },
   {
     path: '/vision',
