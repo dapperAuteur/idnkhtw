@@ -5,6 +5,7 @@ const initialState = {
   error: false,
   errorMessage: {},
   isFetching: false,
+  showEnglish: false,
   verbo: {},
   verbos: []
 }
@@ -76,6 +77,21 @@ const verboReducer = (state = initialState, action) => {
         isFetching: false,
         verbos
       });
+    case actionTypes.RANDOM_VERBO:
+      randomVerbos = [...this.state.verbos];
+      verbo = shuffle.pick(randomVerbos, [{ 'copy': true }, { 'picks': 1 }]);
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem('verbo', JSON.stringify(verbo));
+      } else {
+        return null;
+      }
+      return Object.assign({}, state, {
+        error: false,
+        errorMessage: {},
+        isFetching: false,
+        showEnglish: false,
+        verbo
+      })
     case actionTypes.REQUEST_VERBO:
       return Object.assign({}, state, {
         error: false,
@@ -104,6 +120,15 @@ const verboReducer = (state = initialState, action) => {
         isFetching: false,
         verbos: action.verbos
       });
+    case actionTypes.SHOW_ENGLISH:
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem('showEnglish', JSON.stringify(showEnglish));
+      } else {
+        return null;
+      }
+      return Object.assign({}, state, {
+        showEnglish: !showEnglish
+      })
     case actionTypes.UPDATE_VERBO:
       verbo = action.verbo;
       verbos = state.verbos.map(verbo => (verbo._id === action.verbo._id) ? { ...verbo, ...action.verbo._id } : verbo);
