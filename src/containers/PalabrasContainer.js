@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
 import authReducer from './../store/reducers/authReducer';
+import fourLetterWordReducer from './../store/reducers/fourLetterWordReducer';
 import prefixSuffixRootReducer from './../store/reducers/prefixSuffixRootReducer';
 import verboReducer from './../store/reducers/verboReducer';
 import { getCurrentUser } from './../store/actions/index';
@@ -12,6 +13,7 @@ import App from './App';
 
 const rootReducer = combineReducers({
   authReducer,
+  fourLetterWordReducer,
   prefixSuffixRootReducer,
   verboReducer
   // userReducer

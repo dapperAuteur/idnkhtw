@@ -89,7 +89,6 @@ const fourLetterWordReducer = (state = initialState, action) => {
         error: false,
         errorMessage: {},
         isFetching: false,
-        showEnglish: false,
         fourLetterWord
       })
     case actionTypes.REQUEST_FOUR_LETTER_WORD:

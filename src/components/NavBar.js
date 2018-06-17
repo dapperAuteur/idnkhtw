@@ -9,21 +9,25 @@ const NavBar = (props) => {
 
   const {
     currentUser,
-    fourLetterWord,
+    fourLetterWords,
     onClickShowLoginForm,
     onClickShowSignUpForm,
     onClickSignOut,
+    onLoadFourLetterWords,
     onLoadForms,
     onLoadLanguages,
     prefixSuffixRoots,
     verbos,
     onCreateGame,
     onLoadBlogPosts,
-    onLoadRandomPalabra,
     onLoadPrefixSuffixRoots,
+    onRandomFourLetterWord,
     onRandomPrefixSuffixRoot,
     onLoadVerbos
   } = props;
+  if (fourLetterWords.length === 0) {
+    onLoadFourLetterWords();
+  }
   if (verbos.length === 0) {
     onLoadVerbos();
   }
@@ -94,13 +98,9 @@ const NavBar = (props) => {
             className='content'>
           <Link
             to={{
-              pathname: '/words/four-letter-word',
-              state: {
-                p: 'four-letter-words/',
-                fourLetterWord
-              }
+              pathname: '/words/four-letter-word'
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ onRandomFourLetterWord }
             className='btn btn-default'
           >
             Four Letter Word
@@ -178,6 +178,7 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
+    fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
     prefixSuffixRoots: state.prefixSuffixRootReducer.prefixSuffixRoots,
     verbos: state.verboReducer.verbos
   }
@@ -189,6 +190,8 @@ const mapDispatchToProps = dispatch => {
     onClickSignOut: () => dispatch(actions.userLogout()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
     onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),
+    onLoadFourLetterWords: () => dispatch(actions.loadFourLetterWords()),
+    onRandomFourLetterWord: () => dispatch(actions.randomFourLetterWord()),
     onLoadPrefixSuffixRoots: () => dispatch(actions.loadPrefixSuffixRoots()),
     onRandomPrefixSuffixRoot: () => dispatch(actions.randomPrefixSuffixRoot()),
     onLoadVerbos: () => dispatch(actions.loadVerbos()),

@@ -5,6 +5,8 @@ import AhSchucks from './../components/Commerce/AhSchucks';
 import ThankYou from './../components/Commerce/ThankYou';
 import Blog from './../components/Blog/Blog';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
+import DetailsFourLetterWord from '../components/FourLetterWords/DetailsFourLetterWord';
+import FourLetterWordForm from '../components/Forms/FourLetterWordForm';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
 import VerboForm from './../components/Forms/VerboForm';
 import FindPalabra from '../components/Palabras/FindPalabra';
@@ -38,8 +40,8 @@ const routes = [
     component: Blog
   },
   {
-    path: '/words/new/four-letter-word',
-    component: CreateFourLetterWord
+    path: '/words/four-letter-word/new',
+    component: FourLetterWordForm
   },
   {
     path: '/words/prefix-suffix-roots/new',
@@ -51,7 +53,7 @@ const routes = [
   },
   {
     path: '/words/four-letter-word',
-    component: DetailsPalabras
+    component: DetailsFourLetterWord
   },
   {
     path: '/words/verbo',
@@ -74,8 +76,8 @@ const routes = [
     component: FourLetterWordGame
   },
   {
-    path: '/words/update/four-letter-word',
-    component: UpdateFourLetterWord
+    path: '/words/four-letter-words/edit',
+    component: FourLetterWordForm
   },
   {
     path: '/words/prefix-suffix-roots/edit',
