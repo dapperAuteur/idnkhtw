@@ -17,7 +17,6 @@ const DetailsVerbo = (props) => {
     showEnglish,
     verbo
   } = props;
-  console.log(showEnglish);
 
   if (typeof verbo.grupo === "number") {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
@@ -51,7 +50,7 @@ const DetailsVerbo = (props) => {
           </button>
           <Link
             to={{
-              pathname: '/words/verbos/update'
+              pathname: '/words/verbos/edit'
             }}
             className="btn btn-warning"
             >
