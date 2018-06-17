@@ -10,6 +10,8 @@ const DetailsVerbo = (props) => {
   console.log(props);
   let grupo;
   let {
+    currentUser,
+    onDeleteVerbo,
     onRandomVerbo,
     onShowEnglish,
     showEnglish,
@@ -43,6 +45,25 @@ const DetailsVerbo = (props) => {
           <IrregularCategoria
             verbo={ verbo } />
         }
+        {
+          currentUser.userRole === 0 &&
+          <div>
+            <button
+              onClick={ onDeleteVerbo }
+              className="btn btn-danger"
+              >
+              Delete Word
+            </button>
+            <Link
+              to={{
+                pathname: '/words/verbos/update'
+              }}
+              className="btn btn-warning"
+              >
+              EDIT
+            </Link>
+          </div>
+        }
         <Link
           to={{
             pathname: '/words/verbo'
@@ -73,6 +94,7 @@ export const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   console.log(dispatch);
   return {
+    onDeleteVerbo: () => dispatch(actions.deleteVerbo()),
     onRandomVerbo: () => dispatch(actions.randomVerbo()),
     onShowEnglish: () => dispatch(actions.showEnglish())
   }
