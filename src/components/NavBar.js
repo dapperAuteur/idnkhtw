@@ -6,6 +6,7 @@ import './NavBar.css';
 
 const NavBar = (props) => {
   console.log(props);
+
   const {
     currentUser,
     fourLetterWord,
@@ -15,11 +16,15 @@ const NavBar = (props) => {
     onClickSignOut,
     onLoadForms,
     onLoadLanguages,
-    verbo,
+    verbos,
     onCreateGame,
     onLoadBlogPosts,
     onLoadRandomPalabra,
+    onLoadVerbos
   } = props;
+  if (verbos.length === 0) {
+    onLoadVerbos();
+  }
 
   return (
     <nav className='navbar'>
@@ -110,13 +115,9 @@ const NavBar = (props) => {
           </Link>
           <Link
             to={{
-              pathname: '/words/verbo',
-              state: {
-                p: 'verbos/',
-                verbo
-              }
+              pathname: '/words/verbo'
             }}
-            onClick={ onLoadRandomPalabra }
+            onClick={ props.onRandomVerbo }
             className='btn btn-default'
           >
             Verbo
@@ -175,7 +176,9 @@ const NavBar = (props) => {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    currentUser: state.authReducer.currentUser
+    currentUser: state.authReducer.currentUser,
+    verbo: state.verboReducer.verbo,
+    verbos: state.verboReducer.verbos
   }
 }
 
@@ -184,7 +187,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onClickSignOut: () => dispatch(actions.userLogout()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
-    onClickShowSignUpForm: () => dispatch(actions.showSignUpForm())
+    onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),
+    onLoadVerbos: () => dispatch(actions.loadVerbos()),
+    onRandomVerbo: () => dispatch(actions.randomVerbo())
   }
 }
 

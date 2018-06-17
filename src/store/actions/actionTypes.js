@@ -1,3 +1,4 @@
+export const INVALIDATE_FORM = "INVALIDATE_FORM";
 // authentication
 export const AUTHENTICATE_USER = "AUTHENTICATE_USER";
 export const CLOSE_AUTH_FORM = "CLOSE_AUTH_FORM";

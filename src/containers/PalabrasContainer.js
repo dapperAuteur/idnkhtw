@@ -5,11 +5,13 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
 import authReducer from './../store/reducers/authReducer';
+import verboReducer from './../store/reducers/verboReducer';
 import { getCurrentUser } from './../store/actions/index';
 import App from './App';
 
 const rootReducer = combineReducers({
-  authReducer
+  authReducer,
+  verboReducer
   // userReducer
 });
 

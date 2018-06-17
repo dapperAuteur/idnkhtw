@@ -1,4 +1,5 @@
 import * as actionTypes from './../actions/actionTypes';
+import shuffle from 'shuffle-array';
 
 const initialState = {
   didInvalidate: false,
@@ -78,7 +79,7 @@ const verboReducer = (state = initialState, action) => {
         verbos
       });
     case actionTypes.RANDOM_VERBO:
-      randomVerbos = [...this.state.verbos];
+      let randomVerbos = [...state.verbos];
       verbo = shuffle.pick(randomVerbos, [{ 'copy': true }, { 'picks': 1 }]);
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem('verbo', JSON.stringify(verbo));
@@ -121,6 +122,7 @@ const verboReducer = (state = initialState, action) => {
         verbos: action.verbos
       });
     case actionTypes.SHOW_ENGLISH:
+      let { showEnglish } = { state };
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem('showEnglish', JSON.stringify(showEnglish));
       } else {
