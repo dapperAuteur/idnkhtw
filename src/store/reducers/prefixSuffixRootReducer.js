@@ -6,7 +6,6 @@ const initialState = {
   error: false,
   errorMessage: {},
   isFetching: false,
-  showEnglish: false,
   prefixSuffixRoot: {},
   prefixSuffixRoots: []
 }
@@ -121,16 +120,6 @@ const prefixSuffixRootReducer = (state = initialState, action) => {
         isFetching: false,
         prefixSuffixRoots: action.prefixSuffixRoots
       });
-    case actionTypes.SHOW_ENGLISH:
-      let { showEnglish } = state;
-      if (typeof(Storage) !== "undefined") {
-        localStorage.setItem('showEnglish', JSON.stringify(showEnglish));
-      } else {
-        return null;
-      }
-      return Object.assign({}, state, {
-        showEnglish: !showEnglish
-      })
     case actionTypes.UPDATE_PREFIX_SUFFIX_ROOT:
       prefixSuffixRoot = action.prefixSuffixRoot;
       prefixSuffixRoots = state.prefixSuffixRoots.map(prefixSuffixRoot => (prefixSuffixRoot._id === action.prefixSuffixRoot._id) ? { ...prefixSuffixRoot, ...action.prefixSuffixRoot._id } : prefixSuffixRoot);
