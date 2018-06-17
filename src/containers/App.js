@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import shuffle from 'shuffle-array';
 import * as apiCalls from './../actions/api';
-import * as authCalls from './../actions/authApi';
 import AuthForm from './../components/Forms/AuthForm';
 import ErrorMessages from './../components/Errors/ErrorMessages';
 import GameStatus from './../components/Games/GameStatus';
@@ -37,7 +37,6 @@ class App extends Component {
       verbo: {},
       verbos: []
     }
-    this.handleAuth = this.handleAuth.bind(this);
     this.handleCreateGame = this.handleCreateGame.bind(this);
     this.handleCheckFourLetterWord = this.handleCheckFourLetterWord.bind(this);
     this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
@@ -50,8 +49,6 @@ class App extends Component {
     this.handleLoadPalabra = this.handleLoadPalabra.bind(this);
     this.handleLoadPalabras = this.handleLoadPalabras.bind(this);
     this.handleLoadRandomPalabra = this.handleLoadRandomPalabra.bind(this);
-    this.handleLoadUser = this.handleLoadUser.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleSavePost = this.handleSavePost.bind(this);
     this.handleSaveTag = this.handleSaveTag.bind(this);
@@ -59,7 +56,6 @@ class App extends Component {
 
   componentDidMount() {
     this.handleLoadPalabras();
-    this.handleLoadUser();
     this.handleLoadBlogPosts();
   }
 
@@ -67,60 +63,6 @@ class App extends Component {
     this.handleLoadPalabras();
   }
 
-// authentication functions
-
-  async handleAuth(user) {
-    let currentUser;
-    let errorMessage;
-    if (user.username !== '') {
-      currentUser = await authCalls.signUp(user);
-    } else {
-      currentUser = await authCalls.signIn(user);
-    }
-    if (currentUser.hasOwnProperty('errorMessage')) {
-      errorMessage = currentUser;
-      this.setState({
-        errorMessage
-      });
-    } else {
-      this.setState({
-        loggedIn: true,
-        showLoginForm: false,
-        showSignUpForm: false,
-        user: currentUser
-      });
-    }
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('user', JSON.stringify(currentUser));
-    } else {
-      return null;
-    }
-  }
-
-  handleLoadUser() {
-    let user = {};
-    if (typeof(Storage) !== 'undefined') {
-      if (localStorage.hasOwnProperty('user')) {
-        user = JSON.parse(localStorage.getItem('user'));
-        this.setState({
-          loggedIn: true,
-          user
-        });
-      }
-    }
-  }
-
-  handleLogOut() {
-    let user = {};
-    if (typeof(Storage) !== 'undefined') {
-      localStorage.setItem('user', JSON.stringify(user));
-    }
-    this.setState({
-      loggedIn: false,
-      user
-    });
-    this.props.history.push('/');
-  }
 
   // Blog Functions
   async handleAddPost(p, pObj) {
@@ -704,34 +646,15 @@ class App extends Component {
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onLogout={ this.handleLogOut }
           verbo={ verbo }
-          user={ user }
-          onShowLoginForm={ () => this.setState({
-            showLoginForm: true,
-            showSignUpForm: false
-          }) }
-          onShowSignUpForm={ () => this.setState({
-            showLoginForm: false,
-            showSignUpForm: true
-          }) }
           />
         <ErrorMessages
           errorMessage={ errorMessage }
           props={ this.state } />
         { showLoginForm || showSignUpForm ?
           <AuthForm
-            onAuth={ this.handleAuth }
-            onClose={ () => this.setState({
-              showLoginForm: false,
-              showSignUpForm: false
-            })}
-            onShowLoginForm={ () => this.setState({
-              showLoginForm: true,
-              showSignUpForm: false
-            })}
-            onShowSignUpForm={ () => this.setState({
-              showLoginForm: false,
-              showSignUpForm: true
-            })}
+            onClose={ this.handleOnClose }
+            onShowLoginForm={ this.onClickShowLoginForm }
+            onShowSignUpForm={ this.onClickShowSignUpForm }
             showLoginForm={ showLoginForm }
             showSignUpForm={ showSignUpForm }
             /> : null
@@ -776,4 +699,13 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    currentUser: state.authReducer.currentUser,
+    showLoginForm: state.authReducer.showLoginForm,
+    showSignUpForm: state.authReducer.showSignUpForm
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(App));

@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as actions from './../../store/actions/index';
 import './AuthForm.css';
 
 class AuthForm extends Component {
-  static defaultProps= {
+  static defaultProps = {
     onAuth() {},
+    toggleButton() {},
     heading: 'Welcome back.',
-    buttonText: 'Login',
+    authButtonText: 'Login',
+    formButtonText: 'Sign In',
     errorMessage: undefined
   }
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       email: '',
       username: '',
       password: '',
       profileImageUrl: '',
-      signUp: true
+      signUp: true,
+      onClickClose: props.onClickClose,
+      onClickSignIn: props.onClickSignIn,
+      onClickSignUp: props.onClickSignUp,
+      showLoginForm: props.showLoginForm,
+      showSignUpForm: props.showSignUpForm
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,10 +39,18 @@ class AuthForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    let { signUp, ...user } = { ...this.state };
+    let {
+      onClickSignIn,
+      onClickSignUp,
+      signUp,
+      ...user
+    } = { ...this.state };
     let { showSignUpForm } = this.props;
-
-    this.props.onAuth({ ...user });
+    if (showSignUpForm) {
+      onClickSignUp({ ...user });
+    } else {
+      onClickSignIn({ ...user });
+    };
 
     this.setState({
       email: '',
@@ -41,114 +60,77 @@ class AuthForm extends Component {
     });
   }
 
-  toggleSignUp = () => {
-    let signUp = this.state.signUp;
-    this.setState({
-      signUp: !signUp
-    });
-  }
-
   render() {
-    const { email, password, profileImageUrl, username } = this.state;
-    const { buttonText, errorMessage, heading, onClose, onShowLoginForm, onShowSignUpForm, showSignUpForm } = this.props;
+    const {
+      email,
+      password,
+      profileImageUrl,
+      signUp,
+      username
+    } = this.state;
+    let {
+      authButtonText,
+      errorMessage,
+      formButtonText,
+      heading,
+      onClickClose,
+      onClickShowLoginForm,
+      onClickShowSignUpForm,
+      onClickSignIn,
+      onShowLoginForm,
+      onShowSignUpForm,
+      showSignUpForm,
+    } = this.props;
 
-    if (!showSignUpForm) {
-      return (
-        <div
-          className='btn'>
-          <button
-            type='button'
-            className='close-button'
-            onClick={ onClose }>
-            Close
-          </button>
-          <button
-            type='button'
-            className='btn'
-            onClick={ onShowSignUpForm }>
-            Sign Up
-          </button>
-          <form onSubmit={ this.handleSubmit }>
-            <h2>{ heading }</h2>
-            { errorMessage ?
-              <div className='btn'>
-                { errorMessage}
-              </div> :
-              undefined
-            }
-            <label
-              htmlFor='signin-email'>
-              Email
-            </label>
-            <input
-              id='signin-email'
-              key='email'
-              type='text'
-              name='email'
-              className='form-control'
-              autoComplete='off'
-              value={ email }
-              onChange={ this.handleChange } />
-            <label
-              htmlFor='signin-password'>
-              Password
-            </label>
-            <input
-              id='signin-password'
-              key='password'
-              type='password'
-              name='password'
-              className='form-control'
-              autoComplete='off'
-              value={ password }
-              onChange={ this.handleChange } />
-            <button
-              type='submit'
-              className='btn'>
-              { buttonText }
-            </button>
-          </form>
-        </div>
-      );
+    if (showSignUpForm) {
+      authButtonText = "Sign Me Up!";
+      formButtonText = "Sign In";
+      heading = "Welcome"
     } else {
-      return (
-        <div
-          className='btn'>
-          <button
-            type='button'
-            className='close-button'
-            onClick={ onClose }>
-            Close
-          </button>
-          <button
-            type='button'
-            className='btn'
-            onClick={ onShowLoginForm }>
-            Sign In
-          </button>
-          <form
-            onSubmit={ this.handleSubmit }>
-            <h2>{ heading }</h2>
-            { errorMessage ? <div className=''>
-              { errorMessage }</div> :
-              undefined }
-            <label
-              htmlFor='signup-email'>
+      authButtonText = "Login";
+      formButtonText = "Sign Up";
+      heading = "Welcome Back"
+    }
+
+    return (
+      <div
+        className='btn'>
+        <button
+          type='button'
+          className='close-button'
+          onClick={ onClickClose }>
+          Close
+        </button>
+        <form onSubmit={ this.handleSubmit }>
+          <h2>{ heading }</h2>
+          { errorMessage ?
+            <div className='btn'>
+              { errorMessage}
+            </div> :
+            undefined
+          }
+          <label
+            htmlFor='signup-email'>
               Email
-            </label>
-            <input
-              id='signup-email'
-              key='email'
-              type='text'
-              name='email'
-              className='form-control'
-              autoComplete='off'
-              value={ email }
-              onChange={ this.handleChange } />
-            <label
-              htmlFor='signup-username'>
+          </label>
+          <input
+            id='signup-email'
+            key='email'
+            type='text'
+            name='email'
+            className='form-control'
+            autoComplete='off'
+            value={ email }
+            onChange={ this.handleChange } />
+          {
+            showSignUpForm &&
+            <div>
+              <label
+                htmlFor='signin-username'>
+                Username
+              </label>
               <input
-                id='signup-username'
+                id='signin-username'
                 key='username'
                 type='text'
                 name='username'
@@ -156,45 +138,63 @@ class AuthForm extends Component {
                 autoComplete='off'
                 value={ username }
                 onChange={ this.handleChange } />
-                Username
-            </label>
-            <label
-              htmlFor='signup-password'>
-              Password
-            </label>
-            <input
-              id='signup-password'
-              key='password'
-              type='password'
-              name='password'
-              className='form-control'
-              autoComplete='off'
-              value={ password }
-              onChange={ this.handleChange } />
-            <label
-              htmlFor='signup-image-url'>
-              Image URL
-            </label>
-            <input
-              id='signup-image-url'
-              key='profileImageUrl'
-              type='text'
-              name='profileImageUrl'
-              className='form-control'
-              autoComplete='off'
-              value={ profileImageUrl }
-              onChange={ this.handleChange } />
-            <button
-              type='submit'
-              className='btn'
-              >
-              Sign Me Up!
-            </button>
-          </form>
-        </div>
-      );
-    }
+              <label
+                htmlFor='signup-image-url'>
+                Image URL
+              </label>
+              <input
+                id='signup-image-url'
+                key='profileImageUrl'
+                type='text'
+                name='profileImageUrl'
+                className='form-control'
+                autoComplete='off'
+                value={ profileImageUrl }
+                onChange={ this.handleChange } />
+            </div>
+          }
+          <label
+            htmlFor='signin-password'>
+            Password
+          </label>
+          <input
+            id='signin-password'
+            key='password'
+            type='password'
+            name='password'
+            className='form-control'
+            autoComplete='off'
+            value={ password }
+            onChange={ this.handleChange } />
+          <button
+            type='submit'
+            className='btn'>
+            { authButtonText }
+          </button>
+        </form>
+      </div>
+    );
   }
 }
 
-export default AuthForm;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    currentUser: state.authReducer.currentUser,
+    showLoginForm: state.authReducer.showLoginForm,
+    showSignUpForm: state.authReducer.showSignUpForm
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  console.log(dispatch);
+  return {
+    onClickClose: () => dispatch(actions.closeAuthForm()),
+    onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
+    onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),
+    onClickSignIn: (obj) => dispatch(actions.signIn(obj)),
+    onClickSignUp: (obj) => dispatch(actions.signUp(obj))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);

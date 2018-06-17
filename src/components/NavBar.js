@@ -1,19 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as actions from './../store/actions/index';
 import './NavBar.css';
 
 const NavBar = (props) => {
+  console.log(props);
   const {
+    currentUser,
     fourLetterWord,
     prefixSuffixRoot,
-    user,
+    onClickShowLoginForm,
+    onClickShowSignUpForm,
+    onClickSignOut,
+    onLoadForms,
+    onLoadLanguages,
     verbo,
     onCreateGame,
     onLoadBlogPosts,
     onLoadRandomPalabra,
-    onLogout,
-    onShowLoginForm,
-    onShowSignUpForm
   } = props;
 
   return (
@@ -119,24 +124,24 @@ const NavBar = (props) => {
           </div>
         </div>
         <div className='auth'>
-          { user.token ?
+          { currentUser.token ?
             <ul
               className=''>
               <li>
                 <button className=''>
-                  { user.username }
+                  { currentUser.username }
                 </button>
               </li>
               <li>
                 <button
                   className=''>
                   <img
-                    src={ user.profileImageUrl }
-                    alt='user' />
+                    src={ currentUser.profileImageUrl }
+                    alt='currentUser' />
                 </button>
               </li>
               <li
-                onClick={ onLogout }>
+                onClick={ onClickSignOut }>
                 <button
                   className='btn btn-default'>
                   Log out
@@ -147,14 +152,14 @@ const NavBar = (props) => {
               className=''>
               <li>
                 <button
-                  onClick={ onShowSignUpForm }
+                  onClick={ onClickShowSignUpForm }
                   className='btn btn-default'>
                   Sign up
                 </button>
               </li>
               <li>
                 <button
-                  onClick={ onShowLoginForm }
+                  onClick={ onClickShowLoginForm }
                   className='btn btn-default'>
                   Sign in
                 </button>
@@ -167,4 +172,20 @@ const NavBar = (props) => {
   );
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    currentUser: state.authReducer.currentUser
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  console.log(dispatch);
+  return {
+    onClickSignOut: () => dispatch(actions.userLogout()),
+    onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
+    onClickShowSignUpForm: () => dispatch(actions.showSignUpForm())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

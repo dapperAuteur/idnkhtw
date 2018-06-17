@@ -2,9 +2,9 @@ import * as actionTypes from './actionTypes';
 // import * as apiCalls from './../../actions/apiCalls';
 
 // dev server
-const APIURL = '//localhost:8081/api/ver0001/';
+const APIURL = '//localhost:8081/api/ver0001/auth/';
 // deployed server on heroku
-// const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/';
+// const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/auth/';
 
 export const authenticateUser = (currentUser) => {
   console.log("signup");
