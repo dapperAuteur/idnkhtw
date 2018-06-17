@@ -20,7 +20,7 @@ class PrefixSuffixRootForm extends Component {
       examples: '',
       type: '',
       tongue: '',
-      onAddPrefixSuffixRoot: props.onClickPrefixSuffixRootForm,
+      onAddPrefixSuffixRoot: props.onClickCreatePrefixSuffixRoot,
       onUpdatePrefixSuffixRoot: props.onClickUpdatePrefixSuffixRoot,
       pathname,
       prefixSuffixRoot
@@ -128,6 +128,7 @@ class PrefixSuffixRootForm extends Component {
               name='type'
               value= { type }
               onChange={ this.handleChange }>
+              <option value="Choose One">Choose One</option>
               <option value="prefix">prefix</option>
               <option value="root">root</option>
               <option value="suffix">suffix</option>
