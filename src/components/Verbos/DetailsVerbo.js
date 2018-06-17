@@ -12,8 +12,10 @@ const DetailsVerbo = (props) => {
   let {
     onRandomVerbo,
     onShowEnglish,
+    showEnglish,
     verbo
   } = props;
+  console.log(showEnglish);
 
   if (typeof verbo.grupo === "number") {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
@@ -29,7 +31,7 @@ const DetailsVerbo = (props) => {
         <h3>{ verbo.terminación }</h3>
         { grupo }
         {
-          onShowEnglish &&
+          showEnglish &&
           <h3>English: { verbo.english }</h3>
         }
         {
@@ -63,6 +65,7 @@ export const mapStateToProps = state => {
   console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
+    showEnglish: state.verboReducer.showEnglish,
     verbo: state.verboReducer.verbo
   }
 }
