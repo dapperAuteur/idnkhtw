@@ -8,6 +8,14 @@ export {
   signUp
 } from './authActions';
 export {
+  createFourLetterWord,
+  deleteFourLetterWord,
+  loadFourLetterWord,
+  loadFourLetterWords,
+  randomFourLetterWord,
+  updateFourLetterWord
+} from './fourLetterWordActions';
+export {
   createPrefixSuffixRoot,
   deletePrefixSuffixRoot,
   loadPrefixSuffixRoot,
