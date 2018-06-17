@@ -4,7 +4,7 @@ import shuffle from 'shuffle-array';
 import * as apiCalls from './../actions/api';
 import * as authCalls from './../actions/authApi';
 import AuthForm from './../components/Forms/AuthForm';
-import ErrorMessages from './../components/Errors/ErrorMessages'
+import ErrorMessages from './../components/Errors/ErrorMessages';
 import GameStatus from './../components/Games/GameStatus';
 import Main from './Main';
 import NavBar from './../components/NavBar';
@@ -28,6 +28,8 @@ class App extends Component {
       showEnglish: false,
       showLoginForm: false,
       showSignUpForm: false,
+      tag: '',
+      tags: [],
       user: {},
       user0: {},
       users: [],
@@ -38,9 +40,12 @@ class App extends Component {
     this.handleCreateGame = this.handleCreateGame.bind(this);
     this.handleCheckFourLetterWord = this.handleCheckFourLetterWord.bind(this);
     this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
+    this.handleDeleteTag = this.handleDeleteTag.bind(this);
     this.handleDeletePalabra = this.handleDeletePalabra.bind(this);
     this.handleLoadBlogPost = this.handleLoadBlogPost.bind(this);
+    this.handleLoadTag = this.handleLoadTag.bind(this);
     this.handleLoadBlogPosts = this.handleLoadBlogPosts.bind(this);
+    this.handleLoadTags = this.handleLoadTags.bind(this);
     this.handleLoadPalabra = this.handleLoadPalabra.bind(this);
     this.handleLoadPalabras = this.handleLoadPalabras.bind(this);
     this.handleLoadRandomPalabra = this.handleLoadRandomPalabra.bind(this);
@@ -48,6 +53,7 @@ class App extends Component {
     this.handleLogOut = this.handleLogOut.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleSavePost = this.handleSavePost.bind(this);
+    this.handleSaveTag = this.handleSaveTag.bind(this);
   }
 
   componentDidMount() {
@@ -119,15 +125,11 @@ class App extends Component {
   async handleAddPost(p, pObj) {
     console.log(p, pObj);
     let { token, userId, userRole } = this.state.user;
-    // let userId = this.state.user.userId;
-    // let userRole = this.state.user.userRole;
-    // let token = this.state.user.token;
     pObj.userId = userId;
     pObj.userRole = userRole;
     pObj.token = token;
     console.log(pObj);
     let newPost = await apiCalls.createPalabra(p, pObj);
-    // let params = p.slice(0, -1);
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('post', JSON.stringify(newPost));
     } else {
@@ -187,7 +189,79 @@ class App extends Component {
     });
   }
 
-  // CRUD functions
+  // Tag Functions
+  async handleAddTag(p, pObj) {
+    console.log(p, pObj);
+    let { token, userId, userRole } = this.state.user;
+    pObj.userId = userId;
+    pObj.userRole = userRole;
+    pObj.token = token;
+    console.log(pObj);
+    let newTag = await apiCalls.createPalabra(p, pObj);
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem('tag', JSON.stringify(newTag));
+    } else {
+      return null;
+    }
+    this.setState({ tag: newTag });
+  }
+
+  async handleDeleteTag(p = 'tags', pObj) {
+    console.log("delete blog tag");
+  }
+
+  async handleLoadTag(p = 'tags', pObj) {
+    let text = await apiCalls.getPalabra(p, pObj);
+    console.log(text);
+    this.setState({ text });
+  }
+
+  async handleLoadTags() {
+    let tags = await apiCalls.getPalabras('tags');
+    console.log(tags);
+    this.setState({ tags });
+  }
+  handleSaveTag=(params) => {
+    let { p, pObj } = params;
+    console.log(p);
+    console.log(pObj);
+    // if TAG does NOT exist in db add it to db, else add it to object
+    // use filter to determine which tag(s) need to bee added to db
+    if (true) {
+      if (pObj.hasOwnProperty('_id')) {
+        this.handleUpdateTag(p, pObj);
+      } else {
+        this.handleAddTag(p, pObj);
+      }
+    }
+  }
+
+  async handleUpdateTag(p, pObj) {
+    console.log(pObj);
+    let tags;
+    let { token, userId, userRole } = this.state.user;
+    // let userRole = this.state.user.userRole;
+    // let token = this.state.user.token;
+    pObj.userId = userId;
+    pObj.userRole = userRole;
+    pObj.token = token;
+    let updatedTag = await apiCalls.updatePalabra(p, pObj);
+    // let params = p.slice(0, -1);
+    const palabras = this.state.tags.map(tag => (tag._id === updatedTag._id) ? { ...tag, ...updatedTag } : tag)
+
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem('tag', JSON.stringify(updatedTag));
+      localStorage.setItem('tags', JSON.stringify(tags));
+    } else {
+      return null;
+    }
+    this.setState({
+      tag: updatedTag,
+      tags: tags
+    });
+  }
+
+  // CRUD Palabras functions
   async handleAddPalabra(p, pObj) {
     let { token, userId, userRole } = this.state.user;
     // let userId = this.state.user.userId;
