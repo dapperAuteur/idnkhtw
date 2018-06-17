@@ -1,11 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './../../store/actions/index';
 import IrregularCategoria from './IrregularCategoria';
+
 import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
+  console.log(props);
   let grupo;
-  let showEnglish = props.showEnglish;
-  let verbo = props.verbo;
+  let {
+    onRandomVerbo,
+    onShowEnglish,
+    verbo
+  } = props;
 
   if (typeof verbo.grupo === "number") {
     grupo = <h3>Group: { verbo.grupo.toString() }</h3>;
@@ -21,7 +29,7 @@ const DetailsVerbo = (props) => {
         <h3>{ verbo.terminación }</h3>
         { grupo }
         {
-          showEnglish &&
+          onShowEnglish &&
           <h3>English: { verbo.english }</h3>
         }
         {
@@ -33,9 +41,38 @@ const DetailsVerbo = (props) => {
           <IrregularCategoria
             verbo={ verbo } />
         }
+        <Link
+          to={{
+            pathname: '/words/verbo'
+          }}
+          onClick={ onRandomVerbo }
+          className="btn btn-default">
+          Next Word
+        </Link>
+        <button
+          onClick={ onShowEnglish }
+          className="btn btn-default">
+          Show Translation
+        </button>
       </div>
     )
   }
 }
 
-export default DetailsVerbo;
+export const mapStateToProps = state => {
+  console.log(state);
+  return {
+    currentUser: state.authReducer.currentUser,
+    verbo: state.verboReducer.verbo
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  console.log(dispatch);
+  return {
+    onRandomVerbo: () => dispatch(actions.randomVerbo()),
+    onShowEnglish: () => dispatch(actions.showEnglish())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailsVerbo);

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import shuffle from 'shuffle-array';
 import * as apiCalls from './../actions/api';
+import * as actions from './../store/actions/index';
 import AuthForm from './../components/Forms/AuthForm';
 import ErrorMessages from './../components/Errors/ErrorMessages';
 import GameStatus from './../components/Games/GameStatus';
@@ -13,6 +14,8 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
+    console.log(props);
+    console.log(this.props);
     this.state = {
       errorMessage: {},
       fourLetterWord: {},
@@ -54,8 +57,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.handleLoadPalabras();
-    this.handleLoadBlogPosts();
+    // this.handleLoadPalabras();
+    // this.handleLoadBlogPosts();
+    console.log(this.props);
   }
 
   async loadRandomPalabras() {
