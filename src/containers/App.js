@@ -298,13 +298,10 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar
-          fourLetterWord={ fourLetterWord }
-          prefixSuffixRoot={ prefixSuffixRoot }
           onCreateGame={ this.handleCreateGame }
           onLoadBlogPosts={ this.handleLoadBlogPosts }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onLogout={ this.handleLogOut }
-          verbo={ verbo }
           />
         <ErrorMessages
           errorMessage={ errorMessage }
@@ -328,21 +325,7 @@ class App extends Component {
           onLoadBlogPost={ this.handleLoadBlogPost }
           onLoadBlogPosts={ this.handleLoadBlogPosts }
           onSavePost={ this.handleSavePost }
-          fourLetterWord={ fourLetterWord }
-          fourLetterWords={ fourLetterWords }
-          prefixSuffixRoot={ prefixSuffixRoot }
-          prefixSuffixRoots={ prefixSuffixRoots }
-          verbo={ verbo }
-          verbos={ verbos }
           onCheckFourLetterWord = { this.handleCheckFourLetterWord }
-          onDelete={ this.handleDeletePalabra }
-          onLoadPalabra={ this.handleLoadPalabra }
-          onLoadRandomPalabra={ this.handleLoadRandomPalabra }
-          showEnglish={ showEnglish }
-          onShowEnglish={ () => this.setState({
-            showEnglish: !showEnglish
-          })}
-          onSave={ this.handleSave }
           />
         {
           p === "/" &&

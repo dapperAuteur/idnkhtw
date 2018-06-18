@@ -31,13 +31,6 @@ export const setError = (err) => {
   }
 }
 
-export const showEnglish = () => {
-  console.log("showEnglish");
-  return {
-    type: actionTypes.SHOW_ENGLISH
-  }
-}
-
 export const addFourLetterWord = (fourLetterWord) => {
   console.log("addFourLetterWord");
   return {

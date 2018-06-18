@@ -8,6 +8,11 @@ export {
   signUp
 } from './authActions';
 export {
+  createNewCowsAndBullsGame,
+  updateCowsAndBullsGame,
+  setError
+} from './cowsAndBullsGameActions';
+export {
   createFourLetterWord,
   deleteFourLetterWord,
   loadFourLetterWord,
