@@ -13,10 +13,8 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   let currentUser;
-  console.log("authReducer");
   switch (action.type) {
     case actionTypes.AUTHENTICATE_USER:
-      console.log("AUTHENTICATE_USER");
       currentUser = action.currentUser;
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -86,7 +84,6 @@ const authReducer = (state = initialState, action) => {
         isFetching: true
       })
     case actionTypes.USER_LOGOUT:
-      console.log("USER_LOGOUT");
       currentUser = {};
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem('currentUser', JSON.stringify(currentUser));

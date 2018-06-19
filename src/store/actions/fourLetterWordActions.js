@@ -5,20 +5,17 @@ const APIURL = '//localhost:8081/api/ver0001/four-letter-words/';
 // const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/four-letter-words/';
 
 export const randomFourLetterWord = () => {
-  console.log("randomFourLetterWord");
   return {
     type: actionTypes.RANDOM_FOUR_LETTER_WORD
   }
 }
 export const requestFourLetterWord = () => {
-  console.log("requestFourLetterWord");
   return {
     type: actionTypes.REQUEST_FOUR_LETTER_WORD
   }
 }
 
 export const requestFourLetterWords = () => {
-  console.log("requestFourLetterWords");
   return {
     type: actionTypes.REQUEST_FOUR_LETTER_WORDS
   }
@@ -32,7 +29,6 @@ export const setError = (err) => {
 }
 
 export const addFourLetterWord = (fourLetterWord) => {
-  console.log("addFourLetterWord");
   return {
     type: actionTypes.ADD_FOUR_LETTER_WORD,
     fourLetterWord
@@ -40,8 +36,6 @@ export const addFourLetterWord = (fourLetterWord) => {
 };
 
 export const deleteFourLetterWord = (fourLetterWord) => {
-  console.log("deleteFourLetterWord");
-  console.log(fourLetterWord);
   return {
     type: actionTypes.DELETE_FOUR_LETTER_WORD,
     fourLetterWord
@@ -49,7 +43,6 @@ export const deleteFourLetterWord = (fourLetterWord) => {
 };
 
 export const setFourLetterWord = (fourLetterWord) => {
-  console.log("setFourLetterWord");
   return {
     type: actionTypes.SET_FOUR_LETTER_WORD,
     fourLetterWord
@@ -57,7 +50,6 @@ export const setFourLetterWord = (fourLetterWord) => {
 };
 
 export const setFourLetterWords = (fourLetterWords) => {
-  console.log("setFourLetterWords");
   return {
     type: actionTypes.SET_FOUR_LETTER_WORDS,
     fourLetterWords
@@ -78,7 +70,6 @@ export const createFourLetterWord = (obj) => (
     body: JSON.stringify({ ...obj })
   })
   .then(resp => {
-    console.log(resp);
     if (!resp.ok) {
       if (resp.status >= 400 && resp.status < 500) {
         return resp.json().then(data => {
@@ -97,7 +88,6 @@ export const createFourLetterWord = (obj) => (
     return resp.json();
   })
   .then(fourLetterWord => {
-    console.log(fourLetterWord);
     return dispatch(addFourLetterWord(fourLetterWord));
   })
   .catch(function (err) {
@@ -111,7 +101,6 @@ export const loadFourLetterWord = (obj) => (
   dispatch => (
     fetch(`${APIURL}${obj._id}`)
       .then(resp => {
-        console.log(resp);
         dispatch(requestFourLetterWord(obj._id));
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {
@@ -131,7 +120,6 @@ export const loadFourLetterWord = (obj) => (
         return resp.json();
       })
       .then(fourLetterWord => {
-        console.log(fourLetterWord);
         return dispatch(setFourLetterWord(fourLetterWord));
       })
       .catch(function (err) {
@@ -145,7 +133,6 @@ export const loadFourLetterWords = () => (
   dispatch => (
     fetch(`${APIURL}`)
       .then(resp => {
-        console.log(resp);
         dispatch(requestFourLetterWords());
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {
@@ -165,7 +152,6 @@ export const loadFourLetterWords = () => (
         return resp.json();
       })
       .then(fourLetterWords => {
-        console.log(fourLetterWords);
         return dispatch(setFourLetterWords(fourLetterWords));
       })
       .catch(function (err) {
@@ -242,7 +228,6 @@ export const removeFourLetterWord = (obj) => (
       return resp.json();
     })
     .then(fourLetterWord => {
-      console.log(fourLetterWord);
       return dispatch(deleteFourLetterWord(fourLetterWord));
     })
     .catch(function (err) {

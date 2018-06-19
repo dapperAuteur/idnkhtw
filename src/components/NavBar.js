@@ -5,7 +5,6 @@ import * as actions from './../store/actions/index';
 import './NavBar.css';
 
 const NavBar = (props) => {
-  console.log(props);
 
   const {
     currentUser,
@@ -176,7 +175,6 @@ const NavBar = (props) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
@@ -186,7 +184,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
   return {
     onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
     onClickSignOut: () => dispatch(actions.userLogout()),
