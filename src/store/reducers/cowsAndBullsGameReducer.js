@@ -35,12 +35,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME:
       let randomFourLetterWords = [...state.fourLetterWords];
-      winning_word = shuffle.pick(randomFOUR_LETTER_WORDs, [{ 'copy': true }, { 'picks': 1 }]);
-      if (typeof(Storage) !== "undefined") {
-        localStorage.setItem('fourLetterWord', JSON.stringify(fourLetterWord));
-      } else {
-        return null;
-      }
+      winning_word = shuffle.pick(randomFourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
       return Object.assign({}, state, {
         attempts: 0,
         bulls: 0,
@@ -57,10 +52,32 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       })
     case actionTypes.SET_GUESS:
     case actionTypes.SET_GAME:
+      game = { ...action.game };
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem('game', JSON.stringify(game));
+      } else {
+        return null;
+      }
+      return Object.assign({}, state, {
+        attempts: action.attempts,
+        bulls: action.bulls,
+        cows: action.cows,
+        error: action.error,
+        errorMessage: action.errorMessage,
+        game: action.game,
+        guess: action.guess,
+        guesses: action.guesses,
+        isFetching: action.isFetching,
+        message: action.message,
+        score: action.score,
+        winning_word: action.winning_word,
+        won: action.won,
+        word_to_consider_for_library: action.word_to_consider_for_library
+      });
     case actionTypes.SET_ERROR:
     case actionTypes.USER_DID_WIN:
       let userDidWinGame = action.userDidWinGame;
-      let {
+      ({
         attempts,
         bulls,
         cows,
@@ -69,7 +86,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         message,
         score,
         won
-      } = userDidWinGame;
+      } = userDidWinGame);
       return Object.assign({}, state, {
         attempts,
         bulls,
@@ -82,7 +99,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       });
     case actionTypes.USER_DID_NOT_WIN:
       let userDidNotWinGame = action.userDidNotWinGame;
-      let {
+      ({
         attempts,
         bulls,
         cows,
@@ -91,7 +108,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         message,
         score,
         won
-      } = userDidNotWinGame;
+      } = userDidNotWinGame);
       return Object.assign({}, state, {
         attempts,
         bulls,
@@ -104,7 +121,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       });
     case actionTypes.WORD_NOT_IN_GAME:
       let userGuessNotInGame = action.userGuessNotInGame;
-      let {
+      ({
         attempts,
         bulls,
         cows,
@@ -113,7 +130,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         message,
         score,
         word_to_consider_for_library
-      } = userGuessNotInGame;
+      } = userGuessNotInGame);
       return Object.assign({}, state, {
         attempts,
         bulls,
@@ -130,4 +147,4 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
   }
 }
 
-export default cowsAndBullsGameReducer
+export default cowsAndBullsGameReducer;

@@ -16,6 +16,7 @@ const NavBar = (props) => {
     onLoadFourLetterWords,
     onLoadForms,
     onLoadLanguages,
+    onNewCowsAndBullsGame,
     prefixSuffixRoots,
     verbos,
     onCreateGame,
@@ -67,7 +68,7 @@ const NavBar = (props) => {
                 pathname: '/games/four-letter-word',
                 state: { p: 'four-letter-words/' }
               }}
-              onClick={ onCreateGame }
+              onClick={ () => onNewCowsAndBullsGame(currentUser) }
               className='btn btn-default'
             >
               Cows & Bulls
@@ -187,6 +188,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   console.log(dispatch);
   return {
+    onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
     onClickSignOut: () => dispatch(actions.userLogout()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
     onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),

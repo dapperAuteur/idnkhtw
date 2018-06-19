@@ -104,9 +104,6 @@ class Main extends Component {
                 onLoadBlogPost={ this.props.onLoadBlogPost }
                 onLoadBlogPosts={ this.props.onLoadBlogPosts }
                 onSavePost={ this.props.onSavePost }
-                onLoadPalabra={ this.props.onLoadPalabra }
-                onLoadRandomPalabra={ this.props.onLoadRandomPalabra }
-                onShowEnglish={ this.props.onShowEnglish }
                 data={ this.props } /> }
               />
           ))}

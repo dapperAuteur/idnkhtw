@@ -1,13 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from './../../store/actions/index';
 import PropTypes from 'prop-types';
 import './Game.css';
 
 class FourLetterWordGame extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     // pull game from state and add here;
-    let fourLetterWord = props.data.props.fourLetterWord;
-    let game = props.data.props.game;
+    let fourLetterWord = props.winning_word;
+    let {
+      attempts,
+      bulls,
+      cows,
+      guess,
+      guesses,
+      message,
+      score,
+      winning_word,
+      won,
+      word_to_consider_for_library
+    } = props;
+    let game = {
+      attempts,
+      bulls,
+      cows,
+      guess,
+      guesses,
+      message,
+      score,
+      winning_word,
+      won,
+      word_to_consider_for_library
+    };
     game.winning_word = fourLetterWord;
     const onLoadRandomPalabra = props.data.onLoadRandomPalabra;
     // const onCheckFourLetterWord = props.data.onCheckFourLetterWord;
@@ -204,4 +230,30 @@ FourLetterWordGame.defaultProps = {
   ]
 }
 
-export default FourLetterWordGame;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    currentUser: state.authReducer.currentUser,
+    fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
+    attempts: state.cowsAndBullsGameReducer.attempts,
+    bulls: state.cowsAndBullsGameReducer.bulls,
+    cows: state.cowsAndBullsGameReducer.cows,
+    guess: state.cowsAndBullsGameReducer.guess,
+    guesses: state.cowsAndBullsGameReducer.guesses,
+    message: state.cowsAndBullsGameReducer.message,
+    score: state.cowsAndBullsGameReducer.score,
+    winning_word: state.cowsAndBullsGameReducer.winning_word,
+    won: state.cowsAndBullsGameReducer.won,
+    word_to_consider_for_library: state.cowsAndBullsGameReducer.word_to_consider_for_library
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  console.log(dispatch);
+  return {
+    onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
+    onUpdateCowsAndBullsGame: (obj) => dispatch(actions.updateCowsAndBullsGame(obj))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FourLetterWordGame);
