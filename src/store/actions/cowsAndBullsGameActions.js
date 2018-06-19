@@ -5,6 +5,7 @@ const APIURL = '//localhost:8081/api/ver0001/four-letter-words/';
 // const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/four-letter-words/';
 
 export const createNewCowsAndBullsGame = () => {
+  console.log("createNewCowsAndBullsGame");
   return {
     type: actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME
   }
@@ -51,6 +52,7 @@ export const wordNotInGame = (game) => {
 };
 
 export const updateCowsAndBullsGame = (game) => {
+  // add currentUser to game object
   console.log(game);
   let {
     attempts,

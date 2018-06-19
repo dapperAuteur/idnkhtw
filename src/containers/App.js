@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import shuffle from 'shuffle-array';
 import * as actions from './../store/actions/index';
 import * as apiCalls from './../actions/api';
 import AuthForm from './../components/Forms/AuthForm';
@@ -39,8 +38,6 @@ class App extends Component {
       verbo: {},
       verbos: []
     }
-    this.handleCreateGame = this.handleCreateGame.bind(this);
-    this.handleCheckFourLetterWord = this.handleCheckFourLetterWord.bind(this);
     this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
     this.handleDeleteTag = this.handleDeleteTag.bind(this);
     this.handleLoadBlogPost = this.handleLoadBlogPost.bind(this);
@@ -197,87 +194,6 @@ class App extends Component {
     });
   }
 
-  handleCheckFourLetterWord(game) {
-    let { attempts, bulls, cows, guess, guesses, message, score, winning_word, won, word_to_consider_for_library } = { ...game };
-    bulls = 0;
-    cows = 0;
-    guess = guesses.slice(-1);
-    guess = guess[0].toLowerCase();
-    let word = winning_word.word;
-    let currentGuess = this.state.fourLetterWords.filter(word => word.word === guess);
-    if (currentGuess.length === 0) {
-      word_to_consider_for_library.push(guess);
-      message = `${guess} is NOT word in our library. We'll consider adding it to the library. You lose 200 points`;
-      score -= 200;
-    } else if (guess === word) {
-      bulls = 4;
-      message = 'You Won!!!';
-      score += 500;
-      won = true;
-    } else {
-      let arr_guess = guess.split("");
-      let arr_word = word.split("");
-      message = `${guess} is NOT the Word`;
-      for (var i = 0; i < arr_guess.length; i++) {
-        for (var j = 0; j < arr_word.length; j++) {
-          if (arr_guess[i] === arr_word[j]) {
-            if (i === j) {
-              bulls++;
-              score += 100;
-              won = false;
-              arr_guess[i] = "0";
-              arr_word[j] = "1";
-            }
-          }
-          if (arr_guess[i] === arr_word[j]) {
-            cows++;
-            score += 50;
-            won = false;
-            arr_guess[i] = "0";
-            arr_word[j] = "1";
-          }
-        }
-      }
-      message = `You didn't win yet.`
-      won = false;
-    }
-    game = {
-      attempts,
-      bulls,
-      cows,
-      guess,
-      guesses,
-      message,
-      score,
-      winning_word,
-      won,
-      word_to_consider_for_library
-    }
-    this.setState({ game });
-    localStorage.setItem("game", JSON.stringify(game));
-  }
-
-  handleCreateGame() {
-    let winning_word;
-    this.handleLoadRandomPalabra();
-
-    let user;
-
-    let game = {
-      attempts: 0,
-      bulls: 0,
-      cows: 0,
-      guess: '',
-      guesses: [],
-      message: '',
-      score: 0,
-      winning_word,
-      won: false,
-      word_to_consider_for_library: []
-    }
-    this.setState({ game });
-  }
-
   render() {
     const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showEnglish, verbo, verbos } = this.state;
 
@@ -315,12 +231,10 @@ class App extends Component {
           <GameStatus game={ game } onCreateGame={ this.handleCreateGame } />
         }
         <Main
-          props={ this.state }
           onDeleteBlog={ this.handleDeleteBlog }
           onLoadBlogPost={ this.handleLoadBlogPost }
           onLoadBlogPosts={ this.handleLoadBlogPosts }
           onSavePost={ this.handleSavePost }
-          onCheckFourLetterWord = { this.handleCheckFourLetterWord }
           />
         <h1 className="App-title">I Do Not Know How this Works</h1>
       </div>

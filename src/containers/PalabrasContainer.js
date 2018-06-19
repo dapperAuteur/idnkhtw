@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
 import authReducer from './../store/reducers/authReducer';
+import cowsAndBullsGameReducer from './../store/reducers/cowsAndBullsGameReducer';
 import fourLetterWordReducer from './../store/reducers/fourLetterWordReducer';
 import prefixSuffixRootReducer from './../store/reducers/prefixSuffixRootReducer';
 import verboReducer from './../store/reducers/verboReducer';
@@ -13,6 +14,7 @@ import App from './App';
 
 const rootReducer = combineReducers({
   authReducer,
+  cowsAndBullsGameReducer,
   fourLetterWordReducer,
   prefixSuffixRootReducer,
   verboReducer
