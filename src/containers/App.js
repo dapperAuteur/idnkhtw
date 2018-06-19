@@ -15,7 +15,6 @@ class App extends Component {
   constructor(props){
     super(props);
     console.log(props);
-    console.log(this.props);
     this.state = {
       errorMessage: {},
       fourLetterWord: {},
@@ -256,7 +255,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     showLoginForm: state.authReducer.showLoginForm,

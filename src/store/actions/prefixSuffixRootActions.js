@@ -5,20 +5,17 @@ const APIURL = '//localhost:8081/api/ver0001/prefix-suffix-roots/';
 // const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/prefix-suffix-roots/';
 
 export const randomPrefixSuffixRoot = () => {
-  console.log("randomPrefixSuffixRoot");
   return {
     type: actionTypes.RANDOM_PREFIX_SUFFIX_ROOT
   }
 }
 export const requestPrefixSuffixRoot = () => {
-  console.log("requestPrefixSuffixRoot");
   return {
     type: actionTypes.REQUEST_PREFIX_SUFFIX_ROOT
   }
 }
 
 export const requestPrefixSuffixRoots = () => {
-  console.log("requestPrefixSuffixRoots");
   return {
     type: actionTypes.REQUEST_PREFIX_SUFFIX_ROOTS
   }
@@ -32,14 +29,12 @@ export const setError = (err) => {
 }
 
 export const showEnglish = () => {
-  console.log("showEnglish");
   return {
     type: actionTypes.SHOW_ENGLISH
   }
 }
 
 export const addPrefixSuffixRoot = (prefixSuffixRoot) => {
-  console.log("addPrefixSuffixRoot");
   return {
     type: actionTypes.ADD_PREFIX_SUFFIX_ROOT,
     prefixSuffixRoot
@@ -47,8 +42,6 @@ export const addPrefixSuffixRoot = (prefixSuffixRoot) => {
 };
 
 export const deletePrefixSuffixRoot = (prefixSuffixRoot) => {
-  console.log("deletePrefixSuffixRoot");
-  console.log(prefixSuffixRoot);
   return {
     type: actionTypes.DELETE_PREFIX_SUFFIX_ROOT,
     prefixSuffixRoot
@@ -56,7 +49,6 @@ export const deletePrefixSuffixRoot = (prefixSuffixRoot) => {
 };
 
 export const setPrefixSuffixRoot = (prefixSuffixRoot) => {
-  console.log("setPrefixSuffixRoot");
   return {
     type: actionTypes.SET_PREFIX_SUFFIX_ROOT,
     prefixSuffixRoot
@@ -64,7 +56,6 @@ export const setPrefixSuffixRoot = (prefixSuffixRoot) => {
 };
 
 export const setPrefixSuffixRoots = (prefixSuffixRoots) => {
-  console.log("setPrefixSuffixRoots");
   return {
     type: actionTypes.SET_PREFIX_SUFFIX_ROOTS,
     prefixSuffixRoots
@@ -85,7 +76,6 @@ export const createPrefixSuffixRoot = (obj) => (
     body: JSON.stringify({ ...obj })
   })
   .then(resp => {
-    console.log(resp);
     if (!resp.ok) {
       if (resp.status >= 400 && resp.status < 500) {
         return resp.json().then(data => {
@@ -104,7 +94,6 @@ export const createPrefixSuffixRoot = (obj) => (
     return resp.json();
   })
   .then(prefixSuffixRoot => {
-    console.log(prefixSuffixRoot);
     return dispatch(addPrefixSuffixRoot(prefixSuffixRoot));
   })
   .catch(function (err) {
@@ -138,7 +127,6 @@ export const loadPrefixSuffixRoot = (obj) => (
         return resp.json();
       })
       .then(prefixSuffixRoot => {
-        console.log(prefixSuffixRoot);
         return dispatch(setPrefixSuffixRoot(prefixSuffixRoot));
       })
       .catch(function (err) {
@@ -152,7 +140,6 @@ export const loadPrefixSuffixRoots = () => (
   dispatch => (
     fetch(`${APIURL}`)
       .then(resp => {
-        console.log(resp);
         dispatch(requestPrefixSuffixRoots());
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {
@@ -172,7 +159,6 @@ export const loadPrefixSuffixRoots = () => (
         return resp.json();
       })
       .then(prefixSuffixRoots => {
-        console.log(prefixSuffixRoots);
         return dispatch(setPrefixSuffixRoots(prefixSuffixRoots));
       })
       .catch(function (err) {
@@ -211,7 +197,6 @@ export const updatePrefixSuffixRoot = (obj) => (
       return resp.json();
     })
     .then(prefixSuffixRoot => {
-      console.log(prefixSuffixRoot);
       return dispatch(setPrefixSuffixRoot(prefixSuffixRoot));
     })
     .catch(function (err) {
@@ -249,7 +234,6 @@ export const removePrefixSuffixRoot = (obj) => (
       return resp.json();
     })
     .then(prefixSuffixRoot => {
-      console.log(prefixSuffixRoot);
       return dispatch(deletePrefixSuffixRoot(prefixSuffixRoot));
     })
     .catch(function (err) {

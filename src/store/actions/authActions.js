@@ -7,8 +7,6 @@ const APIURL = '//localhost:8081/api/ver0001/auth/';
 // const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/auth/';
 
 export const authenticateUser = (currentUser) => {
-  console.log("signup");
-  console.log(currentUser);
   return {
     type: actionTypes.AUTHENTICATE_USER,
     currentUser
@@ -29,7 +27,6 @@ export const getCurrentUser = (currentUser) => {
 }
 
 export const requestAuthentication = (resp) => {
-  console.log(resp);
   return {
     type: actionTypes.REQUEST_AUTHENTICATION
   }
@@ -48,7 +45,6 @@ export const showSignUpForm = () => {
 }
 
 export const userLogout = () => {
-  console.log("requestSignOut");
   return {
     type: actionTypes.USER_LOGOUT
   }
@@ -71,7 +67,6 @@ export const signIn = (authInfo) => (
       body: JSON.stringify({ ...authInfo })
     })
     .then(resp => {
-      console.log(resp);
       dispatch(requestAuthentication(resp));
       if (!resp.ok) {
         if (resp.status >= 400 && resp.status < 500) {
@@ -87,7 +82,6 @@ export const signIn = (authInfo) => (
       return resp.json();
     })
     .then(currentUser => {
-      console.log(currentUser);
       return dispatch(authenticateUser(currentUser));
     })
     .catch(function (err) {
