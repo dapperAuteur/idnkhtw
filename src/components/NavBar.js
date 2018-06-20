@@ -67,7 +67,7 @@ const NavBar = (props) => {
                 pathname: '/games/four-letter-word',
                 state: { p: 'four-letter-words/' }
               }}
-              onClick={ () => onNewCowsAndBullsGame(currentUser) }
+              onClick={ onNewCowsAndBullsGame }
               className='btn btn-default'
             >
               Cows & Bulls
