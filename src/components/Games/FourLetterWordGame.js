@@ -18,6 +18,7 @@ class FourLetterWordGame extends Component {
       guesses,
       message,
       score,
+      onUpdateCowsAndBullsGame,
       winning_word,
       won,
       word_to_consider_for_library
@@ -91,13 +92,15 @@ class FourLetterWordGame extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    this.handleUpdateGame();
-    let p = this.state.p;
+    let game = this.state.game;
+    console.log(this.state);
+    console.log(game);
+    this.props.onUpdateCowsAndBullsGame(game);
 
-    let { ...game } = { ...this.state.game };
-    if (this.state.game.winning_word === undefined) {
-    }
-    this.props.data.onCheckFourLetterWord(game);
+    // let { ...game } = { ...this.state.game };
+    // if (this.state.game.winning_word === undefined) {
+    // }
+    // this.props.data.onCheckFourLetterWord(game);
   }
 
   render() {
