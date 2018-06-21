@@ -12,9 +12,9 @@ const initialState = {
   isFetching: true,
   message: "",
   score: 0,
-  winning_word: {},
+  winningWord: {},
   won: false,
-  word_to_consider_for_library: []
+  wordToConsiderForLibrary: []
 }
 
 const cowsAndBullsGameReducer = (state = initialState, action) => {
@@ -29,13 +29,12 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       isFetching,
       message,
       score,
-      winning_word,
+      winningWord,
       won,
-      word_to_consider_for_library;
+      wordToConsiderForLibrary;
   switch (action.type) {
     case actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME:
-      let randomFourLetterWords = [...state.fourLetterWords];
-      winning_word = shuffle.pick(randomFourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
+      let winningWord = action.encryptedWinningWordId
       return Object.assign({}, state, {
         attempts: 0,
         bulls: 0,
@@ -46,11 +45,15 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         guesses: [],
         message: '',
         score: 0,
-        winning_word,
+        winningWord,
         won: false,
-        word_to_consider_for_library: []
+        wordToConsiderForLibrary: []
       })
     case actionTypes.SET_GUESS:
+      guess = action.guess;
+      return Object.assign({}, state, {
+        guess
+      })
     case actionTypes.SET_GAME:
       game = { ...action.game };
       if (typeof(Storage) !== "undefined") {
@@ -70,27 +73,29 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         isFetching: action.isFetching,
         message: action.message,
         score: action.score,
-        winning_word: action.winning_word,
+        winningWord: action.winningWord,
         won: action.won,
-        word_to_consider_for_library: action.word_to_consider_for_library
+        wordToConsiderForLibrary: action.wordToConsiderForLibrary
       });
     case actionTypes.SET_ERROR:
     case actionTypes.USER_DID_WIN:
       let userDidWinGame = action.userDidWinGame;
+      attempts = state.attempts++;
       ({
-        attempts,
         bulls,
         cows,
         guess,
-        guesses,
         message,
-        score,
         won
-      } = userDidWinGame);
+      } = { userDidWinGame });
+      ({
+        guesses,
+        score
+      } = { state });
+      guesses.concat(guess);
       return Object.assign({}, state, {
         attempts,
         bulls,
-        cows,
         guess,
         guesses,
         message,
@@ -98,17 +103,20 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         won
       });
     case actionTypes.USER_DID_NOT_WIN:
-      let userDidNotWinGame = action.userDidNotWinGame;
+      let {
+        cows,
+        bulls,
+        guess,
+        scored
+      } = action.userDidNotWinGame;
       ({
         attempts,
-        bulls,
-        cows,
-        guess,
         guesses,
-        message,
-        score,
-        won
-      } = userDidNotWinGame);
+        score
+      } = { state });
+      guesses.concat(guess);
+      let newScore = score + scored;
+
       return Object.assign({}, state, {
         attempts,
         bulls,
@@ -116,30 +124,24 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         guess,
         guesses,
         message,
-        score,
-        won
+        score: newScore
       });
     case actionTypes.WORD_NOT_IN_GAME:
-      let userGuessNotInGame = action.userGuessNotInGame;
-      ({
-        attempts,
-        bulls,
-        cows,
-        guess,
-        guesses,
-        message,
-        score,
-        word_to_consider_for_library
-      } = userGuessNotInGame);
+      attempts = state.attempts++;
+      guess = action.guess;
+      guesses = state.guesses;
+      guesses.concat(guess);
+      message = `${guess} is NOT in our library. We'll consider adding it to the library. You lose 200 points`;
+      score = state.score - 200;
+      wordToConsiderForLibrary.concat(guess);
+
       return Object.assign({}, state, {
         attempts,
-        bulls,
-        cows,
         guess,
         guesses,
         message,
         score,
-        word_to_consider_for_library
+        wordToConsiderForLibrary
       })
     default:
     return state;

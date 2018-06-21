@@ -1,25 +1,41 @@
 import * as actionTypes from './actionTypes';
+import bcrypt from 'bcrypt';
+import shuffle from 'shuffle';
+import fourLetterWordReducer from './../reducers/fourLetterWordReducer';
 // dev server
 const APIURL = '//localhost:8081/api/ver0001/four-letter-words/';
 // deployed server on heroku
 // const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/four-letter-words/';
 
+let fourLetterWordsReducerState = fourLetterWordReducer.getState();
+console.log(fourLetterWordsReducerState);
+const FOUR_LETTER_WORDS = fourLetterWordsReducerState.fourLetterWords;
+
 export const createNewCowsAndBullsGame = () => {
   console.log("createNewCowsAndBullsGame");
+  let randomWord = shuffle.pick(FOUR_LETTER_WORDS, [{ 'copy': true }, { 'picks': 1 }]);
+  let winningWordId = randomWord._id;
+  console.log(winningWordId);
+  let salt = bcrypt.genSaltSync(10);
+  let encryptedWinningWordId = bcrypt.hashSync(winningWordId, salt);
+  console.log(encryptedWinningWordId);
+
   return {
-    type: actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME
+    type: actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME,
+    encryptedWinningWordId
   }
 }
 
-export const setGuess = (game) => {
-  console.log(game);
+export const setGuess = (guess) => {
   return {
     type: actionTypes.SET_GUESS,
-    game
+    guess
   }
 };
 
 export const setGame = (game) => {
+  // use bcrypt to encrypt random word from list on current game level;
+  // store in state, game, and localStorage
   console.log(game);
   return {
     type: actionTypes.SET_GAME,
@@ -35,79 +51,101 @@ export const userDidWin = (game) => {
   }
 };
 
-export const userDidNotWin = (game) => {
-  console.log(game);
+export const userDidNotWin = (userDidNotWinGame) => {
+  console.log(userDidNotWinGame);
   return {
     type: actionTypes.USER_DID_NOT_WIN,
-    game
+    userDidNotWinGame
   }
 };
 
-export const wordNotInGame = (game) => {
-  console.log(game);
+export const wordNotInGame = (guess) => {
+  console.log(guess);
   return {
     type: actionTypes.WORD_NOT_IN_GAME,
-    game
+    guess
   }
 };
 
-export const updateCowsAndBullsGame = (game) => {
-  // add currentUser to game object
-  console.log(game);
-  let {
-    attempts,
-    bulls,
-    cows,
-    guess,
-    guesses,
-    message,
-    score,
-    winning_word,
-    won,
-    word_to_consider_for_library
-  } = game;
-  attempts++;
-  bulls = 0;
-  cows = 0;
-  guess = guesses.slice(-1);
-  guess = guess[0].toLowerCase();
-  let word = winning_word.word;
-  let currentGuess = this.state.fourLetterWords.filter(word => word.word === guess);
-  if (currentGuess.length === 0) {
-    word_to_consider_for_library.push(guess);
-    message = `${guess} is NOT word in our library. We'll consider adding it to the library. You lose 200 points`;
-    score -= 200;
-    word_to_consider_for_library.concat(guess);
-    guesses.concat(guess);
-    let userGuessNotInGame = {
-      attempts,
-      bulls,
-      cows,
-      guess,
-      guesses,
-      message,
-      score,
-      word_to_consider_for_library
-    };
-    return wordNotInGame(userGuessNotInGame);
-  } else if (guess === word) {
+const isGuessInGame = (guess) => {
+  let guessLowerCase = guess.toLowerCase();
+  console.log(guessLowerCase);
+  let currentGuess = FOUR_LETTER_WORDS.filter(word => word.word === guessLowerCase);
+  if (currentGuess === 0) {
+    return wordNotInGame(guess);
+  } else {
+    isGuessWinningWord(guess);
+  }
+}
+
+const isGuessWinningWord = guess => {
+  // unhash winningWordId and set to winningWord
+  let winningWord;
+  if (guess === word) {
     bulls = 4;
     message = 'You Won!!!';
     score += 500;
     won = true;
-    guesses.concat(guess);
     let userDidWinGame = {
-      attempts,
       bulls,
-      cows,
+      cows: 0,
       guess,
-      guesses,
       message,
-      score,
       won,
     };
     return userDidWin(userDidWinGame);
   } else {
+    return guessNotWinningWord(guess);
+  }
+}
+
+const guessNotWinningWord = (guess) => {
+  let arr_guess = guess.split("");
+  let arr_word = word.split("");
+  let message = `${guess} is NOT the Word`;
+  let scored = 0;
+  for (var i = 0; i < arr_guess.length; i++) {
+    for (var j = 0; j < arr_word.length; j++) {
+      if (arr_guess[i] === arr_word[j]) {
+        if (i === j) {
+          bulls++;
+          scored += 100;
+          won = false;
+          arr_guess[i] = "0";
+          arr_word[j] = "1";
+        }
+      }
+      if (arr_guess[i] === arr_word[j]) {
+        cows++;
+        scored += 50;
+        won = false;
+        arr_guess[i] = "0";
+        arr_word[j] = "1";
+      }
+    }
+  }
+  let userDidNotWinGame = {
+    cows,
+    bulls,
+    guess,
+    scored
+  };
+  return userDidNotWin(userDidNotWinGame);
+}
+
+const updateCowsAndBullsGame = (guess) => {
+  // add currentUser to game object
+  console.log(guess);
+  let bulls = 0;
+  let cows = 0;
+  setGuess(guess);
+  isGuessInGame(guess);
+
+
+
+
+
+  {
     let arr_guess = guess.split("");
     let arr_word = word.split("");
     message = `${guess} is NOT the Word`;

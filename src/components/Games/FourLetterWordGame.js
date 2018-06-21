@@ -92,7 +92,8 @@ class FourLetterWordGame extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    let game = this.state.game;
+    let game = this.state;
+    game.guess = `${game.letter0}${game.letter1}${game.letter2}${game.letter3}`;
     console.log(this.state);
     console.log(game);
     this.props.onUpdateCowsAndBullsGame(game);
