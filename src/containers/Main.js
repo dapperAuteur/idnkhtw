@@ -12,6 +12,7 @@ import UpdateFourLetterWord from './../components/Forms/UpdateFourLetterWord';
 import UpdatePrefixSuffixRoot from '../components/Forms/UpdatePrefixSuffixRoot';
 import UpdateVerbo from './../components/Forms/UpdateVerbo';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
+import Vision from './../components/Vision/Vision';
 
 const routes = [
   {
@@ -73,6 +74,10 @@ const routes = [
   {
     path: '/words/update/verbo',
     component: UpdateVerbo
+  },
+  {
+    path: '/',
+    component: Vision
   }
 ]
 
