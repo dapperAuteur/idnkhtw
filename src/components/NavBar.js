@@ -54,12 +54,12 @@ const NavBar = (props) => {
             </Link>
             <Link
               to={{
-                pathname: '/blog',
-                state: { p: 'blog/' }
+                pathname: '/comics',
+                state: { p: 'comics/' }
               }}
               className='btn btn-default'
             >
-              Blog
+              Comics
             </Link>
           </div>
         </div>
