@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Comics from './../components/Comics/Comics';
+import AhSchucks from './../components/Commerce/AhSchucks';
+import ThankYou from './../components/Commerce/ThankYou';
 import CreateFourLetterWord from './../components/Forms/CreateFourLetterWord';
 import CreatePrefixSuffixRoot from '../components/Forms/CreatePrefixSuffixRoot';
 import CreateVerbo from './../components/Forms/CreateVerbo';
@@ -12,6 +14,14 @@ import UpdateVerbo from './../components/Forms/UpdateVerbo';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
 
 const routes = [
+  {
+    path: '/thank-you',
+    component: ThankYou
+  },
+  {
+    path: '/ah-schucks',
+    component: AhSchucks
+  },
   {
     path: '/comics',
     component: Comics
