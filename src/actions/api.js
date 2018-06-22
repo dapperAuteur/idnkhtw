@@ -50,7 +50,7 @@ export async function getPalabra(p, pObj) {
 }
 
 export async function createPalabra(p, pObj) {
-  console.log(p, pObj);
+  // console.log(p, pObj);
   let token = `Bearer ${pObj.token}`;
   let role = `Role ${pObj.userRole}`;
   let userId = `UserId ${pObj.userId}`;

@@ -48,13 +48,11 @@ class PrefixSuffixRootForm extends Component {
     if (pathname === '/words/prefix-suffix-roots/edit') {
       for (var p in form) {
         if (form.hasOwnProperty(p)) {
-          console.log(form[p]);
           if (form[p] === "") {
             delete form[p];
           }
         }
       }
-      console.log(form);
       form._id = this.props.prefixSuffixRoot._id;
       form.prefixSuffixRootId = this.props.prefixSuffixRoot._id;
       onUpdatePrefixSuffixRoot({ ...form });
@@ -80,7 +78,6 @@ class PrefixSuffixRootForm extends Component {
       tongue,
       prefixSuffixRoot
     } = this.state;
-    console.log(this.state);
     return (
       <div className='word-form-container'>
         <form className='word-form' onSubmit={ this.handleSubmit }>
@@ -181,7 +178,6 @@ PrefixSuffixRootForm.defaultProps = {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     prefixSuffixRoot: state.prefixSuffixRootReducer.prefixSuffixRoot

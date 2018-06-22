@@ -144,7 +144,6 @@ CreateFourLetterWords.defaultProps = {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     fourLetterWord: state.fourLetterWordReducer.fourLetterWord

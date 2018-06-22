@@ -15,7 +15,6 @@ class AuthForm extends Component {
   }
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       email: '',
       username: '',
@@ -178,7 +177,6 @@ class AuthForm extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     showLoginForm: state.authReducer.showLoginForm,
@@ -187,7 +185,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
   return {
     onClickClose: () => dispatch(actions.closeAuthForm()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),

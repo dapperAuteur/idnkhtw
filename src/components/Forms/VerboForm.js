@@ -8,7 +8,6 @@ import '../CSS/Form.css';
 class VerboForm extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     let pathname = props.location.pathname;
     let {
       currentUser,
@@ -46,23 +45,17 @@ class VerboForm extends Component {
       pathname,
       ...form
     } = this.state;
-    console.log(this.state);
-    console.log(form);
-    console.log(pathname);
     form.token = currentUser.token;
     form.currentUserRole = currentUser.userRole;
     form.currentUserId = currentUser.userId;
-    console.log(form);
     if (pathname === '/words/verbos/edit') {
       for (var p in form) {
         if (form.hasOwnProperty(p)) {
-          console.log(form[p]);
           if (form[p] === "") {
             delete form[p];
           }
         }
       }
-      console.log(form);
       form._id = this.props.verbo._id;
       form.verboId = this.props.verbo._id;
       onUpdateVerbo({ ...form });
@@ -229,7 +222,6 @@ VerboForm.defaultProps = {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     verbo: state.verboReducer.verbo

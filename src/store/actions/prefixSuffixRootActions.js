@@ -107,7 +107,6 @@ export const loadPrefixSuffixRoot = (obj) => (
   dispatch => (
     fetch(`${APIURL}${obj._id}`)
       .then(resp => {
-        console.log(resp);
         dispatch(requestPrefixSuffixRoot(obj._id));
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {

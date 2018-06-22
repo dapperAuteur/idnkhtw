@@ -48,7 +48,6 @@ const DetailsFourLetterWord = (props) => {
 }
 
 export const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     fourLetterWord: state.fourLetterWordReducer.fourLetterWord
@@ -56,7 +55,6 @@ export const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
   return {
     onDeleteFourLetterWord: () => dispatch(actions.deleteFourLetterWord()),
     onRandomFourLetterWord: () => dispatch(actions.randomFourLetterWord())

@@ -50,7 +50,6 @@ const DetailsPrefixSuffixRoot = (props) => {
 }
 
 export const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     prefixSuffixRoot: state.prefixSuffixRootReducer.prefixSuffixRoot
@@ -58,7 +57,6 @@ export const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
   return {
     onDeletePrefixSuffixRoot: () => dispatch(actions.deletePrefixSuffixRoot()),
     onRandomPrefixSuffixRoot: () => dispatch(actions.randomPrefixSuffixRoot()),

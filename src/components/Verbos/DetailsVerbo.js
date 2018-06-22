@@ -7,7 +7,6 @@ import IrregularCategoria from './IrregularCategoria';
 import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
-  console.log(props);
   let grupo;
   let {
     currentUser,
@@ -76,7 +75,6 @@ const DetailsVerbo = (props) => {
 }
 
 export const mapStateToProps = state => {
-  console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     showEnglish: state.verboReducer.showEnglish,
@@ -85,7 +83,6 @@ export const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
   return {
     onDeleteVerbo: () => dispatch(actions.deleteVerbo()),
     onRandomVerbo: () => dispatch(actions.randomVerbo()),

@@ -190,7 +190,6 @@ export const updateFourLetterWord = (obj) => (
       return resp.json();
     })
     .then(fourLetterWord => {
-      console.log(fourLetterWord);
       return dispatch(setFourLetterWord(fourLetterWord));
     })
     .catch(function (err) {

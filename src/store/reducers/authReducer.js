@@ -47,7 +47,6 @@ const authReducer = (state = initialState, action) => {
         showSignUpForm: true
       })
     case actionTypes.GET_CURRENT_USER:
-      console.log('GET_CURRENT_USER');
       if (typeof(Storage) !== "undefined") {
         if (localStorage.hasOwnProperty('currentUser')) {
           currentUser = JSON.parse(localStorage.getItem('currentUser'));
