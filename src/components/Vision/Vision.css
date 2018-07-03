@@ -1,3 +1,29 @@
 .vision {
-  
+  text-align: left;
+  width: 90%;
+  margin: auto;
+}
+
+.playlist {
+  text-align: left;
+  margin: auto;
+}
+
+.wrong {
+  text-decoration: line-through wavy blue;
+}
+
+.artist {
+  text-decoration: underline;
+  text-align: left;
+  margin: auto;
+}
+
+.image {
+  width: 50%;
+}
+
+li {
+  text-align: justify;
+  width: auto;
 }

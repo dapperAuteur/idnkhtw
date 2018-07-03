@@ -1,3 +1,10 @@
 .cartoon {
-  max-width: 50%
+  max-width: 40%;
+  margin: 10px;
+}
+
+.disclaimer {
+  text-align: left;
+  width: 75%;
+  margin: auto;
 }

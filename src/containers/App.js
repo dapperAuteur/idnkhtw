@@ -514,7 +514,20 @@ class App extends Component {
   }
 
   render() {
-    const { errorMessage, fourLetterWord, fourLetterWords, game, prefixSuffixRoot, prefixSuffixRoots, showEnglish, showLoginForm, showSignUpForm, user, verbo, verbos } = this.state;
+    const {
+      errorMessage,
+      fourLetterWord,
+      fourLetterWords,
+      game,
+      prefixSuffixRoot,
+      prefixSuffixRoots,
+      showEnglish,
+      showLoginForm,
+      showSignUpForm,
+      user,
+      verbo,
+      verbos
+    } = this.state;
     let p = this.props.location.pathname;
     return (
       <div className="App">
@@ -579,7 +592,7 @@ class App extends Component {
           })}
           onSave={ this.handleSave }
           />
-        <h1 className="App-title">I Do Not Know How this Works</h1>
+        <h4 className="App-title">I Do Not Know How this Works</h4>
       </div>
     );
   }
