@@ -1,6 +1,6 @@
 import React from 'react';
-import theHip_HopRules_iThinkVeryDeeply1 from './../../comic-strips/the_Hip-Hop_Rules_i_think_very_deeply_1-2_with_phones_transparent.svg';
-import theHip_HopRules_iThinkVeryDeeply2 from './../../comic-strips/the_Hip-Hop_Rules_i_think_very_deeply_2-2_with_phones_transparent.svg';
+import theHip_HopRules_iThinkVeryDeeply1 from './../../comic-strips/i_think_very_deeply_1-2_with_phones_and_windows_transparent.svg';
+import theHip_HopRules_iThinkVeryDeeply2 from './../../comic-strips/i_think_very_deeply_2-2_with_phones_and_windows_transparent.svg';
 import './Comics.css';
 
 const Comics = props => {
