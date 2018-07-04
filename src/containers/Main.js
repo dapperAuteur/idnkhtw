@@ -76,7 +76,7 @@ const routes = [
     component: UpdateVerbo
   },
   {
-    path: '/',
+    path: '/vision',
     component: Vision
   }
 ]

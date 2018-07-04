@@ -10,7 +10,7 @@
 }
 
 .wrong {
-  text-decoration: line-through wavy blue;
+  text-decoration: line-through wavy rgba(255, 0, 0, 0.7);
 }
 
 .artist {

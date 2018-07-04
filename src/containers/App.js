@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import shuffle from 'shuffle-array';
 import * as apiCalls from '../actions/api';
 import * as authCalls from './../actions/authApi';
@@ -8,6 +8,7 @@ import ErrorMessages from './../components/Errors/ErrorMessages'
 import GameStatus from './../components/Games/GameStatus';
 import Main from './Main';
 import NavBar from './../components/NavBar';
+import Vision from './../components/Vision/Vision';
 import './App.css';
 
 class App extends Component {
@@ -592,6 +593,14 @@ class App extends Component {
           })}
           onSave={ this.handleSave }
           />
+        {
+          p === "/" &&
+          <Link
+            className="btn btn-default"
+            to={{ pathname: "/vision" }}>
+            I See Your Vision
+          </Link>
+        }
         <h4 className="App-title">I Do Not Know How this Works</h4>
       </div>
     );

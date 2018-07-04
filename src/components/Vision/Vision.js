@@ -13,7 +13,7 @@ const Vision = () => {
 // loadScript('//embed.tidal.com/tidal-embed.js')
   return (
     <div>
-      <h1>Why are you making comics?</h1>
+      <h1>Why make comics?</h1>
       <p className="vision">I create because that's what humans do. I've been telling my nephews, and nieces to do what they love and don't worry about getting a job.</p>
       <p className="vision">I created a curricullum called The Elementary MBA (tm). Taught it to children for four years. Last month I got an offer to sell the trademark The Elementary MBA (tm).</p>
       <p className="vision">I made higher archy of needs for the curricullum. Showed it to my uncle. He told me that I need to be successful with it before anyone will believe it works.</p>
