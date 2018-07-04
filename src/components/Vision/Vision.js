@@ -21,50 +21,49 @@ const Vision = () => {
       <p></p>
       <h3>Playlist Week of June 20th 2018:</h3>
       <h4>This playlist inspired the comic "I Think Very Deeply."</h4>
-        <div
-          className="tidal-embed"
-          data-type="p"
-          data-id="192bcd48-9681-4698-b679-66edb9b331fb">
+        <div>
           <a
             href="https://tidal.com/playlist/192bcd48-9681-4698-b679-66edb9b331fb"
             alt="Inspiring Playlist 20180620 from Tidal Music"
             target="_blank">
             <img className="image" src={ playlist_20180620 } />
           </a>
-          <ul>
-            <li>
-              <a
-                href="https://tidal.com/album/90521072"
-                alt="Salud. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                target="_blank">
-                Salud by <span className="artist">The Carters</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://tidal.com/album/22331721"
-                alt="Nothin' To Show. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                target="_blank">
-                Nothin' To Show by <span className="artist">Geto Boys</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://tidal.com/album/2992765"
-                alt="My Philosophy. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                target="_blank">
-                My Philosophy by <span className="artist">Boogie Down Productions</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://tidal.com/album/59244601"
-                alt="Criminal Minded. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                target="_blank">
-                Criminal Minded by <span className="artist">Boogie Down Productions</span>
-              </a>
-            </li>
-          </ul>
+          <div className="playlist">
+            <ul>
+              <li>
+                <a
+                  href="https://tidal.com/album/90521072"
+                  alt="Salud. A song from the Inspiring Playlist 20180620 from Tidal Music"
+                  target="_blank">
+                  Salud by <span className="artist">The Carters</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://tidal.com/album/22331721"
+                  alt="Nothin' To Show. A song from the Inspiring Playlist 20180620 from Tidal Music"
+                  target="_blank">
+                  Nothin' To Show by <span className="artist">Geto Boys</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://tidal.com/album/2992765"
+                  alt="My Philosophy. A song from the Inspiring Playlist 20180620 from Tidal Music"
+                  target="_blank">
+                  My Philosophy by <span className="artist">Boogie Down Productions</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://tidal.com/album/59244601"
+                  alt="Criminal Minded. A song from the Inspiring Playlist 20180620 from Tidal Music"
+                  target="_blank">
+                  Criminal Minded by <span className="artist">Boogie Down Productions</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
   )

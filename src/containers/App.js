@@ -598,7 +598,7 @@ class App extends Component {
           <Link
             className="btn btn-default"
             to={{ pathname: "/vision" }}>
-            I See Your Vision
+            My Vision
           </Link>
         }
         <h4 className="App-title">I Do Not Know How this Works</h4>

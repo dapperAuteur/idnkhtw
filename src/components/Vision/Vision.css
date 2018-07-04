@@ -5,6 +5,8 @@
 }
 
 .playlist {
+  display: flex;
+  justify-content: center;
   text-align: left;
   margin: auto;
 }
