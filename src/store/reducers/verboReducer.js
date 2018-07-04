@@ -147,7 +147,7 @@ const verboReducer = (state = initialState, action) => {
         verbo,
         verbos
       });
-    case actionTypes.SET_ERROR:
+    case actionTypes.SET_VERBO_ERROR:
       return Object.assign({}, state, {
         error: true,
         errorMessage: action.errorMessage

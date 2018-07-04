@@ -4,13 +4,14 @@ export {
   userLogout,
   showLoginForm,
   showSignUpForm,
+  setAuthError,
   signIn,
   signUp
 } from './authActions';
 export {
   createNewCowsAndBullsGame,
   updateCowsAndBullsGame,
-  setError
+  setCowsAndBullsError
 } from './cowsAndBullsGameActions';
 export {
   createFourLetterWord,
@@ -18,6 +19,7 @@ export {
   loadFourLetterWord,
   loadFourLetterWords,
   randomFourLetterWord,
+  setFourLetterWordError,
   updateFourLetterWord
 } from './fourLetterWordActions';
 export {
@@ -26,6 +28,7 @@ export {
   loadPrefixSuffixRoot,
   loadPrefixSuffixRoots,
   randomPrefixSuffixRoot,
+  setPrefixSuffixRootError,
   updatePrefixSuffixRoot
 } from './prefixSuffixRootActions';
 export {
@@ -34,6 +37,8 @@ export {
   loadVerbo,
   loadVerbos,
   randomVerbo,
+  setVerbo,
+  setVerboError,
   showEnglish,
   updateVerbo
 } from './verboActions';

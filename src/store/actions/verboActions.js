@@ -21,9 +21,9 @@ export const requestVerbos = () => {
   }
 }
 
-export const setError = (err) => {
+export const setVerboError = (err) => {
   return {
-    type: actionTypes.SET_ERROR,
+    type: actionTypes.SET_VERBO_ERROR,
     errorMessage: err
   }
 }
@@ -82,12 +82,12 @@ export const createVerbo = (obj) => (
           let err = {
             errorMessage: data.message
           }
-          return dispatch(setError(err));
+          return dispatch(setVerboError(err));
           // throw err;
         })
       } else {
         let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-        return dispatch(setError(err));
+        return dispatch(setVerboError(err));
         // throw err;
       }
     }
@@ -97,7 +97,7 @@ export const createVerbo = (obj) => (
     return dispatch(addVerbo(verbo));
   })
   .catch(function (err) {
-    return dispatch(setError(err));
+    return dispatch(setVerboError(err));
     // return err;
   })
   )
@@ -114,12 +114,12 @@ export const loadVerbo = (obj) => (
               let err = {
                 errorMessage: data.message
               }
-              return dispatch(setError(err));
+              return dispatch(setVerboError(err));
               // throw err;
             })
           } else {
             let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-            return dispatch(setError(err));
+            return dispatch(setVerboError(err));
             // throw err;
           }
         }
@@ -129,7 +129,7 @@ export const loadVerbo = (obj) => (
         return dispatch(setVerbo(verbo));
       })
       .catch(function (err) {
-        return dispatch(setError(err));
+        return dispatch(setVerboError(err));
         // return err;
       })
   )
@@ -146,12 +146,12 @@ export const loadVerbos = () => (
               let err = {
                 errorMessage: data.message
               }
-              return dispatch(setError(err));
+              return dispatch(setVerboError(err));
               // throw err;
             })
           } else {
             let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-            return dispatch(setError(err));
+            return dispatch(setVerboError(err));
             // throw err;
           }
         }
@@ -161,7 +161,7 @@ export const loadVerbos = () => (
         return dispatch(setVerbos(verbos));
       })
       .catch(function (err) {
-        return dispatch(setError(err));
+        return dispatch(setVerboError(err));
         // return err;
       })
   )
@@ -184,12 +184,12 @@ export const updateVerbo = (obj) => (
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
             let err = { errorMessage: data.message }
-            return dispatch(setError(err));
+            return dispatch(setVerboError(err));
             // return err;
           })
         } else {
           let err = { errorMessage: 'Please Try Again Later, Server Is NOT Responding.' }
-          return dispatch(setError(err));
+          return dispatch(setVerboError(err));
           // return err;
         }
       }
@@ -199,7 +199,7 @@ export const updateVerbo = (obj) => (
       return dispatch(setVerbo(verbo));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setVerboError(err));
       // return err;
     })
   )
@@ -221,12 +221,12 @@ export const removeVerbo = (obj) => (
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
             let err = { errorMessage: data.message }
-            return dispatch(setError(err));
+            return dispatch(setVerboError(err));
             // return err;
           })
         } else {
           let err = { errorMessage: 'Please Try Again Later, Server Is NOT Responding.' }
-          return dispatch(setError(err));
+          return dispatch(setVerboError(err));
           // return err;
         }
       }
@@ -236,7 +236,7 @@ export const removeVerbo = (obj) => (
       return dispatch(deleteVerbo(verbo));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setVerboError(err));
       // return err;
     })
   )

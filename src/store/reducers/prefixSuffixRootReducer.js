@@ -136,7 +136,7 @@ const prefixSuffixRootReducer = (state = initialState, action) => {
         prefixSuffixRoot,
         prefixSuffixRoots
       });
-    case actionTypes.SET_ERROR:
+    case actionTypes.SET_PREFIX_SUFFIX_ROOT_ERROR:
       return Object.assign({}, state, {
         error: true,
         errorMessage: action.errorMessage

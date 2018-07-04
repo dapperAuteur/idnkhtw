@@ -207,9 +207,9 @@ const guessNotWinningWord = (game) => {
 //   // return userDidNotWin(userDidNotWinGame);
 // }
 
-export const setError = (err) => {
+export const setCowsAndBullsError = (err) => {
   return {
-    type: actionTypes.SET_ERROR,
+    type: actionTypes.SET_COWS_AND_BULLS_ERROR,
     errorMessage: err
   }
 }
