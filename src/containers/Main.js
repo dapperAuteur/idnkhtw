@@ -24,6 +24,10 @@ const routes = [
     component: AhSchucks
   },
   {
+    path: '/comics/i-think-very-deeply',
+    component: Comics
+  },
+  {
     path: '/comics',
     component: Comics
   },

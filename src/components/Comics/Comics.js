@@ -6,10 +6,14 @@ import './Comics.css';
 const Comics = props => {
   return (
     <div>
-      <img src={ theHip_HopRules_iThinkVeryDeeply1 } className="cartoon" alt="comic strip" />
-      <img src={ theHip_HopRules_iThinkVeryDeeply2 } className="cartoon" alt="comic strip" />
       <div>
-        <h3>Subscribe To Support More Comics</h3>
+        <img src={ theHip_HopRules_iThinkVeryDeeply1 } className="cartoon" alt="comic strip: I Think Very Deeply 1 of 2" />
+        <img src={ theHip_HopRules_iThinkVeryDeeply2 } className="cartoon" alt="comic strip: I Think Very Deeply 2 of 2" />
+        <h3>I Think Very Deeply</h3>
+        <h4>Hip-Hop Rule #5050</h4>
+      </div>
+      <div>
+        <h3>Support More Comics</h3>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="ZE8S7D5HD3V5J" />
