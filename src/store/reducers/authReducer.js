@@ -64,7 +64,7 @@ const authReducer = (state = initialState, action) => {
         showLoginForm: false,
         showSignUpForm: false
       })
-    case actionTypes.SET_ERROR:
+    case actionTypes.SET_AUTH_ERROR:
       let errorMessage = action.errorMessage;
       console.log(errorMessage);
       console.log(action);

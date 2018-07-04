@@ -21,9 +21,9 @@ export const requestFourLetterWords = () => {
   }
 }
 
-export const setError = (err) => {
+export const setFourLetterWordError = (err) => {
   return {
-    type: actionTypes.SET_ERROR,
+    type: actionTypes.SET_FOUR_LETTER_WORD_ERROR,
     errorMessage: err
   }
 }
@@ -76,12 +76,12 @@ export const createFourLetterWord = (obj) => (
           let err = {
             errorMessage: data.message
           }
-          return dispatch(setError(err));
+          return dispatch(setFourLetterWordError(err));
           // throw err;
         })
       } else {
         let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-        return dispatch(setError(err));
+        return dispatch(setFourLetterWordError(err));
         // throw err;
       }
     }
@@ -91,7 +91,7 @@ export const createFourLetterWord = (obj) => (
     return dispatch(addFourLetterWord(fourLetterWord));
   })
   .catch(function (err) {
-    return dispatch(setError(err));
+    return dispatch(setFourLetterWordError(err));
     // return err;
   })
   )
@@ -108,12 +108,12 @@ export const loadFourLetterWord = (obj) => (
               let err = {
                 errorMessage: data.message
               }
-              return dispatch(setError(err));
+              return dispatch(setFourLetterWordError(err));
               // throw err;
             })
           } else {
             let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-            return dispatch(setError(err));
+            return dispatch(setFourLetterWordError(err));
             // throw err;
           }
         }
@@ -123,7 +123,7 @@ export const loadFourLetterWord = (obj) => (
         return dispatch(setFourLetterWord(fourLetterWord));
       })
       .catch(function (err) {
-        return dispatch(setError(err));
+        return dispatch(setFourLetterWordError(err));
         // return err;
       })
   )
@@ -140,12 +140,12 @@ export const loadFourLetterWords = () => (
               let err = {
                 errorMessage: data.message
               }
-              return dispatch(setError(err));
+              return dispatch(setFourLetterWordError(err));
               // throw err;
             })
           } else {
             let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-            return dispatch(setError(err));
+            return dispatch(setFourLetterWordError(err));
             // throw err;
           }
         }
@@ -155,7 +155,7 @@ export const loadFourLetterWords = () => (
         return dispatch(setFourLetterWords(fourLetterWords));
       })
       .catch(function (err) {
-        return dispatch(setError(err));
+        return dispatch(setFourLetterWordError(err));
         // return err;
       })
   )
@@ -178,12 +178,12 @@ export const updateFourLetterWord = (obj) => (
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
             let err = { errorMessage: data.message }
-            return dispatch(setError(err));
+            return dispatch(setFourLetterWordError(err));
             // return err;
           })
         } else {
           let err = { errorMessage: 'Please Try Again Later, Server Is NOT Responding.' }
-          return dispatch(setError(err));
+          return dispatch(setFourLetterWordError(err));
           // return err;
         }
       }
@@ -193,7 +193,7 @@ export const updateFourLetterWord = (obj) => (
       return dispatch(setFourLetterWord(fourLetterWord));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setFourLetterWordError(err));
       // return err;
     })
   )
@@ -215,12 +215,12 @@ export const removeFourLetterWord = (obj) => (
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
             let err = { errorMessage: data.message }
-            return dispatch(setError(err));
+            return dispatch(setFourLetterWordError(err));
             // return err;
           })
         } else {
           let err = { errorMessage: 'Please Try Again Later, Server Is NOT Responding.' }
-          return dispatch(setError(err));
+          return dispatch(setFourLetterWordError(err));
           // return err;
         }
       }
@@ -230,7 +230,7 @@ export const removeFourLetterWord = (obj) => (
       return dispatch(deleteFourLetterWord(fourLetterWord));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setFourLetterWordError(err));
       // return err;
     })
   )

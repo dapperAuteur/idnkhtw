@@ -50,9 +50,9 @@ export const userLogout = () => {
   }
 }
 
-export const setError = (err) => {
+export const setAuthError = (err) => {
   return {
-    type: actionTypes.SET_ERROR,
+    type: actionTypes.SET_AUTH_ERROR,
     errorMessage: err
   }
 }
@@ -85,7 +85,7 @@ export const signIn = (authInfo) => (
       return dispatch(authenticateUser(currentUser));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setAuthError(err));
       // return err;
     })
   )
@@ -119,7 +119,7 @@ export const signUp = (authInfo) => (
       return dispatch(authenticateUser(currentUser));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setAuthError(err));
       // return err;
     })
   )

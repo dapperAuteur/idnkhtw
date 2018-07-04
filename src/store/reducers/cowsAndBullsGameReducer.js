@@ -77,7 +77,15 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         won: action.won,
         wordToConsiderForLibrary: action.wordToConsiderForLibrary
       });
-    case actionTypes.SET_ERROR:
+    case actionTypes.SET_COWS_AND_BULLS_ERROR:
+      let errorMessage = action.errorMessage;
+      console.log(errorMessage);
+      console.log(action);
+      return Object.assign({}, state, {
+        error: true,
+        errorMessage,
+        isFetching: false
+      })
     case actionTypes.USER_DID_WIN:
       let userDidWinGame = action.userDidWinGame;
       attempts = state.attempts++;

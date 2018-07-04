@@ -21,9 +21,9 @@ export const requestPrefixSuffixRoots = () => {
   }
 }
 
-export const setError = (err) => {
+export const setPrefixSuffixRootError = (err) => {
   return {
-    type: actionTypes.SET_ERROR,
+    type: actionTypes.SET_PREFIX_SUFFIX_ROOT_ERROR,
     errorMessage: err
   }
 }
@@ -82,12 +82,12 @@ export const createPrefixSuffixRoot = (obj) => (
           let err = {
             errorMessage: data.message
           }
-          return dispatch(setError(err));
+          return dispatch(setPrefixSuffixRootError(err));
           // throw err;
         })
       } else {
         let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-        return dispatch(setError(err));
+        return dispatch(setPrefixSuffixRootError(err));
         // throw err;
       }
     }
@@ -97,7 +97,7 @@ export const createPrefixSuffixRoot = (obj) => (
     return dispatch(addPrefixSuffixRoot(prefixSuffixRoot));
   })
   .catch(function (err) {
-    return dispatch(setError(err));
+    return dispatch(setPrefixSuffixRootError(err));
     // return err;
   })
   )
@@ -114,12 +114,12 @@ export const loadPrefixSuffixRoot = (obj) => (
               let err = {
                 errorMessage: data.message
               }
-              return dispatch(setError(err));
+              return dispatch(setPrefixSuffixRootError(err));
               // throw err;
             })
           } else {
             let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-            return dispatch(setError(err));
+            return dispatch(setPrefixSuffixRootError(err));
             // throw err;
           }
         }
@@ -129,7 +129,7 @@ export const loadPrefixSuffixRoot = (obj) => (
         return dispatch(setPrefixSuffixRoot(prefixSuffixRoot));
       })
       .catch(function (err) {
-        return dispatch(setError(err));
+        return dispatch(setPrefixSuffixRootError(err));
         // return err;
       })
   )
@@ -146,12 +146,12 @@ export const loadPrefixSuffixRoots = () => (
               let err = {
                 errorMessage: data.message
               }
-              return dispatch(setError(err));
+              return dispatch(setPrefixSuffixRootError(err));
               // throw err;
             })
           } else {
             let err = { errorMessage: 'Please Try Again Later. Server Is NOT Responding.' };
-            return dispatch(setError(err));
+            return dispatch(setPrefixSuffixRootError(err));
             // throw err;
           }
         }
@@ -161,7 +161,7 @@ export const loadPrefixSuffixRoots = () => (
         return dispatch(setPrefixSuffixRoots(prefixSuffixRoots));
       })
       .catch(function (err) {
-        return dispatch(setError(err));
+        return dispatch(setPrefixSuffixRootError(err));
         // return err;
       })
   )
@@ -184,12 +184,12 @@ export const updatePrefixSuffixRoot = (obj) => (
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
             let err = { errorMessage: data.message }
-            return dispatch(setError(err));
+            return dispatch(setPrefixSuffixRootError(err));
             // return err;
           })
         } else {
           let err = { errorMessage: 'Please Try Again Later, Server Is NOT Responding.' }
-          return dispatch(setError(err));
+          return dispatch(setPrefixSuffixRootError(err));
           // return err;
         }
       }
@@ -199,7 +199,7 @@ export const updatePrefixSuffixRoot = (obj) => (
       return dispatch(setPrefixSuffixRoot(prefixSuffixRoot));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setPrefixSuffixRootError(err));
       // return err;
     })
   )
@@ -221,12 +221,12 @@ export const removePrefixSuffixRoot = (obj) => (
         if (resp.status >= 400 && resp.status < 500) {
           return resp.json().then(data => {
             let err = { errorMessage: data.message }
-            return dispatch(setError(err));
+            return dispatch(setPrefixSuffixRootError(err));
             // return err;
           })
         } else {
           let err = { errorMessage: 'Please Try Again Later, Server Is NOT Responding.' }
-          return dispatch(setError(err));
+          return dispatch(setPrefixSuffixRootError(err));
           // return err;
         }
       }
@@ -236,7 +236,7 @@ export const removePrefixSuffixRoot = (obj) => (
       return dispatch(deletePrefixSuffixRoot(prefixSuffixRoot));
     })
     .catch(function (err) {
-      return dispatch(setError(err));
+      return dispatch(setPrefixSuffixRootError(err));
       // return err;
     })
   )

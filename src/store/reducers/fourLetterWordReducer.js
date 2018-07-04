@@ -135,7 +135,7 @@ const fourLetterWordReducer = (state = initialState, action) => {
         fourLetterWord,
         fourLetterWords
       });
-    case actionTypes.SET_ERROR:
+    case actionTypes.SET_FOUR_LETTER_WORD_ERROR:
       return Object.assign({}, state, {
         error: true,
         errorMessage: action.errorMessage
