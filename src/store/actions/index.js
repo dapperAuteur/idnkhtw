@@ -10,7 +10,10 @@ export {
 } from './authActions';
 export {
   confirmNewGame,
+  currentCowsAndBullsGame,
   createNewCowsAndBullsGame,
+  loadCowsAndBullsGame,
+  newCowsAndBullsGame,
   updateCowsAndBullsGame,
   setCowsAndBullsError
 } from './cowsAndBullsGameActions';

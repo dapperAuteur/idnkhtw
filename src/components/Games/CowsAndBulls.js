@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './../../store/actions/index';
+import { checkGuess } from './cowsAndBullsGame';
 import PropTypes from 'prop-types';
 import './Game.css';
 
@@ -11,17 +12,13 @@ class CowsAndBulls extends Component {
       attempts: PropTypes.number,
       bulls: PropTypes.number,
       cows: PropTypes.number,
+      fourLetterWords: PropTypes.arrayOf(PropTypes.object),
       guess: PropTypes.string,
       guesses: PropTypes.arrayOf(PropTypes.string),
       message: PropTypes.string,
       score: PropTypes.number,
       userId: PropTypes.string,
-      winningWord: PropTypes.shape({
-        0: PropTypes.string.isRequired,
-        1: PropTypes.string.isRequired,
-        2: PropTypes.string.isRequired,
-        3: PropTypes.string.isRequired
-      }),
+      winningWord: PropTypes.string,
       won: PropTypes.bool,
       wordsToConsiderForLibrary: PropTypes.arrayOf(PropTypes.string),
     }),
@@ -30,6 +27,7 @@ class CowsAndBulls extends Component {
     letter2: PropTypes.string,
     letter3: PropTypes.string,
     letters: PropTypes.arrayOf(PropTypes.string),
+    onUpdateCowsAndBullsGame: PropTypes.func,
     randomFourLetterWord: PropTypes.func,
     saveGame: PropTypes.func
   };
@@ -39,6 +37,7 @@ class CowsAndBulls extends Component {
       attempts: 0,
       bulls: 0,
       cows: 0,
+      fourLetterWords: [],
       guess: "",
       guesses: [],
       message: "",
@@ -65,9 +64,11 @@ class CowsAndBulls extends Component {
         attempts: props.attempts,
         bulls: props.bulls,
         cows: props.cows,
+        fourLetterWords: props.fourLetterWords,
         guess: props.guess,
         guesses: props.guesses,
         message: props.message,
+        onUpdateCowsAndBullsGame: props.onUpdateCowsAndBullsGame,
         score: props.score,
         userId: props.userId,
         winningWord: props.winningWord,
@@ -96,13 +97,22 @@ class CowsAndBulls extends Component {
     e.preventDefault();
 
     let {
+      fourLetterWords,
       game,
       letter0,
       letter1,
       letter2,
       letter3,
-      letters
+      onUpdateCowsAndBullsGame
     } = { ...this.state };
+    console.log(game);
+    let guess = letter0 + letter1 + letter2 + letter3;
+    console.log(guess);
+    let currentGame = Object.assign({}, game, {
+      guess
+    })
+    let inGame = checkGuess(fourLetterWords, guess);
+    onUpdateCowsAndBullsGame(currentGame, inGame);
     console.log(game);
   };
 
@@ -194,6 +204,7 @@ const mapStateToProps = state => {
     attempts: state.cowsAndBullsGameReducer.attempts,
     bulls: state.cowsAndBullsGameReducer.bulls,
     cows: state.cowsAndBullsGameReducer.cows,
+    fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
     guess: state.cowsAndBullsGameReducer.guess,
     guesses: state.cowsAndBullsGameReducer.guesses,
     message: state.cowsAndBullsGameReducer.message,
