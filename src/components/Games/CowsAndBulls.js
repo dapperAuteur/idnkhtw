@@ -8,7 +8,7 @@ class CowsAndBulls extends Component {
   static propTypes = {
     currentUser: PropTypes.object,
     game: PropTypes.shape({
-      attempts: PropTypes.string,
+      attempts: PropTypes.number,
       bulls: PropTypes.number,
       cows: PropTypes.number,
       guess: PropTypes.string,
@@ -86,7 +86,6 @@ class CowsAndBulls extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUpdateGame = this.handleUpdateGame.bind(this);
   };
 
   handleChange(e) {

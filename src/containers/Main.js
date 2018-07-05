@@ -4,6 +4,7 @@ import Blog from './../components/Blog/Blog';
 import CowsAndBulls from './../components/Games/CowsAndBulls';
 import DetailsFourLetterWord from '../components/FourLetterWords/DetailsFourLetterWord';
 import FourLetterWordForm from '../components/Forms/FourLetterWordForm';
+import Games from './../components/Games/Games';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
 import VerboForm from './../components/Forms/VerboForm';
 import FindPalabra from '../components/Palabras/FindPalabra';
@@ -60,6 +61,14 @@ const routes = [
   {
     path: '/words/verbos',
     component: DetailsVerbo
+  },
+  {
+    path: '/games/four-letter-word-game',
+    component: CowsAndBulls
+  },
+  {
+    path: '/games',
+    component: Games
   }
 ]
 

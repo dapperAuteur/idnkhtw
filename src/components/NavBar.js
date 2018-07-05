@@ -8,6 +8,7 @@ const NavBar = (props) => {
 
   const {
     currentUser,
+    fourLetterWord,
     fourLetterWords,
     onClickShowLoginForm,
     onClickShowSignUpForm,
@@ -64,13 +65,12 @@ const NavBar = (props) => {
             </Link>
             <Link
               to={{
-                pathname: '/games/four-letter-word',
-                state: { p: 'four-letter-words/' }
+                pathname: '/games',
               }}
-              onClick={ () => onNewCowsAndBullsGame(fourLetterWords) }
+              onClick={ onRandomFourLetterWord }
               className='btn btn-default'
             >
-              Cows & Bulls
+              Games
             </Link>
             <Link
               to={{
@@ -178,6 +178,7 @@ const mapStateToProps = state => {
   return {
     currentUser: state.authReducer.currentUser,
     fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
+    guesses: state.cowsAndBullsGameReducer.guesses,
     prefixSuffixRoots: state.prefixSuffixRootReducer.prefixSuffixRoots,
     verbos: state.verboReducer.verbos
   }
@@ -185,7 +186,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
+    onNewCowsAndBullsGame: (guesses) => dispatch(actions.createNewCowsAndBullsGame(guesses)),
     onClickSignOut: () => dispatch(actions.userLogout()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
     onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),
