@@ -6,11 +6,12 @@ import './Game.css';
 
 const Games = (props) => {
   console.log(props);
+  console.log(props.loadCowsAndBullsGame);
   let {
     loadCowsAndBullsGame,
     fourLetterWord,
     guesses
-  } = props.guesses;
+  } = props;
 
   return (
     <div className="games">

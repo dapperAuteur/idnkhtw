@@ -16,8 +16,10 @@ export const loadCowsAndBullsGame = (fourLetterWord, guesses) => {
   console.log("createNewCowsAndBullsGame");
   // check if guesses has length > 0
   if (guesses.length > 0) {
+    console.log("length > 0");
     return currentCowsAndBullsGame();
   } else {
+    console.log("length 0");
     return newCowsAndBullsGame(fourLetterWord);
   }
 }
@@ -35,21 +37,29 @@ export const newCowsAndBullsGame = (fourLetterWord) => {
   }
 }
 
-export const userDidWin = (game) => {
-  console.log(game);
-  return {
-    type: actionTypes.USER_DID_WIN,
-    game
+export const updateCowsAndBullsGame = (currentGame, inGame) => {
+  console.log(currentGame);
+  if (inGame) {
+    return isGuessWinningWord(currentGame);
+  } else {
+    return wordNotInGame(currentGame);
   }
-};
+}
 
-export const userDidNotWin = (userDidNotWinGame) => {
-  console.log(userDidNotWinGame);
-  return {
-    type: actionTypes.USER_DID_NOT_WIN,
-    userDidNotWinGame
+const isGuessWinningWord = currentGame => {
+  // unhash winningWordId and set to winningWord
+  // get ga
+  let guess = currentGame.guess;
+  console.log(currentGame);
+
+  let winningWord = currentGame.winningWord;
+  console.log(winningWord);
+  if (guess === winningWord) {
+    userDidWin(currentGame);
+  } else {
+    return guessNotWinningWord(currentGame);
   }
-};
+}
 
 export const wordNotInGame = (currentGame) => {
   console.log(currentGame);
@@ -59,21 +69,10 @@ export const wordNotInGame = (currentGame) => {
   }
 };
 
-const isGuessWinningWord = currentGame => {
-  // unhash winningWordId and set to winningWord
-  // get ga
-  let guess = currentGame.guess;
-
-  let winningWord = currentGame.winningWord;
-  if (guess === winningWord) {
-    userDidWin(currentGame);
-  } else {
-    return guessNotWinningWord(currentGame);
-  }
-}
-
 const guessNotWinningWord = (currentGame) => {
-  let bulls, cows;
+  console.log(currentGame);
+  let bulls = 0;
+  let cows = 0;
   let winningWord = currentGame.winningWord;
   let guess = currentGame.guess;
   let arr_guess = guess.split("");
@@ -104,18 +103,28 @@ const guessNotWinningWord = (currentGame) => {
     guess,
     scored
   };
+  console.log(userDidNotWinGame);
   return userDidNotWin(userDidNotWinGame);
 }
 
-const updateCowsAndBullsGame = (currentGame, inGame) => {
-  if (inGame) {
-    return isGuessWinningWord(currentGame);
-  } else {
-    return wordNotInGame(currentGame);
+export const userDidWin = (currentGame) => {
+  console.log(currentGame);
+  return {
+    type: actionTypes.USER_DID_WIN,
+    currentGame
   }
-}
+};
+
+export const userDidNotWin = (userDidNotWinGame) => {
+  console.log(userDidNotWinGame);
+  return {
+    type: actionTypes.USER_DID_NOT_WIN,
+    userDidNotWinGame
+  }
+};
 
 export const setCowsAndBullsError = (err) => {
+  console.log(err);
   return {
     type: actionTypes.SET_COWS_AND_BULLS_ERROR,
     errorMessage: err

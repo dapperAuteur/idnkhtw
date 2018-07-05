@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './../../store/actions/index';
 import { checkGuess } from './cowsAndBullsGame';
+import GameStatus from './GameStatus';
 import PropTypes from 'prop-types';
 import './Game.css';
 
 class CowsAndBulls extends Component {
   static propTypes = {
     currentUser: PropTypes.object,
+    fourLetterWords: PropTypes.arrayOf(PropTypes.object),
     game: PropTypes.shape({
       attempts: PropTypes.number,
       bulls: PropTypes.number,
       cows: PropTypes.number,
-      fourLetterWords: PropTypes.arrayOf(PropTypes.object),
       guess: PropTypes.string,
       guesses: PropTypes.arrayOf(PropTypes.string),
       message: PropTypes.string,
@@ -27,17 +28,17 @@ class CowsAndBulls extends Component {
     letter2: PropTypes.string,
     letter3: PropTypes.string,
     letters: PropTypes.arrayOf(PropTypes.string),
-    onUpdateCowsAndBullsGame: PropTypes.func,
+    onUpdateGame: PropTypes.func,
     randomFourLetterWord: PropTypes.func,
     saveGame: PropTypes.func
   };
   static defaultProps = {
     currentUser: {},
+    fourLetterWords: [],
     game: {
       attempts: 0,
       bulls: 0,
       cows: 0,
-      fourLetterWords: [],
       guess: "",
       guesses: [],
       message: "",
@@ -60,17 +61,16 @@ class CowsAndBulls extends Component {
     console.log(props);
     this.state = {
       currentUser: props.currentUser,
+      fourLetterWords: props.fourLetterWords,
       game: {
         attempts: props.attempts,
         bulls: props.bulls,
         cows: props.cows,
-        fourLetterWords: props.fourLetterWords,
         guess: props.guess,
         guesses: props.guesses,
         message: props.message,
-        onUpdateCowsAndBullsGame: props.onUpdateCowsAndBullsGame,
         score: props.score,
-        userId: props.userId,
+        userId: props.currentUser || "Guest",
         winningWord: props.winningWord,
         won: props.won,
         wordsToConsiderForLibrary: props.wordsToConsiderForLibrary,
@@ -82,6 +82,7 @@ class CowsAndBulls extends Component {
       letters: [
         "Choose A Letter", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
       ],
+      onUpdateGame: props.onUpdateGame,
       randomFourLetterWord: props.randomFourLetterWord,
       saveGame: props.saveGame
     }
@@ -103,21 +104,22 @@ class CowsAndBulls extends Component {
       letter1,
       letter2,
       letter3,
-      onUpdateCowsAndBullsGame
+      onUpdateGame
     } = { ...this.state };
     console.log(game);
     let guess = letter0 + letter1 + letter2 + letter3;
-    console.log(guess);
     let currentGame = Object.assign({}, game, {
       guess
-    })
+    });
     let inGame = checkGuess(fourLetterWords, guess);
-    onUpdateCowsAndBullsGame(currentGame, inGame);
     console.log(game);
+    console.log(currentGame);
+    onUpdateGame(currentGame, inGame);
   };
 
   render() {
     const {
+      game,
       letter0,
       letter1,
       letter2,
@@ -125,7 +127,9 @@ class CowsAndBulls extends Component {
       letters
     } = this.state;
     return (
-      <div className='word-form-container'>
+      <div className='game'>
+      <GameStatus
+        game={ game } />
         <form
           className='form-letters'
           onSubmit={ this.handleSubmit }>
@@ -209,16 +213,16 @@ const mapStateToProps = state => {
     guesses: state.cowsAndBullsGameReducer.guesses,
     message: state.cowsAndBullsGameReducer.message,
     score: state.cowsAndBullsGameReducer.score,
-    winning_word: state.cowsAndBullsGameReducer.winning_word,
+    winningWord: state.cowsAndBullsGameReducer.winningWord,
     won: state.cowsAndBullsGameReducer.won,
-    word_to_consider_for_library: state.cowsAndBullsGameReducer.word_to_consider_for_library
+    wordsToConsiderForLibrary: state.cowsAndBullsGameReducer.wordToConsiderForLibrary
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
-    onUpdateCowsAndBullsGame: (obj) => dispatch(actions.updateCowsAndBullsGame(obj)),
+    onUpdateGame: (currentGame, inGame) => dispatch(actions.updateCowsAndBullsGame(currentGame, inGame)),
     randomFourLetterWord: () => dispatch(actions.randomFourLetterWord())
   }
 }
