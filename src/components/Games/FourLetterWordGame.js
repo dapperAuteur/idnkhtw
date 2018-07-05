@@ -235,7 +235,7 @@ FourLetterWordGame.defaultProps = {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     currentUser: state.authReducer.currentUser,
     fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
@@ -253,7 +253,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
+  // console.log(dispatch);
   return {
     onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
     onUpdateCowsAndBullsGame: (obj) => dispatch(actions.updateCowsAndBullsGame(obj))

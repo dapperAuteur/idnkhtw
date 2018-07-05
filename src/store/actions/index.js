@@ -9,6 +9,7 @@ export {
   signUp
 } from './authActions';
 export {
+  confirmNewGame,
   createNewCowsAndBullsGame,
   updateCowsAndBullsGame,
   setCowsAndBullsError

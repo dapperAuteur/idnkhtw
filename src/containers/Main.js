@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Blog from './../components/Blog/Blog';
+import CowsAndBulls from './../components/Games/CowsAndBulls';
 import DetailsFourLetterWord from '../components/FourLetterWords/DetailsFourLetterWord';
 import FourLetterWordForm from '../components/Forms/FourLetterWordForm';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';

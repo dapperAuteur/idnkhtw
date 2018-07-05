@@ -33,6 +33,10 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       won,
       wordToConsiderForLibrary;
   switch (action.type) {
+    // case actionTypes.CONFIRM_NEW_GAME:
+    //   game = state.game;
+
+
     case actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME:
       let winningWord = action.encryptedWinningWordId
       return Object.assign({}, state, {

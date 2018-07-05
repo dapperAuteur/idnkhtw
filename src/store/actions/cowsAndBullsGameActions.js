@@ -17,6 +17,12 @@ const getFourLetterWords = () => {
   }
 }
 
+export const confirmNewGame = () => {
+  return {
+    type: actionTypes.CONFIRM_NEW_GAME
+  }
+}
+
 const FOUR_LETTER_WORDS = getFourLetterWords();
 // console.log(FOUR_LETTER_WORDS);
 
