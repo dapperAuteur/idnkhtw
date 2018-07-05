@@ -4,6 +4,7 @@ import Comics from './../components/Comics/Comics';
 import AhSchucks from './../components/Commerce/AhSchucks';
 import ThankYou from './../components/Commerce/ThankYou';
 import Blog from './../components/Blog/Blog';
+import CowsAndBulls from './../components/Games/CowsAndBulls';
 import DetailsFourLetterWord from '../components/FourLetterWords/DetailsFourLetterWord';
 import FourLetterWordForm from '../components/Forms/FourLetterWordForm';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
