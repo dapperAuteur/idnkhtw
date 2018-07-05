@@ -13,17 +13,17 @@ const GameStatus = (props) => {
     guess,
     message,
     score,
-    winningWord,
     won
   } = { ...props };
 
   if (won) {
     return (
       <div className="gameStatus">
-        <span className="gameStat">Message: { message }</span>
         <span className="gameStat">Points { score }</span>
+        <span className="gameStat">Cows { cows }</span>
+        <span className="gameStat">Bulls { bulls }</span>
         <span className="gameStat">Guesses { attempts }</span>
-        <span className="gameStat">You Won With { winningWord }!</span>
+        <span className="gameStat">You Won With { guess }!</span>
       </div>
     )
   } else {
