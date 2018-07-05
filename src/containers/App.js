@@ -208,6 +208,15 @@ class App extends Component {
       verbo,
       verbos
     } = this.state;
+
+    let {
+      currentUser,
+      onClickShowLoginForm,
+      onClickShowSignUpForm,
+      showLoginForm,
+      showSignUpForm
+    } = this.props;
+    console.log(this.props);
     let p = this.props.location.pathname;
     return (
       <div className="App">
