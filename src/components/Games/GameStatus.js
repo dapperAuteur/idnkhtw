@@ -1,20 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './GameStatus.css';
 
 const GameStatus = (props) => {
-  const { game } = { ...props };
   let {
     attempts,
     bulls,
     cows,
+    currentUser,
     currentUserId,
     guess,
     message,
     score,
     winningWord,
     won
-  } = { ...game };
+  } = { ...props };
 
   if (won) {
     return (
@@ -40,6 +41,7 @@ const GameStatus = (props) => {
 }
 
 GameStatus.propTypes = {
+  currentUser: PropTypes.object,
   game: PropTypes.shape({
     attempts: PropTypes.number,
     bulls: PropTypes.number,
@@ -53,6 +55,7 @@ GameStatus.propTypes = {
 }
 
 GameStatus.defaultProps = {
+  currentUser: {},
   game: {
     attempts: 0,
     bulls: 0,
@@ -65,4 +68,19 @@ GameStatus.defaultProps = {
   }
 }
 
-export default GameStatus;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.authReducer.currentUser,
+    currentUserId: state.cowsAndBullsGameReducer.currentUserId,
+    attempts: state.cowsAndBullsGameReducer.attempts,
+    bulls: state.cowsAndBullsGameReducer.bulls,
+    cows: state.cowsAndBullsGameReducer.cows,
+    guess: state.cowsAndBullsGameReducer.guess,
+    message: state.cowsAndBullsGameReducer.message,
+    score: state.cowsAndBullsGameReducer.score,
+    won: state.cowsAndBullsGameReducer.won,
+    wordsToConsiderForLibrary: state.cowsAndBullsGameReducer.wordToConsiderForLibrary
+  }
+}
+
+export default connect(mapStateToProps)(GameStatus);

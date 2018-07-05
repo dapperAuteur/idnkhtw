@@ -37,44 +37,50 @@ export const newCowsAndBullsGame = (fourLetterWord) => {
   }
 }
 
-export const updateCowsAndBullsGame = (currentGame, inGame) => {
-  console.log(currentGame);
+export const updateCowsAndBullsGame = (currentGame, guessChecked) => {
+  console.log(currentGame, guessChecked);
+  let {
+    guessLowerCase,
+    inGame
+  } = { ...guessChecked };
   if (inGame) {
-    return isGuessWinningWord(currentGame);
+    return isGuessWinningWord(currentGame, guessLowerCase);
   } else {
-    return wordNotInGame(currentGame);
+    return wordNotInGame(currentGame, guessLowerCase);
   }
 }
 
-const isGuessWinningWord = currentGame => {
+const isGuessWinningWord = (currentGame, guessLowerCase) => {
   // unhash winningWordId and set to winningWord
   // get ga
-  let guess = currentGame.guess;
+  let guess = guessLowerCase;
   console.log(currentGame);
 
   let winningWord = currentGame.winningWord;
   console.log(winningWord);
   if (guess === winningWord) {
-    userDidWin(currentGame);
+    return userDidWin(currentGame);
   } else {
-    return guessNotWinningWord(currentGame);
+    return guessNotWinningWord(currentGame, guessLowerCase);
   }
 }
 
-export const wordNotInGame = (currentGame) => {
+export const wordNotInGame = (currentGame, guessLowerCase) => {
   console.log(currentGame);
   return {
     type: actionTypes.WORD_NOT_IN_GAME,
-    currentGame
+    currentGame,
+    guessLowerCase
   }
 };
 
-const guessNotWinningWord = (currentGame) => {
+const guessNotWinningWord = (currentGame, guessLowerCase) => {
   console.log(currentGame);
   let bulls = 0;
   let cows = 0;
   let winningWord = currentGame.winningWord;
-  let guess = currentGame.guess;
+  let guess = guessLowerCase;
+  console.log(guess);
   let arr_guess = guess.split("");
   let arr_word = winningWord.split("");
   let message = `${guess} is NOT the Word`;
@@ -101,6 +107,7 @@ const guessNotWinningWord = (currentGame) => {
     cows,
     bulls,
     guess,
+    message,
     scored
   };
   console.log(userDidNotWinGame);

@@ -3,7 +3,8 @@ import shuffle from 'shuffle-array';
 export const checkGuess = (fourLetterWords, guess) => {
   let guessLowerCase = lowerCaseGuess(guess);
   let inGame = isGuessInGame(fourLetterWords, guessLowerCase);
-  return inGame;
+  let guessChecked = { guessLowerCase, inGame };
+  return guessChecked;
 }
 
 const lowerCaseGuess = (guess) => {
@@ -13,9 +14,10 @@ const lowerCaseGuess = (guess) => {
 }
 
 const isGuessInGame = (fourLetterWords, guessLowerCase) => {
-  // debugger;
+  console.log("isGuessInGame");
   let currentGuess = fourLetterWords.filter(word => word.word === guessLowerCase);
-  if (currentGuess === 0) {
+  console.log(currentGuess);
+  if (currentGuess.length === 0) {
     return false;
   } else {
     return true;

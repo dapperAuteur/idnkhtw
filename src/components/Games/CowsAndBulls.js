@@ -111,10 +111,10 @@ class CowsAndBulls extends Component {
     let currentGame = Object.assign({}, game, {
       guess
     });
-    let inGame = checkGuess(fourLetterWords, guess);
+    let guessChecked = checkGuess(fourLetterWords, guess);
     console.log(game);
     console.log(currentGame);
-    onUpdateGame(currentGame, inGame);
+    onUpdateGame(currentGame, guessChecked);
   };
 
   render() {

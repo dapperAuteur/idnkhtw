@@ -98,22 +98,23 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         won
       });
     case actionTypes.USER_DID_NOT_WIN:
+      console.log(action);
       let {
         cows,
         bulls,
         guess,
+        message,
         scored
       } = action.userDidNotWinGame;
+      console.log(message);
       ({
         attempts,
         guesses,
         score
       } = { ...state });
       console.log(state);
-      console.log(guesses);
       attempts = state.attempts++;
       newGuesses = guesses.concat(guess);
-      console.log(guesses);
       let newScore = score + scored;
 
       return Object.assign({}, state, {
@@ -128,7 +129,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
     case actionTypes.WORD_NOT_IN_GAME:
 
       attempts = state.attempts++;
-      guess = action.currentGame.guess;
+      guess = action.guessLowerCase;
       guesses = state.guesses;
       newGuesses = guesses.concat(guess);
       message = `${guess} is NOT in our library. We'll consider adding it to the library. You lose 200 points`;
@@ -137,6 +138,8 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
 
       return Object.assign({}, state, {
         attempts,
+        bulls: 0,
+        cows: 0,
         guess,
         guesses: newGuesses,
         message,
