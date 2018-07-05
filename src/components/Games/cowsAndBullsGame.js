@@ -13,6 +13,7 @@ const lowerCaseGuess = (guess) => {
 }
 
 const isGuessInGame = (fourLetterWords, guessLowerCase) => {
+  // debugger;
   let currentGuess = fourLetterWords.filter(word => word.word === guessLowerCase);
   if (currentGuess === 0) {
     return false;

@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 import './GameStatus.css';
 
 const GameStatus = (props) => {
-  const { game, onCreateGame } = { ...props };
-  let { attempts, bulls, cows, guess, message, name, score, winning_word, won } = { ...game };
+  const { game } = { ...props };
+  let {
+    attempts,
+    bulls,
+    cows,
+    currentUserId,
+    guess,
+    message,
+    score,
+    winningWord,
+    won
+  } = { ...game };
 
   if (won) {
     return (
@@ -12,19 +22,18 @@ const GameStatus = (props) => {
         <span className="gameStat">Message: { message }</span>
         <span className="gameStat">Points { score }</span>
         <span className="gameStat">Guesses { attempts }</span>
-        <span className="gameStat">You Won { name } With { winning_word.word }!</span>
+        <span className="gameStat">You Won With { winningWord }!</span>
       </div>
     )
   } else {
     return (
       <div className="gameStatus">
-        <span className='gameStat'>Last Guess: { guess }</span>
-        <span className="gameStat">Message: { message }</span>
+        { message.length > 0 ? <span className='gameStat'>Last Guess: { guess }</span> : null }
+        { message.length > 0 ? <span className="gameStat">Message: { message }</span> : null }
         <span className="gameStat">Points { score }</span>
         <span className="gameStat">Guesses { attempts }</span>
         <span className="gameStat">Cows { cows }</span>
         <span className="gameStat">Bulls { bulls }</span>
-        <span className="gameStat">Won { won }</span>
       </div>
     )
   }
@@ -37,7 +46,7 @@ GameStatus.propTypes = {
     cows: PropTypes.number,
     guess: PropTypes.string,
     guesses: PropTypes.arrayOf(PropTypes.string),
-    userId: PropTypes.string,
+    currentUserId: PropTypes.string,
     score: PropTypes.number,
     won: PropTypes.bool,
   })
@@ -48,8 +57,9 @@ GameStatus.defaultProps = {
     attempts: 0,
     bulls: 0,
     cows: 0,
-    guess: '',
-    guesses: ["full", "acme", "tool"],
+    currentUserId: "Guest",
+    guess: "",
+    guesses: [],
     score: 0,
     won: false,
   }

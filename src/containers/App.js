@@ -5,7 +5,6 @@ import * as actions from './../store/actions/index';
 import * as apiCalls from './../actions/api';
 import AuthForm from './../components/Forms/AuthForm';
 import ErrorMessages from './../components/Errors/ErrorMessages';
-import GameStatus from './../components/Games/GameStatus';
 import Main from './Main';
 import NavBar from './../components/NavBar';
 import Vision from './../components/Vision/Vision';
@@ -229,10 +228,6 @@ class App extends Component {
             showLoginForm={ showLoginForm }
             showSignUpForm={ showSignUpForm }
             /> : null
-        }
-        {
-          p === '/games/four-letter-word' &&
-          <GameStatus game={ game } onCreateGame={ this.handleCreateGame } />
         }
         <Main
           onDeleteBlog={ this.handleDeleteBlog }

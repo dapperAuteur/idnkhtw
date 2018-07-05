@@ -19,27 +19,32 @@ const initialState = {
 }
 
 const cowsAndBullsGameReducer = (state = initialState, action) => {
-  let attempts,
-      bulls,
-      cows,
-      currentUserId,
-      error,
-      errorMessage,
-      guess,
-      guesses,
-      isFetching,
-      message,
-      score,
-      winningWord,
-      won,
-      wordToConsiderForLibrary;
+  console.log(state);
+  let {
+    attempts,
+    bulls,
+    cows,
+    currentUserId,
+    error,
+    errorMessage,
+    guess,
+    guesses,
+    isFetching,
+    message,
+    score,
+    winningWord,
+    won,
+    wordToConsiderForLibrary
+  } = { ...state };
+  let newGuesses = [];
+  console.log(newGuesses);
   switch (action.type) {
     // case actionTypes.CONFIRM_NEW_GAME:
     //   game = state.game;
 
 
     case actionTypes.NEW_COWS_AND_BULLS_GAME:
-      let winningWord = action.fourLetterWord;
+      let winningWord = action.fourLetterWord.word;
       if (typeof(Storage) !== "undefined") {
         // if (localStorage.hasOwnProperty('fourLetterWord')) {
         //   winningWord = JSON.parse(localStorage.getItem('fourLetterWord'));
@@ -80,14 +85,14 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       message = 'You Won!!!';
       score = score + 500;
       won = true;
-      guesses.concat(guess);
+      let newGuesses = guesses.concat(guess);
       console.log(guesses);
       return Object.assign({}, state, {
         attempts,
         bulls,
         cows,
         guess,
-        guesses,
+        guesses: newGuesses,
         message,
         score,
         won
@@ -103,9 +108,11 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         attempts,
         guesses,
         score
-      } = { state });
+      } = { ...state });
+      console.log(state);
+      console.log(guesses);
       attempts = state.attempts++;
-      guesses.concat(guess);
+      newGuesses = guesses.concat(guess);
       console.log(guesses);
       let newScore = score + scored;
 
@@ -114,7 +121,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         bulls,
         cows,
         guess,
-        guesses,
+        guesses: newGuesses,
         message,
         score: newScore
       });
@@ -123,18 +130,18 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       attempts = state.attempts++;
       guess = action.currentGame.guess;
       guesses = state.guesses;
-      guesses.concat(guess);
+      newGuesses = guesses.concat(guess);
       message = `${guess} is NOT in our library. We'll consider adding it to the library. You lose 200 points`;
       score = state.score - 200;
-      wordToConsiderForLibrary.concat(guess);
+      let considerWords = wordToConsiderForLibrary.concat(guess);
 
       return Object.assign({}, state, {
         attempts,
         guess,
-        guesses,
+        guesses: newGuesses,
         message,
         score,
-        wordToConsiderForLibrary
+        wordToConsiderForLibrary: considerWords
       })
     default:
     return state;
