@@ -38,12 +38,12 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
     //   game = state.game;
 
 
-    case actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME:
-      // let winningWord = action.encryptedWinningWordId;
+    case actionTypes.NEW_COWS_AND_BULLS_GAME:
+      let winningWord = action.fourLetterWord;
       if (typeof(Storage) !== "undefined") {
-        if (localStorage.hasOwnProperty('fourLetterWord')) {
-          winningWord = JSON.parse(localStorage.getItem('fourLetterWord'));
-        }
+        // if (localStorage.hasOwnProperty('fourLetterWord')) {
+        //   winningWord = JSON.parse(localStorage.getItem('fourLetterWord'));
+        // }
         if (localStorage.hasOwnProperty('currentUser')) {
           let currentUser = JSON.parse(localStorage.getItem('currentUser'));
           currentUserId = currentUser.currentUserId;
@@ -51,7 +51,8 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
           currentUserId = state.userId;
         }
         let game = Object.assign({}, state, {
-          currentUserId
+          currentUserId,
+          winningWord
         });
         localStorage.setItem('game', JSON.stringify(game));
       } else {
@@ -60,49 +61,6 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         currentUserId,
         winningWord
-      });
-    case actionTypes.SET_GUESS:
-      guess = action.guess;
-      return Object.assign({}, state, {
-        guess
-      })
-    case actionTypes.SET_GAME:
-       ({
-         attempts,
-         bulls,
-         cows,
-         error,
-         errorMessage,
-         guess,
-         guesses,
-         isFetching,
-         message,
-         score,
-         winningWord,
-         won,
-         wordToConsiderForLibrary
-       } = { ...action.game });
-     let game = { ...action.game };
-      if (typeof(Storage) !== "undefined") {
-        localStorage.setItem('game', JSON.stringify(game));
-      } else {
-        return null;
-      }
-      return Object.assign({}, state, {
-        attempts,
-        bulls,
-        cows,
-        error,
-        errorMessage,
-        game,
-        guess,
-        guesses,
-        isFetching,
-        message,
-        score,
-        winningWord,
-        won,
-        wordToConsiderForLibrary
       });
     case actionTypes.SET_COWS_AND_BULLS_ERROR:
       let errorMessage = action.errorMessage;
@@ -114,23 +72,20 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         isFetching: false
       })
     case actionTypes.USER_DID_WIN:
-      let userDidWinGame = action.userDidWinGame;
+      let currentGame = action.currentGame;
       attempts = state.attempts++;
-      ({
-        bulls,
-        cows,
-        guess,
-        message,
-        won
-      } = { userDidWinGame });
-      ({
-        guesses,
-        score
-      } = { state });
+      bulls = 4;
+      cows = 0;
+      guess = currentGame.guess;
+      message = 'You Won!!!';
+      score = score + 500;
+      won = true;
       guesses.concat(guess);
+      console.log(guesses);
       return Object.assign({}, state, {
         attempts,
         bulls,
+        cows,
         guess,
         guesses,
         message,
@@ -149,7 +104,9 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         guesses,
         score
       } = { state });
+      attempts = state.attempts++;
       guesses.concat(guess);
+      console.log(guesses);
       let newScore = score + scored;
 
       return Object.assign({}, state, {
@@ -162,8 +119,9 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         score: newScore
       });
     case actionTypes.WORD_NOT_IN_GAME:
+
       attempts = state.attempts++;
-      guess = action.guess;
+      guess = action.currentGame.guess;
       guesses = state.guesses;
       guesses.concat(guess);
       message = `${guess} is NOT in our library. We'll consider adding it to the library. You lose 200 points`;

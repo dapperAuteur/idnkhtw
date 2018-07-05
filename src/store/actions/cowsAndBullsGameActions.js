@@ -10,60 +10,30 @@ const APIURL = '//localhost:8081/api/ver0001/four-letter-words/';
 // let fourLetterWords = getState().fourLetterWords;
 // console.log(fourLetterWords);
 
-
-const getFourLetterWords = () => {
-  return (dispatch, getState) => {
-    let fourLetterWords = getState().fourLetterWordReducer.fourLetterWords;
-  }
-}
-
-export const confirmNewGame = () => {
-  return {
-    type: actionTypes.CONFIRM_NEW_GAME
-  }
-}
-
-const FOUR_LETTER_WORDS = getFourLetterWords();
-// console.log(FOUR_LETTER_WORDS);
-
-export const createNewCowsAndBullsGame = (fourLetterWords) => {
-  console.log(fourLetterWords);
+export const loadCowsAndBullsGame = (fourLetterWord, guesses) => {
+  console.log(fourLetterWord);
+  console.log(guesses);
   console.log("createNewCowsAndBullsGame");
-  // let randomWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
-  // let winningWordId = randomWord._id;
-  // console.log(winningWordId);
-  // let encryptedWinningWordId = winningWordId;
-  // // let salt = bcrypt.genSaltSync(10);
-  // // let encryptedWinningWordId = bcrypt.hashSync(winningWordId, salt);
-  // // console.log(encryptedWinningWordId);
-  //
-  // return {
-  //   type: actionTypes.CREATE_NEW_COWS_AND_BULLS_GAME,
-  //   encryptedWinningWordId
-  // }
+  // check if guesses has length > 0
+  if (guesses.length > 0) {
+    return currentCowsAndBullsGame();
+  } else {
+    return newCowsAndBullsGame(fourLetterWord);
+  }
 }
 
-const getWinningWord = game => {
-  let winningWord = FOUR_LETTER_WORDS.filter(word => word._id === game.winningWordId);
-  return winningWord;
+export const currentCowsAndBullsGame = () => {
+  return {
+    type: actionTypes.CURRENT_COWS_AND_BULLS_GAME
+  }
 }
 
-export const setGuess = (guess) => {
+export const newCowsAndBullsGame = (fourLetterWord) => {
   return {
-    type: actionTypes.SET_GUESS,
-    guess
+    type: actionTypes.NEW_COWS_AND_BULLS_GAME,
+    fourLetterWord
   }
-};
-
-export const setGame = (game) => {
-  // use bcrypt to encrypt random word from list on current game level;
-  // store in state, game, and localStorage
-  console.log(game);
-  return {
-    type: actionTypes.SET_GAME,
-    game
-  }
-};
+}
 
 export const userDidWin = (game) => {
   console.log(game);
@@ -81,55 +51,33 @@ export const userDidNotWin = (userDidNotWinGame) => {
   }
 };
 
-export const wordNotInGame = (guess) => {
-  console.log(guess);
+export const wordNotInGame = (currentGame) => {
+  console.log(currentGame);
   return {
     type: actionTypes.WORD_NOT_IN_GAME,
-    guess
+    currentGame
   }
 };
 
-const isGuessInGame = (guess) => {
-  let guessLowerCase = guess.toLowerCase();
-  console.log(guessLowerCase);
-  let currentGuess = FOUR_LETTER_WORDS.filter(word => word.word === guessLowerCase);
-  if (currentGuess === 0) {
-    return wordNotInGame(guess);
-  } else {
-    isGuessWinningWord(guess);
-  }
-}
-
-const isGuessWinningWord = game => {
+const isGuessWinningWord = currentGame => {
   // unhash winningWordId and set to winningWord
   // get ga
-  let guess = game.guess;
+  let guess = currentGame.guess;
 
-  let winningWord = getWinningWord(game);
-  if (guess === winningWord.word) {
-    let bulls = 4;
-    let message = 'You Won!!!';
-    let score = 500;
-    let won = true;
-    let userDidWinGame = {
-      bulls,
-      cows: 0,
-      guess,
-      message,
-      won,
-    };
-    return userDidWin(userDidWinGame);
+  let winningWord = currentGame.winningWord;
+  if (guess === winningWord) {
+    userDidWin(currentGame);
   } else {
-    return guessNotWinningWord(guess);
+    return guessNotWinningWord(currentGame);
   }
 }
 
-const guessNotWinningWord = (game) => {
+const guessNotWinningWord = (currentGame) => {
   let bulls, cows;
-  let winningWord = getWinningWord(game);
-  let guess = game.guess;
+  let winningWord = currentGame.winningWord;
+  let guess = currentGame.guess;
   let arr_guess = guess.split("");
-  let arr_word = winningWord.word.split("");
+  let arr_word = winningWord.split("");
   let message = `${guess} is NOT the Word`;
   let scored = 0;
   for (var i = 0; i < arr_guess.length; i++) {
@@ -159,59 +107,13 @@ const guessNotWinningWord = (game) => {
   return userDidNotWin(userDidNotWinGame);
 }
 
-// const updateCowsAndBullsGame = (guess) => {
-//   // add currentUser to game object
-//   console.log(guess);
-//   let bulls = 0;
-//   let cows = 0;
-//   setGuess(guess);
-//   isGuessInGame(guess);
-//
-//
-//
-//
-//
-//   {
-//     let arr_guess = guess.split("");
-//     let arr_word = word.split("");
-//     message = `${guess} is NOT the Word`;
-//     for (var i = 0; i < arr_guess.length; i++) {
-//       for (var j = 0; j < arr_word.length; j++) {
-//         if (arr_guess[i] === arr_word[j]) {
-//           if (i === j) {
-//             bulls++;
-//             score += 100;
-//             won = false;
-//             arr_guess[i] = "0";
-//             arr_word[j] = "1";
-//           }
-//         }
-//         if (arr_guess[i] === arr_word[j]) {
-//           cows++;
-//           score += 50;
-//           won = false;
-//           arr_guess[i] = "0";
-//           arr_word[j] = "1";
-//         }
-//       }
-//     }
-//     guesses.concat(guess);
-//     message = `You didn't win yet.`
-//     won = false;
-//     let userDidNotWinGame = {
-//       attempts,
-//       bulls,
-//       cows,
-//       guess,
-//       guesses,
-//       message,
-//       score,
-//       won
-//     };
-//     return userDidNotWin(userDidNotWinGame);
-//   }
-//   // return userDidNotWin(userDidNotWinGame);
-// }
+const updateCowsAndBullsGame = (currentGame, inGame) => {
+  if (inGame) {
+    return isGuessWinningWord(currentGame);
+  } else {
+    return wordNotInGame(currentGame);
+  }
+}
 
 export const setCowsAndBullsError = (err) => {
   return {

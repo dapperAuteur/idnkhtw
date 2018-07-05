@@ -6,12 +6,19 @@ import './Game.css';
 
 const Games = (props) => {
   console.log(props);
+  let {
+    loadCowsAndBullsGame,
+    fourLetterWord,
+    guesses
+  } = props.guesses;
 
   return (
     <div className="games">
       <h2>Games</h2>
       <Link
-        to={{ pathname: "games/four-letter-word-game" }}>
+        to={{ pathname: "games/four-letter-word-game" }}
+        className="btn btn-default"
+        onClick={ () => loadCowsAndBullsGame(fourLetterWord, guesses) }>
         Play Cows And Bulls
       </Link>
     </div>
@@ -30,7 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
+    loadCowsAndBullsGame: (fourLetterWord, guesses) => dispatch(actions.loadCowsAndBullsGame(fourLetterWord, guesses)),
+    // onNewCowsAndBullsGame: () => dispatch(actions.createNewCowsAndBullsGame()),
     randomFourLetterWord: () => dispatch(actions.randomFourLetterWord())
   }
 }
