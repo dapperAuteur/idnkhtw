@@ -1,8 +1,8 @@
 import * as actionTypes from './actionTypes';
 // dev server
-const APIURL = '//localhost:8081/api/ver0001/prefix-suffix-roots/';
+// const APIURL = '//localhost:8081/api/ver0001/prefix-suffix-roots/';
 // deployed server on heroku
-// const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/prefix-suffix-roots/';
+const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/prefix-suffix-roots/';
 
 export const randomPrefixSuffixRoot = () => {
   return {

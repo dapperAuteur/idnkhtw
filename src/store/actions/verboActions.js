@@ -1,8 +1,8 @@
 import * as actionTypes from './actionTypes';
 // dev server
-const APIURL = '//localhost:8081/api/ver0001/verbos/';
+// const APIURL = '//localhost:8081/api/ver0001/verbos/';
 // deployed server on heroku
-// const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/verbos/';
+const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/verbos/';
 
 export const randomVerbo = () => {
   return {
