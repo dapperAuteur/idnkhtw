@@ -11,7 +11,6 @@ import Games from './../components/Games/Games';
 import PrefixSuffixRootForm from '../components/Forms/PrefixSuffixRootForm';
 import VerboForm from './../components/Forms/VerboForm';
 import FindPalabra from '../components/Palabras/FindPalabra';
-import DetailsPalabras from '../components/Palabras/DetailsPalabras';
 import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
@@ -64,7 +63,7 @@ const routes = [
   },
   {
     path: '/words/find-palabra',
-    component: DetailsPalabras
+    component: FindPalabra
   },
   {
     path: '/games/four-letter-word',

@@ -16,16 +16,10 @@ class App extends Component {
     console.log(props);
     this.state = {
       errorMessage: {},
-      fourLetterWord: {},
-      fourLetterWords: [],
-      game: {},
-      games: [],
       loggedIn: false,
       p: '',
       post: {},
       posts: [],
-      prefixSuffixRoot: {},
-      prefixSuffixRoots: [],
       showEnglish: false,
       showLoginForm: false,
       showSignUpForm: false,
@@ -34,8 +28,6 @@ class App extends Component {
       user: {},
       user0: {},
       users: [],
-      verbo: {},
-      verbos: []
     }
     this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
     this.handleDeleteTag = this.handleDeleteTag.bind(this);
@@ -202,8 +194,6 @@ class App extends Component {
       prefixSuffixRoot,
       prefixSuffixRoots,
       showEnglish,
-      showLoginForm,
-      showSignUpForm,
       user,
       verbo,
       verbos

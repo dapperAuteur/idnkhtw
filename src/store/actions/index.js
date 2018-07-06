@@ -23,6 +23,7 @@ export {
   loadFourLetterWord,
   loadFourLetterWords,
   randomFourLetterWord,
+  setFourLetterWord,
   setFourLetterWordError,
   updateFourLetterWord
 } from './fourLetterWordActions';
@@ -32,6 +33,7 @@ export {
   loadPrefixSuffixRoot,
   loadPrefixSuffixRoots,
   randomPrefixSuffixRoot,
+  setPrefixSuffixRoot,
   setPrefixSuffixRootError,
   updatePrefixSuffixRoot
 } from './prefixSuffixRootActions';
