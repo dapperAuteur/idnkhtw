@@ -1,26 +1,26 @@
 import React from 'react';
+import * as actions from './../../store/actions/index';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './../CSS/Palabra.css';
 
 
 const FourLetterWord = (props) => {
-  let { definition, id, onLoadPalabra, word } = props;
-  let p = 'four-letter-words/';
-  let wordObj = props.fourLetterWord;
+  let {
+    definition,
+    fourLetterWord,
+    id,
+    setFourLetterWord,
+    word
+  } = props;
 
   return (
     <div className='palabra'>
       <Link
         to={{
-          // pathname: '/words/four-letter-word',
-          hash: '#fourLetterWord',
-          state: {
-            p: 'four-letter-words/',
-            // randomWord: false,
-            // wordObj
-          }
+          pathname: '/words/four-letter-words'
         }}
-        onClick={ e => onLoadPalabra(p, wordObj) }
+        onClick={ e => setFourLetterWord(fourLetterWord) }
         >
         { word } : { definition }
       </Link>
@@ -28,4 +28,9 @@ const FourLetterWord = (props) => {
   )
 }
 
-export default FourLetterWord;
+const mapDispatchToProps = dispatch => {
+  return {
+    setFourLetterWord: (fourLetterWord) => dispatch(actions.setFourLetterWord(fourLetterWord))
+  }
+}
+export default connect(null, mapDispatchToProps)(FourLetterWord);
