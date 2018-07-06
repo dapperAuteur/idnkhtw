@@ -1,30 +1,34 @@
 import React from 'react';
+import * as actions from './../../store/actions/index';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './../CSS/Palabra.css';
 
 const PrefixSuffixRoot = (props) => {
-  let { id, onLoadPalabra, word } = props;
-  let p = 'prefix-suffix-roots/';
-  let wordObj = props.prefixSuffixRoot;
+  let {
+    id,
+    prefixSuffixRoot,
+    setPrefixSuffixRoot,
+    word
+  } = props;
 
   return (
     <div className='palabra'>
       <Link
         to={{
-          // pathname: '/words/prefix-suffix-root',
-          hash: '#prefixSuffixRoot',
-          state: {
-            p: 'prefix-suffix-roots/',
-            randomWord: false,
-            wordObj
-          }
+          pathname: '/words/prefix-suffix-roots'
         }}
-        onClick={ e => onLoadPalabra(p, wordObj) }
+        onClick={ e => setPrefixSuffixRoot(prefixSuffixRoot) }
         >
-        { word } : { wordObj.meaning }
+        { word } : { prefixSuffixRoot.meaning }
       </Link>
     </div>
   )
 }
 
-export default PrefixSuffixRoot;
+const mapDispatchToProps = dispatch => {
+  return {
+    setPrefixSuffixRoot: (prefixSuffixRoot) => dispatch(actions.setPrefixSuffixRoot(prefixSuffixRoot))
+  }
+}
+export default connect(null, mapDispatchToProps)(PrefixSuffixRoot);
