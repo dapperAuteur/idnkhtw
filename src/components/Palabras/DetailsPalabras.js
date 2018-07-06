@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import DetailsFourLetterWord from '../FourLetterWords/DetailsFourLetterWord';
 import DetailsPrefixSuffixRoot from '../PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../Verbos/DetailsVerbo';
@@ -7,6 +8,7 @@ import PalabrasButtons from './PalabrasButtons';
 import PropTypes from 'prop-types';
 
 const DetailsPalabras = (props) => {
+  console.log(props);
   let location = props.location;
   let fourLetterWord, prefixSuffixRoot, showEnglish, verbo;
   // if (typeof(Storage) !== "undefined") {
@@ -22,7 +24,12 @@ const DetailsPalabras = (props) => {
   prefixSuffixRoot = props.data.prefixSuffixRoot;
   showEnglish = props.data.showEnglish;
   verbo = props.data.verbo;
-  let { fourLetterWords, prefixSuffixRoots, users, verbos } = props.data.props;
+  let {
+    fourLetterWords,
+    prefixSuffixRoots,
+    users,
+    verbos
+  } = props;
   // let randomWord = location.state.randomWord;
   // if (randomWord) {
   //   fourLetterWord = JSON.parse(localStorage.getItem('fourLetterWord'));
@@ -33,7 +40,11 @@ const DetailsPalabras = (props) => {
   //   prefixSuffixRoot = location.state.wordObj;
   //   verbo = location.state.wordObj;
   // }
-  let { onLoadPalabra, onLoadRandomPalabra, onShowEnglish } = props;
+  let {
+    onLoadPalabra,
+    onLoadRandomPalabra,
+    onShowEnglish
+  } = props;
   let { pathname } = location;
 
   switch (pathname) {
@@ -50,7 +61,6 @@ const DetailsPalabras = (props) => {
       )
       break;
     case "/words/four-letter-word":
-
       return (
         <div>
           <DetailsFourLetterWord
@@ -92,4 +102,12 @@ const DetailsPalabras = (props) => {
 DetailsPalabras.propTypes = {
 }
 
-export default DetailsPalabras;
+const mapStateToProps = state => {
+  return {
+    fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
+    prefixSuffixRoots: state.prefixSuffixRootReducer.prefixSuffixRoots,
+    verbos: state.verboReducer.verbos
+  }
+}
+
+export default connect(mapStateToProps)(DetailsPalabras);
