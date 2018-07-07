@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 // dev server
 // const APIURL = '//localhost:8081/api/ver0001/four-letter-words/';
 // deployed server on heroku
-const APIURL = '//mbl-express-api.herokuapp.com/api/ver0001/four-letter-words/';
+const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/four-letter-words/';
 
 export const randomFourLetterWord = () => {
   return {
