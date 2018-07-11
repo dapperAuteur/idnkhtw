@@ -13,7 +13,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
       errorMessage: {},
       loggedIn: false,
@@ -42,17 +42,17 @@ class App extends Component {
   componentDidMount() {
     // this.handleLoadPalabras();
     // this.handleLoadBlogPosts();
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   // Blog Functions
   async handleAddPost(p, pObj) {
-    console.log(p, pObj);
+    // console.log(p, pObj);
     let { token, userId, userRole } = this.state.user;
     pObj.userId = userId;
     pObj.userRole = userRole;
     pObj.token = token;
-    console.log(pObj);
+    // console.log(pObj);
     let newPost = await apiCalls.createPalabra(p, pObj);
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('post', JSON.stringify(newPost));
@@ -63,24 +63,24 @@ class App extends Component {
   }
 
   async handleDeleteBlog(p = 'posts', pObj) {
-    console.log("delete blog post");
+    // console.log("delete blog post");
   }
 
   async handleLoadBlogPost(p = 'posts', pObj) {
     let text = await apiCalls.getPalabra(p, pObj);
-    console.log(text);
+    // console.log(text);
     this.setState({ text });
   }
 
   async handleLoadBlogPosts() {
     let posts = await apiCalls.getPalabras('posts');
-    console.log(posts);
+    // console.log(posts);
     this.setState({ posts });
   }
   handleSavePost=(params) => {
     let { p, pObj } = params;
-    console.log(p);
-    console.log(pObj);
+    // console.log(p);
+    // console.log(pObj);
     if (pObj.hasOwnProperty('_id')) {
       this.handleUpdatePost(p, pObj);
     } else {
@@ -89,7 +89,7 @@ class App extends Component {
   }
 
   async handleUpdatePost(p, pObj) {
-    console.log(pObj);
+    // console.log(pObj);
     let posts;
     let { token, userId, userRole } = this.state.user;
     // let userRole = this.state.user.userRole;
@@ -115,12 +115,12 @@ class App extends Component {
 
   // Tag Functions
   async handleAddTag(p, pObj) {
-    console.log(p, pObj);
+    // console.log(p, pObj);
     let { token, userId, userRole } = this.state.user;
     pObj.userId = userId;
     pObj.userRole = userRole;
     pObj.token = token;
-    console.log(pObj);
+    // console.log(pObj);
     let newTag = await apiCalls.createPalabra(p, pObj);
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('tag', JSON.stringify(newTag));
@@ -131,24 +131,24 @@ class App extends Component {
   }
 
   async handleDeleteTag(p = 'tags', pObj) {
-    console.log("delete blog tag");
+    // console.log("delete blog tag");
   }
 
   async handleLoadTag(p = 'tags', pObj) {
     let text = await apiCalls.getPalabra(p, pObj);
-    console.log(text);
+    // console.log(text);
     this.setState({ text });
   }
 
   async handleLoadTags() {
     let tags = await apiCalls.getPalabras('tags');
-    console.log(tags);
+    // console.log(tags);
     this.setState({ tags });
   }
   handleSaveTag=(params) => {
     let { p, pObj } = params;
-    console.log(p);
-    console.log(pObj);
+    // console.log(p);
+    // console.log(pObj);
     // if TAG does NOT exist in db add it to db, else add it to object
     // use filter to determine which tag(s) need to bee added to db
     if (true) {
@@ -161,7 +161,7 @@ class App extends Component {
   }
 
   async handleUpdateTag(p, pObj) {
-    console.log(pObj);
+    // console.log(pObj);
     let tags;
     let { token, userId, userRole } = this.state.user;
     // let userRole = this.state.user.userRole;
@@ -206,7 +206,7 @@ class App extends Component {
       showLoginForm,
       showSignUpForm
     } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     let p = this.props.location.pathname;
     return (
       <div className="App">

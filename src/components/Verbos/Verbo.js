@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import './../CSS/Palabra.css';
 
 const Verbo = (props) => {
-  console.log(props);
+  // console.log(props);
   let {
     english,
     id,
@@ -14,7 +14,7 @@ const Verbo = (props) => {
     spanish,
     verbo
   } = props;
-  console.log(setVerbo);
+  // console.log(setVerbo);
 
   return (
     <div className='palabra'>

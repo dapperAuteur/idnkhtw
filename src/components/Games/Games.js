@@ -5,8 +5,8 @@ import * as actions from './../../store/actions/index';
 import './Game.css';
 
 const Games = (props) => {
-  console.log(props);
-  console.log(props.loadCowsAndBullsGame);
+  // console.log(props);
+  // console.log(props.loadCowsAndBullsGame);
   let {
     loadCowsAndBullsGame,
     fourLetterWord,

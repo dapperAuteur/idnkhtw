@@ -7,7 +7,7 @@ import IrregularCategoria from './IrregularCategoria';
 import './DetailsVerbo.css';
 
 const DetailsVerbo = (props) => {
-  console.log(props);
+  // console.log(props);
   let grupo;
   let {
     currentUser,

@@ -23,7 +23,7 @@ class CreateBlogPost extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let { ...pObj } = { ...this.state };
-    console.log(pObj);
+    // console.log(pObj);
     let p = "posts";
     this.props.props.onSavePost({ p, pObj });
     this.setState({

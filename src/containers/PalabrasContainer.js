@@ -24,9 +24,9 @@ const rootReducer = combineReducers({
 const logger = store => {
   return next => {
     return action => {
-      console.log('[MIDDLEWARE] Dispatching', action);
+      // console.log('[MIDDLEWARE] Dispatching', action);
       const result = next(action);
-      console.log('[MIDDLEWARE] next state', store.getState());
+      // console.log('[MIDDLEWARE] next state', store.getState());
       return result;
     }
   }
@@ -38,7 +38,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, 
 
 if (typeof(Storage) !== "undefined" && localStorage.hasOwnProperty('currentUser')) {
   let currentUser = store.dispatch(getCurrentUser());
-  console.log(currentUser);
+  // console.log(currentUser);
 };
 
 ReactGA.initialize('UA-10207332-25', {

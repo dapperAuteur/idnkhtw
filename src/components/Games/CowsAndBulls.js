@@ -58,7 +58,7 @@ class CowsAndBulls extends Component {
   }
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
       currentUser: props.currentUser,
       fourLetterWords: props.fourLetterWords,
@@ -106,14 +106,14 @@ class CowsAndBulls extends Component {
       letter3,
       onUpdateGame
     } = { ...this.state };
-    console.log(game);
+    // console.log(game);
     let guess = letter0 + letter1 + letter2 + letter3;
     let currentGame = Object.assign({}, game, {
       guess
     });
     let guessChecked = checkGuess(fourLetterWords, guess);
-    console.log(game);
-    console.log(currentGame);
+    // console.log(game);
+    // console.log(currentGame);
     onUpdateGame(currentGame, guessChecked);
   };
 

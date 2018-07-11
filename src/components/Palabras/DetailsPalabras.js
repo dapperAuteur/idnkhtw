@@ -8,7 +8,7 @@ import PalabrasButtons from './PalabrasButtons';
 import PropTypes from 'prop-types';
 
 const DetailsPalabras = (props) => {
-  console.log(props);
+  // console.log(props);
   let location = props.location;
   let fourLetterWord, prefixSuffixRoot, showEnglish, verbo;
   // if (typeof(Storage) !== "undefined") {

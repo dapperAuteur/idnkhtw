@@ -7,7 +7,7 @@ import './Game.css';
 class FourLetterWordGame extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     // pull game from state and add here;
     let fourLetterWord = props.winning_word;
     let {
@@ -94,8 +94,8 @@ class FourLetterWordGame extends Component {
     e.preventDefault();
     let game = this.state;
     game.guess = `${game.letter0}${game.letter1}${game.letter2}${game.letter3}`;
-    console.log(this.state);
-    console.log(game);
+    // console.log(this.state);
+    // console.log(game);
     this.props.onUpdateCowsAndBullsGame(game);
 
     // let { ...game } = { ...this.state.game };

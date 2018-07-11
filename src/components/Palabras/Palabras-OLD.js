@@ -6,7 +6,7 @@ import Verbo from './../Verbos/Verbo';
 import './../CSS/Palabras.css';
 
 const Palabras = (props) => {
-  console.log(props);
+  // console.log(props);
   let liveSearch = props.word;
   let fourLetterWord, myPalabras, newObj, prefixSuffixRoot, user, verbo;
   let p = props.list;

@@ -19,7 +19,7 @@ const initialState = {
 }
 
 const cowsAndBullsGameReducer = (state = initialState, action) => {
-  console.log(state);
+  // console.log(state);
   let {
     attempts,
     bulls,
@@ -37,7 +37,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
     wordToConsiderForLibrary
   } = { ...state };
   let newGuesses = [];
-  console.log(newGuesses);
+  // console.log(newGuesses);
   switch (action.type) {
     // case actionTypes.CONFIRM_NEW_GAME:
     //   game = state.game;
@@ -69,8 +69,8 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       });
     case actionTypes.SET_COWS_AND_BULLS_ERROR:
       let errorMessage = action.errorMessage;
-      console.log(errorMessage);
-      console.log(action);
+      // console.log(errorMessage);
+      // console.log(action);
       return Object.assign({}, state, {
         error: true,
         errorMessage,
@@ -86,7 +86,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
       score = score + 500;
       won = true;
       let newGuesses = guesses.concat(guess);
-      console.log(guesses);
+      // console.log(guesses);
       return Object.assign({}, state, {
         attempts,
         bulls,
@@ -98,7 +98,7 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         won
       });
     case actionTypes.USER_DID_NOT_WIN:
-      console.log(action);
+      // console.log(action);
       let {
         cows,
         bulls,
@@ -106,13 +106,13 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         message,
         scored
       } = action.userDidNotWinGame;
-      console.log(message);
+      // console.log(message);
       ({
         attempts,
         guesses,
         score
       } = { ...state });
-      console.log(state);
+      // console.log(state);
       attempts = state.attempts++;
       newGuesses = guesses.concat(guess);
       let newScore = score + scored;

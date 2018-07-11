@@ -9,14 +9,14 @@ export const checkGuess = (fourLetterWords, guess) => {
 
 const lowerCaseGuess = (guess) => {
   let guessLowerCase = guess.toLowerCase();
-  console.log(guessLowerCase);
+  // console.log(guessLowerCase);
   return guessLowerCase;
 }
 
 const isGuessInGame = (fourLetterWords, guessLowerCase) => {
-  console.log("isGuessInGame");
+  // console.log("isGuessInGame");
   let currentGuess = fourLetterWords.filter(word => word.word === guessLowerCase);
-  console.log(currentGuess);
+  // console.log(currentGuess);
   if (currentGuess.length === 0) {
     return false;
   } else {

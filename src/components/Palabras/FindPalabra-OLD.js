@@ -7,7 +7,7 @@ import '../CSS/FindPalabras.css';
 class FindPalabra extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
       _id: '',
       fourLetterWords: props.fourLetterWords,

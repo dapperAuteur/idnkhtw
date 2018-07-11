@@ -11,15 +11,15 @@ const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/games/';
 // console.log(fourLetterWords);
 
 export const loadCowsAndBullsGame = (fourLetterWord, guesses) => {
-  console.log(fourLetterWord);
-  console.log(guesses);
-  console.log("createNewCowsAndBullsGame");
+  // console.log(fourLetterWord);
+  // console.log(guesses);
+  // console.log("createNewCowsAndBullsGame");
   // check if guesses has length > 0
   if (guesses.length > 0) {
-    console.log("length > 0");
+    // console.log("length > 0");
     return currentCowsAndBullsGame();
   } else {
-    console.log("length 0");
+    // console.log("length 0");
     return newCowsAndBullsGame(fourLetterWord);
   }
 }
@@ -38,7 +38,7 @@ export const newCowsAndBullsGame = (fourLetterWord) => {
 }
 
 export const updateCowsAndBullsGame = (currentGame, guessChecked) => {
-  console.log(currentGame, guessChecked);
+  // console.log(currentGame, guessChecked);
   let {
     guessLowerCase,
     inGame
@@ -54,10 +54,10 @@ const isGuessWinningWord = (currentGame, guessLowerCase) => {
   // unhash winningWordId and set to winningWord
   // get ga
   let guess = guessLowerCase;
-  console.log(currentGame);
+  // console.log(currentGame);
 
   let winningWord = currentGame.winningWord;
-  console.log(winningWord);
+  // console.log(winningWord);
   if (guess === winningWord) {
     return userDidWin(currentGame);
   } else {
@@ -66,7 +66,7 @@ const isGuessWinningWord = (currentGame, guessLowerCase) => {
 }
 
 export const wordNotInGame = (currentGame, guessLowerCase) => {
-  console.log(currentGame);
+  // console.log(currentGame);
   return {
     type: actionTypes.WORD_NOT_IN_GAME,
     currentGame,
@@ -75,12 +75,12 @@ export const wordNotInGame = (currentGame, guessLowerCase) => {
 };
 
 const guessNotWinningWord = (currentGame, guessLowerCase) => {
-  console.log(currentGame);
+  // console.log(currentGame);
   let bulls = 0;
   let cows = 0;
   let winningWord = currentGame.winningWord;
   let guess = guessLowerCase;
-  console.log(guess);
+  // console.log(guess);
   let arr_guess = guess.split("");
   let arr_word = winningWord.split("");
   let message = `${guess} is NOT the Word`;
@@ -110,12 +110,12 @@ const guessNotWinningWord = (currentGame, guessLowerCase) => {
     message,
     scored
   };
-  console.log(userDidNotWinGame);
+  // console.log(userDidNotWinGame);
   return userDidNotWin(userDidNotWinGame);
 }
 
 export const userDidWin = (currentGame) => {
-  console.log(currentGame);
+  // console.log(currentGame);
   return {
     type: actionTypes.USER_DID_WIN,
     currentGame
@@ -123,7 +123,7 @@ export const userDidWin = (currentGame) => {
 };
 
 export const userDidNotWin = (userDidNotWinGame) => {
-  console.log(userDidNotWinGame);
+  // console.log(userDidNotWinGame);
   return {
     type: actionTypes.USER_DID_NOT_WIN,
     userDidNotWinGame
@@ -131,7 +131,7 @@ export const userDidNotWin = (userDidNotWinGame) => {
 };
 
 export const setCowsAndBullsError = (err) => {
-  console.log(err);
+  // console.log(err);
   return {
     type: actionTypes.SET_COWS_AND_BULLS_ERROR,
     errorMessage: err

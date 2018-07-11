@@ -66,8 +66,8 @@ const authReducer = (state = initialState, action) => {
       })
     case actionTypes.SET_AUTH_ERROR:
       let errorMessage = action.errorMessage;
-      console.log(errorMessage);
-      console.log(action);
+      // console.log(errorMessage);
+      // console.log(action);
       return Object.assign({}, state, {
         authenticated: false,
         currentUser: {},
