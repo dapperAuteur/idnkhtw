@@ -60,7 +60,7 @@ const DetailsVerbo = (props) => {
       }
       <Link
         to={{
-          pathname: '/words/verbos'
+          pathname: `/words/verbos/spanish/${verbo.spanish}`
         }}
         onClick={ onRandomVerbo }
         className="btn btn-default">

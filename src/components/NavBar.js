@@ -18,6 +18,7 @@ const NavBar = (props) => {
     onLoadLanguages,
     onNewCowsAndBullsGame,
     prefixSuffixRoots,
+    verbo,
     verbos,
     onCreateGame,
     onLoadBlogPosts,
@@ -98,7 +99,7 @@ const NavBar = (props) => {
             className='content'>
           <Link
             to={{
-              pathname: '/words/four-letter-words'
+              pathname: `/words/four-letter-words/words/${fourLetterWord.word}`
             }}
             onClick={ onRandomFourLetterWord }
             className='btn btn-default'
@@ -116,7 +117,7 @@ const NavBar = (props) => {
           </Link>
           <Link
             to={{
-              pathname: '/words/verbos'
+              pathname: `/words/verbos/spanish/${verbo.spanish}`
             }}
             onClick={ props.onRandomVerbo }
             className='btn btn-default'
@@ -177,9 +178,11 @@ const NavBar = (props) => {
 const mapStateToProps = state => {
   return {
     currentUser: state.authReducer.currentUser,
+    fourLetterWord: state.fourLetterWordReducer.fourLetterWord,
     fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
     guesses: state.cowsAndBullsGameReducer.guesses,
     prefixSuffixRoots: state.prefixSuffixRootReducer.prefixSuffixRoots,
+    verbo: state.verboReducer.verbo,
     verbos: state.verboReducer.verbos
   }
 }

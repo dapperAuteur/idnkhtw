@@ -21,7 +21,7 @@ const Verbo = (props) => {
       <Link
         onClick={ e => setVerbo(verbo) }
         to={{
-          pathname: '/words/verbos'
+          pathname: `/words/verbos/spanish/${verbo.spanish}`
         }}
         >
         { spanish } : { english }

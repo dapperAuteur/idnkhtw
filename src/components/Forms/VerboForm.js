@@ -43,6 +43,7 @@ class VerboForm extends Component {
       onAddVerbo,
       onUpdateVerbo,
       pathname,
+      verbo,
       ...form
     } = this.state;
     form.token = currentUser.token;
@@ -72,7 +73,7 @@ class VerboForm extends Component {
       spanish: '',
       terminación: ''
     });
-    this.props.history.push('/words/verbos');
+    this.props.history.push(`/words/verbos/spanish/${verbo.spanish}`);
   }
 
   render(){
@@ -185,7 +186,7 @@ class VerboForm extends Component {
           </div>
           <Link
             to={{
-              pathname: '/words/verbos'
+              pathname: `/words/verbos/spanish/${spanish}`
             }}
             className='btn btn-warning'
           >

@@ -70,7 +70,7 @@ const routes = [
     component: FourLetterWordGame
   },
   {
-    path: '/words/four-letter-words',
+    path: '/words/four-letter-words/words/:word',
     component: DetailsFourLetterWord
   },
   {
@@ -78,7 +78,7 @@ const routes = [
     component: DetailsPrefixSuffixRoot
   },
   {
-    path: '/words/verbos',
+    path: '/words/verbos/spanish/:spanish',
     component: DetailsVerbo
   },
   {
