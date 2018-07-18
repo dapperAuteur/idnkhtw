@@ -21,6 +21,7 @@ const verboReducer = (state = initialState, action) => {
         isFetching: false
       });
     case actionTypes.ADD_VERBO:
+    // need to fix, doesn't add new it updates old
       verbo = action.verbo;
       verbos = state.verbos.map(verbo => (verbo._id === action.verbo._id) ? { ...verbo, ...action.verbo._id } : verbo);
       if (typeof(Storage) !== "undefined") {
