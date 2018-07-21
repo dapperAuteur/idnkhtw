@@ -47,7 +47,7 @@ const NavBar = (props) => {
             to={ '/' }
             className='btn btn-default'
           >
-            Words
+            Find Words & Games
           </Link>
           <div
             id='palabras-content1'
@@ -91,7 +91,7 @@ const NavBar = (props) => {
             to={ '/' }
             className='btn btn-default'
           >
-            Word Lists
+            Random Word
           </Link>
           <div
             id='palabras-content2'

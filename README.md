@@ -20,7 +20,12 @@ I built this as a tool to help me grow as a person, not just as a developer.
 * Word creation game utilizing prefix/suffix list
 
 ## How To Use The App:
+The application is broken into TWO main parts: find words and view random words. There are THREE different word lists: Spanish verbs, English four-letter words, and English prefix/suffix words.
+### Find Words App
+On the left there's a button, Find Words & Games. Words will take you to the find words portion of the application. You'll need to select a list from the drop down menu. The screen will populate with all the words in the list. You may narrow the list by typing letters into the text box.
 
+### Random Words App
+On the right there's a button, Random Word. You will be shown a random word from the corresponding list when you click one of the word list buttons. You click the next button to see a new random word from that list.
 
 ## Create React App Boilerplate README:
 
@@ -321,7 +326,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 Start your app by running `npm start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
-The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
+The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine.
 
 ## Formatting Code Automatically
 
@@ -2010,7 +2015,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
     RewriteRule ^ index.html [QSA,L]
 ```
 
-It will get copied to the `build` folder when you run `npm run build`. 
+It will get copied to the `build` folder when you run `npm run build`.
 
 If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
@@ -2440,7 +2445,7 @@ To resolve this:
 1. Open an issue on the dependency's issue tracker and ask that the package be published pre-compiled.
   * Note: Create React App can consume both CommonJS and ES modules. For Node.js compatibility, it is recommended that the main entry point is CommonJS. However, they can optionally provide an ES module entry point with the `module` field in `package.json`. Note that **even if a library provides an ES Modules version, it should still precompile other ES6 features to ES5 if it intends to support older browsers**.
 
-2. Fork the package and publish a corrected version yourself. 
+2. Fork the package and publish a corrected version yourself.
 
 3. If the dependency is small enough, copy it to your `src/` folder and treat it as application code.
 
