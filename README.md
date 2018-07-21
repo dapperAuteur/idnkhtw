@@ -11,13 +11,18 @@ I built this as a tool to help me grow as a person, not just as a developer.
 * I'm in the process of adding a blog, expense and income tracker, and more word games.
 * It contains the word version of [Cows & Bulls](https://en.wikipedia.org/wiki/Bulls_and_Cows).
 
-## To Be Added:
+## Road Map:
+* Start game over
+* Start new game after completing game
+* Show/Hide Spanish verb conjugation
 * 2 player version of Cows and Bulls
+* Save Cows and Bulls game in database
 * Spanish Vacas y Toros (Cows & Bulls with Spanish words)
 * Blog
 * Expense/Income Tracking
 * Spanish verb game
 * Word creation game utilizing prefix/suffix list
+
 
 ## How To Use The App:
 The application is broken into TWO main parts: find words and view random words. There are THREE different word lists: Spanish verbs, English four-letter words, and English prefix/suffix words.
