@@ -1,5 +1,3 @@
-import shuffle from 'shuffle-array';
-
 export const checkGuess = (fourLetterWords, guess) => {
   let guessLowerCase = lowerCaseGuess(guess);
   let inGame = isGuessInGame(fourLetterWords, guessLowerCase);

@@ -13,13 +13,16 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    // console.log(props);
+    console.log(props);
     this.state = {
       errorMessage: {},
+      fourLetterWord: props.fourLetterWord,
       loggedIn: false,
+      newCowsAndBullsGame: props.newCowsAndBullsGame,
       p: '',
       post: {},
       posts: [],
+      randomFourLetterWord: props.randomFourLetterWord,
       showEnglish: false,
       showLoginForm: false,
       showSignUpForm: false,
@@ -31,10 +34,12 @@ class App extends Component {
     }
     this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
     this.handleDeleteTag = this.handleDeleteTag.bind(this);
+    this.handleRandomFourLetterWord = this.handleRandomFourLetterWord.bind(this);
     this.handleLoadBlogPost = this.handleLoadBlogPost.bind(this);
     this.handleLoadTag = this.handleLoadTag.bind(this);
     this.handleLoadBlogPosts = this.handleLoadBlogPosts.bind(this);
     this.handleLoadTags = this.handleLoadTags.bind(this);
+    this.handleNewCowsAndBullsGame = this.handleNewCowsAndBullsGame.bind(this);
     this.handleSavePost = this.handleSavePost.bind(this);
     this.handleSaveTag = this.handleSaveTag.bind(this);
   }
@@ -85,6 +90,23 @@ class App extends Component {
       this.handleUpdatePost(p, pObj);
     } else {
       this.handleAddPost(p, pObj);
+    }
+  }
+
+  async handleRandomFourLetterWord() {
+    let earl = await this.state.randomFourLetterWord();
+    console.log(earl);
+  }
+
+  handleNewCowsAndBullsGame() {
+    this.handleRandomFourLetterWord();
+    // this.state.randomFourLetterWord();
+    console.log(this.state.fourLetterWord, "earl");
+    let fourLetterWord = this.state.fourLetterWord;
+    if (fourLetterWord.hasOwnProperty("word")) {
+      this.state.newCowsAndBullsGame(fourLetterWord);
+    } else {
+
     }
   }
 
@@ -243,6 +265,15 @@ class App extends Component {
           </Link>
         }
         <h4 className="App-title">I Do Not Know How this Works</h4>
+        {
+          p === "/games/four-letter-word-game" &&
+          <Link
+            className="btn btn-default"
+            onClick={ this.handleNewCowsAndBullsGame }
+            to={{ pathname: "/games/four-letter-word-game" }}>
+            New Game
+          </Link>
+        }
       </div>
     );
   }
@@ -251,9 +282,17 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.authReducer.currentUser,
+    fourLetterWord: state.fourLetterWordReducer.fourLetterWord,
     showLoginForm: state.authReducer.showLoginForm,
     showSignUpForm: state.authReducer.showSignUpForm
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+const mapDispatchToProps = dispatch => {
+  return {
+    newCowsAndBullsGame: () => dispatch(actions.newCowsAndBullsGame()),
+    randomFourLetterWord: () => dispatch(actions.randomFourLetterWord())
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

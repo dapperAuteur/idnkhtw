@@ -208,6 +208,7 @@ const mapStateToProps = state => {
     attempts: state.cowsAndBullsGameReducer.attempts,
     bulls: state.cowsAndBullsGameReducer.bulls,
     cows: state.cowsAndBullsGameReducer.cows,
+    fourLetterWord: state.fourLetterWordReducer.fourLetterWord,
     fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
     guess: state.cowsAndBullsGameReducer.guess,
     guesses: state.cowsAndBullsGameReducer.guesses,

@@ -56,7 +56,19 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
           currentUserId = state.userId;
         }
         let game = Object.assign({}, state, {
+          attempts: 0,
+          bulls: 0,
+          cows: 0,
           currentUserId,
+          error: false,
+          errorMessage: {},
+          guess: "",
+          guesses: [],
+          isFetching: true,
+          message: "",
+          score: 0,
+          currentUserId: "Guest",
+          won: false,
           winningWord
         });
         localStorage.setItem('game', JSON.stringify(game));
@@ -64,7 +76,19 @@ const cowsAndBullsGameReducer = (state = initialState, action) => {
         return null;
       }
       return Object.assign({}, state, {
+        attempts: 0,
+        bulls: 0,
+        cows: 0,
         currentUserId,
+        error: false,
+        errorMessage: {},
+        guess: "",
+        guesses: [],
+        isFetching: true,
+        message: "",
+        score: 0,
+        currentUserId: "Guest",
+        won: false,
         winningWord
       });
     case actionTypes.SET_COWS_AND_BULLS_ERROR:
