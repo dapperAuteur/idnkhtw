@@ -104,7 +104,7 @@ class CowsAndBulls extends Component {
     console.log(fourLetterWord);
     this.setState({
       game: {
-        winningWord: fourLetterWord
+        winningWord: fourLetterWord.word
       }
     });
     console.log(this.state.game);
