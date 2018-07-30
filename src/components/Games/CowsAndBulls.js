@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './../../store/actions/index';
 import { checkGuess } from './cowsAndBullsGame';
+import shuffle from 'shuffle-array';
 import GameStatus from './GameStatus';
 import PropTypes from 'prop-types';
 import './Game.css';
@@ -28,6 +29,7 @@ class CowsAndBulls extends Component {
     letter2: PropTypes.string,
     letter3: PropTypes.string,
     letters: PropTypes.arrayOf(PropTypes.string),
+    onNewCowsAndBullsGame: PropTypes.func,
     onUpdateGame: PropTypes.func,
     randomFourLetterWord: PropTypes.func,
     saveGame: PropTypes.func
@@ -58,7 +60,7 @@ class CowsAndBulls extends Component {
   }
   constructor(props) {
     super(props);
-    // console.log(props);
+    console.log(props);
     this.state = {
       currentUser: props.currentUser,
       fourLetterWords: props.fourLetterWords,
@@ -82,16 +84,30 @@ class CowsAndBulls extends Component {
       letters: [
         "Choose A Letter", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
       ],
+      onNewCowsAndBullsGame: props.onNewCowsAndBullsGame,
       onUpdateGame: props.onUpdateGame,
       randomFourLetterWord: props.randomFourLetterWord,
       saveGame: props.saveGame
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleNewCowsAndBullsGame = this.handleNewCowsAndBullsGame.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleNewCowsAndBullsGame() {
+    let fourLetterWords = this.state.fourLetterWords;
+    let fourLetterWord = shuffle.pick(fourLetterWords, [{ 'copy': true }, { 'picks': 1 }]);
+    console.log(fourLetterWord);
+    this.setState({
+      game: {
+        winningWord: fourLetterWord
+      }
+    });
+    console.log(this.state.game);
   };
 
   handleSubmit(e) {
@@ -124,7 +140,8 @@ class CowsAndBulls extends Component {
       letter1,
       letter2,
       letter3,
-      letters
+      letters,
+      onNewCowsAndBullsGame
     } = this.state;
     return (
       <div className='game'>
@@ -197,6 +214,11 @@ class CowsAndBulls extends Component {
             SUBMIT
           </button>
         </form>
+        <button
+          className="btn btn-default"
+          onClick={ this.handleNewCowsAndBullsGame }>
+          New Game
+        </button>
       </div>
     )
   }
