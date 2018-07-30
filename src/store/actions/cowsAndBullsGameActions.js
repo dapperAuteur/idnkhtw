@@ -75,11 +75,12 @@ export const wordNotInGame = (currentGame, guessLowerCase) => {
 };
 
 const guessNotWinningWord = (currentGame, guessLowerCase) => {
-  // console.log(currentGame);
+  console.log(currentGame);
   let bulls = 0;
   let cows = 0;
   let winningWord = currentGame.winningWord;
   let guess = guessLowerCase;
+  console.log(winningWord);
   // console.log(guess);
   let arr_guess = guess.split("");
   let arr_word = winningWord.split("");
