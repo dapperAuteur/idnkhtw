@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import theHip_HopRules_iThinkVeryDeeply1 from './../../comic-strips/i_think_very_deeply_1-2_with_phones_and_windows_transparent.svg';
 import theHip_HopRules_iThinkVeryDeeply2 from './../../comic-strips/i_think_very_deeply_2-2_with_phones_and_windows_transparent.svg';
 import './Comics.css';
@@ -10,6 +11,7 @@ const Comics = props => {
         <img src={ theHip_HopRules_iThinkVeryDeeply1 } className="cartoon" alt="comic strip: I Think Very Deeply 1 of 2" />
         <img src={ theHip_HopRules_iThinkVeryDeeply2 } className="cartoon" alt="comic strip: I Think Very Deeply 2 of 2" />
         <h3>I Think Very Deeply</h3>
+        <h5>This comic was inspired by this <Link to={{ pathname: '/playlist' }}>Playlist</Link></h5>
         <h4>Hip-Hop Rule #5050</h4>
       </div>
       <div>

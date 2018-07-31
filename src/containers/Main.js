@@ -14,6 +14,7 @@ import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
 import FourLetterWordGame from '../components/Games/FourLetterWordGame';
+import Playlist from './../components/Vision/Playlist';
 import Vision from './../components/Vision/Vision';
 
 const routes = [
@@ -82,6 +83,10 @@ const routes = [
     component: DetailsVerbo
   },
   {
+    path: '/playlist',
+    component: Playlist
+  },
+  {
     path: '/vision',
     component: Vision
   },
@@ -109,10 +114,6 @@ class Main extends Component {
               path={ path }
               render={ (props) => <C
                 { ...props }
-                onDeleteBlog={ this.props.onDeleteBlog }
-                onLoadBlogPost={ this.props.onLoadBlogPost }
-                onLoadBlogPosts={ this.props.onLoadBlogPosts }
-                onSavePost={ this.props.onSavePost }
                 data={ this.props } /> }
               />
           ))}

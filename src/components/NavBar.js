@@ -20,7 +20,6 @@ const NavBar = (props) => {
     prefixSuffixRoots,
     verbos,
     onCreateGame,
-    onLoadBlogPosts,
     onLoadPrefixSuffixRoots,
     onRandomFourLetterWord,
     onRandomPrefixSuffixRoot,
@@ -77,7 +76,6 @@ const NavBar = (props) => {
                 pathname: '/comics',
                 state: { p: 'comics/' }
               }}
-              onClick={ onLoadBlogPosts }
               className='btn btn-default'
             >
               Comics

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import playlist_20180620 from './../../playlists/Playlist_20180620.png';
 import './Vision.css';
 
 const Vision = () => {
@@ -14,56 +13,12 @@ const Vision = () => {
 // loadScript('//embed.tidal.com/tidal-embed.js')
   return (
     <div>
-      <h1>Why make comics?</h1>
-      <p className="playlist">I like to tell stories.</p>
-
-      <h3>Playlist Week of June 20th 2018:</h3>
-      <h4>This playlist inspired the comic <Link to={{ pathname: "/comics/i-think-very-deeply" }}>"I Think Very Deeply."</Link></h4>
-        <div>
-          <a
-            href="https://tidal.com/playlist/192bcd48-9681-4698-b679-66edb9b331fb"
-            alt="Inspiring Playlist 20180620 from Tidal Music"
-            target="_blank">
-            <img className="image" src={ playlist_20180620 } />
-          </a>
-          <div className="playlist">
-            <ul>
-              <li>
-                <a
-                  href="https://tidal.com/album/90521072"
-                  alt="Salud. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
-                  Salud by <span className="artist">The Carters</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://tidal.com/album/22331721"
-                  alt="Nothin' To Show. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
-                  Nothin' To Show by <span className="artist">Geto Boys</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://tidal.com/album/2992765"
-                  alt="My Philosophy. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
-                  My Philosophy by <span className="artist">Boogie Down Productions</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://tidal.com/album/59244601"
-                  alt="Criminal Minded. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
-                  Criminal Minded by <span className="artist">Boogie Down Productions</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <h1>My Vision</h1>
+      <p className="vision">To create things that I can use and will add value to my life.</p>
+      <p className="vision">I'd like the opportunity to partner with an organization who's values are in harmony with mine to help them create products that add value to the world.</p>
+      <br />
+      <p className="vision">This app was created to help me practice Spanish and expand my English vocabulary. It includes a word game called Cows and Bulls that I learned while driving through the mountains of Guatemala during a thunder storm one night. We played the game to eaze our anxiety due to the torrential weather and low visibility.</p>
+    </div>
   )
 }
 
