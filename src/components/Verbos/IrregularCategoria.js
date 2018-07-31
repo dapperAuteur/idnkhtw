@@ -37,7 +37,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[1] }</h3>
         </div>
       )
-      break;
     case 2:
       return (
         <div className="irregular">
@@ -45,7 +44,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[2] }</h3>
         </div>
       )
-      break;
     case 3:
       return (
         <div className="irregular">
@@ -53,7 +51,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[3] }</h3>
         </div>
       )
-      break;
     case 4:
       return (
         <div className="irregular">
@@ -61,7 +58,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[4] }</h3>
         </div>
       )
-      break;
     case 5:
       return (
         <div className="irregular">
@@ -69,7 +65,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[5] }</h3>
         </div>
       )
-      break;
     case 5.1:
       return (
         <div className="irregular">
@@ -77,7 +72,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[5] }</h3>
         </div>
       )
-      break;
     case 5.2:
       return (
         <div className="irregular">
@@ -85,7 +79,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[5] }</h3>
         </div>
       )
-      break;
     case 5.3:
       return (
         <div className="irregular">
@@ -93,7 +86,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[5] }</h3>
         </div>
       )
-      break;
     case 6:
       return (
         <div className="irregular">
@@ -101,7 +93,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[6] }</h3>
         </div>
       )
-      break;
     case 7:
       return (
         <div className="irregular">
@@ -109,7 +100,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[7] }</h3>
         </div>
       )
-      break;
     case 8:
       return (
         <div className="irregular">
@@ -117,7 +107,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[8] }</h3>
         </div>
       )
-      break;
     case 9:
       return (
         <div className="irregular">
@@ -125,7 +114,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[9] }</h3>
         </div>
       )
-      break;
     case 10:
       return (
         <div className="irregular">
@@ -133,7 +121,6 @@ const IrregularCategoria = (props) => {
           <h3>Cambiar de Irregular: { cambiar[10] }</h3>
         </div>
       )
-      break;
     default:
       return null;
   }

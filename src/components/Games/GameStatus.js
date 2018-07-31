@@ -8,8 +8,6 @@ const GameStatus = (props) => {
     attempts,
     bulls,
     cows,
-    currentUser,
-    currentUserId,
     guess,
     message,
     score,
@@ -70,8 +68,6 @@ GameStatus.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.authReducer.currentUser,
-    currentUserId: state.cowsAndBullsGameReducer.currentUserId,
     attempts: state.cowsAndBullsGameReducer.attempts,
     bulls: state.cowsAndBullsGameReducer.bulls,
     cows: state.cowsAndBullsGameReducer.cows,

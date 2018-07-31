@@ -37,7 +37,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 if (typeof(Storage) !== "undefined" && localStorage.hasOwnProperty('currentUser')) {
-  let currentUser = store.dispatch(getCurrentUser());
+  // let currentUser = store.dispatch(getCurrentUser());
+  store.dispatch(getCurrentUser());
   // console.log(currentUser);
 };
 

@@ -9,7 +9,6 @@ const Verbo = (props) => {
   // console.log(props);
   let {
     english,
-    id,
     setVerbo,
     spanish,
     verbo

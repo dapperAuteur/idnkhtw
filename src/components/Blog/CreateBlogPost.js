@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import './../CSS/Form.css';
 
 class CreateBlogPost extends Component {
+  static propTypes = {
+    onSavePost: PropTypes.func,
+    text: PropTypes.string,
+    title: PropTypes.string
+  }
   static defaultProps = {
     onSavePost() {}
   }

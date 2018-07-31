@@ -6,7 +6,6 @@ import './../CSS/Palabra.css';
 
 const PrefixSuffixRoot = (props) => {
   let {
-    id,
     prefixSuffixRoot,
     setPrefixSuffixRoot,
     word

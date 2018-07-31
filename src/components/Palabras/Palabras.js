@@ -1,5 +1,4 @@
 import React from 'react';
-import * as actions from './../../store/actions/index';
 import { connect } from 'react-redux';
 import FourLetterWord from './../FourLetterWords/FourLetterWord';
 import PrefixSuffixRoot from './../PrefixSuffixRoots/PrefixSuffixRoot';
@@ -92,13 +91,6 @@ const mapStateToProps = state => {
     fourLetterWords: state.fourLetterWordReducer.fourLetterWords,
     prefixSuffixRoots: state.prefixSuffixRootReducer.prefixSuffixRoots,
     verbos: state.verboReducer.verbos
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    setFourLetterWord: (fourLetterWord) => dispatch(actions.setFourLetterWord(fourLetterWord)),
-    setPrefixSuffixRoot: (prefixSuffixRoot) => dispatch(actions.setPrefixSuffixRoot(prefixSuffixRoot)),
-    setVerbo: (verbo) => dispatch(actions.setVerbo(verbo))
   }
 }
 export default connect(mapStateToProps)(Palabras);

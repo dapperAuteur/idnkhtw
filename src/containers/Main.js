@@ -13,7 +13,6 @@ import VerboForm from './../components/Forms/VerboForm';
 import FindPalabra from '../components/Palabras/FindPalabra';
 import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPrefixSuffixRoot';
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
-import FourLetterWordGame from '../components/Games/FourLetterWordGame';
 import Playlist from './../components/Vision/Playlist';
 import Vision from './../components/Vision/Vision';
 
@@ -65,10 +64,6 @@ const routes = [
   {
     path: '/words/find-palabra',
     component: FindPalabra
-  },
-  {
-    path: '/games/four-letter-word',
-    component: FourLetterWordGame
   },
   {
     path: '/words/four-letter-words',

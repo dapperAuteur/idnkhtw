@@ -140,8 +140,7 @@ class CowsAndBulls extends Component {
       letter1,
       letter2,
       letter3,
-      letters,
-      onNewCowsAndBullsGame
+      letters
     } = this.state;
     return (
       <div className='game'>

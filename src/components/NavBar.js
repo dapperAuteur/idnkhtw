@@ -8,18 +8,13 @@ const NavBar = (props) => {
 
   const {
     currentUser,
-    fourLetterWord,
     fourLetterWords,
     onClickShowLoginForm,
     onClickShowSignUpForm,
     onClickSignOut,
     onLoadFourLetterWords,
-    onLoadForms,
-    onLoadLanguages,
-    onNewCowsAndBullsGame,
     prefixSuffixRoots,
     verbos,
-    onCreateGame,
     onLoadPrefixSuffixRoots,
     onRandomFourLetterWord,
     onRandomPrefixSuffixRoot,
@@ -184,7 +179,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onNewCowsAndBullsGame: (guesses) => dispatch(actions.createNewCowsAndBullsGame(guesses)),
     onClickSignOut: () => dispatch(actions.userLogout()),
     onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
     onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),

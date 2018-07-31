@@ -23,8 +23,9 @@ const Playlist = () => {
           <a
             href="https://tidal.com/playlist/192bcd48-9681-4698-b679-66edb9b331fb"
             alt="Inspiring Playlist 20180620 from Tidal Music"
-            target="_blank">
-            <img className="image" src={ playlist_20180620 } />
+            target="_blank"
+            rel="noopener noreferrer">
+            <img className="image" src={ playlist_20180620 } alt="album covers of the songs in the playlist" />
           </a>
           <div className="playlist">
             <ul>
@@ -32,7 +33,8 @@ const Playlist = () => {
                 <a
                   href="https://tidal.com/album/90521072"
                   alt="Salud. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
+                  target="_blank"
+                  rel="noopener noreferrer">
                   Salud by <span className="artist">The Carters</span>
                 </a>
               </li>
@@ -40,7 +42,8 @@ const Playlist = () => {
                 <a
                   href="https://tidal.com/album/22331721"
                   alt="Nothin' To Show. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
+                  target="_blank"
+                  rel="noopener noreferrer">
                   Nothin' To Show by <span className="artist">Geto Boys</span>
                 </a>
               </li>
@@ -48,7 +51,8 @@ const Playlist = () => {
                 <a
                   href="https://tidal.com/album/2992765"
                   alt="My Philosophy. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
+                  target="_blank"
+                  rel="noopener noreferrer">
                   My Philosophy by <span className="artist">Boogie Down Productions</span>
                 </a>
               </li>
@@ -56,7 +60,8 @@ const Playlist = () => {
                 <a
                   href="https://tidal.com/album/59244601"
                   alt="Criminal Minded. A song from the Inspiring Playlist 20180620 from Tidal Music"
-                  target="_blank">
+                  target="_blank"
+                  rel="noopener noreferrer">
                   Criminal Minded by <span className="artist">Boogie Down Productions</span>
                 </a>
               </li>

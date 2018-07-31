@@ -9,7 +9,6 @@ const FourLetterWord = (props) => {
   let {
     definition,
     fourLetterWord,
-    id,
     setFourLetterWord,
     word
   } = props;

@@ -65,7 +65,7 @@ const Comics = props => {
         </form>
       </div>
       <div className="disclaimer">
-        <p>The name, <a href="https://en.wikipedia.org/wiki/Nickelodeon_(movie_theater)" alt="link to wikipedia page about nickelodeon movie theaters" target="_blank">nickelodeon</a>, is in reference to the old 5 cent movie theaters and has no reference or affiliation to the cable channel.</p>
+        <p>The name, <a href="https://en.wikipedia.org/wiki/Nickelodeon_(movie_theater)" alt="link to wikipedia page about nickelodeon movie theaters" target="_blank" rel="noopener noreferrer">nickelodeon</a>, is in reference to the old 5 cent movie theaters and has no reference or affiliation to the cable channel.</p>
       </div>
 
 

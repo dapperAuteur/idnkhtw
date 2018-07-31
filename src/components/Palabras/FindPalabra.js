@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as actions from './../../store/actions/index';
 import PropTypes from 'prop-types';
 import Palabras from './Palabras';
 import './../CSS/FindPalabras.css';
@@ -33,8 +32,7 @@ class FindPalabra extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let {
-      list,
-      liveSearch
+      list
     } = { ...this.state };
     switch (list) {
       case 'four-letter-words':

@@ -1,5 +1,4 @@
 import * as actionTypes from './../actions/actionTypes';
-import shuffle from 'shuffle-array';
 
 const initialState = {
   attempts: 0,

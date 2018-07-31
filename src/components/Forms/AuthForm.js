@@ -5,12 +5,27 @@ import * as actions from './../../store/actions/index';
 import './AuthForm.css';
 
 class AuthForm extends Component {
+  static propTypes = {
+    onAuth: PropTypes.func,
+    heading: PropTypes.string,
+    authButtonText: PropTypes.string,
+    errorMessage: PropTypes.shape({
+      message: PropTypes.string
+    }),
+    email: PropTypes.string,
+    username: PropTypes.string,
+    password: PropTypes.string,
+    profileImageUrl: PropTypes.string,
+    onClickClose: PropTypes.func,
+    onClickSignIn: PropTypes.func,
+    onClickSignUp: PropTypes.func,
+    showLoginForm: PropTypes.bool,
+    showSignUpForm: PropTypes.bool,
+  }
   static defaultProps = {
     onAuth() {},
-    toggleButton() {},
     heading: 'Welcome back.',
     authButtonText: 'Login',
-    formButtonText: 'Sign In',
     errorMessage: undefined
   }
   constructor(props) {
@@ -20,7 +35,6 @@ class AuthForm extends Component {
       username: '',
       password: '',
       profileImageUrl: '',
-      signUp: true,
       onClickClose: props.onClickClose,
       onClickSignIn: props.onClickSignIn,
       onClickSignUp: props.onClickSignUp,
@@ -41,7 +55,6 @@ class AuthForm extends Component {
     let {
       onClickSignIn,
       onClickSignUp,
-      signUp,
       ...user
     } = { ...this.state };
     let { showSignUpForm } = this.props;
@@ -64,30 +77,21 @@ class AuthForm extends Component {
       email,
       password,
       profileImageUrl,
-      signUp,
       username
     } = this.state;
     let {
       authButtonText,
       errorMessage,
-      formButtonText,
       heading,
       onClickClose,
-      onClickShowLoginForm,
-      onClickShowSignUpForm,
-      onClickSignIn,
-      onShowLoginForm,
-      onShowSignUpForm,
       showSignUpForm,
     } = this.props;
 
     if (showSignUpForm) {
       authButtonText = "Sign Me Up!";
-      formButtonText = "Sign In";
       heading = "Welcome"
     } else {
       authButtonText = "Login";
-      formButtonText = "Sign Up";
       heading = "Welcome Back"
     }
 
@@ -187,8 +191,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onClickClose: () => dispatch(actions.closeAuthForm()),
-    onClickShowLoginForm: () => dispatch(actions.showLoginForm()),
-    onClickShowSignUpForm: () => dispatch(actions.showSignUpForm()),
     onClickSignIn: (obj) => dispatch(actions.signIn(obj)),
     onClickSignUp: (obj) => dispatch(actions.signUp(obj))
   }

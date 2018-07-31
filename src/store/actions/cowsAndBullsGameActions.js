@@ -1,11 +1,4 @@
 import * as actionTypes from './actionTypes';
-// import bcrypt from 'bcrypt';
-import shuffle from 'shuffle-array';
-import fourLetterWordReducer from './../reducers/fourLetterWordReducer';
-// dev server
-// const APIURL = '//localhost:8081/api/ver0001/games/';
-// deployed server on heroku
-const APIURL = '//peaceful-waters-22726.herokuapp.com/api/ver0001/games/';
 
 // let fourLetterWords = getState().fourLetterWords;
 // console.log(fourLetterWords);
