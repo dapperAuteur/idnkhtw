@@ -13,212 +13,20 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    console.log(props);
     this.state = {
       errorMessage: {},
-      fourLetterWord: props.fourLetterWord,
       loggedIn: false,
-      newCowsAndBullsGame: props.newCowsAndBullsGame,
       p: '',
-      post: {},
-      posts: [],
-      randomFourLetterWord: props.randomFourLetterWord,
       showEnglish: false,
       showLoginForm: false,
-      showSignUpForm: false,
-      tag: '',
-      tags: [],
-      user: {},
-      user0: {},
-      users: [],
+      showSignUpForm: false
     }
-    this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
-    this.handleDeleteTag = this.handleDeleteTag.bind(this);
-    this.handleRandomFourLetterWord = this.handleRandomFourLetterWord.bind(this);
-    this.handleLoadBlogPost = this.handleLoadBlogPost.bind(this);
-    this.handleLoadTag = this.handleLoadTag.bind(this);
-    this.handleLoadBlogPosts = this.handleLoadBlogPosts.bind(this);
-    this.handleLoadTags = this.handleLoadTags.bind(this);
-    this.handleNewCowsAndBullsGame = this.handleNewCowsAndBullsGame.bind(this);
-    this.handleSavePost = this.handleSavePost.bind(this);
-    this.handleSaveTag = this.handleSaveTag.bind(this);
-  }
-
-  componentDidMount() {
-    // this.handleLoadPalabras();
-    // this.handleLoadBlogPosts();
-    // console.log(this.props);
-  }
-
-  // Blog Functions
-  async handleAddPost(p, pObj) {
-    // console.log(p, pObj);
-    let { token, userId, userRole } = this.state.user;
-    pObj.userId = userId;
-    pObj.userRole = userRole;
-    pObj.token = token;
-    // console.log(pObj);
-    let newPost = await apiCalls.createPalabra(p, pObj);
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('post', JSON.stringify(newPost));
-    } else {
-      return null;
-    }
-    this.setState({ post: newPost });
-  }
-
-  async handleDeleteBlog(p = 'posts', pObj) {
-    // console.log("delete blog post");
-  }
-
-  async handleLoadBlogPost(p = 'posts', pObj) {
-    let text = await apiCalls.getPalabra(p, pObj);
-    // console.log(text);
-    this.setState({ text });
-  }
-
-  async handleLoadBlogPosts() {
-    let posts = await apiCalls.getPalabras('posts');
-    // console.log(posts);
-    this.setState({ posts });
-  }
-  handleSavePost=(params) => {
-    let { p, pObj } = params;
-    // console.log(p);
-    // console.log(pObj);
-    if (pObj.hasOwnProperty('_id')) {
-      this.handleUpdatePost(p, pObj);
-    } else {
-      this.handleAddPost(p, pObj);
-    }
-  }
-
-  async handleRandomFourLetterWord() {
-    let earl = await this.state.randomFourLetterWord();
-    console.log(earl);
-  }
-
-  handleNewCowsAndBullsGame() {
-    this.handleRandomFourLetterWord();
-    // this.state.randomFourLetterWord();
-    console.log(this.state.fourLetterWord, "earl");
-    let fourLetterWord = this.state.fourLetterWord;
-    if (fourLetterWord.hasOwnProperty("word")) {
-      this.state.newCowsAndBullsGame(fourLetterWord);
-    } else {
-
-    }
-  }
-
-  async handleUpdatePost(p, pObj) {
-    // console.log(pObj);
-    let posts;
-    let { token, userId, userRole } = this.state.user;
-    // let userRole = this.state.user.userRole;
-    // let token = this.state.user.token;
-    pObj.userId = userId;
-    pObj.userRole = userRole;
-    pObj.token = token;
-    let updatedPost = await apiCalls.updatePalabra(p, pObj);
-    // let params = p.slice(0, -1);
-    const palabras = this.state.posts.map(post => (post._id === updatedPost._id) ? { ...post, ...updatedPost } : post)
-
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('post', JSON.stringify(updatedPost));
-      localStorage.setItem('posts', JSON.stringify(posts));
-    } else {
-      return null;
-    }
-    this.setState({
-      post: updatedPost,
-      posts: posts
-    });
-  }
-
-  // Tag Functions
-  async handleAddTag(p, pObj) {
-    // console.log(p, pObj);
-    let { token, userId, userRole } = this.state.user;
-    pObj.userId = userId;
-    pObj.userRole = userRole;
-    pObj.token = token;
-    // console.log(pObj);
-    let newTag = await apiCalls.createPalabra(p, pObj);
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('tag', JSON.stringify(newTag));
-    } else {
-      return null;
-    }
-    this.setState({ tag: newTag });
-  }
-
-  async handleDeleteTag(p = 'tags', pObj) {
-    // console.log("delete blog tag");
-  }
-
-  async handleLoadTag(p = 'tags', pObj) {
-    let text = await apiCalls.getPalabra(p, pObj);
-    // console.log(text);
-    this.setState({ text });
-  }
-
-  async handleLoadTags() {
-    let tags = await apiCalls.getPalabras('tags');
-    // console.log(tags);
-    this.setState({ tags });
-  }
-  handleSaveTag=(params) => {
-    let { p, pObj } = params;
-    // console.log(p);
-    // console.log(pObj);
-    // if TAG does NOT exist in db add it to db, else add it to object
-    // use filter to determine which tag(s) need to bee added to db
-    if (true) {
-      if (pObj.hasOwnProperty('_id')) {
-        this.handleUpdateTag(p, pObj);
-      } else {
-        this.handleAddTag(p, pObj);
-      }
-    }
-  }
-
-  async handleUpdateTag(p, pObj) {
-    // console.log(pObj);
-    let tags;
-    let { token, userId, userRole } = this.state.user;
-    // let userRole = this.state.user.userRole;
-    // let token = this.state.user.token;
-    pObj.userId = userId;
-    pObj.userRole = userRole;
-    pObj.token = token;
-    let updatedTag = await apiCalls.updatePalabra(p, pObj);
-    // let params = p.slice(0, -1);
-    const palabras = this.state.tags.map(tag => (tag._id === updatedTag._id) ? { ...tag, ...updatedTag } : tag)
-
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('tag', JSON.stringify(updatedTag));
-      localStorage.setItem('tags', JSON.stringify(tags));
-    } else {
-      return null;
-    }
-    this.setState({
-      tag: updatedTag,
-      tags: tags
-    });
   }
 
   render() {
     const {
       errorMessage,
-      fourLetterWord,
-      fourLetterWords,
-      game,
-      prefixSuffixRoot,
-      prefixSuffixRoots,
-      showEnglish,
-      user,
-      verbo,
-      verbos
+      showEnglish
     } = this.state;
 
     let {
@@ -234,7 +42,6 @@ class App extends Component {
       <div className="App">
         <NavBar
           onCreateGame={ this.handleCreateGame }
-          onLoadBlogPosts={ this.handleLoadBlogPosts }
           onLoadRandomPalabra={ this.handleLoadRandomPalabra }
           onLogout={ this.handleLogOut }
           />
@@ -250,12 +57,7 @@ class App extends Component {
             showSignUpForm={ showSignUpForm }
             /> : null
         }
-        <Main
-          onDeleteBlog={ this.handleDeleteBlog }
-          onLoadBlogPost={ this.handleLoadBlogPost }
-          onLoadBlogPosts={ this.handleLoadBlogPosts }
-          onSavePost={ this.handleSavePost }
-          />
+        <Main />
         {
           p === "/" &&
           <Link
@@ -265,15 +67,6 @@ class App extends Component {
           </Link>
         }
         <h4 className="App-title">I Do Not Know How this Works</h4>
-        {
-          p === "/games/four-letter-word-game" &&
-          <Link
-            className="btn btn-default"
-            onClick={ this.handleNewCowsAndBullsGame }
-            to={{ pathname: "/games/four-letter-word-game" }}>
-            New Game
-          </Link>
-        }
       </div>
     );
   }
@@ -282,17 +75,9 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.authReducer.currentUser,
-    fourLetterWord: state.fourLetterWordReducer.fourLetterWord,
     showLoginForm: state.authReducer.showLoginForm,
     showSignUpForm: state.authReducer.showSignUpForm
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    newCowsAndBullsGame: () => dispatch(actions.newCowsAndBullsGame()),
-    randomFourLetterWord: () => dispatch(actions.randomFourLetterWord())
-  }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps)(App));
