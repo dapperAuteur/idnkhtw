@@ -97,11 +97,11 @@ const routes = [
   },
   {
     path: '/privacy-policy',
-    component: CowsAndBulls
+    component: PrivacyPolicy
   },
   {
     path: '/terms-of-service',
-    component: Games
+    component: TermsOfService
   }
 ]
 
