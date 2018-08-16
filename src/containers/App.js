@@ -10,6 +10,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
+    console.log(props);
     this.state = {
       errorMessage: {},
       loggedIn: false,

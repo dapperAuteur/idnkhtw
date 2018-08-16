@@ -15,6 +15,8 @@ import DetailsPrefixSuffixRoot from './../components/PrefixSuffixRoots/DetailsPr
 import DetailsVerbo from '../components/Verbos/DetailsVerbo';
 import Playlist from './../components/Vision/Playlist';
 import Vision from './../components/Vision/Vision';
+import PrivacyPolicy from './../components/Privacy/PrivacyPolicy';
+import TermsOfService from './../components/Privacy/TermsOfService';
 
 const routes = [
   {
@@ -91,6 +93,14 @@ const routes = [
   },
   {
     path: '/games',
+    component: Games
+  },
+  {
+    path: '/privacy-policy',
+    component: CowsAndBulls
+  },
+  {
+    path: '/terms-of-service',
     component: Games
   }
 ]
