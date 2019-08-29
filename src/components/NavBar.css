@@ -1,17 +1,17 @@
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 a:active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .navbar {
@@ -41,31 +41,32 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
 }
 
 #palabras-dropdown1 {
-
 }
 
 #palabras-content1 {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 #palabras-dropdown1:hover #palabras-content1 {
-  visibility: visible;
+  /* visibility: visible; */
+  display: block;
 }
 
 #palabras-dropdown2 {
-
 }
 
 #palabras-content2 {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 #palabras-dropdown2:hover #palabras-content2 {
-  visibility: visible;
+  /* visibility: visible; */
+  display: block;
 }
 
 @media (max-width: 800px) {
@@ -79,7 +80,6 @@ ul {
   .content {
     display: flex;
   }
-
 }
 
 @media (max-width: 570px) {
@@ -88,7 +88,6 @@ ul {
     flex-shrink: 1;
     justify-content: center;
   }
-
 }
 
 @media (max-width: 530px) {
@@ -99,7 +98,6 @@ ul {
   }
 
   .auth {
-
   }
 }
 
