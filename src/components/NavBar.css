@@ -69,16 +69,21 @@ ul {
   display: block;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .navbar {
     display: flex;
     margin-right: 0.3em;
-    /* resize image */
-    /* background-image: url('./../images/nicaraugua/img_9251_dog_on_the_steps.jpg'); */
+    resize image
+    background-image: url('./../images/nicaraugua/img_9251_dog_on_the_steps.jpg');
   }
 
   .content {
     display: flex;
+  }
+} */
+@media (max-width: 600px) {
+  .top-menu {
+    min-width: 300px;
   }
 }
 
@@ -88,6 +93,9 @@ ul {
     flex-shrink: 1;
     justify-content: center;
   }
+  .top-menu {
+    min-width: 300px;
+  }
 }
 
 @media (max-width: 530px) {
@@ -95,6 +103,11 @@ ul {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+  }
+  .dropdown1 {
+  }
+  .top-menu {
+    max-width: 200px;
   }
 
   .auth {
