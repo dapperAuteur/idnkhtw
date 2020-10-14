@@ -11,16 +11,6 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ],
-    "redirects": [ {
-      "source": "/fourLetterWords",
-      "destination": "/four-letter-words",
-      "type": 301
-      }, {
-        "source": "/prefixSuffixRoots",
-        "destination": "/prefix-suffix-roots",
-        "type": 301
-        }
-     ]
+    ]
   }
 }
